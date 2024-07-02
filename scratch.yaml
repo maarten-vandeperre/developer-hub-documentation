@@ -1,0 +1,2 @@
+# file to copy yaml definitions into to apply
+# E.g., oc apply -f scratch.yaml
