@@ -41,4 +41,19 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
 oc get secret demo-keycloak-instance-initial-admin -n demo-project -o template --template='{{.data.password}}' | base64 -d ; echo
 ```
 * Log in into keycloak (i.e., https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io/)
-* 
+* Configure the Red Hat Developer Hub realm:
+  * Create realm: rhdh
+  * Create Confidential client: rhdh-client
+    * Root URL: empty
+    * Valid redirect URIs: <developer hub url>/*  (see section 'Install Red Hat Developer Hub via operator' in the README to retrieve the URL if you don't find it).
+    * Take the secret from the client  
+      ![](images/keycloak_rhdh_client_creation.png "")
+  * Create user
+    * username: user1
+    * email: user1@rhdh-demo.com
+    * email verified: true
+    * first name: user1
+    * last name: rhdh-demo
+    * Now go to credentials tab and click "set password"
+      * password: rhdh
+      * temporary: off

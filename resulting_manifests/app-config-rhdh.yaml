@@ -1,0 +1,41 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: app-config-rhdh
+  namespace: demo-project
+data:
+  app-config-rhdh.yaml: |
+    signInPage: oidc   
+    app:
+      title: My Red Hat Developer Hub Instance
+      baseUrl: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
+    backend:
+      auth:
+        keys:
+          - secret: ${BACKEND_SECRET}
+      baseUrl: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
+      cors:
+        origin: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
+    auth:
+      environment: development
+      session:
+        secret: ${BACKEND_SECRET}
+      providers:
+        oidc:
+          development:
+    #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
+            clientSecret: MiF4P4tDFl3oWrisy7VdUOqngoNlv71D # ${AUTH_OIDC_CLIENT_SECRET}
+            prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
+            ## uncomment for additional configuration options
+            # callbackUrl: ${AUTH_OIDC_CALLBACK_URL}
+            # tokenEndpointAuthMethod: ${AUTH_OIDC_TOKEN_ENDPOINT_METHOD}
+            # tokenSignedResponseAlg: ${AUTH_OIDC_SIGNED_RESPONSE_ALG}
+            # scope: ${AUTH_OIDC_SCOPE}
+            ## Auth provider will try each resolver until it succeeds. Uncomment the resolvers you want to use to override the default resolver: `emailLocalPartMatchingUserEntityName`
+            signIn:
+              resolvers:
+                - resolver: preferredUsernameMatchingUserEntityName
+            #    - resolver: emailMatchingUserEntityProfileEmail
+            #    - resolver: emailLocalPartMatchingUserEntityName

@@ -71,7 +71,8 @@ basedomain=apps.cluster-b97l9.dynamic.redhatworkshops.io
 ```shell
 oc patch secret rhdh-secrets -n demo-project -p '{"stringData":{"basedomain":"'"${basedomain}"'"}}'
 ```
-* Configuration of Developer Hub is stored in a config map. This is what we are going to create via applying the following yaml:
+* Configuration of Developer Hub is stored in a config map. This is what we are going to create via applying the following yaml:  
+  **!! be aware**: project 'demo-project' is part of the url. Change it if you use another project
 ```yaml
 kind: ConfigMap
 apiVersion: v1
@@ -82,14 +83,14 @@ data:
   app-config-rhdh.yaml: |
     app:
       title: My Red Hat Developer Hub Instance
-      baseUrl: https://backstage-developer-hub-rhdh-gitlab.${basedomain}
+      baseUrl: https://backstage-developer-hub-demo-project.${basedomain}
     backend:
       auth:
         keys:
           - secret: ${BACKEND_SECRET}
-      baseUrl: https://backstage-developer-hub-rhdh-gitlab.${basedomain}
+      baseUrl: https://backstage-developer-hub-demo-project.${basedomain}
       cors:
-        origin: https://backstage-developer-hub-rhdh-gitlab.${basedomain}
+        origin: https://backstage-developer-hub-demo-project.${basedomain}
 ```
 * Now we just have to change the manifest (i.e., instance description), in which we add a reference to the secrets file and the configuration, by applying the following yaml:  
 _The yaml is already a modified version of the one mentioned above_
@@ -121,7 +122,203 @@ spec:
     enableLocalDb: true
 ```
 * Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-b97l9.dynamic.redhatworkshops.io
+* You should now be able to see the following screen:
+  ![](images/login_screen_1.png "")
+* Last thing to configure now is the enablement of the dynamic plugins. These dynamic plugins will allow you to add functionality 
+to Developer Hub without having to change the (React) source code (as it is done in the upstream Backstage project). For this we will
+need to add an extra config map (i.e., dynamic plugin configuration) and link this configuration in the Developer Hub (instance) manifest.
+  * Create the dynamic plugin configuration by applying the following yaml:
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: dynamic-plugins-rhdh
+  namespace: demo-project
+data:
+  dynamic-plugins.yaml: |
+    includes:
+      - dynamic-plugins.default.yaml
+#    plugins: leave this one out for now as it will give errors on startup (not needed at the moment anyway as we don't have plugins yet).
+```
+  * Link the configuration to the Developer Hub (instance) manifest by applying the following yaml:
+```yaml
+apiVersion: rhdh.redhat.com/v1alpha1
+kind: Backstage
+metadata:
+  name: developer-hub
+  namespace: demo-project
+spec:
+  application:
+    dynamicPluginsConfigMapName: dynamic-plugins-rhdh # added
+    appConfig:
+      mountPath: /opt/app-root/src
+      configMaps: 
+        - name: app-config-rhdh 
+    extraFiles:
+      mountPath: /opt/app-root/src
+    extraEnvs:
+      envs:
+        # Disabling TLS verification
+        - name: NODE_TLS_REJECT_UNAUTHORIZED
+          value: '0'
+      secrets: 
+        - name: rhdh-secrets # added
+    replicas: 1
+    route:
+      enabled: true
+  database:
+    enableLocalDb: true
+```
 
-## Enable authentication
+## Developer Hub Configurations
 
-* 
+**_For the remainder (i.e. section [Developer Hub Configurations](#developer-hub-configurations)), we will expect to start
+from a clean state as described at the end of section [Configure Developer Hub](#configure-developer-hub). In order to not have
+conflicts when skipping sections, I will highlight the places where the config needs to be added as follows:_**  
+_Adding this yaml_
+```yaml
+spec:
+  presenter: maarten
+``` 
+_To this annotated template (on anchor_01)_
+```yaml
+config:
+  metadata:
+    name: demo-yaml
+  <anchor_01>
+```
+_Would result in:_
+```yaml
+config:
+  metadata:
+    name: demo-yaml
+  spec:
+    presenter: maarten
+```
+_In case you get a second component to be added on anchor_01, let's say_
+```yaml
+spec:
+  location: BeLux
+```
+_Then it would result in:_
+```yaml
+config:
+  metadata:
+    name: demo-yaml
+  spec:
+    presenter: maarten
+    location: BeLux
+```
+_In case it would not be entirely clear, I will add the yaml definition which holds all the config 
+of all listed components beneath in the respectively yaml files (i.e., yaml file name will map on the name of the config map)._
+
+**Templates to start from:**
+* **Developer Hub (instance) Manifest:**  
+_Resulting file: [resulting_manifests/developer-hub-instance.yaml](resulting_manifests/developer-hub-instance.yaml)_
+```yaml
+apiVersion: rhdh.redhat.com/v1alpha1
+kind: Backstage
+metadata:
+  name: developer-hub
+  namespace: demo-project
+spec:
+  application:
+    dynamicPluginsConfigMapName: dynamic-plugins-rhdh # added
+    appConfig:
+      mountPath: /opt/app-root/src
+      configMaps: 
+        - name: app-config-rhdh 
+    extraFiles:
+      mountPath: /opt/app-root/src
+    extraEnvs:
+      envs:
+        # Disabling TLS verification
+        - name: NODE_TLS_REJECT_UNAUTHORIZED
+          value: '0'
+      secrets: 
+        - name: rhdh-secrets # added
+    replicas: 1
+    route:
+      enabled: true
+  database:
+    enableLocalDb: true
+```
+* **Developer Hub Configuration**  
+_Resulting file: [resulting_manifests/app-config-rhdh.yaml](resulting_manifests/app-config-rhdh.yaml)_  
+**!! be aware**: project 'demo-project' is part of the url. Change it if you use another project
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: app-config-rhdh
+  namespace: demo-project
+data:
+  app-config-rhdh.yaml: |
+    <anchor_02>
+    app:
+      title: My Red Hat Developer Hub Instance
+      baseUrl: https://backstage-developer-hub-demo-project.${basedomain}
+    backend:
+      auth:
+        keys:
+          - secret: ${BACKEND_SECRET}
+      baseUrl: https://backstage-developer-hub-demo-project.${basedomain}
+      cors:
+        origin: https://backstage-developer-hub-demo-project.${basedomain}
+    <anchor_01>
+```
+* **Dynamic Plugin Configuration**  
+_Resulting file: [resulting_manifests/dynamic-plugins-rhdh.yaml](resulting_manifests/dynamic-plugins-rhdh.yaml)_
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: dynamic-plugins-rhdh
+  namespace: demo-project
+data:
+  dynamic-plugins.yaml: |
+    includes:
+      - dynamic-plugins.default.yaml
+    <anchor_01>
+```
+
+### Enable authentication via Keycloak
+* Make sure that Keycloak is set up as described in [Keycloak Installation Guide](README-InstallKeycloak.md)
+  * Get the base url
+  * Realm: rhdh
+  * ClientId: rhdh-client
+  * ClientSecret: view/copy it from keycloak
+* Now we are going to configure OpenID (Keycloak for us) to allow OpenID-based authentication 
+within Developer Hub. Apply the following yaml definition to the Developer Hub Config on anchor_01:
+```yaml
+auth:
+  environment: development
+  session:
+    secret: ${BACKEND_SECRET}
+  providers:
+    oidc:
+      development:
+#        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+        metadataUrl: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+        clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
+        clientSecret: MiF4P4tDFl3oWrisy7VdUOqngoNlv71D # ${AUTH_OIDC_CLIENT_SECRET}
+        prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
+        ## uncomment for additional configuration options
+        # callbackUrl: ${AUTH_OIDC_CALLBACK_URL}
+        # tokenEndpointAuthMethod: ${AUTH_OIDC_TOKEN_ENDPOINT_METHOD}
+        # tokenSignedResponseAlg: ${AUTH_OIDC_SIGNED_RESPONSE_ALG}
+        # scope: ${AUTH_OIDC_SCOPE}
+        ## Auth provider will try each resolver until it succeeds. Uncomment the resolvers you want to use to override the default resolver: `emailLocalPartMatchingUserEntityName`
+        signIn:
+          resolvers:
+            - resolver: preferredUsernameMatchingUserEntityName
+        #    - resolver: emailMatchingUserEntityProfileEmail
+        #    - resolver: emailLocalPartMatchingUserEntityName
+```
+* By applying above config, you enable a new authentication provider to be used. By adding this info, the provider is not yet in use. 
+In order to start using this oidc (i.e. OpenId Connect) provider, we have to apply the following yaml to the Developer Hub Config on anchor_02.
+```yaml
+signInPage: oidc  
+```
+* Now the login screen should be changed to:
+  ![](images/login_screen_2.png "")
