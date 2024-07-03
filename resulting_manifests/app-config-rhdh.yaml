@@ -21,8 +21,8 @@ data:
        keycloakOrg:
          default:
            baseUrl: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io
-           loginRealm: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io # ${KEYCLOAK_REALM}
-           realm: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io # ${KEYCLOAK_REALM}
+           loginRealm: rhdh # ${KEYCLOAK_REALM}
+           realm: rhdh # ${KEYCLOAK_REALM}
            clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
            clientSecret: MiF4P4tDFl3oWrisy7VdUOqngoNlv71D # ${KEYCLOAK_CLIENTSECRET}
            # highlight-add-start

@@ -265,6 +265,7 @@ data:
       baseUrl: https://backstage-developer-hub-demo-project.${basedomain}
       cors:
         origin: https://backstage-developer-hub-demo-project.${basedomain}
+    <anchor_03>
     <anchor_01>
 ```
 * **Dynamic Plugin Configuration**  
@@ -319,6 +320,35 @@ auth:
 In order to start using this oidc (i.e. OpenId Connect) provider, we have to apply the following yaml to the Developer Hub Config on anchor_02.
 ```yaml
 signInPage: oidc  
+```
+* As a last step we need to make sure that the Keycloak users are synced with the Developer Hub's user catalog. In order to do so,
+we need to:
+  * Enable the dynamic plugin for Keycloak by applying the following yaml to the dynamic plugins configuration (on anchor_01):
+```yaml
+plugins:
+  - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic
+    disabled: false
+    pluginConfig: {}
+```
+  * Apply the following yaml to the Developer Hub config (on anchor_03):
+```yaml
+catalog:
+  providers:
+    keycloakOrg:
+      default:
+        baseUrl: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io
+        loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
+        realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
+        clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret
+        clientSecret: MiF4P4tDFl3oWrisy7VdUOqngoNlv71D # ${KEYCLOAK_CLIENTSECRET} TODO enable via secret
+        # highlight-add-start
+        schedule: # optional; same options as in TaskScheduleDefinition
+          # supports cron, ISO duration, "human duration" as used in code
+          frequency: { minutes: 1 }
+          # supports ISO duration, "human duration" as used in code
+          timeout: { minutes: 1 }
+          initialDelay: { seconds: 15 }
+          # highlight-add-end
 ```
 * Now the login screen should be changed to:
   ![](images/login_screen_2.png "")

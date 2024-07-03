@@ -49,6 +49,11 @@ the realm import yaml in OpenShift (but make sure that you have persistent stora
     * Valid redirect URIs: <developer hub url>/*  (see section 'Install Red Hat Developer Hub via operator' in the README to retrieve the URL if you don't find it).
     * Take the secret from the client  
       ![](images/keycloak_rhdh_client_creation.png "")
+    * Service account must be enabled
+    * The following roles must be added from the realm-management client role:
+      * query-groups
+      * query-users
+      * view-users
   * Create user
     * username: user1
     * email: user1@rhdh-demo.com
