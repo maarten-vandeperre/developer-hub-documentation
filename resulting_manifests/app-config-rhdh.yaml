@@ -16,6 +16,23 @@ data:
       baseUrl: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
       cors:
         origin: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
+    catalog:
+     providers:
+       keycloakOrg:
+         default:
+           baseUrl: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io
+           loginRealm: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io # ${KEYCLOAK_REALM}
+           realm: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io # ${KEYCLOAK_REALM}
+           clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
+           clientSecret: MiF4P4tDFl3oWrisy7VdUOqngoNlv71D # ${KEYCLOAK_CLIENTSECRET}
+           # highlight-add-start
+           schedule: # optional; same options as in TaskScheduleDefinition
+             # supports cron, ISO duration, "human duration" as used in code
+             frequency: { minutes: 1 }
+             # supports ISO duration, "human duration" as used in code
+             timeout: { minutes: 1 }
+             initialDelay: { seconds: 15 }
+             # highlight-add-end
     auth:
       environment: development
       session:
