@@ -8,6 +8,12 @@ data:
     includes:
       - dynamic-plugins.default.yaml
     plugins:
-      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic
+      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic 
+        # documentation: https://janus-idp.io/plugins/keycloak
+        disabled: false
+        pluginConfig: {}
+      - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
+        # documentation: https://backstage.io/docs/features/techdocs/
+        # documentation: https://backstage.io/docs/features/techdocs/configuration/
         disabled: false
         pluginConfig: {}

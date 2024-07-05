@@ -56,3 +56,18 @@ data:
                 - resolver: preferredUsernameMatchingUserEntityName
             #    - resolver: emailMatchingUserEntityProfileEmail
             #    - resolver: emailLocalPartMatchingUserEntityName
+    techdocs:
+      builder: external
+      generator:
+        runIn: local
+      publisher:
+        awsS3:
+          bucketName: redhat-demo-dev-hub-1
+          credentials:
+            accessKeyId: 
+            secretAccessKey: 
+          # endpoint: https://s3-openshift-storage.apps.cluster-5bblr.sandbox895.opentlc.com
+          endpoint: https://redhat-demo-dev-hub-1.s3-website.eu-west-3.amazonaws.com
+          region: eu-west-3
+          s3ForcePathStyle: true
+        type: awsS3
