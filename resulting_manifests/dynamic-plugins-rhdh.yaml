@@ -15,5 +15,6 @@ data:
       - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
         # documentation: https://backstage.io/docs/features/techdocs/
         # documentation: https://backstage.io/docs/features/techdocs/configuration/
+        # doc discovery: https://backstage.io/docs/integrations/aws-s3/discovery/
         disabled: false
         pluginConfig: {}
