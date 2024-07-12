@@ -9,7 +9,8 @@ OpenShift cluster._**
 * Log in into OpenShift via the CLI (i.e., oc login ....)
 * Install the operator in the 'demo-project' namespace.
 * Apply the following yaml:  
-    **!!! be aware to change the root domain (i.e., apps.cluster-b97l9.dynamic.redhatworkshops.io) to your own domain.**
+    **TODO: make use of basedomain variable** 
+    **!!! be aware to change the root domain (i.e., apps.cluster-zcsd6.dynamic.redhatworkshops.io) to your own domain.**
 ```yaml
 apiVersion: k8s.keycloak.org/v2alpha1
 kind: Keycloak
@@ -24,9 +25,9 @@ spec:
   hostname:
     # following would be better and easier to secure, but for demo purposes, 
     # we'll make both hostname and admin URL the same (fewer certificates' config)
-    #adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io'
-    adminUrl: 'https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io'
-    hostname: demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io
+    # adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io'
+    adminUrl: 'https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io'
+    hostname: demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io
   instances: 1
 ```
 * Wait for the operator to become ready and get the route to keycloak:
@@ -40,9 +41,9 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
 ```shell
 oc get secret demo-keycloak-instance-initial-admin -n demo-project -o template --template='{{.data.password}}' | base64 -d ; echo
 ```
-* Log in into keycloak (i.e., https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io/)
-* Configure the Red Hat Developer Hub realm (or import [configurations/keycloak-realm-import.json](configurations/keycloak-realm-import.json) directly into keycloak or apply
-the realm import yaml in OpenShift (but make sure that you have persistent storage under keycloak then): [configurations/keycloak-realm-import.yaml](configurations/keycloak-realm-import.yaml)):
+* Log in into keycloak (i.e., https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io/)
+* Configure the Red Hat Developer Hub realm (or import [configurations/keycloak/keycloak-realm-import.json](configurations/keycloak/keycloak-realm-import.json) directly into keycloak or apply
+the realm import yaml in OpenShift (but make sure that you have persistent storage under keycloak then): [configurations/keycloak/keycloak-realm-import.yaml](configurations/keycloak/keycloak-realm-import.yaml)):
   * Create realm: rhdh
   * Create Confidential client: rhdh-client
     * Root URL: empty

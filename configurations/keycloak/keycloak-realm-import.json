@@ -770,12 +770,12 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "7iKyQUwyApIojzOlSj82vUWIhejv41E5",
       "redirectUris": [
-        "https://backstage-developer-hub-demo-project.apps.cluster-b97l9.dynamic.redhatworkshops.io/*"
+        "https://backstage-developer-hub-demo-project.apps.cluster-zcsd6.dynamic.redhatworkshops.io/*"
       ],
       "webOrigins": [
-        "https://backstage-developer-hub-demo-project.apps.cluster-b97l9.dynamic.redhatworkshops.io"
+        "https://backstage-developer-hub-demo-project.apps.cluster-zcsd6.dynamic.redhatworkshops.io"
       ],
       "notBefore": 0,
       "bearerOnly": false,

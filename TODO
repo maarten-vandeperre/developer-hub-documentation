@@ -1,0 +1,104 @@
+* basedomain retrieval and repo update via script
+* add postgres database under keycloak
+* values in secrets
+* GitHub actions to generate documentation in S3
+
+ npm install -g @techdocs/cli
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::your-s3-bucket-name/path-to-docs/*"
+    }
+  ]
+}
+
+
+cat <<EOF | oc create -f -
+kind: UserConfig
+apiVersion: redhatcop.redhat.io/v1alpha1
+metadata:
+  name: test-user-config
+spec:
+  annotationSelector: {}
+  identityExtraFieldSelector: {}
+  labelSelector: {}
+  providerName: github
+  templates:
+    - excludedPaths:
+        - .spec.replicas
+        - .metadata
+        - .status
+      objectTemplate: |
+        - apiVersion: project.openshift.io/v1
+          kind: Project
+          metadata:
+            name: {{ .Name }}
+        - apiVersion: rbac.authorization.k8s.io/v1
+          kind: RoleBinding
+          metadata:
+            name: {{ .Name }}-rolebinding
+            namespace: {{ .Name }}
+          roleRef:
+            apiGroup: rbac.authorization.k8s.io
+            kind: ClusterRole
+            name: admin
+          subjects:
+          - apiGroup: rbac.authorization.k8s.io
+            kind: User
+            name: {{ .Name }}
+EOF
+
+
+
+techdocs-cli generate --source-dir tempinput --output-dir temptechdocs6 --no-docker --verbose
+aws s3 website s3://redhat-demo-dev-hub-3/ --index-document index.html --error-document error.html
+techdocs-cli publish --publisher-type awsS3 --storage-name redhat-demo-dev-hub-3 --awsEndpoint http://redhat-demo-dev-hub-3.s3-website-eu-west-3.amazonaws.com --awsS3ForcePathStyle --entity default/component/maartens-first-documentation
+techdocs-cli generate --source-dir tempinput --output-dir temptechdocs3
+
+techdocs-cli publish --publisher-type awsS3 --storage-name redhat-demo-dev-hub-2
+techdocs-cli publish --publisher-type awsS3 --storage-name redhat-demo-dev-hub-2 --entity default/Component/my-service-1 --awsS3sse AES256
+aws s3 website s3://redhat-demo-dev-hub-2 --index-document index.html --error-document 404.html
+
+
+
+name: Publish TechDocs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install TechDocs CLI
+        run: npm install -g @techdocs/cli
+
+      - name: Generate TechDocs
+        run: techdocs-cli generate
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Publish to S3
+        run: techdocs-cli publish --publisher-type awsS3 --storage-name your-techdocs-bucket
+
+
