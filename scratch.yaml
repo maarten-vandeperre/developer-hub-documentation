@@ -1,8 +1,2 @@
-kind: Secret
-apiVersion: v1
-metadata:
-  name: rhdh-secrets
-  namespace: demo-project
-stringData:
-  BACKEND_SECRET: averysecretpassword
-type: Opaque
+# file to copy yaml definitions into to apply
+# E.g., oc apply -f scratch.yaml
