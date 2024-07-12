@@ -1,3 +1,7 @@
+* basedomain retrieval and repo update via script
+* add postgres database under keycloak
+* values in secrets
+
  npm install -g @techdocs/cli
 
 {

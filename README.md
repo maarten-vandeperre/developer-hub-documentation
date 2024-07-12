@@ -4,6 +4,30 @@
 Next to that, be aware that the root domain will be different for you, and it will be the root domain of your
 OpenShift cluster._**
 
+## Table of Contents
+
+1. [Install required tooling](#install-required-tooling)
+    * [Keycloak](#keycloak)
+    * [S3 (tech docs static content)](#s3-tech-docs-static-content)
+
+2. [Install Red Hat Developer Hub](#install-red-hat-developer-hub)
+    * [Install Red Hat Developer Hub via operator](#install-red-hat-developer-hub-via-operator)
+    * [Install Red Hat Developer Hub via Helm chart](#install-red-hat-developer-hub-via-helm-chart)
+
+3. [Configure Developer Hub](#configure-developer-hub)
+    * [Create a backend secret](#create-a-backend-secret)
+    * [Set the base domain variable](#set-the-base-domain-variable)
+    * [Patch the secret](#patch-the-secret)
+    * [Create the configuration config map](#create-the-configuration-config-map)
+    * [Modify the Developer Hub instance manifest](#modify-the-developer-hub-instance-manifest)
+    * [Access Developer Hub](#access-developer-hub)
+    * [Enable dynamic plugins](#enable-dynamic-plugins)
+
+4. [Developer Hub Configurations](#developer-hub-configurations)
+    * [Enable authentication via Keycloak](#enable-authentication-via-keycloak)
+    * [Enable tech docs to serve static content](#enable-tech-docs-to-serve-static-content)
+
+
 ## Install required tooling
 This section will list tooling required to be set up if you would like to go through the entire demo.
 Optional tools/components will be annotated with '*', meaning that, if you don't want to include them 
@@ -13,6 +37,9 @@ Tools:
 * **Keycloak**:  
 Will be used for authentication (i.e., logging in) into Developer Hub.  
 [Keycloak Installation Guide](README-InstallKeycloak.md)
+* **S3 (tech docs static content)**:  
+  Will be used to serve static content via Developer Hub.  
+  [AWS S3 tech docs (static content) configuration](README-SetupAwsS3StorageForTechDocs.md)
 
 ## Install Red Hat Developer Hub
 ### Install Red Hat Developer Hub via operator
@@ -352,3 +379,52 @@ catalog:
 ```
 * Now the login screen should be changed to:
   ![](images/login_screen_2.png "")
+
+### Enable tech docs to serve static content
+* Make sure that S3 is set up as described in [AWS S3 tech docs (static content) configuration](README-SetupAwsS3StorageForTechDocs.md)
+  * IAM user created that can read and write in S3
+  * Bucket 'redhat-demo-dev-hub-1' in region 'eu-west-3'
+* Now we'll need to enable the tech docs plugin by applying the following yaml to the dynamic plugins configuration (on anchor_01):
+```yaml
+plugins:
+  - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
+    disabled: false
+    pluginConfig: {}
+```
+* When the dynamic plugin is enabled, we'll need to configure our developer hub instance to read from the correct bucket.
+For that, we have to apply the following yaml to the Developer Hub Config on anchor_02:
+```yaml
+techdocs:
+  builder: external
+  generator:
+    runIn: local
+  publisher:
+    type: 'awsS3'
+    awsS3:
+      bucketName: redhat-demo-dev-hub-1
+      credentials:
+        accessKeyId: <...>
+        secretAccessKey: <...>
+      region: eu-west-3
+      s3ForcePathStyle: true
+      sse: 'AES256'
+```
+* As documentation should not be rendered on the fly (according to the [recommended deployment model](https://backstage.io/docs/features/techdocs/architecture/)),
+we need to make sure that information is fetched by the tech docs plugin (upfront),
+by applying the following yaml to the dynamic plugins configuration (on anchor_03):
+```yaml
+catalog:
+  providers:
+   awsS3:
+     default: # identifies your dataset / provider independent of config changes
+       bucketName: redhat-demo-dev-hub-1
+       #prefix: prefix/ # optional
+       region: eu-west-3 # optional, uses the default region otherwise
+       schedule: # same options as in TaskScheduleDefinition
+         # supports cron, ISO duration, "human duration" as used in code
+         #frequency: { minutes: 30 }
+         frequency: { minutes: 1 }
+         # supports ISO duration, "human duration" as used in code
+         timeout: { minutes: 3 }
+         initialDelay: { seconds: 15 }
+```

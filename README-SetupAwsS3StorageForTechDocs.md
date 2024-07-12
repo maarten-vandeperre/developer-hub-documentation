@@ -2,6 +2,7 @@
 ## Setup
 * Go to AWS console and log in
 * Create an S3 bucket, in our example 'redhat-demo-dev-hub-1'
+  * Region: eu-west-3 (or otherwise, but be aware that if you change this, you'll need to change configuration later on as well). 
   * Add bucket policy (i.e., permissions tab)
 ```json
 {
@@ -17,4 +18,9 @@
 	]
 }
 ```
-  * 
+  * Add new user (IAM)
+    * username: redhat-demo
+    * Add policy: AmazonS3FullAccess
+    * Add policy: AmazonS3ReadOnlyAccess
+    * Get/generate the access key ID and secret access key
+      ![](images/aws_s3_techdocs_user.png "")
