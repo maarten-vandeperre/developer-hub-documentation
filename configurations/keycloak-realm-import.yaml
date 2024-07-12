@@ -12,7 +12,7 @@ spec:
     identityProviders: []
     clients:
       - redirectUris:
-          - 'https://backstage-developer-hub-demo-project.apps.cluster-ln82d.dynamic.redhatworkshops.io/*'
+          - 'https://backstage-developer-hub-demo-project.apps.cluster-zcsd6.dynamic.redhatworkshops.io/*'
         enabled: true
         clientId: rhdh-client
         secret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5

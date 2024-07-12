@@ -32,11 +32,11 @@ data:
      providers:
        keycloakOrg:
          default:
-           baseUrl: https://demo-keycloak-instance.apps.cluster-ln82d.dynamic.redhatworkshops.io
+           baseUrl: https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io
            loginRealm: rhdh # ${KEYCLOAK_REALM}
            realm: rhdh # ${KEYCLOAK_REALM}
            clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
-           clientSecret:  # ${KEYCLOAK_CLIENTSECRET}
+           clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${KEYCLOAK_CLIENTSECRET}
            # highlight-add-start
            schedule: # optional; same options as in TaskScheduleDefinition
              # supports cron, ISO duration, "human duration" as used in code
@@ -47,7 +47,7 @@ data:
              # highlight-add-end
        awsS3:
          default: # identifies your dataset / provider independent of config changes
-           bucketName: redhat-demo-dev-hub-2
+           bucketName: redhat-demo-dev-hub-1
            #prefix: prefix/ # optional
            region: eu-west-3 # optional, uses the default region otherwise
            schedule: # same options as in TaskScheduleDefinition
@@ -58,16 +58,16 @@ data:
              timeout: { minutes: 3 }
              initialDelay: { seconds: 15 }
     auth:
-      environment: development
+      environment: default
       session:
         secret: ${BACKEND_SECRET}
       providers:
         oidc:
-          development:
+          default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            metadataUrl: https://demo-keycloak-instance.apps.cluster-ln82d.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
             clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
-            clientSecret:  # ${AUTH_OIDC_CLIENT_SECRET}
+            clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
             prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
             ## uncomment for additional configuration options
             # callbackUrl: ${AUTH_OIDC_CALLBACK_URL}
@@ -87,14 +87,10 @@ data:
       publisher:
         type: 'awsS3'
         awsS3:
-          bucketName: redhat-demo-dev-hub-2
+          bucketName: redhat-demo-dev-hub-1
           credentials:
-            accessKeyId:
-            secretAccessKey:
-          # endpoint: https://s3-openshift-storage.apps.cluster-5bblr.sandbox895.opentlc.com
-          #endpoint: https://s3.eu-west-3.amazonaws.com
-          #endpoint: http://redhat-demo-dev-hub-1.s3-website-eu-west-3.amazonaws.com
-          #endpoint: http://redhat-demo-dev-hub-1.s3-website-eu-west-3.amazonaws.com
+            accessKeyId: <...>
+            secretAccessKey: <...>
           region: eu-west-3
           s3ForcePathStyle: true
           sse: 'AES256'

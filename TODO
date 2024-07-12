@@ -50,7 +50,9 @@ EOF
 
 
 
-techdocs-cli generate --source-dir tempinput --output-dir temptechdocs --no-docker --verbose
+techdocs-cli generate --source-dir tempinput --output-dir temptechdocs6 --no-docker --verbose
+aws s3 website s3://redhat-demo-dev-hub-3/ --index-document index.html --error-document error.html
+techdocs-cli publish --publisher-type awsS3 --storage-name redhat-demo-dev-hub-3 --awsEndpoint http://redhat-demo-dev-hub-3.s3-website-eu-west-3.amazonaws.com --awsS3ForcePathStyle --entity default/component/maartens-first-documentation
 techdocs-cli generate --source-dir tempinput --output-dir temptechdocs3
 
 techdocs-cli publish --publisher-type awsS3 --storage-name redhat-demo-dev-hub-2

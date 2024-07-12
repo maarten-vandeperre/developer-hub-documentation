@@ -16,5 +16,7 @@ data:
         # documentation: https://backstage.io/docs/features/techdocs/
         # documentation: https://backstage.io/docs/features/techdocs/configuration/
         # doc discovery: https://backstage.io/docs/integrations/aws-s3/discovery/
+        # documentation: https://backstage.io/docs/features/techdocs/how-to-guides/
+        # iframes in techdocs: https://backstage.io/docs/features/techdocs/how-to-guides/#how-to-add-the-documentation-setup-to-your-software-templates
         disabled: false
         pluginConfig: {}
