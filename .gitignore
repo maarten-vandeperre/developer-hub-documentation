@@ -24,3 +24,25 @@ hs_err_pid*
 replay_pid*
 .env
 /documentation/techdocs/static-content/site/
+
+# Plugin directory
+/.quarkus/cli/plugins/
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# IntelliJ
+.idea
+*.ipr
+*.iml
+*.iws
