@@ -2,9 +2,9 @@ apiVersion: k8s.keycloak.org/v2alpha1
 kind: Keycloak
 metadata:
   name: demo-keycloak-instance
+  namespace: demo-project
   labels:
     app: sso
-  namespace: demo-project
 spec:
   http:
     httpEnabled: true
@@ -15,3 +15,10 @@ spec:
     adminUrl: 'https://demo-keycloak-instance.apps.cluster-ldxcx.dynamic.redhatworkshops.io'
     hostname: demo-keycloak-instance.apps.cluster-ldxcx.dynamic.redhatworkshops.io
   instances: 1
+  database:
+    host: keycloak-postgres
+    dbName: keycloak
+    user: keycloak
+    passwordSecret:
+      name: keycloak-db-secret
+      key: password
