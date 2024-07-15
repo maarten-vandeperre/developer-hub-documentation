@@ -1,0 +1,17 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: demo-keycloak-instance
+  labels:
+    app: sso
+  namespace: demo-project
+spec:
+  http:
+    httpEnabled: true
+  hostname:
+    # following would be better and easier to secure, but for demo purposes,
+    # we'll make both hostname and admin URL the same (fewer certificates' config)
+    #adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io'
+    adminUrl: 'https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io'
+    hostname: demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io
+  instances: 1
