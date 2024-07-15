@@ -1,0 +1,34 @@
+### Not yet complete!!!
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: KeycloakRealmImport
+metadata:
+  name: rhdh-keycloak-realm-import
+  labels:
+    app: sso
+  namespace: demo-project
+spec:
+  realm:
+    identityProviderMappers: []
+    identityProviders: []
+    clients:
+      - redirectUris:
+          - 'https://backstage-developer-hub-demo-project.apps.cluster-b97l9.dynamic.redhatworkshops.io/*'
+        enabled: true
+        clientId: rhdh-client
+        secret: MiF4P4tDFl3oWrisy7VdUOqngoNlv71D
+        standardFlowEnabled: true
+        serviceAccountsEnabled: true
+    users:
+      - credentials:
+          - value: rhdh
+        lastName: rhdh-demo
+        enabled: true
+        emailVerified: true
+        username: user1
+        firstName: user1
+        email: user1@rhdh-demo.com
+    groups: []
+    enabled: true
+    adminEventsDetailsEnabled: true
+    realm: rhdh
+  keycloakCRName: demo-keycloak-instance

@@ -42,7 +42,7 @@ data:
              # supports cron, ISO duration, "human duration" as used in code
              frequency: { minutes: 1 }
              # supports ISO duration, "human duration" as used in code
-             timeout: { minutes: 3 }
+             timeout: { minutes: 1 }
              initialDelay: { seconds: 15 }
              # highlight-add-end
        awsS3:
