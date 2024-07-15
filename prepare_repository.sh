@@ -9,7 +9,6 @@ fi
 
 # Get the base domain of the OpenShift cluster
 BASE_DOMAIN=$(oc get ingresses.config/cluster -o jsonpath='{.spec.domain}'; echo)
-BASE_DOMAIN="apps.cluster-test.dynamic.redhatworkshops.io"
 
 if [ -z "$BASE_DOMAIN" ]; then
     echo "Failed to retrieve the OpenShift cluster base domain."
@@ -17,6 +16,7 @@ if [ -z "$BASE_DOMAIN" ]; then
 fi
 
 # Define the placeholder to be replaced
+# !!! this one will change to the new domain as well (when running the script), so it will keep up to date
 PLACEHOLDER="apps.cluster-ldxcx.dynamic.redhatworkshops.io"
 ESCAPED_PLACEHOLDER=$(echo "$PLACEHOLDER" | sed 's/\./\\./g')
 
