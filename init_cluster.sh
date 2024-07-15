@@ -27,8 +27,11 @@
 sh prepare_repository.sh
 oc apply -f gitops/namespaces.yaml
 
+sleep 30
+
 # operators
 oc apply -f gitops/keycloak/keycloak-operator.yaml
+oc apply -f gitops/developer-hub/00_developer-hub-operator.yaml
 
 echo "sleep for operators to get ready"
 sleep 120
@@ -56,17 +59,27 @@ sleep 120
 #done
 
 
-# batch 1 (i.e. databases)
+# batch 1 (i.e. databases and pre-configurations)
 
   # keycloak
   oc apply -f gitops/keycloak/keycloak-postgres.yaml
 
+  # developer hub
+  oc apply -f .helper/31_developer-hub-instance-simple.yaml   # do this first, without config map links to init the database, without migration table lock issues
+                                                              # TODO this bug should be solved, should not be required
+  oc apply -f gitops/developer-hub/01_secret.yaml
+  oc apply -f gitops/developer-hub/11_app-config-rhdh.yaml
+  oc apply -f gitops/developer-hub/21_dynamic-plugins-rhdh.yaml
+
 echo "sleep for batch 1 to get ready"
-sleep 120
+sleep 300
 
 # batch 2 (i.e. instances)
   # keycloak
   oc apply -f gitops/keycloak/keycloak-instance.yaml
+
+  # developer hub
+  oc apply -f gitops/developer-hub/31_developer-hub-instance.yaml
 
 echo "sleep for batch 2 to get ready"
 sleep 300

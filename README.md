@@ -241,7 +241,7 @@ of all listed components beneath in the respectively yaml files (i.e., yaml file
 
 **Templates to start from:**
 * **Developer Hub (instance) Manifest:**  
-_Resulting file: [resulting_manifests/developer-hub-instance.yaml](resulting_manifests/31_developer-hub-instance.yaml)_
+_Resulting file: [gitops/developer_hub/developer-hub-instance.yaml](gitops/developer_hub/31_developer-hub-instance.yaml)_
 ```yaml
 apiVersion: rhdh.redhat.com/v1alpha1
 kind: Backstage
@@ -271,7 +271,7 @@ spec:
     enableLocalDb: true
 ```
 * **Developer Hub Configuration**  
-_Resulting file: [resulting_manifests/app-config-rhdh.yaml](resulting_manifests/11_app-config-rhdh.yaml)_  
+_Resulting file: [gitops/developer_hub/app-config-rhdh.yaml](gitops/developer_hub/11_app-config-rhdh.yaml)_  
 **!! be aware**: project 'demo-project' is part of the url. Change it if you use another project
 ```yaml
 kind: ConfigMap
@@ -296,7 +296,7 @@ data:
     <anchor_01>
 ```
 * **Dynamic Plugin Configuration**  
-_Resulting file: [resulting_manifests/dynamic-plugins-rhdh.yaml](resulting_manifests/21_dynamic-plugins-rhdh.yaml)_
+_Resulting file: [gitops/developer_hub/dynamic-plugins-rhdh.yaml](gitops/developer_hub/21_dynamic-plugins-rhdh.yaml)_
 ```yaml
 kind: ConfigMap
 apiVersion: v1
@@ -327,7 +327,7 @@ auth:
     oidc:
       development:
 #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-        metadataUrl: https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+        metadataUrl: https://demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
         clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
         clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
         prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -363,7 +363,7 @@ catalog:
   providers:
     keycloakOrg:
       default:
-        baseUrl: https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io
+        baseUrl: https://demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io
         loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret

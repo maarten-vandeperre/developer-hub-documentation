@@ -27,12 +27,13 @@ data:
       ocm: false
       permission: false
       sonarqube: false
-      techdocs: true
+      # techdocs: true TODO enable when AWS S3 environment is set up
+      techdocs: false 
     catalog:
      providers:
        keycloakOrg:
          default:
-           baseUrl: https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io
+           baseUrl: https://demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io
            loginRealm: rhdh # ${KEYCLOAK_REALM}
            realm: rhdh # ${KEYCLOAK_REALM}
            clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
@@ -45,18 +46,18 @@ data:
              timeout: { minutes: 1 }
              initialDelay: { seconds: 15 }
              # highlight-add-end
-       awsS3:
-         default: # identifies your dataset / provider independent of config changes
-           bucketName: redhat-demo-dev-hub-1
-           #prefix: prefix/ # optional
-           region: eu-west-3 # optional, uses the default region otherwise
-           schedule: # same options as in TaskScheduleDefinition
-             # supports cron, ISO duration, "human duration" as used in code
-             #frequency: { minutes: 30 }
-             frequency: { minutes: 1 }
-             # supports ISO duration, "human duration" as used in code
-             timeout: { minutes: 3 }
-             initialDelay: { seconds: 15 }
+       # awsS3: TODO enable when AWS S3 environment is set up
+         # default: # identifies your dataset / provider independent of config changes
+           # bucketName: redhat-demo-dev-hub-1
+           # #prefix: prefix/ # optional
+           # region: eu-west-3 # optional, uses the default region otherwise
+           # schedule: # same options as in TaskScheduleDefinition
+             # # supports cron, ISO duration, "human duration" as used in code
+             # #frequency: { minutes: 30 }
+             # frequency: { minutes: 1 }
+             # # supports ISO duration, "human duration" as used in code
+             # timeout: { minutes: 3 }
+             # initialDelay: { seconds: 15 }
     auth:
       environment: default
       session:
@@ -65,7 +66,7 @@ data:
         oidc:
           default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            metadataUrl: https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
             clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
             clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
             prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -80,17 +81,17 @@ data:
                 - resolver: preferredUsernameMatchingUserEntityName
             #    - resolver: emailMatchingUserEntityProfileEmail
             #    - resolver: emailLocalPartMatchingUserEntityName
-    techdocs:
-      builder: external
-      generator:
-        runIn: local
-      publisher:
-        type: 'awsS3'
-        awsS3:
-          bucketName: redhat-demo-dev-hub-1
-          credentials:
-            accessKeyId: <...>
-            secretAccessKey: <...>
-          region: eu-west-3
-          s3ForcePathStyle: true
-          sse: 'AES256'
+    # techdocs: TODO enable when AWS S3 environment is set up
+      # builder: external
+      # generator:
+        # runIn: local
+      # publisher:
+        # type: 'awsS3'
+        # awsS3:
+          # bucketName: redhat-demo-dev-hub-1
+          # credentials:
+            # accessKeyId: <...>
+            # secretAccessKey: <...>
+          # region: eu-west-3
+          # s3ForcePathStyle: true
+          # sse: 'AES256'

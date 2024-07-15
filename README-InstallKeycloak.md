@@ -25,9 +25,9 @@ spec:
   hostname:
     # following would be better and easier to secure, but for demo purposes, 
     # we'll make both hostname and admin URL the same (fewer certificates' config)
-    # adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io'
-    adminUrl: 'https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io'
-    hostname: demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io
+    # adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io'
+    adminUrl: 'https://demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io'
+    hostname: demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io
   instances: 1
 ```
 * Wait for the operator to become ready and get the route to keycloak:
@@ -41,7 +41,7 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
 ```shell
 oc get secret demo-keycloak-instance-initial-admin -n demo-project -o template --template='{{.data.password}}' | base64 -d ; echo
 ```
-* Log in into keycloak (i.e., https://demo-keycloak-instance.apps.cluster-zcsd6.dynamic.redhatworkshops.io/)
+* Log in into keycloak (i.e., https://demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io/)
 * Configure the Red Hat Developer Hub realm (or import [configurations/keycloak/keycloak-realm-import.json](configurations/keycloak/keycloak-realm-import.json) directly into keycloak or apply
 the realm import yaml in OpenShift (but make sure that you have persistent storage under keycloak then): [configurations/keycloak/keycloak-realm-import.yaml](configurations/keycloak/keycloak-realm-import.yaml)):
   * Create realm: rhdh
