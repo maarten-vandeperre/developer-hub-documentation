@@ -44,7 +44,7 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
   -o template --template='{{.spec.host}}'\ 
   ; echo
 ```
-* _In our case: backstage-developer-hub-demo-project.apps.cluster-b97l9.dynamic.redhatworkshops.io_
+* _In our case: backstage-developer-hub-demo-project.apps.cluster-ldxcx.dynamic.redhatworkshops.io_
 
 ### Install Red Hat Developer Hub via Helm chart
 [Helm chart install guide](https://developers.redhat.com/learning/learn:openshift:install-and-configure-red-hat-developer-hub-and-explore-templating-basics/resource/resources:install-red-hat-developer-hub-developer-sandbox-red-hat-openshift)
@@ -65,7 +65,7 @@ type: Opaque
 * Set the base domain variable.  
   **_!!! Be careful, the base domain will be different in your setup._**
 ```shell
-basedomain=apps.cluster-b97l9.dynamic.redhatworkshops.io
+basedomain=apps.cluster-ldxcx.dynamic.redhatworkshops.io
 ```
 * Patch the secret to add the base domain (i.e., to avoid CORS issues).  
 ```shell
@@ -121,7 +121,7 @@ spec:
   database:
     enableLocalDb: true
 ```
-* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-b97l9.dynamic.redhatworkshops.io
+* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-ldxcx.dynamic.redhatworkshops.io
 * You should now be able to see the following screen:
   ![](images/login_screen_1.png "")
 * Last thing to configure now is the enablement of the dynamic plugins. These dynamic plugins will allow you to add functionality 
@@ -300,7 +300,7 @@ auth:
     oidc:
       development:
 #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-        metadataUrl: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+        metadataUrl: https://demo-keycloak-instance.apps.cluster-ldxcx.dynamic.redhatworkshops.io/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
         clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
         clientSecret: MiF4P4tDFl3oWrisy7VdUOqngoNlv71D # ${AUTH_OIDC_CLIENT_SECRET}
         prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -336,7 +336,7 @@ catalog:
   providers:
     keycloakOrg:
       default:
-        baseUrl: https://demo-keycloak-instance.apps.cluster-b97l9.dynamic.redhatworkshops.io
+        baseUrl: https://demo-keycloak-instance.apps.cluster-ldxcx.dynamic.redhatworkshops.io
         loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret
