@@ -5,7 +5,7 @@ metadata:
   namespace: demo-project
 spec:
   targetNamespaces:
-    - maarten-test-2
+    - demo-project
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription

@@ -11,14 +11,16 @@ spec:
   hostname:
     # following would be better and easier to secure, but for demo purposes,
     # we'll make both hostname and admin URL the same (fewer certificates' config)
-    #adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-ldxcx.dynamic.redhatworkshops.io'
-    adminUrl: 'https://demo-keycloak-instance.apps.cluster-ldxcx.dynamic.redhatworkshops.io'
-    hostname: demo-keycloak-instance.apps.cluster-ldxcx.dynamic.redhatworkshops.io
+    #adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io'
+    adminUrl: 'https://demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io'
+    hostname: demo-keycloak-instance.apps.cluster-stq5j.dynamic.redhatworkshops.io
   instances: 1
-  database:
+  db:
+    vendor: postgres
     host: keycloak-postgres
-    dbName: keycloak
-    user: keycloak
+    usernameSecret:
+      name: keycloak-db-secret
+      key: username
     passwordSecret:
       name: keycloak-db-secret
       key: password

@@ -59,3 +59,17 @@ metadata:
 type: Opaque
 data:
   password: YXZlcnlzZWN1cmVwYXNzd29yZA== # TODO change this value
+  username: a2V5Y2xvYWs=
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak-postgres
+  namespace: demo-project
+spec:
+  selector:
+    app: keycloak-postgres
+  type: LoadBalancer
+  ports:
+    - port: 5432
+      targetPort: 5432

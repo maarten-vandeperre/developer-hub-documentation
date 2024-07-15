@@ -17,7 +17,7 @@ fi
 
 # Define the placeholder to be replaced
 # !!! this one will change to the new domain as well (when running the script), so it will keep up to date
-PLACEHOLDER="apps.cluster-ldxcx.dynamic.redhatworkshops.io"
+PLACEHOLDER="apps.cluster-stq5j.dynamic.redhatworkshops.io"
 ESCAPED_PLACEHOLDER=$(echo "$PLACEHOLDER" | sed 's/\./\\./g')
 
 # Find all files and replace the placeholder
