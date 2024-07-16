@@ -19,15 +19,15 @@ spec:
         repoName:
           type: string
           title: Repository Name
-    - title: GitHub Authentication
-      description: Provide authentication for GitHub repository access
-      required:
-        - githubPersonalAccessToken
-      properties:
-        githubPersonalAccessToken:
-          type: string
-          # use the built in Secret field extension
-          ui:field: Secret
+#    - title: GitHub Authentication
+#      description: Provide authentication for GitHub repository access
+#      required:
+#        - githubPersonalAccessToken
+#      properties:
+#        githubPersonalAccessToken:
+#          type: string
+#          # use the built in Secret field extension
+#          ui:field: Secret
   steps:
     - id: fetch
       name: Fetch Template
@@ -41,8 +41,8 @@ spec:
       action: github:repo:create
       input:
         owner: '${{ parameters.repoName }}'
-        repoUrl: 'https://github.com/${{ parameters.repoName }}.git'
-        token: '${{ secrets.githubPersonalAccessToken }}'
+        repoUrl: 'github.com/${{ parameters.repoName }}.git'
+#        token: '${{ secrets.githubPersonalAccessToken }}'
         description: Repository created by Backstage template
         visibility: public
         initialize: true
@@ -54,9 +54,9 @@ spec:
       input:
         repoUrl: 'https://github.com/{{ parameters.repoName }}.git'
         defaultBranch: main
-        auth:
-          username: ${{ secrets.githubPersonalAccessToken }}
-          password: ${{ secrets.githubPersonalAccessToken }}
+#        auth:
+#          username: ${{ secrets.githubPersonalAccessToken }}
+#          password: ${{ secrets.githubPersonalAccessToken }}
         commitMessage: Initial commit
         push: true
 
