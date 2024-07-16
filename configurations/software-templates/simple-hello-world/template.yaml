@@ -7,7 +7,7 @@ metadata:
   tags:
     - github
     - repository
-    - "simple hello world"
+    - simple hello world
 spec:
   owner: maarten's team
   type: service
@@ -40,9 +40,9 @@ spec:
       name: Create Repository
       action: github:repo:create
       input:
-        owner: '{{ parameters.repoName }}'
-        repo: '{{ parameters.repoName }}'
-        repoUrl: 'https://github.com/{{ parameters.repoName }}.git'
+        owner: '${{ parameters.repoName }}'
+        repoUrl: 'https://github.com/${{ parameters.repoName }}.git'
+        token: ${{ secrets.github-personal-access-token }}
         description: Repository created by Backstage template
         visibility: public
         initialize: true
