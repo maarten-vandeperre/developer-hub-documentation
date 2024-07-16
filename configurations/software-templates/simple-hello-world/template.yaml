@@ -1,0 +1,64 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-github-repo
+  title: Create GitHub Repository
+  description: Template to create a GitHub repository with a specified name.
+  tags:
+    - github
+    - repository
+spec:
+  owner: team-name
+  type: service
+  parameters:
+    - title: Repository Information
+      required:
+        - repoName
+      properties:
+        repoName:
+          type: string
+          title: Repository Name
+    - title: GitHub Authentication
+      description: Provide authentication for GitHub repository access
+      required:
+        - github-personal-access-token
+      properties:
+        github-personal-access-token:
+          type: string
+          # use the built in Secret field extension
+          ui:field: Secret
+  steps:
+    - id: fetch
+      name: Fetch Template
+      action: fetch:template
+      input:
+        url: ./template
+        targetPath: .
+
+    - id: create-repository
+      name: Create Repository
+      action: github:repo:create
+      input:
+        owner: '{{ parameters.repoName }}'
+        repo: '{{ parameters.repoName }}'
+        description: Repository created by Backstage template
+        visibility: public
+        initialize: true
+        topics: ['backstage', 'template']
+
+    - id: commit-and-push
+      name: Commit and Push
+      action: git:initialize
+      input:
+        repoUrl: 'https://github.com/{{ parameters.repoName }}.git'
+        defaultBranch: main
+        auth:
+          username: ${{ secrets.github-personal-access-token }}
+          password: ${{ secrets.github-personal-access-token }}
+        commitMessage: Initial commit
+        push: true
+
+  output:
+    links:
+      - title: Repository
+        url: 'https://github.com/{{ parameters.repoName }}'

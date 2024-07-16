@@ -1,0 +1,18 @@
+https://backstage.io/docs/features/software-templates/builtin-actions/
+https://backstage.io/docs/features/software-templates/
+
+create personal access token for GitHub
+
+
+Token scopes
+When creating a personal access token on GitHub, you must select scopes to define the level of access for the token. The scopes required vary depending on your use of the integration:
+
+Reading software components:
+    repo
+Reading organization data:
+    read:org
+    read:user
+    user:email
+Publishing software templates:    <==
+    repo
+    workflow (if templates include GitHub workflows)

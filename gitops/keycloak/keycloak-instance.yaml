@@ -11,9 +11,9 @@ spec:
   hostname:
     # following would be better and easier to secure, but for demo purposes,
     # we'll make both hostname and admin URL the same (fewer certificates' config)
-    #adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-cqvmb.dynamic.redhatworkshops.io'
-    adminUrl: 'https://demo-keycloak-instance.apps.cluster-cqvmb.dynamic.redhatworkshops.io'
-    hostname: demo-keycloak-instance.apps.cluster-cqvmb.dynamic.redhatworkshops.io
+    #adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-k7847.dynamic.redhatworkshops.io'
+    adminUrl: 'https://demo-keycloak-instance.apps.cluster-k7847.dynamic.redhatworkshops.io'
+    hostname: demo-keycloak-instance.apps.cluster-k7847.dynamic.redhatworkshops.io
   instances: 1
   db:
     vendor: postgres
