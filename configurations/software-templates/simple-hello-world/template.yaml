@@ -24,7 +24,7 @@ spec:
       required:
         - githubPersonalAccessToken
       properties:
-        github-personal-access-token:
+        githubPersonalAccessToken:
           type: string
           # use the built in Secret field extension
           ui:field: Secret
