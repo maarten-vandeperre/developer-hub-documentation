@@ -2,13 +2,14 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: create-github-repo
-  title: Create GitHub Repository
-  description: Template to create a GitHub repository with a specified name.
+  title: "Create GitHub Repository: Simple Hello world"
+  description: Template to create a the 'Simple Hello World' GitHub repository with a specified name.
   tags:
     - github
     - repository
+    - "simple hello world"
 spec:
-  owner: team-name
+  owner: maarten's team
   type: service
   parameters:
     - title: Repository Information
@@ -41,6 +42,7 @@ spec:
       input:
         owner: '{{ parameters.repoName }}'
         repo: '{{ parameters.repoName }}'
+        repoUrl: 'https://github.com/{{ parameters.repoName }}.git'
         description: Repository created by Backstage template
         visibility: public
         initialize: true
