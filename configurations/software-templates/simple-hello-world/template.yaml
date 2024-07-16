@@ -22,7 +22,7 @@ spec:
     - title: GitHub Authentication
       description: Provide authentication for GitHub repository access
       required:
-        - github-personal-access-token
+        - githubPersonalAccessToken
       properties:
         github-personal-access-token:
           type: string
@@ -42,7 +42,7 @@ spec:
       input:
         owner: '${{ parameters.repoName }}'
         repoUrl: 'https://github.com/${{ parameters.repoName }}.git'
-        token: '${{ secrets.github-personal-access-token }}'
+        token: '${{ secrets.githubPersonalAccessToken }}'
         description: Repository created by Backstage template
         visibility: public
         initialize: true
@@ -55,8 +55,8 @@ spec:
         repoUrl: 'https://github.com/{{ parameters.repoName }}.git'
         defaultBranch: main
         auth:
-          username: ${{ secrets.github-personal-access-token }}
-          password: ${{ secrets.github-personal-access-token }}
+          username: ${{ secrets.githubPersonalAccessToken }}
+          password: ${{ secrets.githubPersonalAccessToken }}
         commitMessage: Initial commit
         push: true
 
