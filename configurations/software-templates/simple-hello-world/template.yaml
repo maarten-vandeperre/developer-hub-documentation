@@ -42,7 +42,7 @@ spec:
       input:
         owner: '${{ parameters.repoName }}'
         repoUrl: 'https://github.com/${{ parameters.repoName }}.git'
-        token: ${{ secrets.github-personal-access-token }}
+        token: '${{ secrets.github-personal-access-token }}'
         description: Repository created by Backstage template
         visibility: public
         initialize: true
