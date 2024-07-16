@@ -477,9 +477,9 @@ spec:
         clientAuthenticatorType: "client-secret"
         secret: "7iKyQUwyApIojzOlSj82vUWIhejv41E5"
         redirectUris:
-          - "https://backstage-developer-hub-demo-project.apps.cluster-zcsd6.dynamic.redhatworkshops.io/*"
+          - "https://backstage-developer-hub-demo-project.apps.cluster-mrkfh.dynamic.redhatworkshops.io/*"
         webOrigins:
-          - "https://backstage-developer-hub-demo-project.apps.cluster-zcsd6.dynamic.redhatworkshops.io"
+          - "https://backstage-developer-hub-demo-project.apps.cluster-mrkfh.dynamic.redhatworkshops.io"
         notBefore: 0
         bearerOnly: false
         consentRequired: false

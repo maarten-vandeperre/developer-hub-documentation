@@ -33,7 +33,7 @@ spec:
       name: Fetch Template
       action: fetch:template
       input:
-        url: ./template
+        url: ./skeleton
         targetPath: .
 
     - id: create-repository

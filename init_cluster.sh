@@ -75,15 +75,22 @@ echo "sleep for batch 1 to get ready"
 sleep 300
 
 # batch 2 (i.e. instances)
+
   # keycloak
   oc apply -f gitops/keycloak/keycloak-instance.yaml
-
-  # developer hub
-  oc apply -f gitops/developer-hub/31_developer-hub-instance.yaml
 
 echo "sleep for batch 2 to get ready"
 sleep 300
 
 # batch 3 (i.e. configs)
+
   # keycloak
   oc apply -f gitops/keycloak/keycloak-realm.yaml
+
+echo "sleep for batch 3 to get ready"
+sleep 300
+
+# batch 4
+
+  # developer hub
+  oc apply -f gitops/developer-hub/31_developer-hub-instance.yaml
