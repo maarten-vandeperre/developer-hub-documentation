@@ -41,7 +41,7 @@ spec:
       action: github:repo:create
       input:
         owner: '${{ parameters.repoName }}'
-        repoUrl: 'github.com/${{ parameters.repoName }}.git'
+        repoUrl: 'github.com/maarten-vandeperre/${{ parameters.repoName }}.git'
 #        token: '${{ secrets.githubPersonalAccessToken }}'
         description: Repository created by Backstage template
         visibility: public
@@ -52,7 +52,7 @@ spec:
       name: Commit and Push
       action: git:initialize
       input:
-        repoUrl: 'https://github.com/{{ parameters.repoName }}.git'
+        repoUrl: 'github.com/maarten-vandeperre/{{ parameters.repoName }}.git'
         defaultBranch: main
 #        auth:
 #          username: ${{ secrets.githubPersonalAccessToken }}
@@ -63,4 +63,4 @@ spec:
   output:
     links:
       - title: Repository
-        url: 'https://github.com/{{ parameters.repoName }}'
+        url: 'https://github.com/maarten-vandeperre/{{ parameters.repoName }}'
