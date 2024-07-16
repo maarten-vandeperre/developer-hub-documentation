@@ -7,7 +7,7 @@ metadata:
   tags:
     - github
     - repository
-    - simple hello world
+    - simple-hello-world
 spec:
   owner: maarten's team
   type: service
