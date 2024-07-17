@@ -41,7 +41,8 @@ spec:
       action: github:repo:create
       input:
         owner: '${{ parameters.repoName }}'
-        repoUrl: 'github.com/maarten-vandeperre/${{ parameters.repoName }}.git'
+#        repoUrl: 'github.com/maarten-vandeperre/${{ parameters.repoName }}.git'
+        repoUrl: 'github.com?reponame=${{ parameters.repoName }}&owner=maarten-vandeperre'
 #        token: '${{ secrets.githubPersonalAccessToken }}'
         description: Repository created by Backstage template
         visibility: public
