@@ -40,7 +40,7 @@ spec:
       name: Publish Repository
       action: publish:github
       input:
-        repoUrl: 'github.com?repon=${{ parameters.repoName }}&owner=maarten-vandeperre'
+        repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=maarten-vandeperre'
         repoVisibility: public
 #        token: '${{ secrets.githubPersonalAccessToken }}'
 #        description: Repository created by Backstage template
