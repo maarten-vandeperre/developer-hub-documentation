@@ -46,27 +46,6 @@ spec:
         description: Repository created by Backstage template
         topics: ['backstage', 'template']
 
-#    - id: create-repository
-#      name: Create Repository
-#      action: github:repo:create
-#      input:
-#        repoUrl: 'github.com?reponame=${{ parameters.repoName }}&owner=maarten-vandeperre'
-#        token: '${{ secrets.githubPersonalAccessToken }}'
-#        description: Repository created by Backstage template
-#        topics: ['backstage', 'template']
-
-#    - id: commit-and-push
-#      name: Commit and Push
-#      action: git:initialize
-#      input:
-#        repoUrl: 'github.com/maarten-vandeperre/{{ parameters.repoName }}.git'
-#        defaultBranch: main
-##        auth:
-##          username: ${{ secrets.githubPersonalAccessToken }}
-##          password: ${{ secrets.githubPersonalAccessToken }}
-#        commitMessage: Initial commit
-#        push: true
-
   output:
     links:
       - title: Repository
