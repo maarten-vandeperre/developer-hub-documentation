@@ -1,8 +1,12 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{values.name | unknown-name}}
+  name: ${{values.name | dump}}     # dump is a filter:
+                                    # https://backstage.io/docs/features/software-templates/builtin-actions/
+                                    # https://backstage.io/docs/features/software-templates/writing-templates/#built-in-filters
 spec:
   type: owner
   lifecycle: experimental
-  owner: ${{values.owner | unknown-owner}}
+  owner: ${{values.owner | dump}}     # dump is a filter:
+                                      # https://backstage.io/docs/features/software-templates/builtin-actions/
+                                      # https://backstage.io/docs/features/software-templates/writing-templates/#built-in-filters
