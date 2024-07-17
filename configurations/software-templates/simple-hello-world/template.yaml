@@ -19,6 +19,26 @@ spec:
         repoName:
           type: string
           title: Repository Name
+    - title: Component Information
+      required:
+        - name
+        - owner
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              kind: Group
 #    - title: GitHub Authentication
 #      description: Provide authentication for GitHub repository access
 #      required:
@@ -35,6 +55,9 @@ spec:
       input:
         url: ./skeleton
         targetPath: .
+        values:
+          name: ${{ parameters.name }}
+          owner: ${{ parameters.owner }}
 
     - id: publish-repository
       name: Publish Repository
