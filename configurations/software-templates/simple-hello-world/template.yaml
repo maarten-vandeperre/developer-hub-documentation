@@ -37,8 +37,8 @@ spec:
         targetPath: .
 
     - id: create-repository
-      name: Create Repository
-      action: github:repo:create
+      name: Publish Repository
+      action: publish:github
       input:
         repoUrl: 'github.com?reponame=${{ parameters.repoName }}&owner=maarten-vandeperre'
         repoVisibility: public
