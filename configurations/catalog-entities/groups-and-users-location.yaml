@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: groups-and-users
+  description: A collection of all Groups and Users
+spec:
+  targets:
+    - ./groups-and-users/group-team-1.yaml

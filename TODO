@@ -3,6 +3,8 @@
 * values in secrets
 * GitHub actions to generate documentation in S3
 
+* change github references to project-templates feature branch (/project-templates)
+
  npm install -g @techdocs/cli
 
 {
