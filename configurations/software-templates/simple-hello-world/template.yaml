@@ -40,12 +40,9 @@ spec:
       name: Create Repository
       action: github:repo:create
       input:
-        owner: '${{ parameters.repoName }}'
         repoUrl: 'github.com?reponame=${{ parameters.repoName }}&owner=maarten-vandeperre'
         token: '${{ secrets.githubPersonalAccessToken }}'
         description: Repository created by Backstage template
-        visibility: public
-        initialize: true
         topics: ['backstage', 'template']
 
 #    - id: commit-and-push
