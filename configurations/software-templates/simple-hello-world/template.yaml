@@ -19,15 +19,15 @@ spec:
         repoName:
           type: string
           title: Repository Name
-    - title: GitHub Authentication
-      description: Provide authentication for GitHub repository access
-      required:
-        - githubPersonalAccessToken
-      properties:
-        githubPersonalAccessToken:
-          type: string
-          # use the built in Secret field extension
-          ui:field: Secret
+#    - title: GitHub Authentication
+#      description: Provide authentication for GitHub repository access
+#      required:
+#        - githubPersonalAccessToken
+#      properties:
+#        githubPersonalAccessToken:
+#          type: string
+#          # use the built in Secret field extension
+#          ui:field: Secret
   steps:
     - id: fetch
       name: Fetch Template
@@ -42,11 +42,11 @@ spec:
       input:
         repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=maarten-vandeperre'
         repoVisibility: public
-        token: '${{ secrets.githubPersonalAccessToken }}'
+#        token: '${{ secrets.githubPersonalAccessToken }}'
         description: Repository created by Backstage template
         topics: ['backstage', 'template']
 
   output:
     links:
       - title: Repository
-        url: 'https://github.com/maarten-vandeperre/{{ parameters.repoName }}'
+        url: 'https://github.com/maarten-vandeperre/${{ parameters.repoName }}'
