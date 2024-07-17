@@ -19,15 +19,15 @@ spec:
         repoName:
           type: string
           title: Repository Name
-#    - title: GitHub Authentication
-#      description: Provide authentication for GitHub repository access
-#      required:
-#        - githubPersonalAccessToken
-#      properties:
-#        githubPersonalAccessToken:
-#          type: string
-#          # use the built in Secret field extension
-#          ui:field: Secret
+    - title: GitHub Authentication
+      description: Provide authentication for GitHub repository access
+      required:
+        - githubPersonalAccessToken
+      properties:
+        githubPersonalAccessToken:
+          type: string
+          # use the built in Secret field extension
+          ui:field: Secret
   steps:
     - id: fetch
       name: Fetch Template
@@ -41,25 +41,24 @@ spec:
       action: github:repo:create
       input:
         owner: '${{ parameters.repoName }}'
-#        repoUrl: 'github.com/maarten-vandeperre/${{ parameters.repoName }}.git'
         repoUrl: 'github.com?reponame=${{ parameters.repoName }}&owner=maarten-vandeperre'
-#        token: '${{ secrets.githubPersonalAccessToken }}'
+        token: '${{ secrets.githubPersonalAccessToken }}'
         description: Repository created by Backstage template
         visibility: public
         initialize: true
         topics: ['backstage', 'template']
 
-    - id: commit-and-push
-      name: Commit and Push
-      action: git:initialize
-      input:
-        repoUrl: 'github.com/maarten-vandeperre/{{ parameters.repoName }}.git'
-        defaultBranch: main
-#        auth:
-#          username: ${{ secrets.githubPersonalAccessToken }}
-#          password: ${{ secrets.githubPersonalAccessToken }}
-        commitMessage: Initial commit
-        push: true
+#    - id: commit-and-push
+#      name: Commit and Push
+#      action: git:initialize
+#      input:
+#        repoUrl: 'github.com/maarten-vandeperre/{{ parameters.repoName }}.git'
+#        defaultBranch: main
+##        auth:
+##          username: ${{ secrets.githubPersonalAccessToken }}
+##          password: ${{ secrets.githubPersonalAccessToken }}
+#        commitMessage: Initial commit
+#        push: true
 
   output:
     links:
