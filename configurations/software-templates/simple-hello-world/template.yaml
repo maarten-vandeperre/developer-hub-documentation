@@ -42,7 +42,7 @@ spec:
       input:
         repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=maarten-vandeperre'
         repoVisibility: public
-#        token: '${{ secrets.githubPersonalAccessToken }}'
+        token: '${{ secrets.githubPersonalAccessToken }}'
 #        description: Repository created by Backstage template
 #        topics: ['backstage', 'template']
 
