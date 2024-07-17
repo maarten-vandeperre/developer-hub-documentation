@@ -1,9 +1,9 @@
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
-  name: groups-and-users
-  description: A collection of all Groups and Users
+  name: components
+  description: A collection of all Components
 spec:
   targets:
-    - ./groups-and-users/group-team-1.yaml
+    - ./components/component-maartens-first-static-documentation.yaml
 # https://backstage.io/docs/features/software-catalog/descriptor-format/
