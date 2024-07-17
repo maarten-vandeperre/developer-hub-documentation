@@ -43,8 +43,8 @@ spec:
         repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=maarten-vandeperre'
         repoVisibility: public
         token: '${{ secrets.githubPersonalAccessToken }}'
-#        description: Repository created by Backstage template
-#        topics: ['backstage', 'template']
+        description: Repository created by Backstage template
+        topics: ['backstage', 'template']
 
 #    - id: create-repository
 #      name: Create Repository
