@@ -41,9 +41,19 @@ spec:
       action: github:repo:create
       input:
         repoUrl: 'github.com?reponame=${{ parameters.repoName }}&owner=maarten-vandeperre'
-        token: '${{ secrets.githubPersonalAccessToken }}'
-        description: Repository created by Backstage template
-        topics: ['backstage', 'template']
+        repoVisibility: public
+#        token: '${{ secrets.githubPersonalAccessToken }}'
+#        description: Repository created by Backstage template
+#        topics: ['backstage', 'template']
+
+#    - id: create-repository
+#      name: Create Repository
+#      action: github:repo:create
+#      input:
+#        repoUrl: 'github.com?reponame=${{ parameters.repoName }}&owner=maarten-vandeperre'
+#        token: '${{ secrets.githubPersonalAccessToken }}'
+#        description: Repository created by Backstage template
+#        topics: ['backstage', 'template']
 
 #    - id: commit-and-push
 #      name: Commit and Push
