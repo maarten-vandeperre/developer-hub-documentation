@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: create-github-repo
   title: "Create GitHub Repository: Simple Hello world"
-  description: Template to create a the 'Simple Hello World' GitHub repository with a specified name.
+  description: Template to publish a the 'Simple Hello World' GitHub repository with a specified name.
   tags:
     - github
     - repository
