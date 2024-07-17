@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: maartens-simple-hello-world-app
+  name: ${{values.name | unknown-name}}
 spec:
   type: owner
   lifecycle: experimental
-  owner: maarten-vandeperre
+  owner: ${{values.owner | unknown-owner}}
