@@ -772,10 +772,10 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "7iKyQUwyApIojzOlSj82vUWIhejv41E5",
       "redirectUris": [
-        "https://backstage-developer-hub-demo-project.apps.cluster-mrkfh.dynamic.redhatworkshops.io/*"
+        "https://backstage-developer-hub-demo-project.apps.cluster-d9zcc.sandbox1531.opentlc.com/*"
       ],
       "webOrigins": [
-        "https://backstage-developer-hub-demo-project.apps.cluster-mrkfh.dynamic.redhatworkshops.io"
+        "https://backstage-developer-hub-demo-project.apps.cluster-d9zcc.sandbox1531.opentlc.com"
       ],
       "notBefore": 0,
       "bearerOnly": false,

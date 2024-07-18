@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Function definitions
+            # Function to trim whitespace
+            trim_whitespace() {
+                echo "$1" | sed 's/^[ \t]*//;s/[ \t]*$//'
+            }
+
 # Check if the oc command is available
 if ! command -v oc &> /dev/null
 then
@@ -17,14 +23,15 @@ fi
 
 # Define the placeholder to be replaced
 # !!! this one will change to the new domain as well (when running the script), so it will keep up to date
-PLACEHOLDER="apps.cluster-mrkfh.dynamic.redhatworkshops.io"
+PLACEHOLDER=$(cat .namespace)
+PLACEHOLDER=$(trim_whitespace "$PLACEHOLDER")
 ESCAPED_PLACEHOLDER=$(echo "$PLACEHOLDER" | sed 's/\./\\./g')
 
 # Find all files and replace the placeholder
   #Linux
   # find . -type f -exec sed -i.bak "s|$ESCAPED_PLACEHOLDER|$BASE_DOMAIN|g" {} +
   # Mac
-  LC_CTYPE=C && LANG=C && find . -type f -exec sed -i.bak "s|$ESCAPED_PLACEHOLDER|$BASE_DOMAIN|g" {} +
+  LC_CTYPE=C && LANG=C && find . -type f  ! -name .namespace -exec sed -i.bak "s|$ESCAPED_PLACEHOLDER|$BASE_DOMAIN|g" {} +
 
 if [ $? -eq 0 ]; then
     echo "Successfully replaced the placeholder with the OpenShift cluster base domain in all files."
