@@ -27,7 +27,7 @@ spec:
         name:
           title: Name
           type: string
-          description: Unique name of the component
+          description: Unique name of the component. Expecting a string that is sequences of [a-zA-Z0-9] separated by any of [-_.], at most 63 characters in total.
           ui:autofocus: true
           ui:options:
             rows: 5
