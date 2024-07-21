@@ -16,9 +16,10 @@ data:
         # documentation: https://backstage.io/docs/integrations/github/discovery/
         disabled: false
         pluginConfig: {}
-      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-org-dynamic
-        disabled: false
-        pluginConfig: {}
+#      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-org-dynamic TODO enable when you want to sync...
+#                                                                                                   TODO ...users and groups from GitHub
+#        disabled: false
+#        pluginConfig: {}
 #      - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic TODO enable when AWS S3 environment is set up
 #        # documentation: https://backstage.io/docs/features/techdocs/
 #        # documentation: https://backstage.io/docs/features/techdocs/configuration/
