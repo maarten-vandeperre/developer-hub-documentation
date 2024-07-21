@@ -5,5 +5,5 @@ metadata:
   description: A collection of all Components
 spec:
   targets:
-    - ./components/component-maartens-first-static-documentation.yaml
+    - ./components/component-maartens-static-documentation.yaml
 # https://backstage.io/docs/features/software-catalog/descriptor-format/
