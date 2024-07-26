@@ -8,4 +8,5 @@ metadata:
 spec:
   type: documentation
   lifecycle: experimental
-  owner: maarten-vandeperre
+  owner: maarten.vandeperre
+  system: maartens-wonderful-system

@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: maartens-wonderful-system
+  description: Everything related to the wonderful system that we are building
+  tags:
+    - AI/ML
+    - App-platform
+spec:
+  owner: team-1
+  domain: AI/ML & App Platform

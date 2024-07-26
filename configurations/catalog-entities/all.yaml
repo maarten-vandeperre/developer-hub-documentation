@@ -7,4 +7,5 @@ spec:
   targets:
     - ./components-location.yaml
     - ./groups-and-users-location.yaml
+    - ./systems-location.yaml
 # https://backstage.io/docs/features/software-catalog/descriptor-format/
