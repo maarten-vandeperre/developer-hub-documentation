@@ -5,11 +5,11 @@ metadata:
   description: Team B
 spec:
   type: team
+  parent: maarten-vandeperre-org
   profile:
     # Intentional no displayName for testing
     email: team-2@example.com
     picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/redhat_logo.jpeg
-  parent: backstage
   children: []
 ---
 apiVersion: backstage.io/v1alpha1
