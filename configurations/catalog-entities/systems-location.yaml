@@ -4,7 +4,7 @@
 #  It is viewed as abstraction level that provides potential consumers insights into exposed features without needing
 #  a too detailed view into the details of all components. This also gives the owning team the possibility
 #  to decide about published artifacts and APIs.
-#apiVersion: backstage.io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
   name: systems

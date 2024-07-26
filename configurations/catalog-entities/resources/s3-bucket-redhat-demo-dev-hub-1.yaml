@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: s3-bucket-redhat-demo-dev-hub-1
+  description: Bucket for static documentation storage
+spec:
+  type: s3-bucket
+  owner: artist-relations-team
+  system: artist-engagement-portal
