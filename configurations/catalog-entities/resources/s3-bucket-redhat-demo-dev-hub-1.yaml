@@ -5,5 +5,5 @@ metadata:
   description: Bucket for static documentation storage
 spec:
   type: s3-bucket
-  owner: artist-relations-team
-  system: artist-engagement-portal
+  owner: team-1
+  system: maartens-wonderful-system
