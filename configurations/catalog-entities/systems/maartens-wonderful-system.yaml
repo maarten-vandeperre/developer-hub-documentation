@@ -5,7 +5,7 @@ metadata:
   description: Everything related to the wonderful system that we are building
   tags:
 #    - AI/ML #TODO enable this line if you want to try to debug for errors
-    - AI-ML
+    - AIML
     - App-platform
 spec:
   owner: team-1
