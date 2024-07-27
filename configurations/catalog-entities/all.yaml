@@ -11,5 +11,6 @@ spec:
     - ./resources-location.yaml
     - ./domains-location.yaml
     - ./apis-location.yaml
+    - ./templates-location.yaml
 # documentation: https://backstage.io/docs/features/software-catalog/configuration/
 # documentation: https://backstage.io/docs/features/software-catalog/descriptor-format/
