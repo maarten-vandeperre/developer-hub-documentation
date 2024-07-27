@@ -8,4 +8,5 @@ metadata:
   description: A collection of all APIs
 spec:
   targets:
-    - ./apis/open-api-api-spec.yaml
+    - ./apis/open-api-api-spec-production.yaml
+    - ./apis/open-api-api-spec-staging.yaml
