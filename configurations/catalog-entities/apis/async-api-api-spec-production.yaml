@@ -174,7 +174,7 @@ spec:
         description: Handle user creation events
         action: receive
         channel:
-          $ref: '#/channels/people/created'
+          $ref: '#/channels/peopleCreated'
         message:
           contentType: application/json
           payload:
