@@ -1,0 +1,181 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: people-async-api-production
+  description: People Async API Spec
+spec:
+  type: asyncapi
+  lifecycle: production
+  owner: team-1
+  system: maartens-wonderful-system
+  definition: |
+    asyncapi: '2.0.0'
+    info:
+      title: People API
+      description: API for managing people
+      version: '1.0.0'
+    servers:
+      production:
+        url: api.people.example.com
+        protocol: amqp
+        description: Production server
+    channels:
+      people/created:
+        subscribe:
+          summary: Subscribe to person creation events
+          operationId: onPersonCreated
+          message:
+            contentType: application/json
+            payload:
+              $ref: '#/components/schemas/PersonCreatedEvent'
+      people/updated:
+        subscribe:
+          summary: Subscribe to person update events
+          operationId: onPersonUpdated
+          message:
+            contentType: application/json
+            payload:
+              $ref: '#/components/schemas/PersonUpdatedEvent'
+      people/deleted:
+        subscribe:
+          summary: Subscribe to person deletion events
+          operationId: onPersonDeleted
+          message:
+            contentType: application/json
+            payload:
+              $ref: '#/components/schemas/PersonDeletedEvent'
+      people/create:
+        publish:
+          summary: Create a new person
+          operationId: createPerson
+          message:
+            contentType: application/json
+            payload:
+              $ref: '#/components/schemas/Person'
+      people/update:
+        publish:
+          summary: Update a person by ID
+          operationId: updatePerson
+          message:
+            contentType: application/json
+            payload:
+              $ref: '#/components/schemas/PersonUpdate'
+      people/delete:
+        publish:
+          summary: Delete a person by ID
+          operationId: deletePerson
+          message:
+            contentType: application/json
+            payload:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The ID of the person to delete
+      users/created:
+        subscribe:
+          summary: Subscribe to user creation events
+          operationId: onUserCreated
+          message:
+            contentType: application/json
+            payload:
+              $ref: '#/components/schemas/UserCreatedEvent'
+    components:
+      schemas:
+        Person:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "123"
+            firstName:
+              type: string
+              example: "John"
+            lastName:
+              type: string
+              example: "Doe"
+            email:
+              type: string
+              example: "john.doe@example.com"
+            age:
+              type: integer
+              example: 30
+        PersonCreatedEvent:
+          type: object
+          properties:
+            eventType:
+              type: string
+              enum: [created]
+              example: "created"
+            data:
+              $ref: '#/components/schemas/Person'
+        PersonUpdatedEvent:
+          type: object
+          properties:
+            eventType:
+              type: string
+              enum: [updated]
+              example: "updated"
+            data:
+              $ref: '#/components/schemas/Person'
+        PersonDeletedEvent:
+          type: object
+          properties:
+            eventType:
+              type: string
+              enum: [deleted]
+              example: "deleted"
+            data:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "123"
+        PersonUpdate:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "123"
+            firstName:
+              type: string
+              example: "John"
+            lastName:
+              type: string
+              example: "Doe"
+            email:
+              type: string
+              example: "john.doe@example.com"
+            age:
+              type: integer
+              example: 30
+        UserCreatedEvent:
+          type: object
+          properties:
+            eventType:
+              type: string
+              enum: [created]
+              example: "created"
+            data:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: "123"
+                username:
+                  type: string
+                  example: "johndoe"
+                email:
+                  type: string
+                  example: "john.doe@example.com"
+    operations:
+      onUserCreated:
+        title: user created
+        description: Handle user creation events
+        action: receive
+        channel:
+          $ref: '#/channels/people/created'
+        message:
+          contentType: application/json
+          payload:
+            $ref: '#/components/schemas/UserCreatedEvent'
