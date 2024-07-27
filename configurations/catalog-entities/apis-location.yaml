@@ -1,0 +1,11 @@
+#  https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-api
+#  An API describes an interface that can be exposed by a component.
+# The API can be defined in different formats, like OpenAPI, AsyncAPI, GraphQL, gRPC, or other formats.
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: apis
+  description: A collection of all APIs
+spec:
+  targets:
+    - ./apis/ai-ml-app-platform-domain.yaml
