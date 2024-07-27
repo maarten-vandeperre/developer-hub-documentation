@@ -9,5 +9,6 @@ spec:
     - ./groups-and-users-location.yaml
     - ./systems-location.yaml
     - ./resources-location.yaml
+    - ./domains-location.yaml
 # documentation: https://backstage.io/docs/features/software-catalog/configuration/
 # documentation: https://backstage.io/docs/features/software-catalog/descriptor-format/
