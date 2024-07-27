@@ -6,4 +6,3 @@ metadata:
 spec:
   targets:
     - ./components/component-maartens-static-documentation.yaml
-# https://backstage.io/docs/features/software-catalog/descriptor-format/

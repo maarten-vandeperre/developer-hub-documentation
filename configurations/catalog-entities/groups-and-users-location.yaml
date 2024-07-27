@@ -8,4 +8,3 @@ spec:
     - ./groups-and-users/group-team-1.yaml
     - ./groups-and-users/group-team-2.yaml
     - ./groups-and-users/maarten-vandeperre-org.yaml
-# https://backstage.io/docs/features/software-catalog/descriptor-format/
