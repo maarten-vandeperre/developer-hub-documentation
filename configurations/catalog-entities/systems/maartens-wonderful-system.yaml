@@ -4,7 +4,6 @@ metadata:
   name: maartens-wonderful-system
   description: Everything related to the wonderful system that we are building
   tags:
-#    - AI/ML #TODO enable this line if you want to try to debug for errors
     - AIML
     - App-platform
 spec:
