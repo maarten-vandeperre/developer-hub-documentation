@@ -1,0 +1,87 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: people-grpc-api-production
+  description: People gRPC API Spec
+spec:
+  type: grpc
+  lifecycle: production
+  owner: team-1
+  system: maartens-wonderful-system
+  definition: |
+    syntax = "proto3";
+  
+    package people;
+      // The person message definition
+      message Person {
+      string id = 1;
+      string firstName = 2;
+      string lastName = 3;
+      string email = 4;
+      int32 age = 5;
+    }
+      
+    // The request message for creating a person
+    message CreatePersonRequest {
+      string firstName = 1;
+      string lastName = 2;
+      string email = 3;
+      int32 age = 4;
+    }
+      
+    // The response message for creating a person
+    message CreatePersonResponse {
+      Person person = 1;
+    }
+      
+    // The request message for updating a person
+    message UpdatePersonRequest {
+      string id = 1;
+      string firstName = 2;
+      string lastName = 3;
+      string email = 4;
+      int32 age = 5;
+    }
+      
+    // The response message for updating a person
+    message UpdatePersonResponse {
+      Person person = 1;
+    }
+      
+    // The request message for getting a person by ID
+    message GetPersonRequest {
+      string id = 1;
+    }
+      
+    // The response message for getting a person by ID
+    message GetPersonResponse {
+      Person person = 1;
+    }
+      
+    // The request message for deleting a person by ID
+    message DeletePersonRequest {
+      string id = 1;
+    }
+      
+    // The response message for deleting a person
+    message DeletePersonResponse {
+      bool success = 1;
+    }
+      
+    // The request message for listing all people
+    message ListPeopleRequest {}
+      
+    // The response message for listing all people
+    message ListPeopleResponse {
+      repeated Person people = 1;
+    }
+      
+    // The People service definition
+    service PeopleService {
+      rpc CreatePerson (CreatePersonRequest) returns (CreatePersonResponse);
+      rpc UpdatePerson (UpdatePersonRequest) returns (UpdatePersonResponse);
+      rpc GetPerson (GetPersonRequest) returns (GetPersonResponse);
+      rpc DeletePerson (DeletePersonRequest) returns (DeletePersonResponse);
+      rpc ListPeople (ListPeopleRequest) returns (ListPeopleResponse);
+    }
+
