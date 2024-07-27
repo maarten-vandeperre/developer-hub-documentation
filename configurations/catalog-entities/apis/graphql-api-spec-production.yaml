@@ -1,0 +1,52 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: people-graphql-api-production
+  description: People GraphQL API Spec
+spec:
+  type: graphql
+  lifecycle: production
+  owner: team-1
+  system: maartens-wonderful-system
+  definition: |
+    schema {
+      query: Query
+      mutation: Mutation
+    }
+
+    type Query {
+      people: [Person]
+      person(id: ID!): Person
+    }
+
+    type Mutation {
+      createPerson(input: CreatePersonInput!): Person
+      updatePerson(id: ID!, input: UpdatePersonInput!): Person
+      deletePerson(id: ID!): DeletePersonPayload
+    }
+
+    type Person {
+      id: ID!
+      firstName: String!
+      lastName: String!
+      email: String!
+      age: Int
+    }
+
+    input CreatePersonInput {
+      firstName: String!
+      lastName: String!
+      email: String!
+      age: Int
+    }
+
+    input UpdatePersonInput {
+      firstName: String
+      lastName: String
+      email: String
+      age: Int
+    }
+
+    type DeletePersonPayload {
+      success: Boolean!
+    }

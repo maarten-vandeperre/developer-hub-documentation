@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: people-async-api-production
-  description: People Async API Spec
+  name: email-async-api-production
+  description: Email Async API Spec
 spec:
   type: asyncapi
   lifecycle: production

@@ -11,3 +11,4 @@ spec:
     - ./apis/open-api-api-spec-production.yaml
     - ./apis/open-api-api-spec-staging.yaml
     - ./apis/async-api-api-spec-production.yaml
+    - ./apis/graphql-api-spec-production.yaml
