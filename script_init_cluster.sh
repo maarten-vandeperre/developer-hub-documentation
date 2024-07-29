@@ -27,6 +27,28 @@
 sh prepare_repository.sh
 oc apply -f gitops/namespaces.yaml
 
+# Prompt the user for a boolean value (yes/no)
+read -p "Do you want to enable AWS S3 storage for static tech docs (README-SetupAwsS3StorageForTechDocs.md) (yes/no)? " enable_aws_s3_techdocs
+
+# Convert the input to lowercase
+enable_aws_s3_techdocs=$(echo "$enable_aws_s3_techdocs" | tr '[:upper:]' '[:lower:]')
+
+# Check the value and execute test.sh if true
+if [ "$enable_aws_s3_techdocs" = "yes" ] || [ "$enable_aws_s3_techdocs" = "true" ]; then
+  echo "Executing shell scripts..."
+  ./script_configure_aws_s3.sh
+  ./script_enable_aws_techdocs_config.sh
+else
+  echo "Skipping enableing of aws s3 tech docs."
+fi
+
+echo "configuring GitHub integration..."
+./script_configure_github_integration.sh
+echo "Configuring Keycloak integration"
+./script_configure_keycloak_integration.sh
+
+echo "End configurations"
+
 sleep 30
 
 # operators
