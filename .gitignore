@@ -46,3 +46,6 @@ bin/
 *.ipr
 *.iml
 *.iws
+
+# Custom
+secrets/generated

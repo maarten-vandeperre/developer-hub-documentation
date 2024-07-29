@@ -19,6 +19,9 @@ spec:
 #          value: '0'
       secrets:
         - name: rhdh-secrets # added
+        - name: rhdh-secrets-github-integration
+        #if-aws-techdocs-disabled - name: rhdh-secrets-aws-s3-techdocs
+        - name: rhdh-secrets-keycloak-rhdh-client
     replicas: 1
     route:
       enabled: true

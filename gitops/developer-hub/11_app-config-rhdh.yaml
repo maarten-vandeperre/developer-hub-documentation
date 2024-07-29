@@ -23,25 +23,37 @@ data:
     integrations:
       github:
         - host: github.com
-          token: ???
+          token: ${RHDH_GITHUB_INTEGRATION_PERSONAL_ACCESS_TOKEN}
           apps:
-            - appId: ??? # ${GITHUB_APP_APP_ID}
-              clientId: ??? # ${GITHUB_APP_CLIENT_ID}
-              clientSecret: ??? # ${GITHUB_APP_CLIENT_SECRET}
-              webhookUrl: none # ${GITHUB_APP_WEBHOOK_URL}
-              webhookSecret: none # ${GITHUB_APP_WEBHOOK_SECRET}
-              privateKey: |
-                ???
+            - appId: ${RHDH_GITHUB_INTEGRATION_APP_ID}
+              clientId: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_ID}
+              clientSecret: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_SECRET}
+              webhookUrl: none
+              webhookSecret: none
+              privateKey: ${RHDH_GITHUB_INTEGRATION_APP_PRIVATE_KEY}
     catalog:
+      processingInterval: { minutes: 1 }
+      processing:
+        cache:
+          enabled: false
+      lifecycles:
+        - production
+        - staging
       rules:
         - allow: [Location, Component, API, Resource, System, Domain, Group, User, Template]
-      locations:
+      locations: 
         - rules:
             - allow:
                 - Group
                 - User
                 - Component
-          target: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/configurations/catalog-entities/all.yaml
+                - Location
+                - System
+                - Resource
+                - Domain
+                - API
+                - Template
+          target: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/project-templates/configurations/catalog-entities/all.yaml
           type: url
       providers:
         github:
@@ -58,18 +70,18 @@ data:
               # supports ISO duration, "human duration" as used in code
               timeout: { minutes: 1 }
               initialDelay: { seconds: 15 }
-        # awsS3: TODO enable when AWS S3 environment is set up
-          # default: # identifies your dataset / provider independent of config changes
-            # bucketName: redhat-demo-dev-hub-1
-            # #prefix: prefix/ # optional
-            # region: eu-west-3 # optional, uses the default region otherwise
-            # schedule: # same options as in TaskScheduleDefinition
-              # # supports cron, ISO duration, "human duration" as used in code
-              # #frequency: { minutes: 30 }
-              # frequency: { minutes: 1 }
-              # # supports ISO duration, "human duration" as used in code
-              # timeout: { minutes: 3 }
-              # initialDelay: { seconds: 15 }
+        #if-aws-techdocs-disabled awsS3:
+          #if-aws-techdocs-disabled default: # identifies your dataset / provider independent of config changes
+            #if-aws-techdocs-disabled bucketName: redhat-demo-dev-hub-1
+            #if-aws-techdocs-disabled #prefix: prefix/ # optional
+            #if-aws-techdocs-disabled region: eu-west-3 # optional, uses the default region otherwise
+            #if-aws-techdocs-disabled schedule: # same options as in TaskScheduleDefinition
+              #if-aws-techdocs-disabled # supports cron, ISO duration, "human duration" as used in code
+              #if-aws-techdocs-disabled #frequency: { minutes: 30 }
+              #if-aws-techdocs-disabled frequency: { minutes: 1 }
+              #if-aws-techdocs-disabled # supports ISO duration, "human duration" as used in code
+              #if-aws-techdocs-disabled timeout: { minutes: 3 }
+              #if-aws-techdocs-disabled initialDelay: { seconds: 15 }
     auth:
       environment: default
       session:
@@ -93,17 +105,30 @@ data:
                 - resolver: preferredUsernameMatchingUserEntityName
             #    - resolver: emailMatchingUserEntityProfileEmail
             #    - resolver: emailLocalPartMatchingUserEntityName
-    # techdocs: TODO enable when AWS S3 environment is set up
-      # builder: external
-      # generator:
-        # runIn: local
-      # publisher:
-        # type: 'awsS3'
-        # awsS3:
-          # bucketName: redhat-demo-dev-hub-1
-          # credentials:
-            # accessKeyId: <...>
-            # secretAccessKey: <...>
-          # region: eu-west-3
-          # s3ForcePathStyle: true
-          # sse: 'AES256'
+    #if-aws-techdocs-disabled techdocs:
+      #if-aws-techdocs-disabled builder: external
+      #if-aws-techdocs-disabled generator:
+        #if-aws-techdocs-disabled runIn: local
+      #if-aws-techdocs-disabled publisher:
+        #if-aws-techdocs-disabled type: 'awsS3'
+        #if-aws-techdocs-disabled awsS3:
+          #if-aws-techdocs-disabled bucketName: redhat-demo-dev-hub-1
+          #if-aws-techdocs-disabled credentials:
+            #if-aws-techdocs-disabled accessKeyId: ${RHDH_AWS_S3_TECHDOCS_ACCESS_KEY_ID}
+            #if-aws-techdocs-disabled secretAccessKey: ${RHDH_AWS_S3_TECHDOCS_SECRET_ACCESS_KEY}
+          #if-aws-techdocs-disabled region: eu-west-3
+          #if-aws-techdocs-disabled s3ForcePathStyle: true
+          #if-aws-techdocs-disabled sse: 'AES256'
+      #if-aws-techdocs-disabled cache:
+        #if-aws-techdocs-disabled # Represents the number of milliseconds a statically built asset should
+        #if-aws-techdocs-disabled # stay cached. Cache invalidation is handled automatically by the frontend,
+        #if-aws-techdocs-disabled # which compares the build times in cached metadata vs. canonical storage,
+        #if-aws-techdocs-disabled # allowing long TTLs (e.g. 1 month/year)
+        #if-aws-techdocs-disabled ttl: 3600000
+
+        #if-aws-techdocs-disabled # (Optional) The time (in milliseconds) that the TechDocs backend will wait
+        #if-aws-techdocs-disabled # for a cache service to respond before continuing on as though the cached
+        #if-aws-techdocs-disabled # object was not found (e.g. when the cache sercice is unavailable). The
+        #if-aws-techdocs-disabled # default value is 1000
+        #if-aws-techdocs-disabled readTimeout: 500
+    
