@@ -29,6 +29,7 @@ OpenShift cluster._**
     * [Enable authentication via Keycloak](#enable-authentication-via-keycloak)
     * [Enable tech docs to serve static content](#enable-tech-docs-to-serve-static-content)
     * [Add catalog entities manual](#add-catalog-entities--manual-)
+    * [Distinguish in API definitions for different environments](#distinguish-in-api-definitions-for-different-environments)
     * [Enable and add software templates (GitHub)](#enable-and-add-software-templates--github-)
 
 
@@ -561,6 +562,42 @@ Without users for readability:
 ![](images/catalog_graph_simple_2.png "")
 
 #### Link the catalog entities to the Developer Hub instance.
+In order to link the catalog entities (i.e., defined in previous section) to Developer Hub, you'll need to apply the 
+following yaml to the Developer Hub Config on anchor_02:
+```yaml
+catalog:
+  processingInterval: { minutes: 1 }
+  processing:
+    cache:
+      enabled: false
+  lifecycles:
+    - production
+    - staging
+  rules:
+    - allow: [Location, Component, API, Resource, System, Domain, Group, User, Template]
+  locations: 
+    - rules:
+        - allow:
+            - Group
+            - User
+            - Component
+            - Location
+            - System
+            - Resource
+            - Domain
+            - API
+            - Template
+      target: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/project-templates/configurations/catalog-entities/all.yaml
+      type: url
+```
 
+If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](gitops/developer-hub/11_app-config-rhdh.yaml), 
+which contains all the integrations, described in this README file.
+
+**!!! Have a close look to the API definitions:** I added both production and staging OpenAPI definitions, as in the real world,
+API definitions can differ, depending on the given environment.
+
+### Distinguish in API definitions for different environments
+See section [Link the catalog entities to the Developer Hub instance](#link-the-catalog-entities-to-the-developer-hub-instance).
 
 ### Enable and add software templates (GitHub)
