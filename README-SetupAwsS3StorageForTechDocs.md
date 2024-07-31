@@ -24,3 +24,5 @@
     * Add policy: AmazonS3ReadOnlyAccess
     * Get/generate the access key ID and secret access key
       ![](images/aws_s3_techdocs_user.png "")
+    * Store the accessKeyId and secretAccessKey locally as it will be required (i.e. or in the init_cluster script
+    or directly in the secrets/generated/secret_aws_s3_techdocs.yaml file)

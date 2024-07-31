@@ -2,6 +2,7 @@
 * add postgres database under keycloak
 * values in secrets
 * GitHub actions to generate documentation in S3
+* move scripts to subfolder
 
 * change github references to project-templates feature branch (/project-templates)     tree/project-templates
 

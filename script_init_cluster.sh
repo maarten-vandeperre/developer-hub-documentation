@@ -44,14 +44,13 @@ fi
 
 echo "configuring GitHub integration..."
 ./script_configure_github_integration.sh
-echo "Configuring Keycloak integration"
-./script_configure_keycloak_integration.sh
 
 echo "End configurations"
 
 sleep 30
 
 # operators
+echo "Install operators"
 oc apply -f gitops/keycloak/keycloak-operator.yaml
 oc apply -f gitops/developer-hub/00_developer-hub-operator.yaml
 
@@ -84,11 +83,15 @@ sleep 120
 # batch 1 (i.e. databases and pre-configurations)
 
   # keycloak
+  echo "Configuring Keycloak database"
   oc apply -f gitops/keycloak/keycloak-postgres.yaml
 
   # developer hub
+  echo "Configuring Developer Hub basic instance"
   oc apply -f .helper/31_developer-hub-instance-simple.yaml   # do this first, without config map links to init the database, without migration table lock issues
                                                               # TODO this bug should be solved, should not be required
+
+  echo "Configuring Developer Hub config maps"
   oc apply -f gitops/developer-hub/01_secret.yaml
   oc apply -f gitops/developer-hub/11_app-config-rhdh.yaml
   oc apply -f gitops/developer-hub/21_dynamic-plugins-rhdh.yaml
@@ -99,6 +102,7 @@ sleep 300
 # batch 2 (i.e. instances)
 
   # keycloak
+  echo "Configuring Keycloak instance"
   oc apply -f gitops/keycloak/keycloak-instance.yaml
 
 echo "sleep for batch 2 to get ready"
@@ -107,6 +111,7 @@ sleep 300
 # batch 3 (i.e. configs)
 
   # keycloak
+  echo "Configuring Keycloak realm"
   oc apply -f gitops/keycloak/keycloak-realm.yaml
 
 echo "sleep for batch 3 to get ready"
@@ -114,6 +119,11 @@ sleep 300
 
 # batch 4
 
+  # keycloak
+  echo "Configuring Keycloak integration"
+  ./script_configure_keycloak_integration.sh
+
   # developer hub
+  echo "Configuring Developer Hub"
   oc apply -f gitops/developer-hub/31_developer-hub-instance.yaml
 
