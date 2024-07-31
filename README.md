@@ -552,6 +552,14 @@ with your configuration(s). In case some modifications are not picked up, you ca
 When imported successfully, you can find them back in the catalog menu within Developer Hub:
 ![](images/catalog_entities_overview.png "")
 
+The catalog graph as it is configured in my catalog-entities folder, results in the following catalog graph:
+
+Without APIs for readability:
+![](images/catalog_graph_simple.png "")
+
+Without users for readability:
+![](images/catalog_graph_simple2.png "")
+
 #### Link the catalog entities to the Developer Hub instance.
 
 
