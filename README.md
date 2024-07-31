@@ -558,7 +558,7 @@ Without APIs for readability:
 ![](images/catalog_graph_simple.png "")
 
 Without users for readability:
-![](images/catalog_graph_simple2.png "")
+![](images/catalog_graph_simple_2.png "")
 
 #### Link the catalog entities to the Developer Hub instance.
 
