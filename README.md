@@ -31,6 +31,7 @@ OpenShift cluster._**
     * [Add catalog entities manual](#add-catalog-entities--manual-)
     * [Distinguish in API definitions for different environments](#distinguish-in-api-definitions-for-different-environments)
     * [Enable and add software templates (GitHub)](#enable-and-add-software-templates--github-)
+    * [Enable Component scanning (i.e., catalog entity) from GitHub](#enable-component-scanning--ie-catalog-entity--from-github)
 
 
 
@@ -601,3 +602,62 @@ API definitions can differ, depending on the given environment.
 See section [Link the catalog entities to the Developer Hub instance](#link-the-catalog-entities-to-the-developer-hub-instance).
 
 ### Enable and add software templates (GitHub)
+
+
+### Enable Component scanning (i.e., catalog entity) from GitHub
+In order to enable component scanning from GitHub to Developer Hub (i.e., catalog entity type Component), 
+you'll need to execute the following steps:
+1. Enable the Catalog Backend Module GitHub plugin by applying the following yaml to the dynamic plugins configuration (on anchor_01):
+    ```yaml
+    - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
+      # documentation: https://backstage.io/docs/integrations/github/discovery/
+      disabled: false
+      pluginConfig: {}
+    ```
+2. Add a provider, which scans your GitHub repositories every x time and creates or updates
+Component definitions in Developer Hub by applying the following yaml to the Developer Hub Config on anchor_02:
+    ```yaml
+    catalog:
+      providers:
+        github:
+          # the provider ID can be any camelCase string
+          providerId:
+            organization: 'maarten-vandeperre' # string
+            catalogPath: '/catalog-info.yaml' # string
+            filters:
+              branch: 'master' # string
+              repository: '.*' # Regex
+            schedule: # optional; same options as in TaskScheduleDefinition
+              # supports cron, ISO duration, "human duration" as used in code
+              frequency: { minutes: 1 }
+              # supports ISO duration, "human duration" as used in code
+              timeout: { minutes: 1 }
+              initialDelay: { seconds: 15 }
+    ```
+   
+    Most important configurations:
+    * catalogPath: the catalog entity Component type definition, which describes the given component.
+    * filters > branch: branch to look at.
+    * repository: I will scan all my repositories, so I add a regular expression, covering everything.
+
+   If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](gitops/developer-hub/11_app-config-rhdh.yaml),
+   which contains all the integrations, described in this README file.
+3. Add a GitHub integration configuration by applying the following yaml to the Developer Hub Config on anchor_02:
+    ```yaml
+    integrations:
+      github:
+        - host: github.com
+          token: ${RHDH_GITHUB_INTEGRATION_PERSONAL_ACCESS_TOKEN}
+          apps:
+            - appId: ${RHDH_GITHUB_INTEGRATION_APP_ID}
+              clientId: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_ID}
+              clientSecret: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_SECRET}
+              webhookUrl: none
+              webhookSecret: none
+              privateKey: ${RHDH_GITHUB_INTEGRATION_APP_PRIVATE_KEY}
+    ```
+    
+    If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](gitops/developer-hub/11_app-config-rhdh.yaml),
+    which contains all the integrations, described in this README file.
+4. Now you can create and initiate a template by following the next steps:
+   1. Create the template
