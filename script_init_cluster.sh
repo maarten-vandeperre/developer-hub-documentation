@@ -24,28 +24,39 @@
       }
 
 
-sh prepare_repository.sh
+./scripts/script_prepare_repository.sh
 oc apply -f gitops/namespaces.yaml
 
-# Prompt the user for a boolean value (yes/no)
-read -p "Do you want to enable AWS S3 storage for static tech docs (README-SetupAwsS3StorageForTechDocs.md) (yes/no)? " enable_aws_s3_techdocs
-
+read -p "Did you already generate the secret config maps? (yes/no): " secrets_generated
 # Convert the input to lowercase
-enable_aws_s3_techdocs=$(echo "$enable_aws_s3_techdocs" | tr '[:upper:]' '[:lower:]')
+secrets_generated=$(echo "$secrets_generated" | tr '[:upper:]' '[:lower:]')
 
-# Check the value and execute test.sh if true
-if [ "$enable_aws_s3_techdocs" = "yes" ] || [ "$enable_aws_s3_techdocs" = "true" ]; then
-  echo "Executing shell scripts..."
-  ./script_configure_aws_s3.sh
-  ./script_enable_aws_techdocs_config.sh
+# Check if the secrets are already generated
+if [ "$secrets_generated" = "no" ]; then
+  echo "start generating the secret config maps"
+  # Prompt the user for a boolean value (yes/no)
+  read -p "Do you want to enable AWS S3 storage for static tech docs (README-SetupAwsS3StorageForTechDocs.md) (yes/no)? " enable_aws_s3_techdocs
+
+  # Convert the input to lowercase
+  enable_aws_s3_techdocs=$(echo "$enable_aws_s3_techdocs" | tr '[:upper:]' '[:lower:]')
+
+  # Check the value and execute test.sh if true
+  if [ "$enable_aws_s3_techdocs" = "yes" ] || [ "$enable_aws_s3_techdocs" = "true" ]; then
+    echo "Executing shell scripts (to configure S3)..."
+    ./scripts/script_configure_aws_s3.sh
+    ./scripts/script_enable_aws_techdocs_config.sh
+  else
+    echo "Skipping enableing of aws s3 tech docs."
+    ./scripts/script_disable_aws_techdocs_config.sh
+  fi
+
+  echo "configuring GitHub integration..."
+  ./scripts/script_configure_github_integration.sh
+
+  echo "End configurations"
 else
-  echo "Skipping enableing of aws s3 tech docs."
+  echo "No action needed, regarding the secret config maps."
 fi
-
-echo "configuring GitHub integration..."
-./script_configure_github_integration.sh
-
-echo "End configurations"
 
 sleep 30
 
@@ -119,9 +130,14 @@ sleep 300
 
 # batch 4
 
-  # keycloak
-  echo "Configuring Keycloak integration"
-  ./script_configure_keycloak_integration.sh
+  # Check if the secrets are already generated
+  if [ "$secrets_generated" = "no" ]; then
+    # keycloak
+    echo "Configuring Keycloak integration"
+    ./scripts/script_configure_keycloak_integration.sh
+  else
+    echo "No action needed, regarding the secret config maps for keycloak."
+  fi
 
   # developer hub
   echo "Configuring Developer Hub"

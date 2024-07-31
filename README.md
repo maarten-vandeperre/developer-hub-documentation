@@ -28,6 +28,9 @@ OpenShift cluster._**
 5. [Developer Hub Configurations](#developer-hub-configurations)
     * [Enable authentication via Keycloak](#enable-authentication-via-keycloak)
     * [Enable tech docs to serve static content](#enable-tech-docs-to-serve-static-content)
+    * [Add catalog entities manual](#add-catalog-entities--manual-)
+    * [Enable and add software templates (GitHub)](#enable-and-add-software-templates--github-)
+
 
 
 ## Install required tooling
@@ -531,3 +534,25 @@ catalog:
   * Click on 'Analyze' and 'Create'.
   * Now go to "Docs" menu item and you should be able to see your documentation:
     ![](images/techdocs_maartens_first_documentation.png "")
+
+### Add catalog entities (manual)
+In order to manually add catalog entities (i.e., not via integrations like the Keycloak binding), you will need to do two steps:
+1. Define the catalog entities
+2. Link them to the Developer Hub instance
+
+#### Define the catalog entities
+Catalog entities definitions are defined [over here](https://backstage.io/docs/features/software-catalog/descriptor-format/). I have added an example implementation
+for all of them, which you can find back in the folder [configurations/catalog-entities](configurations/catalog-entities). If you want to link to them or import them, 
+you can refer to the GitHub URL: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/project-templates/configurations/catalog-entities.
+
+The main file, which groups everything together is the all.yaml locations file. It will delegate to other locations files, for a specific catalog entity type
+(e.g., domains-location.yaml, groups-and-users-location.yaml). Feel free to have a look at the definition files and to extend them 
+with your configuration(s). In case some modifications are not picked up, you can debug them as described in the [Debug Developer Hub Section](#debug-developer-hub).
+
+When imported successfully, you can find them back in the catalog menu within Developer Hub:
+![](images/catalog_entities_overview.png "")
+
+#### Link the catalog entities to the Developer Hub instance.
+
+
+### Enable and add software templates (GitHub)
