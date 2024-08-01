@@ -1,0 +1,35 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: team-2
+  description: Team B
+spec:
+  type: team
+  parent: maarten-vandeperre-org
+  profile:
+    # Intentional no displayName for testing
+    email: team-2@example.com
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/redhat_logo.jpeg
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: wout.vandeperre
+spec:
+  profile:
+    displayName: Wout Vandeperre
+    email: wout-vandeperre@example.com
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/avatar.jpeg
+  memberOf: [team-2]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: kaat.vandeperre
+spec:
+  profile:
+    displayName: Kaat Vandeperre
+    email: kaat-vandeperre@example.com
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/avatar.jpeg
+  memberOf: [team-2]

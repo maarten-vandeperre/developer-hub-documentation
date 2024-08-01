@@ -1,0 +1,10 @@
+#  https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-domain
+#  A Domain groups a collection of systems that share terminology, domain models, business purpose, or documentation, i.e. form a bounded context.
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: domains
+  description: A collection of all Domains
+spec:
+  targets:
+    - ./domains/ai-ml-app-platform-domain.yaml

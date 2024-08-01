@@ -1,0 +1,123 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: people-api-staging
+  description: People API Spec
+spec:
+  type: openapi
+  lifecycle: staging
+  owner: team-1
+  system: maartens-wonderful-system
+  definition: |
+    openapi: 3.0.1
+    info:
+      title: People API (Staging)
+      description: API for managing people (Staging)
+      version: 1.0.0
+    paths:
+      /people:
+        get:
+          summary: Get a list of people
+          responses:
+            '200':
+              description: A list of people
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Person'
+        post:
+          summary: Create a new person
+          requestBody:
+            description: Person object that needs to be added
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Person'
+          responses:
+            '201':
+              description: Person created
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Person'
+      /people/{id}:
+        get:
+          summary: Get a person by ID
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: string
+              description: ID of the person to retrieve
+          responses:
+            '200':
+              description: Person object
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Person'
+            '404':
+              description: Person not found
+        put:
+          summary: Update a person by ID
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: string
+              description: ID of the person to update
+          requestBody:
+            description: Person object that needs to be updated
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Person'
+          responses:
+            '200':
+              description: Person updated
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Person'
+            '404':
+              description: Person not found
+        delete:
+          summary: Delete a person by ID
+          parameters:
+            - name: id
+              in: path
+              required: true
+              schema:
+                type: string
+              description: ID of the person to delete
+          responses:
+            '204':
+              description: Person deleted
+            '404':
+              description: Person not found
+    components:
+      schemas:
+        Person:
+          type: object
+          properties:
+            id:
+              type: string
+              example: "123"
+            firstName:
+              type: string
+              example: "John"
+            lastName:
+              type: string
+              example: "Doe"
+            email:
+              type: string
+              example: "john.doe@example.com"
+            age:
+              type: integer
+              example: 30

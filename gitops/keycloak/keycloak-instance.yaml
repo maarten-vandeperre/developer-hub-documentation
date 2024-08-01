@@ -1,0 +1,26 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: demo-keycloak-instance
+  namespace: demo-project
+  labels:
+    app: sso
+spec:
+  http:
+    httpEnabled: true
+  hostname:
+    # following would be better and easier to secure, but for demo purposes,
+    # we'll make both hostname and admin URL the same (fewer certificates' config)
+    #adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com'
+    adminUrl: 'https://demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com'
+    hostname: demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com
+  instances: 1
+  db:
+    vendor: postgres
+    host: keycloak-postgres
+    usernameSecret:
+      name: keycloak-db-secret
+      key: username
+    passwordSecret:
+      name: keycloak-db-secret
+      key: password

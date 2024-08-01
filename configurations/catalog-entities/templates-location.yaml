@@ -1,0 +1,11 @@
+# https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-template
+#  A template definition describes both the parameters that are rendered in the frontend part of the scaffolding wizard,
+# and the steps that are executed when scaffolding that component.
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: templates
+  description: A collection of all Templates
+spec:
+  targets:
+    - ./templates/default-quarkus-template.yaml

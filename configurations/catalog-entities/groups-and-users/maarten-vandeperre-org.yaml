@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: maarten-vandeperre-org
+  description: The maarten vandeperre organization
+  links:
+    - url: https://maarten-vandeperre.be/
+      title: Website
+    - url: https://www.linkedin.com/in/maarten-vandeperre-8780743b/
+      title: LinkedIn
+      icon: LinkedIn
+    - url: https://developers.redhat.com/author/maarten-vandeperre
+      title: Red Hat Developer Blog Posts
+      icon: dashboard
+spec:
+  type: organization
+  profile:
+    displayName: Maarten Vandeperre Org
+    email: maarten.vandeperre@redhat.com
+    picture: https://developers.redhat.com/sites/default/files/styles/author_full/public/maarten_vandeperre_badge.jpeg.webp?itok=vQKvHBnD
+  children: [team-1, team-2]

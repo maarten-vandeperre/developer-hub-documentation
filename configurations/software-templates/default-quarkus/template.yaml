@@ -1,0 +1,65 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: default-quarkus
+  title: "Default Quarkus Application"
+  description: Template to create a default Quarkus application.
+  tags:
+    - quarkus
+    - default
+    - starter
+spec:
+  owner: team-1
+  type: service
+  parameters:
+    - title: Repository Information
+      required:
+        - repoName
+      properties:
+        repoName:
+          type: string
+          title: Repository Name
+    - title: Component Information
+      required:
+        - name
+        - owner
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the component. Expecting a string that is sequences of [a-zA-Z0-9] separated by any of [-_.], at most 63 characters in total.
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              kind: Group
+  steps:
+    - id: fetch
+      name: Fetch Template
+      action: fetch:template
+      input:
+        url: ./skeleton
+        targetPath: .
+        values:
+          name: ${{ parameters.name }}
+          owner: ${{ parameters.owner }}
+
+    - id: publish-repository
+      name: Publish Repository
+      action: publish:github
+      input:
+        repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=maarten-vandeperre'
+        repoVisibility: public
+        description: Repository created by Backstage template
+        topics: ['backstage', 'template']
+
+  output:
+    links:
+      - title: Repository
+        url: 'https://github.com/maarten-vandeperre/${{ parameters.repoName }}'

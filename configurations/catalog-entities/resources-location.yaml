@@ -1,0 +1,11 @@
+#https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-resource
+#  A resource describes the infrastructure a system needs to operate, like BigTable databases, Pub/Sub topics, S3 buckets or CDNs.
+# Modelling them together with components and systems allows to visualize resource footprint, and create tooling around them.
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: resources
+  description: A collection of all Resources
+spec:
+  targets:
+    - ./resources/s3-bucket-redhat-demo-dev-hub-1.yaml

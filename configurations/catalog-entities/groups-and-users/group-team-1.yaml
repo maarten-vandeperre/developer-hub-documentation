@@ -1,0 +1,73 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: team-1
+  description: Team A
+spec:
+  type: team
+  parent: maarten-vandeperre-org
+  profile:
+    # Intentional no displayName for testing
+    email: team-1@example.com
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/redhat_logo.jpeg
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: jolien.vereman
+spec:
+  profile:
+    # Intentional no displayName for testing
+    email: jolien-vereman@example.com
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/avatar.jpeg
+  memberOf: [team-1]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: pieter.vandeperre
+spec:
+  profile:
+    displayName: Pieter Vandeperre
+    email: pieter-vandeperre@example.com
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/avatar.jpeg
+  memberOf: [team-1]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: maarten.vandeperre
+spec:
+  profile:
+    displayName: Maarten Vandeperre
+    email: maarten-vandeperre@example.com
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/avatar.jpeg
+  memberOf: [team-1]
+---
+# This user is added as an example, to make it easier for the "Guest"
+# sign-in option to demonstrate some entities being owned. In a regular org,
+# a guest user would probably not be registered like this.
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: guest
+spec:
+  profile:
+    displayName: Guest User
+    email: guest@example.com
+  memberOf: [team-1]
+---
+# This user is added as an example, to make it easier for the "Guest"
+# sign-in option to demonstrate some entities being owned. In a regular org,
+# a guest user would probably not be registered like this.
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: guest
+  namespace: development
+spec:
+  profile:
+    displayName: Guest User
+    email: guest@example.com
+  memberOf: [group:default/team-1]

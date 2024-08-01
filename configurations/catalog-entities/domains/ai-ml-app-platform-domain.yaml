@@ -1,0 +1,7 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: ai-ml-app-platform
+  description: Everything related to AI/ML & App Platform Development
+spec:
+  owner: maarten-vandeperre-org

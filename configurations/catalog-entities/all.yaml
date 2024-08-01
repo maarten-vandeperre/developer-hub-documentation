@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: all-catalog-entities
+  description: A collection of all Catalog Entities
+spec:
+  targets:
+    - ./components-location.yaml
+    - ./groups-and-users-location.yaml
+    - ./systems-location.yaml
+    - ./resources-location.yaml
+    - ./domains-location.yaml
+    - ./apis-location.yaml
+    - ./templates-location.yaml
+# documentation: https://backstage.io/docs/features/software-catalog/configuration/
+# documentation: https://backstage.io/docs/features/software-catalog/descriptor-format/

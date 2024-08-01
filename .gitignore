@@ -29,7 +29,7 @@ replay_pid*
 /.quarkus/cli/plugins/
 
 # Gradle
-.gradle/
+configurations/software-templates/simple-hello-world/skeleton/.gradle/
 build/
 
 # Maven
@@ -46,3 +46,6 @@ bin/
 *.ipr
 *.iml
 *.iws
+
+# Custom
+secrets/generated

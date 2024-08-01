@@ -1,0 +1,149 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: app-config-rhdh
+  namespace: demo-project
+data:
+  app-config-rhdh.yaml: |
+    signInPage: oidc   
+    app:
+      title: My Red Hat Developer Hub Instance
+      baseUrl: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
+    backend:
+      reading:
+        allow:
+          - host: raw.githubusercontent.com
+          - host: github.com
+      auth:
+        keys:
+          - secret: ${BACKEND_SECRET}
+      baseUrl: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
+      cors:
+        origin: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
+    integrations:
+      github:
+        - host: github.com
+          token: ${RHDH_GITHUB_INTEGRATION_PERSONAL_ACCESS_TOKEN}
+          apps:
+            - appId: ${RHDH_GITHUB_INTEGRATION_APP_ID}
+              clientId: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_ID}
+              clientSecret: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_SECRET}
+              webhookUrl: none
+              webhookSecret: none
+              privateKey: ${RHDH_GITHUB_INTEGRATION_APP_PRIVATE_KEY}
+    catalog:
+      processingInterval: { minutes: 1 }
+      processing:
+        cache:
+          enabled: false
+      lifecycles:
+        - production
+        - staging
+      rules:
+        - allow: [Location, Component, API, Resource, System, Domain, Group, User, Template]
+      locations: 
+        - rules:
+            - allow:
+                - Group
+                - User
+                - Component
+                - Location
+                - System
+                - Resource
+                - Domain
+                - API
+                - Template
+          target: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/project-templates/configurations/catalog-entities/all.yaml
+          type: url
+      providers:
+        keycloakOrg:
+          default:
+            baseUrl: https://demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com
+            loginRealm: rhdh # ${KEYCLOAK_REALM}
+            realm: rhdh # ${KEYCLOAK_REALM}
+            clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
+            clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${KEYCLOAK_CLIENTSECRET}
+            # highlight-add-start
+            schedule: # optional; same options as in TaskScheduleDefinition
+              # supports cron, ISO duration, "human duration" as used in code
+              frequency: { minutes: 1 }
+              # supports ISO duration, "human duration" as used in code
+              timeout: { minutes: 3 }
+              initialDelay: { seconds: 15 }
+              # highlight-add-end
+        github:
+          # the provider ID can be any camelCase string
+          providerId:
+            organization: 'maarten-vandeperre' # string
+            catalogPath: '/catalog-info.yaml' # string
+            filters:
+              branch: 'master' # string
+              repository: '.*' # Regex
+            schedule: # optional; same options as in TaskScheduleDefinition
+              # supports cron, ISO duration, "human duration" as used in code
+              frequency: { minutes: 1 }
+              # supports ISO duration, "human duration" as used in code
+              timeout: { minutes: 1 }
+              initialDelay: { seconds: 15 }
+        awsS3: 														#aws-techdocs-enabled
+          default: # identifies your dataset / provider independent of config changes 														#aws-techdocs-enabled
+            bucketName: redhat-demo-dev-hub-1 														#aws-techdocs-enabled
+            #prefix: prefix/ # optional 														#aws-techdocs-enabled
+            region: eu-west-3 # optional, uses the default region otherwise 														#aws-techdocs-enabled
+            schedule: # same options as in TaskScheduleDefinition 														#aws-techdocs-enabled
+              # supports cron, ISO duration, "human duration" as used in code 														#aws-techdocs-enabled
+              #frequency: { minutes: 30 } 														#aws-techdocs-enabled
+              frequency: { minutes: 1 } 														#aws-techdocs-enabled
+              # supports ISO duration, "human duration" as used in code 														#aws-techdocs-enabled
+              timeout: { minutes: 3 } 														#aws-techdocs-enabled
+              initialDelay: { seconds: 15 } 														#aws-techdocs-enabled
+    auth:
+      environment: default
+      session:
+        secret: ${BACKEND_SECRET}
+      providers:
+        oidc:
+          default:
+    #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
+            clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
+            prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
+            ## uncomment for additional configuration options
+            # callbackUrl: ${AUTH_OIDC_CALLBACK_URL}
+            # tokenEndpointAuthMethod: ${AUTH_OIDC_TOKEN_ENDPOINT_METHOD}
+            # tokenSignedResponseAlg: ${AUTH_OIDC_SIGNED_RESPONSE_ALG}
+            # scope: ${AUTH_OIDC_SCOPE}
+            ## Auth provider will try each resolver until it succeeds. Uncomment the resolvers you want to use to override the default resolver: `emailLocalPartMatchingUserEntityName`
+            signIn:
+              resolvers:
+                - resolver: preferredUsernameMatchingUserEntityName
+            #    - resolver: emailMatchingUserEntityProfileEmail
+            #    - resolver: emailLocalPartMatchingUserEntityName
+    techdocs: 														#aws-techdocs-enabled
+      builder: external 														#aws-techdocs-enabled
+      generator: 														#aws-techdocs-enabled
+        runIn: local 														#aws-techdocs-enabled
+      publisher: 														#aws-techdocs-enabled
+        type: 'awsS3' 														#aws-techdocs-enabled
+        awsS3: 														#aws-techdocs-enabled
+          bucketName: redhat-demo-dev-hub-1 														#aws-techdocs-enabled
+          credentials: 														#aws-techdocs-enabled
+            accessKeyId: ${RHDH_AWS_S3_TECHDOCS_ACCESS_KEY_ID} 														#aws-techdocs-enabled
+            secretAccessKey: ${RHDH_AWS_S3_TECHDOCS_SECRET_ACCESS_KEY} 														#aws-techdocs-enabled
+          region: eu-west-3 														#aws-techdocs-enabled
+          s3ForcePathStyle: true 														#aws-techdocs-enabled
+          sse: 'AES256' 														#aws-techdocs-enabled
+      cache: 														#aws-techdocs-enabled
+        # Represents the number of milliseconds a statically built asset should 														#aws-techdocs-enabled
+        # stay cached. Cache invalidation is handled automatically by the frontend, 														#aws-techdocs-enabled
+        # which compares the build times in cached metadata vs. canonical storage, 														#aws-techdocs-enabled
+        # allowing long TTLs (e.g. 1 month/year) 														#aws-techdocs-enabled
+        ttl: 3600000 														#aws-techdocs-enabled
+
+        # (Optional) The time (in milliseconds) that the TechDocs backend will wait 														#aws-techdocs-enabled
+        # for a cache service to respond before continuing on as though the cached 														#aws-techdocs-enabled
+        # object was not found (e.g. when the cache sercice is unavailable). The 														#aws-techdocs-enabled
+        # default value is 1000 														#aws-techdocs-enabled
+        readTimeout: 500 														#aws-techdocs-enabled
+    
