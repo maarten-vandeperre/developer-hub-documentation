@@ -160,7 +160,7 @@ type: Opaque
 * Set the base domain variable.  
   **_!!! Be careful, the base domain will be different in your setup._**
 ```shell
-basedomain=apps.cluster-6bd9s.sandbox2388.opentlc.com
+basedomain=apps.cluster-bnc5t.sandbox3269.opentlc.com
 ```
 * Patch the secret to add the base domain (i.e., to avoid CORS issues).  
 ```shell

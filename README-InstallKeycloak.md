@@ -10,7 +10,7 @@ OpenShift cluster._**
 * Install the operator in the 'demo-project' namespace.
 * Apply the following yaml:  
     **TODO: make use of basedomain variable** 
-    **!!! be aware to change the root domain (i.e., apps.cluster-6bd9s.sandbox2388.opentlc.com) to your own domain.**
+    **!!! be aware to change the root domain (i.e., apps.cluster-bnc5t.sandbox3269.opentlc.com) to your own domain.**
 ```yaml
 apiVersion: k8s.keycloak.org/v2alpha1
 kind: Keycloak
