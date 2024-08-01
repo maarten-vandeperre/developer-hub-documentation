@@ -11,6 +11,11 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: openshift-gitops-operator
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: maarten-test-1
 ---
 apiVersion: v1

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1beta1
+kind: ArgoCD
+metadata:
+  name: argocd-instance
+  namespace: demo-project
+  labels:
+    app: argocd
+spec:
+  server:
+    route:
+      enabled: true
+  dex:
+    openShiftOAuth: true
+  resourceExclusions: |
+    - apiGroups:
+        - tekton.dev
+      clusters:
+        - '*'
+      kinds:
+        - TaskRun
+        - PipelineRun

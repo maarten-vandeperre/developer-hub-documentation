@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: demo-project
+  name: 'simple-hello-world-service-a-v1'
+  annotations: {}
+  labels:
+    app: simple-hello-world-service-a
+
+    app.kubernetes.io/component: simple-hello-world-service-a
+    app.kubernetes.io/instance: simple-hello-world-service-a
+    app.kubernetes.io/name: simple-hello-world-service-a
+    app.kubernetes.io/part-of: simple-hello-world-service-a
+    app.openshift.io/runtime-namespace: app-playground
+spec:
+  selector:
+    matchLabels:
+      app: simple-hello-world-service-a
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: simple-hello-world-service-a
+        version: v1
+        app.kubernetes.io/component: simple-hello-world-service-a
+        app.kubernetes.io/name: simple-hello-world-service-a
+        deployment: simple-hello-world-service-a
+      annotations:
+        sidecar.istio.io/inject: "true"
+
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/scheme: "http"
+        prometheus.io/path: "/simple-hello-world-service-a/q/metrics"
+    spec:
+      containers:
+        - name: container
+          image: >-
+            quay.io/appdev_playground/service-mesh-basic-example:service-a-0.0.45
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: demo.service-b.base-url
+              value: http://service-b.app-playground.svc.cluster.local:8080/service-b
+            - name: demo.service-c.base-url
+              value: http://service-c.app-playground.svc.cluster.local:8080/service-c
+      imagePullSecrets: []
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  paused: false
