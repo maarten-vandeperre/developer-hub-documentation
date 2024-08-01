@@ -624,6 +624,24 @@ configuration like this (_rhdh-secrets should already be there_):
     - name: rhdh-secrets-github-integration
 ```
 
+Now, add a GitHub integration configuration by applying the following yaml to the Developer Hub Config on anchor_02:
+```yaml
+integrations:
+  github:
+    - host: github.com
+      token: ${RHDH_GITHUB_INTEGRATION_PERSONAL_ACCESS_TOKEN}
+      apps:
+        - appId: ${RHDH_GITHUB_INTEGRATION_APP_ID}
+          clientId: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_ID}
+          clientSecret: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_SECRET}
+          webhookUrl: none
+          webhookSecret: none
+          privateKey: ${RHDH_GITHUB_INTEGRATION_APP_PRIVATE_KEY}
+```
+
+If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](gitops/developer-hub/11_app-config-rhdh.yaml),
+which contains all the integrations, described in this README file.
+
 Now we need to add the software template, for this we will go to the "create..." menu item and
 follow the following steps:
 1. Click on the button "Register Existing Component".
