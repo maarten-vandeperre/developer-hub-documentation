@@ -53,7 +53,7 @@ data:
                 - Domain
                 - API
                 - Template
-          target: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/project-templates/configurations/catalog-entities/all.yaml
+          target: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/configurations/catalog-entities/all.yaml
           type: url
       providers:
         keycloakOrg:
