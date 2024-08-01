@@ -448,6 +448,9 @@ catalog:
 * Now the login screen should be changed to:
   ![](images/login_screen_2.png "")
 
+_If you now create groups and users within Keycloak's rhdh realm, they will 
+become visible in Developer Hub: Catalog > Groups and Users._
+
 ### Enable tech docs to serve static content
 * Make sure that S3 is set up as described in [AWS S3 tech docs (static content) configuration](README-SetupAwsS3StorageForTechDocs.md)
   * IAM user created that can read and write in S3
@@ -606,6 +609,7 @@ In order to enable software templates (for GitHub), the only thing you'll need t
 create Git repositories (see [How to configure GitHub applications](README-ConfigureGithubApplication.md)). 
 
 Make sure you have the values for the following fields:
+* Personal Access Token (not GitHub application related, but user bound).
 * Application ID
 * Application's Client ID
 * Application's Client Secret
@@ -638,6 +642,9 @@ integrations:
           webhookSecret: none
           privateKey: ${RHDH_GITHUB_INTEGRATION_APP_PRIVATE_KEY}
 ```
+_Note: I am adding the personal access token over here, mainly because I am lazy. You can make it a part of the software template's input parameters as well.
+Difference in between the two solutions: in this solution you'll need some kind of system user account to be bound to developer hub, if you ask it in the 
+software template, it will be bound to the user who initiated the template._
 
 If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](gitops/developer-hub/11_app-config-rhdh.yaml),
 which contains all the integrations, described in this README file.
@@ -733,6 +740,8 @@ Component definitions in Developer Hub by applying the following yaml to the Dev
               webhookSecret: none
               privateKey: ${RHDH_GITHUB_INTEGRATION_APP_PRIVATE_KEY}
     ```
+   _Note: The token is optional, but if you don't configure it, you'll run rather fast against GitHub API rate limits. So I would advise to have 
+some kind of system user account in place to link to the catalog scanning configuration._
     
     If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](gitops/developer-hub/11_app-config-rhdh.yaml),
     which contains all the integrations, described in this README file.

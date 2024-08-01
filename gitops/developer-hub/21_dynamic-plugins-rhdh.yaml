@@ -20,10 +20,10 @@ data:
         # iframes in techdocs: https://backstage.io/docs/features/techdocs/how-to-guides/#how-to-add-the-documentation-setup-to-your-software-templates                             #aws-techdocs-enabled
         disabled: false                             #aws-techdocs-enabled
         pluginConfig: {}                             #aws-techdocs-enabled
-#      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
-#        # documentation: https://backstage.io/docs/integrations/github/discovery/
-#        disabled: false
-#        pluginConfig: {}
+      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
+        # documentation: https://backstage.io/docs/integrations/github/discovery/
+        disabled: false
+        pluginConfig: {}
 #      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-org-dynamic TODO enable when you want to sync...
 #                                                                                                   TODO ...users and groups from GitHub
 #        disabled: false
