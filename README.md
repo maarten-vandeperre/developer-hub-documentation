@@ -78,7 +78,7 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
   -o template --template='{{.spec.host}}'\ 
   ; echo
 ```
-* _In our case: backstage-developer-hub-demo-project.apps.cluster-d9zcc.sandbox1531.opentlc.com_
+* _In our case: backstage-developer-hub-demo-project.apps.cluster-6bd9s.sandbox2388.opentlc.com_
 
 ### Install Red Hat Developer Hub via Helm chart
 [Helm chart install guide](https://developers.redhat.com/learning/learn:openshift:install-and-configure-red-hat-developer-hub-and-explore-templating-basics/resource/resources:install-red-hat-developer-hub-developer-sandbox-red-hat-openshift)
@@ -160,7 +160,7 @@ type: Opaque
 * Set the base domain variable.  
   **_!!! Be careful, the base domain will be different in your setup._**
 ```shell
-basedomain=apps.cluster-d9zcc.sandbox1531.opentlc.com
+basedomain=apps.cluster-6bd9s.sandbox2388.opentlc.com
 ```
 * Patch the secret to add the base domain (i.e., to avoid CORS issues).  
 ```shell
@@ -216,7 +216,7 @@ spec:
   database:
     enableLocalDb: true
 ```
-* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-d9zcc.sandbox1531.opentlc.com
+* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-6bd9s.sandbox2388.opentlc.com
 * You should now be able to see the following screen:
   ![](images/login_screen_1.png "")
 * Last thing to configure now is the enablement of the dynamic plugins. These dynamic plugins will allow you to add functionality 
@@ -395,7 +395,7 @@ auth:
     oidc:
       development:
 #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-        metadataUrl: https://demo-keycloak-instance.apps.cluster-d9zcc.sandbox1531.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+        metadataUrl: https://demo-keycloak-instance.apps.cluster-6bd9s.sandbox2388.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
         clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
         clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
         prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -431,7 +431,7 @@ catalog:
   providers:
     keycloakOrg:
       default:
-        baseUrl: https://demo-keycloak-instance.apps.cluster-d9zcc.sandbox1531.opentlc.com
+        baseUrl: https://demo-keycloak-instance.apps.cluster-6bd9s.sandbox2388.opentlc.com
         loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret
@@ -602,6 +602,62 @@ API definitions can differ, depending on the given environment.
 See section [Link the catalog entities to the Developer Hub instance](#link-the-catalog-entities-to-the-developer-hub-instance).
 
 ### Enable and add software templates (GitHub)
+In order to enable software templates (for GitHub), the only thing you'll need to do is configure a GitHub application that has the permission to 
+create Git repositories (see [How to configure GitHub applications](README-ConfigureGithubApplication.md)). 
+
+Make sure you have the values for the following fields:
+* Application ID
+* Application's Client ID
+* Application's Client Secret
+* Application's Private Key
+
+If you are not making use of the script_init_cluster script, you will need to add it to a config map. 
+A config map template can be found in secrets/raw/secret_github_integration. If you make use of the 
+script_init_cluster script, then it will be asked upon startup (and be places in the secrets/generated folder).
+
+Now that we have the values in our config map, we'll need to add the config map to the developer hub instance definition
+configuration like this (_rhdh-secrets should already be there_):
+
+```yaml
+  secrets:
+    - name: rhdh-secrets # added
+    - name: rhdh-secrets-github-integration
+```
+
+Now we need to add the software template, for this we will go to the "create..." menu item and
+follow the following steps:
+1. Click on the button "Register Existing Component".
+2. Fill the following URL and click analyze: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/project-templates/configurations/software-templates/simple-hello-world/template.yaml
+![](images/software-template-1.png "")
+3. Click "refresh" button.
+4. No need to click "Register another", you can just click the "create..." menu item again
+and the template should be visible now:
+![](images/software-template-2.png "")
+
+
+**A software template is defined by**
+* A GitHub (submodule in) repository. In my example: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/project-templates/configurations/software-templates/simple-hello-world
+* A template.yaml file which defines the catalog entity type "Template"
+  (See section [Define the catalog entities](#define-the-catalog-entities)).
+* Most of the time a skeleton folder (unless defined differently in the template.yaml file),
+which contains the source code. This code can be parameterized: check e.g., skeleton/catalog-info.yaml,
+which is using the name and owner field, which are defined in the template.yaml file and initiated during
+template initiation.
+
+**Initiating the software template**
+When you have the catalog with the templates, pick the template you want to initiate and
+click "Choose".
+![](images/software-template-3.png "")
+
+Now you can initiate the template. I use the following values:
+* Repository name: dev-hub-test-demo
+* Name: dev-hub-test-demo
+* Owner: maarten-vandeperre-org
+
+Click "Review" and click "Create", and you should be able to see the link to the new repository
+or you will see it in GitHub:
+![](images/software-template-4.png "")
+![](images/software-template-5.png "")
 
 
 ### Enable Component scanning (i.e., catalog entity) from GitHub
@@ -659,5 +715,6 @@ Component definitions in Developer Hub by applying the following yaml to the Dev
     
     If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](gitops/developer-hub/11_app-config-rhdh.yaml),
     which contains all the integrations, described in this README file.
-4. Now you can create and initiate a template by following the next steps:
-   1. Create the template
+4. Now you should be able to see the repositories in your GitHub account that have a
+Component definition (i.e., catalog-info.yaml file) in their root. If for some reason it is not
+popping up, try as well the console log for debugging ends or [check the database](#debug-developer-hub).

@@ -21,6 +21,8 @@ if [ -z "$BASE_DOMAIN" ]; then
     exit 1
 fi
 
+echo $BASE_DOMAIN > .namespace
+
 # Define the placeholder to be replaced
 # !!! this one will change to the new domain as well (when running the script), so it will keep up to date
 PLACEHOLDER=$(cat .namespace)

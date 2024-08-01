@@ -41,7 +41,7 @@ echo "File has been processed successfully. Modifications have been made in-plac
 
 
 # Specify the input file
-input_file="gitops/developer-hub/21-dynamic-plugins-rhdh.yaml"
+input_file="gitops/developer-hub/21_dynamic-plugins-rhdh.yaml"
 
 # Check if the input file exists
 if [ ! -f "$input_file" ]; then

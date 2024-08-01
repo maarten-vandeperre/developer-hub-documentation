@@ -1,12 +1,12 @@
 #!/bin/bash
 
-read -s -p "Enter Personal Access Token: " personal_access_token
+read -s -p "Enter GitHub Personal Access Token: " personal_access_token
 echo
-read -s -p "Enter Application ID: " application_id
+read -s -p "Enter GitHub Application ID: " application_id
 echo
-read -s -p "Enter Client ID: " client_id
+read -s -p "Enter GitHub Client ID: " client_id
 echo
-read -s -p "Enter Client Secret: " client_secret
+read -s -p "Enter GitHub Client Secret: " client_secret
 echo
 echo "Enter Application Private Key (Press Enter twice to finish):"
 private_key=""

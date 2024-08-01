@@ -1,5 +1,7 @@
 #!/bin/bash
 
+fast_waiting_times="yes"
+
 # Function definitions
       # Function to check the status of all operators in the specified namespace
       check_operators_status() {
@@ -43,6 +45,7 @@ if [ "$secrets_generated" = "no" ]; then
     echo "Executing shell scripts (to configure S3)..."
     ./scripts/script_configure_aws_s3.sh
     ./scripts/script_enable_aws_techdocs_config.sh
+    oc apply -f secrets/generated/secret_aws_s3_techdocs.yaml
   else
     echo "Skipping enableing of aws s3 tech docs."
     ./scripts/script_disable_aws_techdocs_config.sh
@@ -63,7 +66,11 @@ else
     fi
 fi
 
-sleep 30
+  oc apply -f secrets/generated/secret_github_integration.yaml
+
+echo "Waiting for configurations to apply"
+to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 10 || echo 300 )
+sleep "$to_sleep"
 
 # operators
 echo "Install operators"
@@ -71,7 +78,8 @@ oc apply -f gitops/keycloak/keycloak-operator.yaml
 oc apply -f gitops/developer-hub/00_developer-hub-operator.yaml
 
 echo "sleep for operators to get ready"
-sleep 120
+to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 300 )
+sleep "$to_sleep"
 
 #TODO enable this instead of hard coded sleep
 #NAMESPACE="demo-project"
@@ -113,7 +121,8 @@ sleep 120
   oc apply -f gitops/developer-hub/21_dynamic-plugins-rhdh.yaml
 
 echo "sleep for batch 1 to get ready"
-sleep 300
+to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )
+sleep "$to_sleep"
 
 # batch 2 (i.e. instances)
 
@@ -122,7 +131,8 @@ sleep 300
   oc apply -f gitops/keycloak/keycloak-instance.yaml
 
 echo "sleep for batch 2 to get ready"
-sleep 300
+to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )
+sleep "$to_sleep"
 
 # batch 3 (i.e. configs)
 
@@ -131,7 +141,8 @@ sleep 300
   oc apply -f gitops/keycloak/keycloak-realm.yaml
 
 echo "sleep for batch 3 to get ready"
-sleep 300
+to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )
+sleep "$to_sleep"
 
 # batch 4
 
@@ -144,7 +155,22 @@ sleep 300
     echo "No action needed, regarding the secret config maps for keycloak."
   fi
 
+  # keycloak
+  oc apply -f secrets/generated/secret_keycloak_rhdh_client.yaml
+
   # developer hub
   echo "Configuring Developer Hub"
   oc apply -f gitops/developer-hub/31_developer-hub-instance.yaml
+
+echo
+echo "Routes:"
+oc get route -n demo-project | grep backstage
+echo
+echo
+
+echo
+echo "Done"
+echo
+echo
+oc get pods -n demo-project -w
 

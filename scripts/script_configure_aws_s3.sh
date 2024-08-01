@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Prompt the user for Access Key ID and Secret Access Key
-read -s -p "Enter Access Key ID: " access_key_id
+read -s -p "Enter AWS IAM user's Access Key ID: " access_key_id
 echo
-read -s -p "Enter Secret Access Key: " secret_access_key
+read -s -p "Enter AWS IAM user's Secret Access Key: " secret_access_key
 echo
 
 # Specify the input file and output directory
