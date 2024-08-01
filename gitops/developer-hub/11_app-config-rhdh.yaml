@@ -85,18 +85,18 @@ data:
               # supports ISO duration, "human duration" as used in code
               timeout: { minutes: 1 }
               initialDelay: { seconds: 15 }
-        awsS3: 														#aws-techdocs-enabled
-          default: # identifies your dataset / provider independent of config changes 														#aws-techdocs-enabled
-            bucketName: redhat-demo-dev-hub-1 														#aws-techdocs-enabled
-            #prefix: prefix/ # optional 														#aws-techdocs-enabled
-            region: eu-west-3 # optional, uses the default region otherwise 														#aws-techdocs-enabled
-            schedule: # same options as in TaskScheduleDefinition 														#aws-techdocs-enabled
-              # supports cron, ISO duration, "human duration" as used in code 														#aws-techdocs-enabled
-              #frequency: { minutes: 30 } 														#aws-techdocs-enabled
-              frequency: { minutes: 1 } 														#aws-techdocs-enabled
-              # supports ISO duration, "human duration" as used in code 														#aws-techdocs-enabled
-              timeout: { minutes: 3 } 														#aws-techdocs-enabled
-              initialDelay: { seconds: 15 } 														#aws-techdocs-enabled
+        #if-aws-techdocs-disabled awsS3:
+          #if-aws-techdocs-disabled default: # identifies your dataset / provider independent of config changes
+            #if-aws-techdocs-disabled bucketName: redhat-demo-dev-hub-1
+            #if-aws-techdocs-disabled #prefix: prefix/ # optional
+            #if-aws-techdocs-disabled region: eu-west-3 # optional, uses the default region otherwise
+            #if-aws-techdocs-disabled schedule: # same options as in TaskScheduleDefinition
+              #if-aws-techdocs-disabled # supports cron, ISO duration, "human duration" as used in code
+              #if-aws-techdocs-disabled #frequency: { minutes: 30 }
+              #if-aws-techdocs-disabled frequency: { minutes: 1 }
+              #if-aws-techdocs-disabled # supports ISO duration, "human duration" as used in code
+              #if-aws-techdocs-disabled timeout: { minutes: 3 }
+              #if-aws-techdocs-disabled initialDelay: { seconds: 15 }
     auth:
       environment: default
       session:
@@ -120,30 +120,30 @@ data:
                 - resolver: preferredUsernameMatchingUserEntityName
             #    - resolver: emailMatchingUserEntityProfileEmail
             #    - resolver: emailLocalPartMatchingUserEntityName
-    techdocs: 														#aws-techdocs-enabled
-      builder: external 														#aws-techdocs-enabled
-      generator: 														#aws-techdocs-enabled
-        runIn: local 														#aws-techdocs-enabled
-      publisher: 														#aws-techdocs-enabled
-        type: 'awsS3' 														#aws-techdocs-enabled
-        awsS3: 														#aws-techdocs-enabled
-          bucketName: redhat-demo-dev-hub-1 														#aws-techdocs-enabled
-          credentials: 														#aws-techdocs-enabled
-            accessKeyId: ${RHDH_AWS_S3_TECHDOCS_ACCESS_KEY_ID} 														#aws-techdocs-enabled
-            secretAccessKey: ${RHDH_AWS_S3_TECHDOCS_SECRET_ACCESS_KEY} 														#aws-techdocs-enabled
-          region: eu-west-3 														#aws-techdocs-enabled
-          s3ForcePathStyle: true 														#aws-techdocs-enabled
-          sse: 'AES256' 														#aws-techdocs-enabled
-      cache: 														#aws-techdocs-enabled
-        # Represents the number of milliseconds a statically built asset should 														#aws-techdocs-enabled
-        # stay cached. Cache invalidation is handled automatically by the frontend, 														#aws-techdocs-enabled
-        # which compares the build times in cached metadata vs. canonical storage, 														#aws-techdocs-enabled
-        # allowing long TTLs (e.g. 1 month/year) 														#aws-techdocs-enabled
-        ttl: 3600000 														#aws-techdocs-enabled
+    #if-aws-techdocs-disabled techdocs:
+      #if-aws-techdocs-disabled builder: external
+      #if-aws-techdocs-disabled generator:
+        #if-aws-techdocs-disabled runIn: local
+      #if-aws-techdocs-disabled publisher:
+        #if-aws-techdocs-disabled type: 'awsS3'
+        #if-aws-techdocs-disabled awsS3:
+          #if-aws-techdocs-disabled bucketName: redhat-demo-dev-hub-1
+          #if-aws-techdocs-disabled credentials:
+            #if-aws-techdocs-disabled accessKeyId: ${RHDH_AWS_S3_TECHDOCS_ACCESS_KEY_ID}
+            #if-aws-techdocs-disabled secretAccessKey: ${RHDH_AWS_S3_TECHDOCS_SECRET_ACCESS_KEY}
+          #if-aws-techdocs-disabled region: eu-west-3
+          #if-aws-techdocs-disabled s3ForcePathStyle: true
+          #if-aws-techdocs-disabled sse: 'AES256'
+      #if-aws-techdocs-disabled cache:
+        #if-aws-techdocs-disabled # Represents the number of milliseconds a statically built asset should
+        #if-aws-techdocs-disabled # stay cached. Cache invalidation is handled automatically by the frontend,
+        #if-aws-techdocs-disabled # which compares the build times in cached metadata vs. canonical storage,
+        #if-aws-techdocs-disabled # allowing long TTLs (e.g. 1 month/year)
+        #if-aws-techdocs-disabled ttl: 3600000
 
-        # (Optional) The time (in milliseconds) that the TechDocs backend will wait 														#aws-techdocs-enabled
-        # for a cache service to respond before continuing on as though the cached 														#aws-techdocs-enabled
-        # object was not found (e.g. when the cache sercice is unavailable). The 														#aws-techdocs-enabled
-        # default value is 1000 														#aws-techdocs-enabled
-        readTimeout: 500 														#aws-techdocs-enabled
+        #if-aws-techdocs-disabled # (Optional) The time (in milliseconds) that the TechDocs backend will wait
+        #if-aws-techdocs-disabled # for a cache service to respond before continuing on as though the cached
+        #if-aws-techdocs-disabled # object was not found (e.g. when the cache sercice is unavailable). The
+        #if-aws-techdocs-disabled # default value is 1000
+        #if-aws-techdocs-disabled readTimeout: 500
     
