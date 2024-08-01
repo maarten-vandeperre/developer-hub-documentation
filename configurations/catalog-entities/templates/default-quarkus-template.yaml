@@ -45,7 +45,7 @@ spec:
       action: fetch:template
       input:
         #TODO change the branch when this goes to master
-        url: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/project-templates/configurations/software-templates/default-quarkus/skeleton
+        url: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/default-quarkus/skeleton
         targetPath: .
         values:
           name: ${{ parameters.name }}

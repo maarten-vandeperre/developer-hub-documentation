@@ -548,7 +548,7 @@ In order to manually add catalog entities (i.e., not via integrations like the K
 #### Define the catalog entities
 Catalog entities definitions are defined [over here](https://backstage.io/docs/features/software-catalog/descriptor-format/). I have added an example implementation
 for all of them, which you can find back in the folder [configurations/catalog-entities](configurations/catalog-entities). If you want to link to them or import them, 
-you can refer to the GitHub URL: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/project-templates/configurations/catalog-entities.
+you can refer to the GitHub URL: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/catalog-entities.
 
 The main file, which groups everything together is the all.yaml locations file. It will delegate to other locations files, for a specific catalog entity type
 (e.g., domains-location.yaml, groups-and-users-location.yaml). Feel free to have a look at the definition files and to extend them 
@@ -661,7 +661,7 @@ and the template should be visible now:
 
 
 **A software template is defined by**
-* A GitHub (submodule in) repository. In my example: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/project-templates/configurations/software-templates/simple-hello-world
+* A GitHub (submodule in) repository. In my example: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world
 * A template.yaml file which defines the catalog entity type "Template"
   (See section [Define the catalog entities](#define-the-catalog-entities)).
 * Most of the time a skeleton folder (unless defined differently in the template.yaml file),
