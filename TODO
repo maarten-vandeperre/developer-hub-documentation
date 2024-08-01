@@ -4,6 +4,8 @@
 * GitHub actions to generate documentation in S3
 * move scripts to subfolder
 
+* change github references tree/argo
+
  npm install -g @techdocs/cli
 
 {

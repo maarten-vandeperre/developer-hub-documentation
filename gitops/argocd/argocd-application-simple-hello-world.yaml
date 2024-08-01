@@ -6,9 +6,10 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-repo/your-app-manifests'
-    targetRevision: HEAD
-    path: .
+    repoURL: 'https://github.com/maarten-vandeperre/developer-hub-documentation'
+    targetRevision: argo # branch
+#    targetRevision: HEAD # branch
+    path: ./gitops/microservices-gitops/simple-hello-world-gitops
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: demo-project
