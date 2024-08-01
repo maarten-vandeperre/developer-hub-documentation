@@ -591,7 +591,7 @@ catalog:
             - Domain
             - API
             - Template
-      target: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/project-templates/configurations/catalog-entities/all.yaml
+      target: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/configurations/catalog-entities/all.yaml
       type: url
 ```
 
@@ -652,7 +652,7 @@ which contains all the integrations, described in this README file.
 Now we need to add the software template, for this we will go to the "create..." menu item and
 follow the following steps:
 1. Click on the button "Register Existing Component".
-2. Fill the following URL and click analyze: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/project-templates/configurations/software-templates/simple-hello-world/template.yaml
+2. Fill the following URL and click analyze: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world/template.yaml
 ![](images/software-template-1.png "")
 3. Click "refresh" button.
 4. No need to click "Register another", you can just click the "create..." menu item again
