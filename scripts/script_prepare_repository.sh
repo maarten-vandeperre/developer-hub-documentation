@@ -21,8 +21,6 @@ if [ -z "$BASE_DOMAIN" ]; then
     exit 1
 fi
 
-echo $BASE_DOMAIN > .namespace
-
 # Define the placeholder to be replaced
 # !!! this one will change to the new domain as well (when running the script), so it will keep up to date
 PLACEHOLDER=$(cat .namespace)
@@ -41,6 +39,8 @@ else
     echo "Failed to replace the placeholder in some files."
     exit 1
 fi
+
+echo $BASE_DOMAIN > .namespace
 
 # Delete all .bak files in the current directory and its subdirectories
 find . -type f -name "*.bak" -exec rm -f {} \;

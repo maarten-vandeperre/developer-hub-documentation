@@ -60,6 +60,7 @@ else
   if [ "$enable_aws_s3_techdocs" = "yes" ] || [ "$enable_aws_s3_techdocs" = "true" ]; then
       echo "Executing shell scripts (to configure S3)..."
       ./scripts/script_enable_aws_techdocs_config.sh
+      oc apply -f secrets/generated/secret_aws_s3_techdocs.yaml
     else
       echo "Skipping enableing of aws s3 tech docs."
       ./scripts/script_disable_aws_techdocs_config.sh

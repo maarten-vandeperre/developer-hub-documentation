@@ -22,7 +22,7 @@ awk '
     leading_whitespace = substr($0, RSTART, RLENGTH)
     # Replace pattern and append new pattern
     sub(/ *#if-aws-techdocs-disabled */, "")
-    $0 = leading_whitespace $0 " \t\t\t\t\t\t\t\t\t\t\t\t\t\t#aws-techdocs-enabled"
+    $0 = leading_whitespace $0 "                             #aws-techdocs-enabled"
   }
   print
 }
@@ -61,7 +61,7 @@ awk '
     leading_whitespace = substr($0, RSTART, RLENGTH)
     # Replace pattern and append new pattern
     sub(/ *#if-aws-techdocs-disabled */, "")
-    $0 = leading_whitespace $0 " \t\t\t\t\t\t\t\t\t\t\t\t\t\t#aws-techdocs-enabled"
+    $0 = leading_whitespace $0 "                             #aws-techdocs-enabled"
   }
   print
 }
@@ -100,7 +100,7 @@ awk '
     leading_whitespace = substr($0, RSTART, RLENGTH)
     # Replace pattern and append new pattern
     sub(/ *#if-aws-techdocs-disabled */, "")
-    $0 = leading_whitespace $0 " \t\t\t\t\t\t\t\t\t\t\t\t\t\t#aws-techdocs-enabled"
+    $0 = leading_whitespace $0 "                             #aws-techdocs-enabled"
   }
   print
 }

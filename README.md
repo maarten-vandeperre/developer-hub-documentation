@@ -78,7 +78,7 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
   -o template --template='{{.spec.host}}'\ 
   ; echo
 ```
-* _In our case: backstage-developer-hub-demo-project.apps.cluster-6bd9s.sandbox2388.opentlc.com_
+* _In our case: backstage-developer-hub-demo-project.apps.cluster-bnc5t.sandbox3269.opentlc.com_
 
 ### Install Red Hat Developer Hub via Helm chart
 [Helm chart install guide](https://developers.redhat.com/learning/learn:openshift:install-and-configure-red-hat-developer-hub-and-explore-templating-basics/resource/resources:install-red-hat-developer-hub-developer-sandbox-red-hat-openshift)
@@ -216,7 +216,7 @@ spec:
   database:
     enableLocalDb: true
 ```
-* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-6bd9s.sandbox2388.opentlc.com
+* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-bnc5t.sandbox3269.opentlc.com
 * You should now be able to see the following screen:
   ![](images/login_screen_1.png "")
 * Last thing to configure now is the enablement of the dynamic plugins. These dynamic plugins will allow you to add functionality 
@@ -395,7 +395,7 @@ auth:
     oidc:
       development:
 #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-        metadataUrl: https://demo-keycloak-instance.apps.cluster-6bd9s.sandbox2388.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+        metadataUrl: https://demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
         clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
         clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
         prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -431,7 +431,7 @@ catalog:
   providers:
     keycloakOrg:
       default:
-        baseUrl: https://demo-keycloak-instance.apps.cluster-6bd9s.sandbox2388.opentlc.com
+        baseUrl: https://demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com
         loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret
@@ -602,7 +602,7 @@ API definitions can differ, depending on the given environment.
 See section [Link the catalog entities to the Developer Hub instance](#link-the-catalog-entities-to-the-developer-hub-instance).
 
 ### Enable and add software templates (GitHub)
-In order to enable software templates (for GitHub), the only thing you'll need to do is configure a GitHub application that has the permission to 
+In order to enable software templates (for GitHub), the only thing you'll need to do, is configuring a GitHub application that has the permission to 
 create Git repositories (see [How to configure GitHub applications](README-ConfigureGithubApplication.md)). 
 
 Make sure you have the values for the following fields:
@@ -661,6 +661,9 @@ or you will see it in GitHub:
 
 
 ### Enable Component scanning (i.e., catalog entity) from GitHub
+In order to enable software templates (for GitHub), the only first thing you'll need to do, is configuring a GitHub application that has the permission to
+create Git repositories (see [How to configure GitHub applications](README-ConfigureGithubApplication.md)).
+
 In order to enable component scanning from GitHub to Developer Hub (i.e., catalog entity type Component), 
 you'll need to execute the following steps:
 1. Enable the Catalog Backend Module GitHub plugin by applying the following yaml to the dynamic plugins configuration (on anchor_01):

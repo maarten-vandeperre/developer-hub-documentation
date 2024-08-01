@@ -12,23 +12,23 @@ data:
         # documentation: https://janus-idp.io/plugins/keycloak
         disabled: false
         pluginConfig: {}
-      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
-        # documentation: https://backstage.io/docs/integrations/github/discovery/
-        disabled: false
-        pluginConfig: {}
-      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton-dynamic
-        # documentation: https://docs.redhat.com/en/documentation/red_hat_plug-ins_for_backstage/1.0/html-single/tekton_plugin_for_backstage/index#setting-tekton-plugin
-        disabled: false
-        pluginConfig: {}
-      #if-aws-techdocs-disabled - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic 
-        #if-aws-techdocs-disabled # documentation: https://backstage.io/docs/features/techdocs/
-        #if-aws-techdocs-disabled # documentation: https://backstage.io/docs/features/techdocs/configuration/
-        #if-aws-techdocs-disabled # doc discovery: https://backstage.io/docs/integrations/aws-s3/discovery/
-        #if-aws-techdocs-disabled # documentation: https://backstage.io/docs/features/techdocs/how-to-guides/
-        #if-aws-techdocs-disabled # iframes in techdocs: https://backstage.io/docs/features/techdocs/how-to-guides/#how-to-add-the-documentation-setup-to-your-software-templates
-        #if-aws-techdocs-disabled disabled: false
-        #if-aws-techdocs-disabled pluginConfig: {}
+      - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic                             #aws-techdocs-enabled
+        # documentation: https://backstage.io/docs/features/techdocs/                             #aws-techdocs-enabled
+        # documentation: https://backstage.io/docs/features/techdocs/configuration/                             #aws-techdocs-enabled
+        # doc discovery: https://backstage.io/docs/integrations/aws-s3/discovery/                             #aws-techdocs-enabled
+        # documentation: https://backstage.io/docs/features/techdocs/how-to-guides/                             #aws-techdocs-enabled
+        # iframes in techdocs: https://backstage.io/docs/features/techdocs/how-to-guides/#how-to-add-the-documentation-setup-to-your-software-templates                             #aws-techdocs-enabled
+        disabled: false                             #aws-techdocs-enabled
+        pluginConfig: {}                             #aws-techdocs-enabled
+#      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
+#        # documentation: https://backstage.io/docs/integrations/github/discovery/
+#        disabled: false
+#        pluginConfig: {}
 #      - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-org-dynamic TODO enable when you want to sync...
 #                                                                                                   TODO ...users and groups from GitHub
+#        disabled: false
+#        pluginConfig: {}
+#      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton-dynamic
+#        # documentation: https://docs.redhat.com/en/documentation/red_hat_plug-ins_for_backstage/1.0/html-single/tekton_plugin_for_backstage/index#setting-tekton-plugin
 #        disabled: false
 #        pluginConfig: {}
