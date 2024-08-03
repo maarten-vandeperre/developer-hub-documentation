@@ -58,7 +58,7 @@ data:
       providers:
         keycloakOrg:
           default:
-            baseUrl: https://demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com
+            baseUrl: https://demo-keycloak-instance.apps.cluster-jfx8l.sandbox2558.opentlc.com
             loginRealm: rhdh # ${KEYCLOAK_REALM}
             realm: rhdh # ${KEYCLOAK_REALM}
             clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
@@ -85,18 +85,28 @@ data:
               # supports ISO duration, "human duration" as used in code
               timeout: { minutes: 1 }
               initialDelay: { seconds: 15 }
-        #if-aws-techdocs-disabled awsS3:
-          #if-aws-techdocs-disabled default: # identifies your dataset / provider independent of config changes
-            #if-aws-techdocs-disabled bucketName: redhat-demo-dev-hub-1
-            #if-aws-techdocs-disabled #prefix: prefix/ # optional
-            #if-aws-techdocs-disabled region: eu-west-3 # optional, uses the default region otherwise
-            #if-aws-techdocs-disabled schedule: # same options as in TaskScheduleDefinition
-              #if-aws-techdocs-disabled # supports cron, ISO duration, "human duration" as used in code
-              #if-aws-techdocs-disabled #frequency: { minutes: 30 }
-              #if-aws-techdocs-disabled frequency: { minutes: 1 }
-              #if-aws-techdocs-disabled # supports ISO duration, "human duration" as used in code
-              #if-aws-techdocs-disabled timeout: { minutes: 3 }
-              #if-aws-techdocs-disabled initialDelay: { seconds: 15 }
+        ocm:
+          default:
+            kubernetesPluginRef: local-cluster
+            name: multiclusterhub
+            owner: group:rhdh
+            schedule:
+              frequency:
+                seconds: 10
+              timeout:
+                seconds: 60
+        awsS3:                             #aws-techdocs-enabled
+          default: # identifies your dataset / provider independent of config changes                             #aws-techdocs-enabled
+            bucketName: redhat-demo-dev-hub-1                             #aws-techdocs-enabled
+            #prefix: prefix/ # optional                             #aws-techdocs-enabled
+            region: eu-west-3 # optional, uses the default region otherwise                             #aws-techdocs-enabled
+            schedule: # same options as in TaskScheduleDefinition                             #aws-techdocs-enabled
+              # supports cron, ISO duration, "human duration" as used in code                             #aws-techdocs-enabled
+              #frequency: { minutes: 30 }                             #aws-techdocs-enabled
+              frequency: { minutes: 1 }                             #aws-techdocs-enabled
+              # supports ISO duration, "human duration" as used in code                             #aws-techdocs-enabled
+              timeout: { minutes: 3 }                             #aws-techdocs-enabled
+              initialDelay: { seconds: 15 }                             #aws-techdocs-enabled
     auth:
       environment: default
       session:
@@ -105,7 +115,7 @@ data:
         oidc:
           default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            metadataUrl: https://demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-jfx8l.sandbox2558.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
             clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
             clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
             prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -125,33 +135,54 @@ data:
         - type: 'config'
           instances:
             - name: argoInstance1
-              url: https://argocd-instance-server-demo-project.apps.cluster-bnc5t.sandbox3269.opentlc.com
+              url: https://argocd-instance-server-demo-project.apps.cluster-jfx8l.sandbox2558.opentlc.com
               username: admin 
               password: # ${RHDH_ARGOCD_ADMIN_PWD}
-    #if-aws-techdocs-disabled techdocs:
-      #if-aws-techdocs-disabled builder: external
-      #if-aws-techdocs-disabled generator:
-        #if-aws-techdocs-disabled runIn: local
-      #if-aws-techdocs-disabled publisher:
-        #if-aws-techdocs-disabled type: 'awsS3'
-        #if-aws-techdocs-disabled awsS3:
-          #if-aws-techdocs-disabled bucketName: redhat-demo-dev-hub-1
-          #if-aws-techdocs-disabled credentials:
-            #if-aws-techdocs-disabled accessKeyId: ${RHDH_AWS_S3_TECHDOCS_ACCESS_KEY_ID}
-            #if-aws-techdocs-disabled secretAccessKey: ${RHDH_AWS_S3_TECHDOCS_SECRET_ACCESS_KEY}
-          #if-aws-techdocs-disabled region: eu-west-3
-          #if-aws-techdocs-disabled s3ForcePathStyle: true
-          #if-aws-techdocs-disabled sse: 'AES256'
-      #if-aws-techdocs-disabled cache:
-        #if-aws-techdocs-disabled # Represents the number of milliseconds a statically built asset should
-        #if-aws-techdocs-disabled # stay cached. Cache invalidation is handled automatically by the frontend,
-        #if-aws-techdocs-disabled # which compares the build times in cached metadata vs. canonical storage,
-        #if-aws-techdocs-disabled # allowing long TTLs (e.g. 1 month/year)
-        #if-aws-techdocs-disabled ttl: 3600000
+    kubernetes:
+      clusterLocatorMethods:
+        - clusters:
+            - authProvider: serviceAccount
+              name: local-cluster
+              serviceAccountToken: eyJhbGciOiJSUzI1NiIsImtpZCI6ImxCTVhuSEVabTQ4aTRUVlRlNnNEOE04N18xWDJrSkpqRnVoTkVxbUdUek0ifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZW1vLXByb2plY3QiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlY3JldC5uYW1lIjoicGlwZWxpbmUtdG9rZW4td203ejYiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoicGlwZWxpbmUiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI2MGRkZDRiNi1jYjI1LTRkNjYtODEyZC02ZTEyOTZjNGRhNWIiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVtby1wcm9qZWN0OnBpcGVsaW5lIn0.NitkU-NU8ALfF0oh0Ta7ll-k8C5LZDi7ut7DcmzHUz2Eb5JuACQZEtku1ISwTre9j2UTU_tvw5XZpAkTlgCmhPMqqf97y8SiJt_Llse99Xb0uRpLtmO5cXTTVBZOeW1WcazTSGtzaXIgrlFN_7sAtVwAhYnLQ97xtlwxvu7jpd0lPQEKBGQV-gLersiq9ke69U-_Y26ZjkHq1PJtk0TA_fj_lPRAxSB5_WNjHEi9Axspl2I9MDz6uIufagBwcDxNCZLaWvvcbrZlrULBoR_7CH6iFP2ZXkxFPkMTS4W5ubXiqO6i67fUXEdEJSZHR-szlDBxfVotmwGCrowF1lh4X_d61UbZL6M_KPcKiOhS2L9HftNOd-6k5b7cgoukuYW3NJYu55ukJqSg7B7V-OFniWefbDkVGMqhH1wEzD2n-oRWyIzuDjVkN1JCVnkNx17GjVWGJGV40sL7aaNMK-RMYQw6jtUUpSDeiGW7EhO-b1SZlxgnS2sHr04GFEQ3dGwDq7MsCuOHyZdntJjJ8OQoiNnPHY4FlNMPWzFDleyQGi4ycA_zDSyisoJkB1u2Ey7ERw9vm9XWXPGeh_JMFpsaAm4G_GpKY1bnpiRMt-j9Y9HGKd1bQtLAO16xGj7EW0k2wJ3Yi4g8NVpW9MDOifK08dIMNCmDgMoHPz7vJAImBOY
+              skipTLSVerify: true
+              url: https://api.cluster-jfx8l.sandbox2558.opentlc.com:6443
+          type: config
+      customResources:
+        - apiVersion: v1beta1
+          group: tekton.dev
+          plural: pipelineruns
+        - apiVersion: v1beta1
+          group: tekton.dev
+          plural: taskruns
+        - apiVersion: v1
+          group: route.openshift.io
+          plural: routes
+      serviceLocatorMethod:
+        type: multiTenant
+    techdocs:                             #aws-techdocs-enabled
+      builder: external                             #aws-techdocs-enabled
+      generator:                             #aws-techdocs-enabled
+        runIn: local                             #aws-techdocs-enabled
+      publisher:                             #aws-techdocs-enabled
+        type: 'awsS3'                             #aws-techdocs-enabled
+        awsS3:                             #aws-techdocs-enabled
+          bucketName: redhat-demo-dev-hub-1                             #aws-techdocs-enabled
+          credentials:                             #aws-techdocs-enabled
+            accessKeyId: ${RHDH_AWS_S3_TECHDOCS_ACCESS_KEY_ID}                             #aws-techdocs-enabled
+            secretAccessKey: ${RHDH_AWS_S3_TECHDOCS_SECRET_ACCESS_KEY}                             #aws-techdocs-enabled
+          region: eu-west-3                             #aws-techdocs-enabled
+          s3ForcePathStyle: true                             #aws-techdocs-enabled
+          sse: 'AES256'                             #aws-techdocs-enabled
+      cache:                             #aws-techdocs-enabled
+        # Represents the number of milliseconds a statically built asset should                             #aws-techdocs-enabled
+        # stay cached. Cache invalidation is handled automatically by the frontend,                             #aws-techdocs-enabled
+        # which compares the build times in cached metadata vs. canonical storage,                             #aws-techdocs-enabled
+        # allowing long TTLs (e.g. 1 month/year)                             #aws-techdocs-enabled
+        ttl: 3600000                             #aws-techdocs-enabled
 
-        #if-aws-techdocs-disabled # (Optional) The time (in milliseconds) that the TechDocs backend will wait
-        #if-aws-techdocs-disabled # for a cache service to respond before continuing on as though the cached
-        #if-aws-techdocs-disabled # object was not found (e.g. when the cache sercice is unavailable). The
-        #if-aws-techdocs-disabled # default value is 1000
-        #if-aws-techdocs-disabled readTimeout: 500
+        # (Optional) The time (in milliseconds) that the TechDocs backend will wait                             #aws-techdocs-enabled
+        # for a cache service to respond before continuing on as though the cached                             #aws-techdocs-enabled
+        # object was not found (e.g. when the cache sercice is unavailable). The                             #aws-techdocs-enabled
+        # default value is 1000                             #aws-techdocs-enabled
+        readTimeout: 500                             #aws-techdocs-enabled
     

@@ -1,0 +1,151 @@
+# https://hub.tekton.dev/tekton/task/maven
+
+
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline-simple-hello-world
+  namespace: demo-project
+  labels:
+    backstage.io/kubernetes-id: dev-hub-test-demo
+spec:
+  params:
+    - description: git url to clone
+      name: git-source-url
+      type: string
+    - default: master
+      description: 'git revision to checkout (branch, tag, sha, ref…)'
+      name: git-source-revision
+      type: string
+#    - description: image tag - truncated commit Id
+#      name: short-commit-id
+#      type: string
+#    - default: 'http://sonarqube-cicd-tools.apps.ocp-dev-ade.xxxdev.dev.xxx.ca'
+#      description: SonarQube url for static code analysis
+#      name: SONAR_URL
+#      type: string
+#    - default: cb98fc7b68ea37feb56d151e10b87d6dc596f4b2
+#      description: SonarQube authentication token for static code analysis
+#      name: SONAR_AUTH_TOKEN
+#      type: string
+#    - default: ./
+#      description: image path
+#      name: LOCAL_SCAN_PATH
+#      type: string
+#    - default: ./
+#      description: image path
+#      name: LOCAL_IMAGE_SCAN_PATH
+#      type: string
+#    - default: 'artifactory.xxx.corp.xxx.ca:5073/ccop-dev/quarkus-ref-image-dev'
+#      description: image path
+#      name: REMOTE_IMAGE_URL
+#      type: string
+#    - default: 'artifactory.xxx.corp.xxx.ca:5073/ccop-dev/quarkus-ref-image-dev'
+#      description: image path for security scanning
+#      name: SCAN_IMAGE_URL
+#      type: string
+#    - default: UNKNOWN
+#      description: vulnerability severity level
+#      name: SEVERITY_LEVELS
+#      type: string
+#    - default: 'https://gitlab.xxx.corp.xxx.ca/xx/xxxxx/tekton-pipeline.git'
+#      description: Kustomize git repo for CD
+#      name: KUSTOMIZE_GIT_URL
+#      type: string
+#    - default: k8s/overlays/dev
+#      description: Kustomize git repo context directory for CD
+#      name: KUSTOMIZE_GIT_CONTEXT_DIR
+#      type: string
+#    - default: dev
+#      description: Kustomize git repo branch
+#      name: KUSTOMIZE_GIT_BRANCH
+#      type: string
+  tasks:
+    - name: git-clone
+      params:
+        - name: url
+          value: $(params.git-source-url)
+#        - name: revision
+#          value: $(params.git-source-revision)
+        - name: sslVerify
+          value: 'false'
+        - name: noProxy
+          value: 'true'
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: app-source
+#    - name: run-test-cases
+#      params:
+#        - name: GOALS
+#          value:
+#            - clean
+#            - test
+#      runAfter:
+#        - git-clone
+#      taskRef:
+#        kind: Task
+#        name: maven
+#      workspaces:
+#        - name: source
+#          workspace: app-source
+#        - name: maven-settings
+#          workspace: maven-settings
+#    - name: build-artifact
+#      params:
+#        - name: GOALS
+#          value:
+#            - '-DskipTests'
+#            - package
+#            - '-Dquarkus.native.container-build=true'
+#      runAfter:
+#        - static-code-analysis
+#      taskRef:
+#        kind: ClusterTask
+#        name: maven
+#      workspaces:
+#        - name: source
+#          workspace: app-source
+#        - name: maven-settings
+#          workspace: maven-settings
+#    - name: build-image
+#      params:
+#        - name: IMAGE
+#          value: $(params.REMOTE_IMAGE_URL)
+#        - name: TLSVERIFY
+#          value: 'false'
+#      runAfter:
+#        - build-artifact
+#      taskRef:
+#        kind: Task
+#        name: buildah-build
+#      workspaces:
+#        - name: source
+#          workspace: app-source
+#        - name: varlibcontainers
+#          workspace: shared-image-repo
+#    - name: push-image
+#      params:
+#        - name: IMAGE
+#          value: $(params.REMOTE_IMAGE_URL)
+#        - name: IMAGE_TAG
+#          value: $(params.short-commit-id)
+#        - name: TLSVERIFY
+#          value: 'false'
+#      runAfter:
+#        - build-image
+#      taskRef:
+#        kind: Task
+#        name: buildah-push
+#      workspaces:
+#        - name: source
+#          workspace: app-source
+#        - name: varlibcontainers
+#          workspace: shared-image-repo
+  workspaces:
+    - name: app-source
+#    - name: maven-settings
+#    - name: shared-image-repo
+#    - name: kustomize-repo

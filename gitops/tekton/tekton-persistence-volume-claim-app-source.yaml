@@ -1,0 +1,21 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: app-source-pvc
+  namespace: demo-project
+#  annotations:
+#    volume.beta.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+#    volume.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: gp3-csi # on AWS
+  volumeMode: Filesystem
+status:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 5Gi

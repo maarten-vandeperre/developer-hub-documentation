@@ -77,7 +77,8 @@ sleep "$to_sleep"
 echo "Install operators"
 oc apply -f gitops/keycloak/keycloak-operator.yaml
 oc apply -f gitops/developer-hub/00_developer-hub-operator.yaml
-oc apply -f gitops/argodcd-operator.yaml
+oc apply -f gitops/argocd/argocd-operator.yaml
+#oc apply -f gitops/tekton/tekton-operator.yaml
 
 echo "sleep for operators to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 300 )
@@ -113,7 +114,7 @@ sleep "$to_sleep"
   oc apply -f gitops/keycloak/keycloak-postgres.yaml
 
   # argocd
-  echo "Configuring Argo CD"
+  echo "Configuring Argo CD instance"
   oc apply -f gitops/argocd/argocd-instance.yaml
 
   # developer hub
@@ -167,6 +168,9 @@ sleep "$to_sleep"
 
   # keycloak
   oc apply -f secrets/generated/secret_keycloak_rhdh_client.yaml
+
+  # argocd
+  oc apply -f secrets/generated/secret_argocd.yaml
 
   # developer hub
   echo "Configuring Developer Hub"

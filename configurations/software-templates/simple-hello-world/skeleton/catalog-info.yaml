@@ -10,6 +10,10 @@ metadata:
                        # rht-gitops.com/<namespace>=<argo app id> => which is a label on the Argo CD application
     argocd/app-selector: rht-gitops.com/demo-project=simple-hello-world-service-a
     argocd/instance-name: argoInstance1 # as defined in app-config-rhdh.yaml
+    # https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.2/html/configuring_plugins_in_red_hat_developer_hub/rhdh-installing-dynamic-plugins#installing-tekton-plugin
+    backstage.io/kubernetes-id: dev-hub-test-demo
+    janus-idp.io/tekton: dev-hub-test-demo
+    backstage.io/kubernetes-namespace: demo-project
 spec:
   type: service
   lifecycle: experimental

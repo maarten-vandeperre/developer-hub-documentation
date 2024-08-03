@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: my-pipeline-run-00002 # suffix "00001" needs to be incremented when you want to have a new run, otherwise applying this file wouldn't do anything
+  namespace: demo-project
+  labels:
+    backstage.io/kubernetes-id: dev-hub-test-demo
+spec:
+  pipelineRef:
+    name: pipeline-simple-hello-world
+  workspaces:
+    - name: app-source
+      persistentVolumeClaim:
+        claimName: app-source-pvc
+  params:
+    - name: git-source-url
+      value: https://github.com/maarten-vandeperre/dev-hub-test-demo

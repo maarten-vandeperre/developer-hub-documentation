@@ -8,15 +8,15 @@ spec:
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
-  commonName: apps.cluster-bnc5t.sandbox3269.opentlc.com
+  commonName: apps.cluster-jfx8l.sandbox2558.opentlc.com
   dnsNames:
-    - apps.cluster-bnc5t.sandbox3269.opentlc.com
-    - www.apps.cluster-bnc5t.sandbox3269.opentlc.com
+    - apps.cluster-jfx8l.sandbox2558.opentlc.com
+    - www.apps.cluster-jfx8l.sandbox2558.opentlc.com
   acme:
     config:
       - http01:
           ingress:
             class: nginx
         domains:
-          - apps.cluster-bnc5t.sandbox3269.opentlc.com
-          - apps.cluster-bnc5t.sandbox3269.opentlc.com
+          - apps.cluster-jfx8l.sandbox2558.opentlc.com
+          - apps.cluster-jfx8l.sandbox2558.opentlc.com
