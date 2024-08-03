@@ -127,7 +127,7 @@ data:
             - name: argoInstance1
               url: https://argocd-instance-server-demo-project.apps.cluster-bnc5t.sandbox3269.opentlc.com
               username: admin # ${ARGOCD_USERNAME}
-              password: ... # ${ARGOCD_PASSWORD}
+              password: IOLpxq5FT1KUHvVMowWnRYiQm0l8eG4h # ${ARGOCD_PASSWORD}
     #if-aws-techdocs-disabled techdocs:
       #if-aws-techdocs-disabled builder: external
       #if-aws-techdocs-disabled generator:

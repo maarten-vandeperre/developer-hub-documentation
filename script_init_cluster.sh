@@ -77,6 +77,7 @@ sleep "$to_sleep"
 echo "Install operators"
 oc apply -f gitops/keycloak/keycloak-operator.yaml
 oc apply -f gitops/developer-hub/00_developer-hub-operator.yaml
+oc apply -f gitops/argodcd-operator.yaml
 
 echo "sleep for operators to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 300 )
@@ -111,6 +112,10 @@ sleep "$to_sleep"
   echo "Configuring Keycloak database"
   oc apply -f gitops/keycloak/keycloak-postgres.yaml
 
+  # argocd
+  echo "Configuring Argo CD"
+  oc apply -f gitops/argocd/argocd-instance.yaml
+
   # developer hub
   echo "Configuring Developer Hub basic instance"
   oc apply -f .helper/31_developer-hub-instance-simple.yaml   # do this first, without config map links to init the database, without migration table lock issues
@@ -126,6 +131,10 @@ to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )
 sleep "$to_sleep"
 
 # batch 2 (i.e. instances)
+
+  # argocd
+  echo "Configuring Argo CD - simple hello world"
+  oc apply -f gitops/argocd/argocd-application-simple-hello-world.yaml
 
   # keycloak
   echo "Configuring Keycloak instance"
