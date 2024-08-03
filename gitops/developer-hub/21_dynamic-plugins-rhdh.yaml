@@ -16,6 +16,14 @@ data:
         # documentation: https://backstage.io/docs/integrations/github/discovery/
         disabled: false
         pluginConfig: {}
+      - package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic
+        # documentation: https://docs.redhat.com/en/documentation/red_hat_developer_hub/0.1/html/argocd_plugin_for_backstage/argocd-plugin-for-backstage#installation
+        # documentation: https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.2/html/configuring_plugins_in_red_hat_developer_hub/rhdh-installing-dynamic-plugins#enabling-argo-cd-plugin
+        disabled: false
+        # pluginConfig: {}
+      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-argocd
+        disabled: false
+        # pluginConfig: {}
       #if-aws-techdocs-disabled - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
         #if-aws-techdocs-disabled # documentation: https://backstage.io/docs/features/techdocs/
         #if-aws-techdocs-disabled # documentation: https://backstage.io/docs/features/techdocs/configuration/

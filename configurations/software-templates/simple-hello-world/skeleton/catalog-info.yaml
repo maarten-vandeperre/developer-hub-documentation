@@ -5,6 +5,11 @@ metadata:
                                     # dump is a filter:
                                     # https://backstage.io/docs/features/software-templates/builtin-actions/
                                     # https://backstage.io/docs/features/software-templates/writing-templates/#built-in-filters
+  annotations:
+    # required when configuring Argo CD
+                       # rht-gitops.com/<namespace>=<argo app id> => which is a label on the Argo CD application
+    argocd/app-selector: rht-gitops.com/demo-project=simple-hello-world-service-a
+    argocd/instance-name: argoInstance1 # as defined in app-config-rhdh.yaml
 spec:
   type: service
   lifecycle: experimental
