@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fast_waiting_times="yes"
+fast_waiting_times="no"
 
 # Function definitions
       # Function to check the status of all operators in the specified namespace
@@ -28,6 +28,9 @@ fast_waiting_times="yes"
 
 ./scripts/script_prepare_repository.sh
 oc apply -f gitops/namespaces.yaml
+oc apply -f gitops/operator-groups.yaml
+
+oc apply -f gitops/tekton/tekton-service-account.yaml
 
 read -p "Do you want to enable AWS S3 storage for static tech docs (README-SetupAwsS3StorageForTechDocs.md) (yes/no)? " enable_aws_s3_techdocs
 read -p "Did you already generate the secret config maps? (yes/no): " secrets_generated
@@ -78,7 +81,8 @@ echo "Install operators"
 oc apply -f gitops/keycloak/keycloak-operator.yaml
 oc apply -f gitops/developer-hub/00_developer-hub-operator.yaml
 oc apply -f gitops/argocd/argocd-operator.yaml
-#oc apply -f gitops/tekton/tekton-operator.yaml
+oc apply -f gitops/tekton/tekton-operator.yaml
+oc apply -f gitops/3scale/3scale-operator.yaml
 
 echo "sleep for operators to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 300 )
@@ -113,6 +117,15 @@ sleep "$to_sleep"
   echo "Configuring Keycloak database"
   oc apply -f gitops/keycloak/keycloak-postgres.yaml
 
+  # 3scale
+  echo "Configuring 3scale API manager"
+  oc apply -f gitops/3scale/3scale-api-manager.yaml
+
+  # tekton
+  echo "Configuring Tekton PVCs"
+  oc apply -f gitops/tekton/tekton-persistence-volume-claim-app-source.yaml
+  oc apply -f gitops/tekton/tekton-persistence-volume-claim-gradle-cache.yaml
+
   # argocd
   echo "Configuring Argo CD instance"
   oc apply -f gitops/argocd/argocd-instance.yaml
@@ -137,6 +150,10 @@ sleep "$to_sleep"
   echo "Configuring Argo CD - simple hello world"
   oc apply -f gitops/argocd/argocd-application-simple-hello-world.yaml
 
+  # tekton
+  echo "Configuring Tekton pipelines"
+  oc apply -f gitops/tekton/tekton-pipeline-simple-hello-world.yaml
+
   # keycloak
   echo "Configuring Keycloak instance"
   oc apply -f gitops/keycloak/keycloak-instance.yaml
@@ -151,20 +168,22 @@ sleep "$to_sleep"
   echo "Configuring Keycloak realm"
   oc apply -f gitops/keycloak/keycloak-realm.yaml
 
+  # tekton
+  echo "Configuring Tekton pipeline runs"
+  oc apply -f gitops/tekton/tekton-pipeline-run-simple-hello-world.yaml
+
 echo "sleep for batch 3 to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )
 sleep "$to_sleep"
 
 # batch 4
 
-  # Check if the secrets are already generated
-  if [ "$secrets_generated" = "no" ]; then
-    # keycloak
-    echo "Configuring Keycloak integration"
-    ./scripts/script_configure_keycloak_integration.sh
-  else
-    echo "No action needed, regarding the secret config maps for keycloak."
-  fi
+  # keycloak
+  echo "Configuring Keycloak integration"
+  ./scripts/script_configure_keycloak_integration.sh
+  # keycloak
+  echo "Configuring ArgoCD integration"
+  ./scripts/script_configure_argocd_integration.sh
 
   # keycloak
   oc apply -f secrets/generated/secret_keycloak_rhdh_client.yaml
