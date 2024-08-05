@@ -11,7 +11,7 @@ spec:
   workspaces:
     - name: app-source
       persistentVolumeClaim:
-        claimName: app-source-pvc
+        claimName: tekton-app-source-pvc
   params:
     - name: git-source-url
       value: https://github.com/maarten-vandeperre/dev-hub-test-demo

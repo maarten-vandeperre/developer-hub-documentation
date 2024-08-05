@@ -1,11 +1,11 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: rhbk-operator
+  name: 3scale-operator
   namespace: demo-project
 spec:
-  channel: stable-v22
+  channel: threescale-2.14
   installPlanApproval: Automatic
-  name: rhbk-operator
+  name: 3scale-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace

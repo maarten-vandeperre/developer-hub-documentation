@@ -1,12 +1,3 @@
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-  name: developer-hub-operator-group
-  namespace: rhdh-operator
-spec:
-#  targetNamespaces:        !!! no target namespaces required over here
-#    - demo-project
----
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:

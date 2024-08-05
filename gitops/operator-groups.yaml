@@ -1,0 +1,29 @@
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: demo-project-operator-group
+  namespace: demo-project
+spec:
+  targetNamespaces: # solves  The OperatorGroup in the cert-manager-operator Namespace does not support the single-Namespace installation mode. Select a different installation Namespace that supports this mode.
+    - demo-project
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: developer-hub-operator-group
+  namespace: rhdh-operator
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: openshift-gitops-operator-group
+  namespace: openshift-gitops-operator
+---
+apiVersion: operators.coreos.com/v1
+metadata:
+  name: cert-manager-operator-group
+  namespace: cert-manager-operator
+spec:
+  targetNamespaces:
+    - cert-manager-operator
+---

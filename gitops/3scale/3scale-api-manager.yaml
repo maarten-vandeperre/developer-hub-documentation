@@ -1,0 +1,14 @@
+apiVersion: apps.3scale.net/v1alpha1
+kind: APIManager
+metadata:
+  name: apimanager-sample
+  namespace: 3scale-test
+spec:
+  monitoring:
+    enablePrometheusRules: true
+    enabled: true
+  system:
+    fileStorage:
+      persistentVolumeClaim:
+        storageClassName: openshift-storage.noobaa.io # TODO should be filled with the outcome of scripts/script_find_rwx_storage-class.sh
+  wildcardDomain: apps.cluster-jfx8l.sandbox2558.opentlc.com
