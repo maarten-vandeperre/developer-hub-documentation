@@ -20,6 +20,7 @@ metadata:
   namespace: openshift-gitops-operator
 ---
 apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
 metadata:
   name: cert-manager-operator-group
   namespace: cert-manager-operator

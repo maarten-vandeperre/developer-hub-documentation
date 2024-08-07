@@ -772,10 +772,10 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "7iKyQUwyApIojzOlSj82vUWIhejv41E5",
       "redirectUris": [
-        "https://backstage-developer-hub-demo-project.apps.cluster-djr6p.djr6p.sandbox1644.opentlc.com/*"
+        "https://backstage-developer-hub-demo-project.apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com/*"
       ],
       "webOrigins": [
-        "https://backstage-developer-hub-demo-project.apps.cluster-djr6p.djr6p.sandbox1644.opentlc.com"
+        "https://backstage-developer-hub-demo-project.apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com"
       ],
       "notBefore": 0,
       "bearerOnly": false,

@@ -8,15 +8,15 @@ spec:
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
-  commonName: apps.cluster-djr6p.djr6p.sandbox1644.opentlc.com
+  commonName: apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com
   dnsNames:
-    - apps.cluster-djr6p.djr6p.sandbox1644.opentlc.com
-    - www.apps.cluster-djr6p.djr6p.sandbox1644.opentlc.com
+    - apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com
+    - www.apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com
   acme:
     config:
       - http01:
           ingress:
             class: nginx
         domains:
-          - apps.cluster-djr6p.djr6p.sandbox1644.opentlc.com
-          - apps.cluster-djr6p.djr6p.sandbox1644.opentlc.com
+          - apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com
+          - apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com

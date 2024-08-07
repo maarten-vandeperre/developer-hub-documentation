@@ -1,0 +1,141 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jenkins
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: jenkins-admin-secret
+  namespace: jenkins
+type: Opaque
+data:
+  jenkins-admin-password: cmhkaA== # rhdh
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jenkins-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    path: /mnt/nfs/jenkins
+    server: nfs-server.example.com
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jenkins-pvc
+  namespace: jenkins
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jenkins-init-scripts
+  namespace: jenkins
+data:
+  create-user.groovy: |
+    import jenkins.model.*
+    import hudson.security.*
+
+    def instance = Jenkins.getInstance()
+
+    def hudsonRealm = new HudsonPrivateSecurityRealm(false)
+    hudsonRealm.createAccount('newuser', 'newpassword')
+    instance.setSecurityRealm(hudsonRealm)
+    instance.save()
+
+  generate-token.groovy: |
+    import jenkins.security.*
+    import jenkins.model.*
+    import hudson.model.User
+
+    def user = User.getById('newuser', true)
+    def apiTokenProperty = user.getProperty(ApiTokenProperty.class)
+
+
+    def tokenName = "newtoken"
+    //def tokenUuid = apiTokenProperty.tokenStore.generateNewToken(tokenName)
+    apiTokenProperty.tokenStore.addFixedNewToken("116e2b4d3be8a4ced881115370c7ab7c7a")
+    ////def tokenValue = apiTokenProperty.tokenStore.getToken(tokenUuid).plainValue
+
+    //println("Generated Token for user 'newuser': ${tokenUuid.plainValue}") // 116e2b4d3be8a4ced881115370c7ab7c7a
+    //println("Generated Token for user 'newuser': ${tokenUuid.tokenUuid}") // ee64bc68-9459-42a9-bf92-8fc8f9d7a292
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:lts
+          ports:
+            - containerPort: 8080
+            - containerPort: 50000
+          env:
+            - name: JAVA_OPTS
+              value: "-Djenkins.install.runSetupWizard=false"
+          volumeMounts:
+            - name: jenkins-data
+              mountPath: /var/jenkins_home
+            - name: jenkins-init-scripts
+              mountPath: /usr/share/jenkins/ref/init.groovy.d
+      volumes:
+        - name: jenkins-data
+          persistentVolumeClaim:
+            claimName: jenkins-pvc
+        - name: jenkins-init-scripts
+          configMap:
+            name: jenkins-init-scripts
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  ports:
+    - name: 8080-port
+      port: 8080
+      targetPort: 8080
+    - name: 50000-port
+      port: 50000
+      targetPort: 50000
+  selector:
+    app: jenkins
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  to:
+    kind: Service
+    name: jenkins
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge

@@ -11,4 +11,4 @@ spec:
     fileStorage:
       persistentVolumeClaim:
         storageClassName: manual
-  wildcardDomain: apps.cluster-djr6p.djr6p.sandbox1644.opentlc.com
+  wildcardDomain: apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com
