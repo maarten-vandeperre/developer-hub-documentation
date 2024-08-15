@@ -83,6 +83,7 @@ oc apply -f gitops/developer-hub/00_developer-hub-operator.yaml
 oc apply -f gitops/argocd/argocd-operator.yaml
 oc apply -f gitops/tekton/tekton-operator.yaml
 oc apply -f gitops/3scale/3scale-operator.yaml
+oc apply -f gitops/kafka/kafka-operator.yaml
 
 echo "sleep for operators to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 300 )

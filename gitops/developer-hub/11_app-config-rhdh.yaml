@@ -58,7 +58,7 @@ data:
       providers:
         keycloakOrg:
           default:
-            baseUrl: https://demo-keycloak-instance.apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com
+            baseUrl: https://demo-keycloak-instance.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
             loginRealm: rhdh # ${KEYCLOAK_REALM}
             realm: rhdh # ${KEYCLOAK_REALM}
             clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
@@ -115,7 +115,7 @@ data:
         oidc:
           default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            metadataUrl: https://demo-keycloak-instance.apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
             clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
             clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
             prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -135,7 +135,7 @@ data:
         - type: 'config'
           instances:
             - name: argoInstance1
-              url: https://argocd-instance-server-demo-project.apps.cluster-ht4gg.ht4gg.sandbox75.opentlc.com
+              url: https://argocd-instance-server-demo-project.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
               username: admin 
               password: ${RHDH_ARGOCD_ADMIN_PWD}
     jenkins:

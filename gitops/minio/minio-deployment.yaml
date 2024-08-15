@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+  namespace: demo-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+        - name: minio
+          image: quay.io/minio/minio:latest
+          args:
+            - server
+            - /data
+          env:
+            - name: MINIO_ACCESS_KEY
+              value: "minioadmin"  # Change to your preferred access key
+            - name: MINIO_SECRET_KEY
+              value: "minioadmin"  # Change to your preferred secret key
+            - name: MINIO_CONSOLE_PORT_NUMBER
+              value: "34187"  # Set the custom port (e.g., 34187)
+          ports:
+            - containerPort: 9000
+            - containerPort: 34187
+          volumeMounts:
+            - name: storage
+              mountPath: /data
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: minio-pvc

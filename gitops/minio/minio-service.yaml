@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+  namespace: demo-project
+spec:
+  ports:
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
+      name: http
+  selector:
+    app: minio
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-webui-service
+  namespace: demo-project
+spec:
+  ports:
+    - port: 34187
+      targetPort: 34187
+      protocol: TCP
+      name: webui
+  selector:
+    app: minio
+  type: ClusterIP
+---
