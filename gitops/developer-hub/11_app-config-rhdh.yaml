@@ -95,6 +95,15 @@ data:
                 seconds: 10
               timeout:
                 seconds: 60
+        threeScaleApiEntity:
+          default:
+            baseUrl: https://demo-organization-admin.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+            accessToken: f1dcf5f09fe82043da924386d58743bb291c42e12bfad58f35a834434e9562ad
+            schedule: # optional; same options as in TaskScheduleDefinition
+              # supports cron, ISO duration, "human duration" as used in code
+              frequency: { minutes: 1 }
+              # supports ISO duration, "human duration" as used in code
+              timeout: { minutes: 3 }
         awsS3:                             #aws-techdocs-enabled
           default: # identifies your dataset / provider independent of config changes                             #aws-techdocs-enabled
             bucketName: redhat-demo-dev-hub-1                             #aws-techdocs-enabled
