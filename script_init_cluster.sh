@@ -26,16 +26,24 @@ fast_waiting_times="no"
       }
 
 
+
+
+read -p "Do you want to enable AWS S3 storage for static tech docs (README-SetupAwsS3StorageForTechDocs.md) (yes/no)? " enable_aws_s3_techdocs
+read -p "Did you already generate the secret config maps? (yes/no): " secrets_generated
+# Convert the input to lowercase
+secrets_generated=$(echo "$secrets_generated" | tr '[:upper:]' '[:lower:]')
+
+
+
+
 ./scripts/script_prepare_repository.sh
 oc apply -f gitops/namespaces.yaml
 oc apply -f gitops/operator-groups.yaml
 
 oc apply -f gitops/tekton/tekton-service-account.yaml
 
-read -p "Do you want to enable AWS S3 storage for static tech docs (README-SetupAwsS3StorageForTechDocs.md) (yes/no)? " enable_aws_s3_techdocs
-read -p "Did you already generate the secret config maps? (yes/no): " secrets_generated
-# Convert the input to lowercase
-secrets_generated=$(echo "$secrets_generated" | tr '[:upper:]' '[:lower:]')
+oc apply -f gitops/minio/minio-persistence-volume-claim.yaml
+
 
 # Check if the secrets are already generated
 if [ "$secrets_generated" = "no" ]; then
@@ -85,6 +93,12 @@ oc apply -f gitops/tekton/tekton-operator.yaml
 oc apply -f gitops/3scale/3scale-operator.yaml
 oc apply -f gitops/kafka/kafka-operator.yaml
 
+# minio
+echo "Install Minio"
+oc apply -f gitops/minio/minio-deployment.yaml
+oc apply -f gitops/minio/minio-service.yaml
+oc apply -f gitops/minio/minio-route.yaml
+
 echo "sleep for operators to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 300 )
 sleep "$to_sleep"
@@ -119,8 +133,11 @@ sleep "$to_sleep"
   oc apply -f gitops/keycloak/keycloak-postgres.yaml
 
   # 3scale
-  echo "Configuring 3scale API manager"
-  oc apply -f gitops/3scale/3scale-api-manager.yaml
+  echo "Configuring 3scale API manager prerequisites"
+  oc apply -f gitops/3scale/3scale-persistence-volume-claim-system-storage.yaml
+  oc apply -f gitops/3scale/3scale-storage-config.yaml
+  oc apply -f gitops/3scale/3scale-storage-credentials.yaml
+  oc apply -f gitops/3scale/3scale-api-secret-registry-auth.yaml
 
   # tekton
   echo "Configuring Tekton PVCs"
@@ -159,6 +176,10 @@ sleep "$to_sleep"
   echo "Configuring Keycloak instance"
   oc apply -f gitops/keycloak/keycloak-instance.yaml
 
+  # 3scale
+  echo "Configuring 3scale API manager"
+  oc apply -f gitops/3scale/3scale-api-manager.yaml
+
 echo "sleep for batch 2 to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )
 sleep "$to_sleep"
@@ -172,6 +193,10 @@ sleep "$to_sleep"
   # tekton
   echo "Configuring Tekton pipeline runs"
   oc apply -f gitops/tekton/tekton-pipeline-run-simple-hello-world.yaml
+
+  # 3scale
+  echo "Configuring 3scale"
+  sh scripts/script_configure_3scale.sh
 
 echo "sleep for batch 3 to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )

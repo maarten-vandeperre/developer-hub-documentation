@@ -63,7 +63,6 @@ spec:
         values:
           name: ${{ parameters.name }}
           owner: ${{ parameters.owner }}
-
     - id: publish-repository
       name: Publish Repository
       action: publish:github
