@@ -1,0 +1,12 @@
+apiVersion: capabilities.3scale.net/v1alpha1
+kind: Tenant
+metadata:
+  name: my-tenant
+  namespace: demo-project
+spec:
+  apiKey: 263aa1b2d3ebe5592ffb269bebd4bb4c
+  adminDomain: demo-tenant.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+  username: admin
+  password: 3scale
+  email: mvandepe@redhat.com
+  organizationName: Demo Organization

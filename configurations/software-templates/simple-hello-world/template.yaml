@@ -15,10 +15,15 @@ spec:
     - title: Repository Information
       required:
         - repoName
+        - githubAccountName
       properties:
         repoName:
           type: string
           title: Repository Name
+        githubAccountName:
+          type: string
+          title: GitHub Account Name
+          description: Name of your account or organization, for me, if I go to GitHub, I have this url "https://github.com/maarten-vandeperre/dev-hub-test-demo", of which "maarten-vandeperre" is my GitHub account name.
     - title: Component Information
       required:
         - name
@@ -63,7 +68,7 @@ spec:
       name: Publish Repository
       action: publish:github
       input:
-        repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=maarten-vandeperre'
+        repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=${{ parameters.githubAccountName }}'
         repoVisibility: public
 #        token: '${{ secrets.githubPersonalAccessToken }}'
         description: Repository created by Backstage template
@@ -72,4 +77,4 @@ spec:
   output:
     links:
       - title: Repository
-        url: 'https://github.com/maarten-vandeperre/${{ parameters.repoName }}'
+        url: 'https://github.com/${{ parameters.githubAccountName }}/${{ parameters.repoName }}'

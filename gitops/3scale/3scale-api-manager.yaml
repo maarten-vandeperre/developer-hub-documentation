@@ -1,14 +1,22 @@
 apiVersion: apps.3scale.net/v1alpha1
 kind: APIManager
 metadata:
-  name: apimanager-sample
+  name: apimanager-demo-project
   namespace: demo-project
 spec:
   monitoring:
-    enablePrometheusRules: true
-    enabled: true
+    enablePrometheusRules: false
+    enabled: false  # Disable Grafana integration
   system:
+#    fileStorage:
+#      persistentVolumeClaim:
+#        storageClassName: manual
     fileStorage:
-      persistentVolumeClaim:
-        storageClassName: manual
+      simpleStorageService:
+        configurationSecretRef:
+          name: s3-storage-credentials
+        configurationConfigMapRef:
+          name: s3-storage-config
+        bucket: 3scale
+        awsRegion: eu-west-3
   wildcardDomain: apps.cluster-qqr42.qqr42.sandbox592.opentlc.com

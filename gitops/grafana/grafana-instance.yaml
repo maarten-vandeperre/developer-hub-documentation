@@ -1,0 +1,17 @@
+apiVersion: grafana.integreatly.org/v1beta1
+kind: Grafana
+metadata:
+  name: backend
+  namespace: demo-project
+spec:
+  ingress:
+    enabled: True
+    hostname: apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+  config:
+    auth:
+      disable_login_form: 'false'
+    log:
+      mode: console
+    security:
+      admin_password: start
+      admin_user: root
