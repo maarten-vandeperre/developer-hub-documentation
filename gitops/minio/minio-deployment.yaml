@@ -18,20 +18,20 @@ spec:
           image: quay.io/minio/minio:latest
           args:
             - server
-            - /data
+            - /tmp/data
           env:
             - name: MINIO_ACCESS_KEY
-              value: "minioadmin"  # Change to your preferred access key
+              value: "minioadmin"
             - name: MINIO_SECRET_KEY
-              value: "minioadmin"  # Change to your preferred secret key
-            - name: MINIO_CONSOLE_PORT_NUMBER
-              value: "34187"  # Set the custom port (e.g., 34187)
+              value: "minioadmin"
+            - name: MINIO_CONSOLE_ADDRESS
+              value: "0.0.0.0:9090"
           ports:
             - containerPort: 9000
-            - containerPort: 34187
+            - containerPort: 9090
           volumeMounts:
             - name: storage
-              mountPath: /data
+              mountPath: /tmp/data
       volumes:
         - name: storage
           persistentVolumeClaim:
