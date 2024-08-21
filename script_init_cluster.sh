@@ -135,10 +135,9 @@ sleep "$to_sleep"
 
   # 3scale
   echo "Configuring 3scale API manager prerequisites"
-  oc apply -f gitops/3scale/3scale-persistence-volume-claim-system-storage.yaml
   oc apply -f gitops/3scale/3scale-storage-config.yaml
   oc apply -f gitops/3scale/3scale-storage-credentials.yaml
-  oc apply -f gitops/3scale/3scale-api-secret-registry-auth.yaml
+  oc apply -f gitops/3scale/3scale-secret-registry-auth.yaml
 
   # tekton
   echo "Configuring Tekton PVCs"
