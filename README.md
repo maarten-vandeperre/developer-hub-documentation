@@ -522,12 +522,12 @@ catalog:
     aws s3 ls
     ```
   * Publish the static content to the S3 bucket by executing the following command:  
-  **!! be aware:** If you change the component name (i.e., maartens-first-aws-documentation), make sure that you change it as well 
+  **!! be aware:** If you change the component name (i.e., maartens-first-documentation), make sure that you change it as well 
   in catalog-info.yaml and mkdocs.yaml configuration files within the documentation repository, as they are linked to each other by name.
     ```shell
     techdocs-cli publish --publisher-type awsS3 \
           --storage-name redhat-demo-dev-hub-1 \
-          --entity default/Component/maartens-first-aws-documentation \
+          --entity default/Component/maartens-first-documentation \
           --directory configurations/techdocs/static-content/aws-s3/site \
           --awsS3sse AES256
     ```

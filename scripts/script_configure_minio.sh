@@ -12,7 +12,7 @@ FILE_PATH="./configurations/data/minio-default-data/a_tech_doc.md"
 OBJECT_URL="${MINIO_SERVER_URL}/$BUCKET/a_tech_doc.md"
 
 
-BUCKET_BASE="${MINIO_SERVER_URL}/${BUCKET}/default/component/maartens-first-minio-documentation"
+BUCKET_BASE="${MINIO_SERVER_URL}/${BUCKET}/default/component/maartens-first-documentation"
 BASE_PATH="./configurations/techdocs/static-content/minio-s3/site"
 
 
