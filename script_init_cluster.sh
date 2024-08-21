@@ -137,6 +137,7 @@ sleep "$to_sleep"
   echo "Configuring 3scale API manager prerequisites"
   oc apply -f gitops/3scale/3scale-storage-config.yaml
   oc apply -f gitops/3scale/3scale-storage-credentials.yaml
+  sh scripts/script_configure_3scale_docker.sh
   oc apply -f gitops/3scale/3scale-secret-registry-auth.yaml
 
   # tekton
