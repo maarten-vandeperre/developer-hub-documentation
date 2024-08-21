@@ -128,6 +128,10 @@ sleep "$to_sleep"
 
 # batch 1 (i.e. databases and pre-configurations)
 
+  # minio
+  echo "Configuring Minio default content"
+  sh scripts/script_configure_minio.sh
+
   # keycloak
   echo "Configuring Keycloak database"
   oc apply -f gitops/keycloak/keycloak-postgres.yaml

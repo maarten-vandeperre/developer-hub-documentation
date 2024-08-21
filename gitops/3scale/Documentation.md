@@ -23,4 +23,4 @@ user: 3scale-user
 user: 3scale-user@demo-organization.com
 password: 3scale
 
-admin portal: https://demo-organization-admin.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+admin portal: https://demo-organization-admin.apps.cluster-475kf.475kf.sandbox268.opentlc.com

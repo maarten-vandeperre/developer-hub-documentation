@@ -58,7 +58,7 @@ data:
       providers:
         keycloakOrg:
           default:
-            baseUrl: https://demo-keycloak-instance.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+            baseUrl: https://demo-keycloak-instance.apps.cluster-475kf.475kf.sandbox268.opentlc.com
             loginRealm: rhdh # ${KEYCLOAK_REALM}
             realm: rhdh # ${KEYCLOAK_REALM}
             clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
@@ -97,7 +97,7 @@ data:
                 seconds: 60
         threeScaleApiEntity:
           default:
-            baseUrl: https://demo-organization-admin.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+            baseUrl: https://demo-organization-admin.apps.cluster-475kf.475kf.sandbox268.opentlc.com
             accessToken: f1dcf5f09fe82043da924386d58743bb291c42e12bfad58f35a834434e9562ad
             schedule: # optional; same options as in TaskScheduleDefinition
               # supports cron, ISO duration, "human duration" as used in code
@@ -136,7 +136,7 @@ data:
         oidc:
           default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            metadataUrl: https://demo-keycloak-instance.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-475kf.475kf.sandbox268.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
             clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
             clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
             prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -156,7 +156,7 @@ data:
         - type: 'config'
           instances:
             - name: argoInstance1
-              url: https://argocd-instance-server-demo-project.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+              url: https://argocd-instance-server-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com
               username: admin 
               password: ${RHDH_ARGOCD_ADMIN_PWD}
     jenkins:
@@ -198,7 +198,7 @@ data:
             accessKeyId: minioadmin                             #minio-techdocs-enabled
             secretAccessKey: minioadmin                             #minio-techdocs-enabled
           region: eu-west-3                             #minio-techdocs-enabled
-          endpoint: https://minio-api-demo-project.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com                             #minio-techdocs-enabled
+          endpoint: https://minio-api-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com                             #minio-techdocs-enabled
           s3ForcePathStyle: true                             #minio-techdocs-enabled
           sse: 'AES256'                             #minio-techdocs-enabled
       cache:                             #minio-techdocs-enabled

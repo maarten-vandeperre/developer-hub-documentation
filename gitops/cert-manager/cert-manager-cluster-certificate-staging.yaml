@@ -8,15 +8,15 @@ spec:
   issuerRef:
     name: letsencrypt-staging
     kind: ClusterIssuer
-  commonName: apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+  commonName: apps.cluster-475kf.475kf.sandbox268.opentlc.com
   dnsNames:
-    - apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
-    - www.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+    - apps.cluster-475kf.475kf.sandbox268.opentlc.com
+    - www.apps.cluster-475kf.475kf.sandbox268.opentlc.com
   acme:
     config:
       - http01:
           ingress:
             class: nginx
         domains:
-          - apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
-          - apps.cluster-qqr42.qqr42.sandbox592.opentlc.com
+          - apps.cluster-475kf.475kf.sandbox268.opentlc.com
+          - apps.cluster-475kf.475kf.sandbox268.opentlc.com
