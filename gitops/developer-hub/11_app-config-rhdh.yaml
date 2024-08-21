@@ -106,7 +106,7 @@ data:
               timeout: { minutes: 3 }
         awsS3:                             #minio-techdocs-enabled
           default: # identifies your dataset / provider independent of config changes                             #minio-techdocs-enabled
-            bucketName: redhat-demo-dev-hub-1                             #minio-techdocs-enabled
+            bucketName: minio-tech-docs                            #minio-techdocs-enabled
             #prefix: prefix/ # optional                             #minio-techdocs-enabled
             region: eu-west-3 # optional, uses the default region otherwise                             #minio-techdocs-enabled
             schedule: # same options as in TaskScheduleDefinition                             #minio-techdocs-enabled
