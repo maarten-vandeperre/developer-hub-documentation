@@ -104,18 +104,18 @@ data:
               frequency: { minutes: 1 }
               # supports ISO duration, "human duration" as used in code
               timeout: { minutes: 3 }
-        awsS3:                             #minio-techdocs-enabled
-          default: # identifies your dataset / provider independent of config changes                             #minio-techdocs-enabled
-            bucketName: minio-tech-docs                            #minio-techdocs-enabled
-            #prefix: prefix/ # optional                             #minio-techdocs-enabled
-            region: eu-west-3 # optional, uses the default region otherwise                             #minio-techdocs-enabled
-            schedule: # same options as in TaskScheduleDefinition                             #minio-techdocs-enabled
-              # supports cron, ISO duration, "human duration" as used in code                             #minio-techdocs-enabled
-              #frequency: { minutes: 30 }                             #minio-techdocs-enabled
-              frequency: { minutes: 1 }                             #minio-techdocs-enabled
-              # supports ISO duration, "human duration" as used in code                             #minio-techdocs-enabled
-              timeout: { minutes: 3 }                             #minio-techdocs-enabled
-              initialDelay: { seconds: 15 }                             #minio-techdocs-enabled
+        #if-minio-techdocs-disabled awsS3: # minio
+          #if-minio-techdocs-disabled default: # identifies your dataset / provider independent of config changes
+            #if-minio-techdocs-disabled bucketName: minio-tech-docs
+            #if-minio-techdocs-disabled #prefix: prefix/ # optional
+            #if-minio-techdocs-disabled region: eu-west-3 # optional, uses the default region otherwise
+            #if-minio-techdocs-disabled schedule: # same options as in TaskScheduleDefinition
+              #if-minio-techdocs-disabled # supports cron, ISO duration, "human duration" as used in code
+              #if-minio-techdocs-disabled #frequency: { minutes: 30 }
+              #if-minio-techdocs-disabled frequency: { minutes: 1 }
+              #if-minio-techdocs-disabled # supports ISO duration, "human duration" as used in code
+              #if-minio-techdocs-disabled timeout: { minutes: 3 }
+              #if-minio-techdocs-disabled initialDelay: { seconds: 15 }
         #if-aws-techdocs-disabled awsS3:
           #if-aws-techdocs-disabled default: # identifies your dataset / provider independent of config changes
             #if-aws-techdocs-disabled bucketName: redhat-demo-dev-hub-1
@@ -186,34 +186,34 @@ data:
           plural: routes
       serviceLocatorMethod:
         type: multiTenant
-    techdocs:                             #minio-techdocs-enabled
-      builder: external                             #minio-techdocs-enabled
-      generator:                             #minio-techdocs-enabled
-        runIn: local                             #minio-techdocs-enabled
-      publisher:                             #minio-techdocs-enabled
-        type: 'awsS3'                             #minio-techdocs-enabled
-        awsS3:                             #minio-techdocs-enabled
-          bucketName: minio-tech-docs                             #minio-techdocs-enabled
-          credentials:                             #minio-techdocs-enabled
-            accessKeyId: minioadmin                             #minio-techdocs-enabled
-            secretAccessKey: minioadmin                             #minio-techdocs-enabled
-          region: eu-west-3                             #minio-techdocs-enabled
-          endpoint: https://minio-api-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com                             #minio-techdocs-enabled
-          s3ForcePathStyle: true                             #minio-techdocs-enabled
-          sse: 'AES256'                             #minio-techdocs-enabled
-      cache:                             #minio-techdocs-enabled
-        # Represents the number of milliseconds a statically built asset should                             #minio-techdocs-enabled
-        # stay cached. Cache invalidation is handled automatically by the frontend,                             #minio-techdocs-enabled
-        # which compares the build times in cached metadata vs. canonical storage,                             #minio-techdocs-enabled
-        # allowing long TTLs (e.g. 1 month/year)                             #minio-techdocs-enabled
-        # ttl: 3600000                             #minio-techdocs-enabled
-        ttl: 60000                             #minio-techdocs-enabled
+    #if-minio-techdocs-disabled techdocs:
+      #if-minio-techdocs-disabled builder: external
+      #if-minio-techdocs-disabled generator:
+        #if-minio-techdocs-disabled runIn: local
+      #if-minio-techdocs-disabled publisher:
+        #if-minio-techdocs-disabled type: 'awsS3'
+        #if-minio-techdocs-disabled awsS3:
+          #if-minio-techdocs-disabled bucketName: minio-tech-docs
+          #if-minio-techdocs-disabled credentials:
+            #if-minio-techdocs-disabled accessKeyId: minioadmin
+            #if-minio-techdocs-disabled secretAccessKey: minioadmin
+          #if-minio-techdocs-disabled region: eu-west-3
+          #if-minio-techdocs-disabled endpoint: https://minio-api-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com
+          #if-minio-techdocs-disabled s3ForcePathStyle: true
+          #if-minio-techdocs-disabled sse: 'AES256'
+      #if-minio-techdocs-disabled cache:
+        #if-minio-techdocs-disabled # Represents the number of milliseconds a statically built asset should
+        #if-minio-techdocs-disabled # stay cached. Cache invalidation is handled automatically by the frontend,
+        #if-minio-techdocs-disabled # which compares the build times in cached metadata vs. canonical storage,
+        #if-minio-techdocs-disabled # allowing long TTLs (e.g. 1 month/year)
+        #if-minio-techdocs-disabled # ttl: 3600000
+        #if-minio-techdocs-disabled ttl: 60000
 
-        # (Optional) The time (in milliseconds) that the TechDocs backend will wait                             #minio-techdocs-enabled
-        # for a cache service to respond before continuing on as though the cached                             #minio-techdocs-enabled
-        # object was not found (e.g. when the cache sercice is unavailable). The                             #minio-techdocs-enabled
-        # default value is 1000                             #minio-techdocs-enabled
-        readTimeout: 500                             #minio-techdocs-enabled
+        #if-minio-techdocs-disabled # (Optional) The time (in milliseconds) that the TechDocs backend will wait
+        #if-minio-techdocs-disabled # for a cache service to respond before continuing on as though the cached
+        #if-minio-techdocs-disabled # object was not found (e.g. when the cache sercice is unavailable). The
+        #if-minio-techdocs-disabled # default value is 1000
+        #if-minio-techdocs-disabled readTimeout: 500
     #if-aws-techdocs-disabled techdocs:
       #if-aws-techdocs-disabled builder: external
       #if-aws-techdocs-disabled generator:

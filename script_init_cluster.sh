@@ -28,12 +28,10 @@ fast_waiting_times="no"
 
 
 
-read -p "Do you want to enable AWS S3 storage for static tech docs (README-SetupAwsS3StorageForTechDocs.md) (yes/no)? " enable_aws_s3_techdocs
+read -p "Which storage provider for static tech docs do you want to use? (aws-s3/minio-s3)? " techdocs_storage_provider
 read -p "Did you already generate the secret config maps? (yes/no): " secrets_generated
 # Convert the input to lowercase
 secrets_generated=$(echo "$secrets_generated" | tr '[:upper:]' '[:lower:]')
-
-
 
 
 ./scripts/script_prepare_repository.sh
@@ -50,16 +48,20 @@ if [ "$secrets_generated" = "no" ]; then
   echo "start generating the secret config maps"
 
   # Convert the input to lowercase
-  enable_aws_s3_techdocs=$(echo "$enable_aws_s3_techdocs" | tr '[:upper:]' '[:lower:]')
+  techdocs_storage_provider=$(echo "$techdocs_storage_provider" | tr '[:upper:]' '[:lower:]')
 
-  if [ "$enable_aws_s3_techdocs" = "yes" ] || [ "$enable_aws_s3_techdocs" = "true" ]; then
+  if [ "$techdocs_storage_provider" = "aws-s3" ]; then
     echo "Executing shell scripts (to configure S3)..."
     ./scripts/script_configure_aws_s3.sh
     ./scripts/script_enable_aws_techdocs_config.sh
     oc apply -f secrets/generated/secret_aws_s3_techdocs.yaml
+  elif [ "$techdocs_storage_provider" = "minio-s3" ]; then
+    ./scripts/script_enable_minio_techdocs_config.sh
   else
-    echo "Skipping enableing of aws s3 tech docs."
     ./scripts/script_disable_aws_techdocs_config.sh
+    ./scripts/script_disable_minio_techdocs_config.sh
+    echo "$techdocs_storage_provider not supported." >&2
+    exit 1
   fi
 
   echo "configuring GitHub integration..."
@@ -68,14 +70,9 @@ if [ "$secrets_generated" = "no" ]; then
   echo "End configurations"
 else
   echo "No action needed, regarding the secret config maps."
-  if [ "$enable_aws_s3_techdocs" = "yes" ] || [ "$enable_aws_s3_techdocs" = "true" ]; then
-      echo "Executing shell scripts (to configure S3)..."
-      ./scripts/script_enable_aws_techdocs_config.sh
+  if [ "$techdocs_storage_provider" = "aws-s3" ]; then
+      echo "Executing shell scripts (to configure S3 secrets)..."
       oc apply -f secrets/generated/secret_aws_s3_techdocs.yaml
-    else
-      echo "Skipping enableing of aws s3 tech docs."
-      ./scripts/script_disable_aws_techdocs_config.sh
-    fi
 fi
 
   oc apply -f secrets/generated/secret_github_integration.yaml
