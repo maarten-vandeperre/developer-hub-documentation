@@ -4,9 +4,8 @@ metadata:
   name: maartens-first-aws-documentation
   annotations:
     # this could also be `url:<url>` if the documentation isn't in the same location
-    backstage.io/techdocs-ref: url:https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/techdocs/static-content
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: documentation
   lifecycle: experimental
-  owner: maarten.vandeperre
-  system: maartens-wonderful-system
+  owner: maarten-vandeperre

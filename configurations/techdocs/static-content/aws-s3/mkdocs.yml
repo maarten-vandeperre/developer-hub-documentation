@@ -1,0 +1,9 @@
+site_name: maartens-first-aws-documentation
+site_description: An informative description
+
+plugins:
+  - techdocs-core
+
+nav:
+  - Home: index.md
+  - Some_Guide: second.md

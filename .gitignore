@@ -23,7 +23,7 @@
 hs_err_pid*
 replay_pid*
 .env
-/documentation/techdocs/static-content/site/
+/configurations/techdocs/static-content/aws-s3/site/
 
 # Plugin directory
 /.quarkus/cli/plugins/

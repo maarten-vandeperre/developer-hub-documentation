@@ -1,4 +1,5 @@
 #!/bin/bash
+# based upon https://gist.github.com/voodoodror/79917399513f9bd5652d153e5718922a
 
 ACCESS_KEY="minioadmin"
 SECRET_KEY="minioadmin"
@@ -11,11 +12,37 @@ FILE_PATH="./configurations/data/minio-default-data/a_tech_doc.md"
 OBJECT_URL="${MINIO_SERVER_URL}/$BUCKET/a_tech_doc.md"
 
 
+BUCKET_BASE="${MINIO_SERVER_URL}/${BUCKET}/default/component/maartens-first-minio-documentation"
+BASE_PATH="./configurations/techdocs/static-content/minio-s3/site"
+
+
 DATE=$(date -u +"%Y%m%dT%H%M%SZ")
 DATE_ONLY=$(date -u +"%Y%m%d")
 SERVICE="s3"
 ALGORITHM="AWS4-HMAC-SHA256"
 SIGNED_HEADERS="host;x-amz-date"
+
+# Function to recursively process directories and files
+process_directory() {
+    local current_dir="$1"
+
+    # Iterate over each item in the current directory
+    for item in "$current_dir"/*; do
+        if [ -d "$item" ]; then
+            # If the item is a directory, call the function recursively
+            process_directory "$item"
+        elif [ -f "$item" ]; then
+            # If the item is a file, generate the upload command
+            local relative_path="${item#$BASE_PATH/}"
+            local bucket_path="${BUCKET_BASE}/${relative_path}"
+            local content_type="text/plain" # Adjust as needed or use a function to determine type
+
+            echo "uploadFile PUT \"$bucket_path\" \"$item\" \"$content_type\""
+            uploadFile PUT "$bucket_path" "$item" "$content_type"
+            echo
+        fi
+    done
+}
 
 # Taken from http://danosipov.com/?p=496
 function sign {
@@ -92,7 +119,7 @@ function executeRestCall(){
   curl --request $method --url "$url" \
           -H "authorization: $AUTHORIZATION_HEADER" \
           -H "cache-control: no-cache" \
-          -H "content-type: application/json" \
+          -H "content-type: $contentType" \
           -H "host: $uri_address" \
           -H "x-amz-date: $DATE" \
           -H "x-amz-content-sha256: $PAYLOAD"
@@ -102,13 +129,15 @@ function uploadFile(){
   local method=$1
   local url=$2
   local filePath=$3
+  local contentType=$4
 
-  contentType="text/markdown"
+  echo $url
 
   uri_parser $url
 
-  FILE_CONTENT=$(cat $filePath)
-  PAYLOAD=$(printf "$FILE_CONTENT" | openssl dgst -binary -sha256 | od -An -vtx1 | sed 's/[ \n]//g' | sed 'N;s/\n//')
+#  FILE_CONTENT=$(cat $filePath)
+#  PAYLOAD=$(printf "$FILE_CONTENT" | openssl dgst -binary -sha256 | od -An -vtx1 | sed 's/[ \n]//g' | sed 'N;s/\n//')
+  PAYLOAD=$(openssl dgst -binary -sha256 $filePath | od -An -vtx1 | sed 's/[ \n]//g' | sed 'N;s/\n//')
   CANONICAL_REQUEST="$method\n$uri_path\n\nhost:$uri_address\nx-amz-date:$DATE\n\nhost;x-amz-date\n$PAYLOAD"
   CREDENTIAL_SCOPE="$DATE_ONLY/$REGION/$SERVICE/aws4_request"
   STRING_TO_SIGN="$ALGORITHM\n$DATE\n$CREDENTIAL_SCOPE\n$(printf $CANONICAL_REQUEST | openssl dgst -binary -sha256 | od -An -vtx1 | sed 's/[ \n]//g' | sed 'N;s/\n//')"
@@ -125,15 +154,28 @@ function uploadFile(){
             --upload-file $filePath
 
   echo "file upload finished"
+  echo
 }
 
 
-responseCreateBucket=$(executeRestCall PUT "${MINIO_SERVER_URL}/$BUCKET")
-responseUploadFile=$(uploadFile PUT "$OBJECT_URL" "$FILE_PATH")
+#responseCreateBucket=$(executeRestCall PUT "${MINIO_SERVER_URL}/$BUCKET")
+#responseUploadFile=$(uploadFile PUT "$OBJECT_URL" "$FILE_PATH")
 
 echo "#######################"
-echo $responseCreateBucket
-echo $responseUploadFile
+
+#echo $responseCreateBucket
+#echo $responseUploadFile
+
+executeRestCall PUT "${MINIO_SERVER_URL}/$BUCKET"
+uploadFile PUT "${BUCKET_BASE}/techdocs_metadata.json" "${BASE_PATH}/techdocs_metadata.json" "application/json"
+uploadFile PUT "${BUCKET_BASE}/sitemap.xml.gz" "${BASE_PATH}/sitemap.xml.gz" "application/x-gzip"
+uploadFile PUT "${BUCKET_BASE}/sitemap.xml" "${BASE_PATH}/sitemap.xml" "text/plain"
+uploadFile PUT "${BUCKET_BASE}/index.html" "${BASE_PATH}/index.html" "text/html"
+uploadFile PUT "${BUCKET_BASE}/404.html" "${BASE_PATH}/404.html" "text/html"
+
+uploadFile PUT "${BUCKET_BASE}/second/index.html" "${BASE_PATH}/second/index.html" "text/html"
+
+process_directory "$BASE_PATH/search"
+process_directory "$BASE_PATH/assets"
+
 echo "#######################"
-
-

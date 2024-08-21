@@ -35,6 +35,14 @@ data:
         disabled: false
       - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-3scale-backend-dynamic
         disabled: false
+      - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic                             #minio-techdocs-enabled
+        # documentation: https://backstage.io/docs/features/techdocs/                             #minio-techdocs-enabled
+        # documentation: https://backstage.io/docs/features/techdocs/configuration/                             #minio-techdocs-enabled
+        # doc discovery: https://backstage.io/docs/integrations/aws-s3/discovery/                             #minio-techdocs-enabled
+        # documentation: https://backstage.io/docs/features/techdocs/how-to-guides/                             #minio-techdocs-enabled
+        # iframes in techdocs: https://backstage.io/docs/features/techdocs/how-to-guides/#how-to-add-the-documentation-setup-to-your-software-templates                             #minio-techdocs-enabled
+        disabled: false                             #minio-techdocs-enabled
+        pluginConfig: {}                             #minio-techdocs-enabled
       #if-aws-techdocs-disabled - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
         #if-aws-techdocs-disabled # documentation: https://backstage.io/docs/features/techdocs/
         #if-aws-techdocs-disabled # documentation: https://backstage.io/docs/features/techdocs/configuration/
