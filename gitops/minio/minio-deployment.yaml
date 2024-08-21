@@ -26,6 +26,8 @@ spec:
               value: "minioadmin"
             - name: MINIO_CONSOLE_ADDRESS
               value: "0.0.0.0:9090"
+            - name: MINIO_ADDRESS
+              value: "0.0.0.0:9000"
           ports:
             - containerPort: 9000
             - containerPort: 9090
