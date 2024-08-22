@@ -186,6 +186,18 @@ data:
           plural: routes
       serviceLocatorMethod:
         type: multiTenant
+    dynamicPlugins:
+      frontend:
+        internal.backstage-plugin-simple-chat:
+          appIcons:
+            - name: chatIcon
+              importName: ChatIcon
+          dynamicRoutes:
+            - path: /simple-chat
+              importName: SimpleChatPage
+              menuItem:
+                text: 'Simple Chat'
+                icon: chatIcon
     #if-minio-techdocs-disabled techdocs:
       #if-minio-techdocs-disabled builder: external
       #if-minio-techdocs-disabled generator:

@@ -1,54 +1,5 @@
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
-.env
-/configurations/techdocs/static-content/aws-s3/site/
-
-# Plugin directory
-/.quarkus/cli/plugins/
-
-# Gradle
-configurations/software-templates/simple-hello-world/skeleton/.gradle/
-build/
-
-# Maven
-target/
-
-# Eclipse
-.project
-.classpath
-.settings/
-bin/
-
-# IntelliJ
-.idea
-*.ipr
-*.iml
-*.iws
-
-# Custom
-secrets/generated
+# macOS
+.DS_Store
 
 # Logs
 logs
@@ -101,7 +52,6 @@ site
 
 # E2E test reports
 e2e-test-report/
-
 
 
 dist-dynamic
