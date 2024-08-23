@@ -16,3 +16,5 @@ echo "Plugin .tgz files:"
 ls -l $DYNAMIC_PLUGIN_ROOT_DIR
 
 echo ""
+
+echo "Backend plugin integrity Hash: $BACKEND_INTEGRITY_HASH\nFrontend plugin integrity Hash: $FRONTEND_INTEGRITY_HASH" > hashes.txt

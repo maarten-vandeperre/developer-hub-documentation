@@ -1,0 +1,2 @@
+Backend plugin integrity Hash: sha512-JZovfAOgWfOggEiKZdnGe2MThwckjqcI6O/D3eEjn/nvVn9SEiZFc1wYx1DJoTRzs9sh/RS3+Pe81YfS9inDaw==
+Frontend plugin integrity Hash: sha512-uXXYsyMGii3/qxHtqATIxGjiGZSxh7HwqsT0Ji4uykcTAO5Ecmw6XOIDLI6R8nQeq6Fzfo6IFFpkAr9/ePjCiQ==

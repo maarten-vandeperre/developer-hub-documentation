@@ -34,3 +34,8 @@ total 6824
 -rw-r--r--@ 1 mvandepe  staff  2745128 Aug 22 12:41 internal-backstage-plugin-simple-chat-dynamic-0.1.0.tgz
 
 Make sure that plugin-registry service is there with port 8080
+
+
+Now in catalog entity component sub menu
+
+https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md

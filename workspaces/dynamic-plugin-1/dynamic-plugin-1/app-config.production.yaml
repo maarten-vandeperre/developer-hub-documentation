@@ -15,7 +15,7 @@ backend:
 
   # config options: https://node-postgres.com/api/client
   database:
-    client: pg
+    client: pg§
     connection:
       host: ${POSTGRES_HOST}
       port: ${POSTGRES_PORT}
