@@ -1,3 +1,5 @@
+https://github.com/3scale/3scale-operator/blob/master/doc/operator-backup-and-restore.md
+
 # 3scale Installation
 Red Hat 3scale API Management is an API Gateway, which makes it easy to manage your APIs. 
 Share, secure, distribute, control, and monetize your APIs on an infrastructure platform built for 

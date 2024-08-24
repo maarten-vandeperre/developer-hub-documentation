@@ -40,7 +40,7 @@ oc apply -f gitops/operator-groups.yaml
 
 oc apply -f gitops/tekton/tekton-service-account.yaml
 
-oc apply -f gitops/minio/minio-persistence-volume-claim.yaml
+oc apply -f gitops/minio/minio-persistent-volume-claim.yaml
 
 
 # Check if the secrets are already generated
