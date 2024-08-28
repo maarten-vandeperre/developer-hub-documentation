@@ -37,10 +37,13 @@ data:
         disabled: false
       - package: 'http://plugin-registry:8080/internal-backstage-plugin-simple-chat-backend-dynamic-0.1.0.tgz'
         disabled: false
-        integrity: 'sha512-JZovfAOgWfOggEiKZdnGe2MThwckjqcI6O/D3eEjn/nvVn9SEiZFc1wYx1DJoTRzs9sh/RS3+Pe81YfS9inDaw==' #backend-hash
+        integrity: 'sha512-RT73cQg+Bu8F86ndQj9PMGuGCsZrMOHSnaoraTJzxsz5AorOMqUHElc7l2UehpDkOge0PXc4QQHBchuSfeM/0g==' #backend-hash
       - package: 'http://plugin-registry:8080/internal-backstage-plugin-simple-chat-dynamic-0.1.0.tgz' 
         disabled: false
         integrity: 'sha512-uXXYsyMGii3/qxHtqATIxGjiGZSxh7HwqsT0Ji4uykcTAO5Ecmw6XOIDLI6R8nQeq6Fzfo6IFFpkAr9/ePjCiQ==' #frontend-hash
+      - package: 'http://plugin-registry:8080/internal-backstage-plugin-scaffolder-backend-module-custom-action-argocd-create-resources-dynamic-0.1.0.tgz' 
+        disabled: false
+        integrity: 'sha512-G835n5gHWwmFztqaq1V2y1pqpgGFE/F5dEtx2o0AAgW2cYNdfeFN+QJVdvZHoSr4BRkrFQIk3rnQMbYJNFOJrw==' #custom-action-argo-create-resources-hash
       #if-minio-techdocs-disabled - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
         #if-minio-techdocs-disabled # documentation: https://backstage.io/docs/features/techdocs/
         #if-minio-techdocs-disabled # documentation: https://backstage.io/docs/features/techdocs/configuration/

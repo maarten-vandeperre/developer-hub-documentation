@@ -39,3 +39,5 @@ Make sure that plugin-registry service is there with port 8080
 Now in catalog entity component sub menu
 
 https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md
+
+mention new readme in the workspace folder

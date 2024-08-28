@@ -1,11 +1,18 @@
-# Minio Installation
-MinIO is an open-source, high-performance, distributed object storage system designed for storing unstructured data such as photos, 
-videos, log files, backups, and container images. It is compatible with Amazon S3 APIs, making it easy to integrate with existing cloud-native applications. 
-MinIO is known for its simplicity, scalability, and robustness, enabling it to handle petabytes of data with minimal resource consumption. 
-It is often used in cloud-native environments, including Kubernetes, and supports features like erasure coding, bitrot protection, and encryption. 
-MinIO can be deployed on-premises, in the cloud, or at the edge, making it versatile for various storage needs.
+# Jenkins Installation
+Jenkins is an open-source automation server widely used for continuous integration and continuous 
+delivery (CI/CD) pipelines. It automates the process of building, testing, and deploying software, 
+allowing developers to integrate changes more frequently and reliably. Jenkins supports a vast ecosystem 
+of plugins that extend its capabilities to work with various tools, platforms, and technologies. 
+It can be easily integrated into any development workflow, providing flexibility to automate a wide 
+range of tasks across different environments. Jenkins is highly customizable, 
+making it a popular choice for managing complex CI/CD processes in both small and large-scale projects.
 
-## Installation of MinIO
+## Installation of Jenkins
+### Create an admin password
+In order to have a hardcoded admin user that we can use, you'll first have to create the password and store it
+in a secret. This can be done by applying [](gitops/jenkins/jenkins-admin-secret.yaml), which will configure the 
+encoded admin password 'rhdh'.
+
 ### Create a persistent volume claim
 A Persistent Volume Claim (PVC) in OpenShift is a request for storage by a user or application. It abstracts the details of storage provisioning 
 by allowing users to claim a specific amount of storage from a Persistent Volume (PV), which is a piece of storage in the cluster. 
@@ -20,7 +27,7 @@ it becomes ready, which can take a couple of minutes.
 1. Apply [](gitops/minio/minio-deployment.yaml) to have Minio running on OpenShift.
 2. Create a service to the running pods by applying [](gitops/minio/minio-service.yaml). 
 Both port 9000 (i.e., API port) and 9090 (i.e., web UI port) will be exposed.
-3. Now create 2 routes to access MinIO outside the OpenShift cluster (e.g., for testing purposes),
+3. Now create 2 routes to access Minio outside the OpenShift cluster (e.g., for testing purposes),
 by applying [](gitops/minio/minio-route.yaml). _(!!! notice that you will have to chance the
 base domain to match yours in the following routes.)_
    1. The API route: https://minio-api-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com

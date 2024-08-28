@@ -23,7 +23,7 @@
     "lint:all": "backstage-cli repo lint",
     "prettier:check": "prettier --check .",
     "new": "backstage-cli new --scope internal",
-    "export-dynamic": "yarn --cwd plugins/simple-chat-backend export-dynamic && yarn --cwd plugins/simple-chat export-dynamic"
+    "export-dynamic": "yarn --cwd plugins/simple-chat-backend export-dynamic && yarn --cwd plugins/simple-chat export-dynamic && yarn --cwd plugins/scaffolder-backend-module-custom-action-argocd-create-resources export-dynamic"
   },
   "workspaces": {
     "packages": [
