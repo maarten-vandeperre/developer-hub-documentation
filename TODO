@@ -133,8 +133,9 @@ curl -X POST \
   -d "grant_type=client_credentials" \
   -d "client_id=rhdh-client" \
   -d "client_secret=7iKyQUwyApIojzOlSj82vUWIhejv41E5" \
-  "https://demo-keycloak-instance.apps.cluster-qqr42.qqr42.sandbox592.opentlc.com//realms/rhdh/protocol/openid-connect/token" | grep jq
+  "https://demo-keycloak-instance.apps.cluster-475kf.475kf.sandbox268.opentlc.com/realms/rhdh/protocol/openid-connect/token"
 
 
-
+https://$KEYCLOAK_HOST/auth/admin/$REALM/users?first=10&max=15
+https://www.keycloak.org/docs-api/22.0.1/rest-api/index.html#_users
 

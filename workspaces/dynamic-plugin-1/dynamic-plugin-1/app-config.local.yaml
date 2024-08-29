@@ -2,3 +2,7 @@
 auth:
   providers:
     guest: {}
+backend:
+  auth:
+    keys:
+      - secret: averysecretpassword

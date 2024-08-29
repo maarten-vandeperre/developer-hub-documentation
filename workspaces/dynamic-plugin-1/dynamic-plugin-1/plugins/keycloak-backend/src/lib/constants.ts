@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Larder Software Limited
+ * Copyright 2022 The Janus IDP Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,4 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export * from './actions';
+
+export const KEYCLOAK_HOST_ANNOTATION = 'keycloak.org/host';
+export const KEYCLOAK_ID_ANNOTATION = 'keycloak.org/id';
+export const KEYCLOAK_REALM_ANNOTATION = 'keycloak.org/realm';
+export const KEYCLOAK_ENTITY_QUERY_SIZE = 100;

@@ -6,7 +6,7 @@
  * Happy hacking!
  */
 
-import { createBackend } from '@backstage/backend-defaults';
+import {createBackend} from '@backstage/backend-defaults';
 
 const backend = createBackend();
 
@@ -24,13 +24,13 @@ backend.add(import('@backstage/plugin-auth-backend-module-guest-provider'));
 // catalog plugin
 backend.add(import('@backstage/plugin-catalog-backend/alpha'));
 backend.add(
-  import('@backstage/plugin-catalog-backend-module-scaffolder-entity-model'),
+    import('@backstage/plugin-catalog-backend-module-scaffolder-entity-model'),
 );
 
 // permission plugin
 backend.add(import('@backstage/plugin-permission-backend/alpha'));
 backend.add(
-  import('@backstage/plugin-permission-backend-module-allow-all-policy'),
+    import('@backstage/plugin-permission-backend-module-allow-all-policy'),
 );
 
 // search plugin
@@ -39,4 +39,5 @@ backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 
 backend.add(import('@internal/backstage-plugin-simple-chat-backend'));
+// backend.add(import('@internal/backstage-plugin-keycloak-backend'));
 backend.start();

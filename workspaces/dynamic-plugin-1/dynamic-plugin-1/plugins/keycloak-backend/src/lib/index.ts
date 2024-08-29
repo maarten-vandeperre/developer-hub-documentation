@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Larder Software Limited
+ * Copyright 2022 The Janus IDP Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,4 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export * from './actions';
+
+export type { GroupTransformer, UserTransformer } from './types';
+export type { KeycloakProviderConfig } from './config';
+export {
+  KEYCLOAK_HOST_ANNOTATION,
+  KEYCLOAK_ID_ANNOTATION,
+  KEYCLOAK_REALM_ANNOTATION,
+} from './constants';

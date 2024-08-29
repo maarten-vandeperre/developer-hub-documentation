@@ -39,6 +39,7 @@
     "@backstage/plugin-search-backend-node": "^1.2.21",
     "@backstage/plugin-techdocs-backend": "^1.10.4",
     "@internal/backstage-plugin-simple-chat-backend": "^0.1.0",
+    "@internal/backstage-plugin-scaffolder-backend-module-custom-action-argocd-create-resources": "^0.1.0",
     "app": "link:../app",
     "better-sqlite3": "^9.0.0",
     "dockerode": "^3.3.1",

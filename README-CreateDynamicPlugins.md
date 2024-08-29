@@ -41,3 +41,5 @@ Now in catalog entity component sub menu
 https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-plugins.md
 
 mention new readme in the workspace folder
+
+https://github.com/arunhari82/backstage-azure-workitem-backend to add extra libraries (e.g., argo actions plugin)

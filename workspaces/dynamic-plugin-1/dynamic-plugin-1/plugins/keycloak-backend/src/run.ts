@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Larder Software Limited
+ * Copyright 2020 The Backstage Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,4 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export * from './actions';
+
+import { getRootLogger } from '@backstage/backend-common';
+
+import { startStandaloneServer } from '../dev';
+
+const logger = getRootLogger();
+const port = process.env.PLUGIN_PORT ? Number(process.env.PLUGIN_PORT) : 7007;
+
+startStandaloneServer({ port, logger }).catch(err => {
+  logger.error('Standalone server failed:', err);
+  process.exit(1);
+});
+
+process.on('SIGINT', () => {
+  logger.info('CTRL+C pressed; exiting.');
+  process.exit(0);
+});

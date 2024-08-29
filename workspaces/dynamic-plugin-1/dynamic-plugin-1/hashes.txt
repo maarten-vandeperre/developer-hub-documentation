@@ -1,3 +1,4 @@
-Backend plugin integrity Hash: sha512-h1p6lke/k9YsSHoC9+eOT3AEBVDpP1Fyka0c0XTFxXmotqC3Evk7aMg9DBOsyTFNce6NzEwVurto/r3B0zEgqg==
-Frontend plugin integrity Hash: sha512-uXXYsyMGii3/qxHtqATIxGjiGZSxh7HwqsT0Ji4uykcTAO5Ecmw6XOIDLI6R8nQeq6Fzfo6IFFpkAr9/ePjCiQ==
-Custom Action ArgoCD Create Resources plugin integrity Hash: sha512-G835n5gHWwmFztqaq1V2y1pqpgGFE/F5dEtx2o0AAgW2cYNdfeFN+QJVdvZHoSr4BRkrFQIk3rnQMbYJNFOJrw==
+Backend plugin integrity Hash: sha512-sM9KFoRxPHVbpJ7+wur0bNSiNjLH/Q5oqfy+6Paz3xqVgQ05o3pu/+f0aFiUzNsUyyqLzqISikAf7yKM1I/iSw==
+Frontend plugin integrity Hash: sha512-FnroSutG25FNnBey2o4QZh8t4VvCOu6P3P1NnLHEu41y3YMZbfqrN8QURqd5HDXTDgTFkBMNDmjFoTjv1flh7g==
+Keycloak plugin integrity Hash: sha512-hQA0q7wqOFFLMAvv86FNpC/Bbxyoqo0tUJ7jX/zslbZlS+ahNq7sxzSbLaUeLPVRyFj1R8EcMDpEmNMJvo0DNg==
+Custom Action ArgoCD Create Resources plugin integrity Hash: sha512-q5NZVJAPJX3QAuIp3Bj1EXgf8srYpLCsZvJCJrLDa9UU87V9kCAPRQLx+H7SzmSpzRJwtqS37pZTseiG2b385Q==

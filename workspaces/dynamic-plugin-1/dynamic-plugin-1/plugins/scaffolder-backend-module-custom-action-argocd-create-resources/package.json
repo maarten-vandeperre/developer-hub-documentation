@@ -7,34 +7,60 @@
   "license": "Apache-2.0",
   "private": true,
   "publishConfig": {
-    "access": "public",
-    "main": "dist/index.cjs.js",
-    "types": "dist/index.d.ts"
+    "access": "public"
   },
   "backstage": {
-    "role": "backend-plugin-module"
+    "role": "backend-plugin-module",
+    "supported-versions": "1.27.7",
+    "pluginId": "scaffolder",
+    "pluginPackage": "@backstage/plugin-scaffolder-backend"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "package.json": [
+        "package.json"
+      ]
+    }
   },
   "scripts": {
-    "start": "backstage-cli package start",
     "build": "backstage-cli package build",
     "lint": "backstage-cli package lint",
-    "test": "backstage-cli package test",
+    "test": "backstage-cli package test --passWithNoTests --coverage",
     "clean": "backstage-cli package clean",
-    "prepack": "backstage-cli package prepack",
-    "postpack": "backstage-cli package postpack",
-    "export-dynamic": "janus-cli package export-dynamic-plugin --embed-package @roadiehq/scaffolder-backend-argocd --override-interop default --no-embed-as-dependencies"
+    "clean-dynamic-sources": "yarn clean && rm -Rf node_modules",
+    "export-dynamic": "janus-cli package export-dynamic-plugin --embed-package @roadiehq/backstage-plugin-argo-cd-backend@2.14.7 --override-interop default --no-embed-as-dependencies",
+    "export-dynamic-backup": "janus-cli package export-dynamic-plugin --embed-package @roadiehq/scaffolder-backend-argocd --override-interop default --no-embed-as-dependencies"
   },
   "dependencies": {
-    "@backstage/backend-plugin-api": "^0.7.0",
-    "@backstage/plugin-scaffolder-node": "^0.4.8",
-    "@roadiehq/scaffolder-backend-argocd": "^1.1.28"
+    "@backstage/backend-common": "^0.21.7",
+    "@backstage/backend-plugin-api": "0.6.17",
+    "@backstage/plugin-scaffolder-node": "0.4.3",
+    "@backstage/plugin-scaffolder-backend": "^1.22.5",
+    "@roadiehq/backstage-plugin-argo-cd-backend": "^2.14.7",
+    "@backstage/backend-test-utils": "^0.3.7",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@backstage/backend-common": "^0.23.3",
-    "@backstage/cli": "^0.26.3",
+    "@backstage/cli": "0.26.11",
     "@janus-idp/cli": "1.13.1"
   },
   "files": [
-    "dist"
+    "dist",
+    "dist-dynamic/*.*",
+    "dist-dynamic/dist/**"
+  ],
+  "maintainers": [
+    "@janus-idp/maintainers-showcase"
+  ],
+  "author": "Red Hat",
+  "homepage": "https://red.ht/rhdh",
+  "bugs": "https://issues.redhat.com/browse/RHIDP",
+  "keywords": [
+    "support:tech-preview",
+    "lifecycle:active"
   ]
 }
