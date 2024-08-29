@@ -21,6 +21,11 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: aap
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: maarten-test-1
 ---
 apiVersion: v1

@@ -43,3 +43,7 @@ https://github.com/janus-idp/backstage-showcase/blob/main/showcase-docs/dynamic-
 mention new readme in the workspace folder
 
 https://github.com/arunhari82/backstage-azure-workitem-backend to add extra libraries (e.g., argo actions plugin)
+https://github.com/janus-idp/backstage-showcase/blob/fae98e3eb9e5bfa3eb3d17e919dede403f3f4270/dynamic-plugins.default.yaml#L597-L612 
+<= list of dynamic plugins (actions) already available
+
+

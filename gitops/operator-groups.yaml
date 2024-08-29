@@ -28,3 +28,9 @@ spec:
   targetNamespaces:
     - cert-manager-operator
 ---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: aap-operator-group
+  namespace: aap
+---
