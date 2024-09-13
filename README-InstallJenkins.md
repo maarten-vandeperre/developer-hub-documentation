@@ -7,6 +7,18 @@ It can be easily integrated into any development workflow, providing flexibility
 range of tasks across different environments. Jenkins is highly customizable, 
 making it a popular choice for managing complex CI/CD processes in both small and large-scale projects.
 
+
+https://medium.com/@rajithakumaraprog/how-to-setup-a-jenkins-organization-folder-job-cf6f1a88aecc
+
+
+
+
+
+
+
+
+
+
 ## Installation of Jenkins
 ### Create an admin password
 In order to have a hardcoded admin user that we can use, you'll first have to create the password and store it
@@ -30,5 +42,5 @@ Both port 9000 (i.e., API port) and 9090 (i.e., web UI port) will be exposed.
 3. Now create 2 routes to access Minio outside the OpenShift cluster (e.g., for testing purposes),
 by applying [](gitops/minio/minio-route.yaml). _(!!! notice that you will have to chance the
 base domain to match yours in the following routes.)_
-   1. The API route: https://minio-api-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com
-   2. The web UI route: https://minio-webui-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com
+   1. The API route: https://minio-api-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
+   2. The web UI route: https://minio-webui-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com

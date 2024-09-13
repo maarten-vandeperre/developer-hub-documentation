@@ -34,3 +34,9 @@ metadata:
   name: aap-operator-group
   namespace: aap
 ---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: redhat-ods-operator-operator-group
+  namespace: redhat-ods-operator
+---

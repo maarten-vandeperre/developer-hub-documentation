@@ -1,1 +1,29 @@
-{"account":{"id":5,"created_at":"2024-08-16T19:16:55Z","updated_at":"2024-08-16T19:16:55Z","credit_card_stored":false,"monthly_billing_enabled":true,"monthly_charging_enabled":true,"state":"approved","links":[{"rel":"self","href":"https://3scale-admin.apps.cluster-475kf.475kf.sandbox268.opentlc.com/admin/api/accounts/5"},{"rel":"users","href":"https://3scale-admin.apps.cluster-475kf.475kf.sandbox268.opentlc.com/admin/api/accounts/5/users"}],"org_name":"Demo Organization"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Not Found</title>
+    <link href="/assets/error.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="content">
+        <h1 class='logo-3scale logo-3scale--svg logo-3scale--boxed' id="logo">
+          3scale
+        </h1>
+
+        <h1>Not Found</h1>
+        <p>Sorry. We can't find what you're looking for.</p>
+      </div>
+
+      <div id="footer">
+        <div class="powered-by-3scale last">
+          <a href="http://www.3scale.net" target="_blank">
+            Powered by <span class="logo-3scale logo-3scale--svg logo-3scale--powered">3scale</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

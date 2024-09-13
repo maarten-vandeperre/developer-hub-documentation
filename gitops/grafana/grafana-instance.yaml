@@ -6,7 +6,7 @@ metadata:
 spec:
   ingress:
     enabled: True
-    hostname: apps.cluster-475kf.475kf.sandbox268.opentlc.com
+    hostname: apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
   config:
     auth:
       disable_login_form: 'false'

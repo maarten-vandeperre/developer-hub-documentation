@@ -50,7 +50,7 @@ In case you would like to do it manually yourself:
 3. Activate the user.
 ![](images/3scale-demo-tenant.png "")
 4. Impersonate via the master or login in the admin screen with the created user.
-_Route should look like this: https://demo-organization-admin.apps.cluster-475kf.475kf.sandbox268.opentlc.com_
+_Route should look like this: https://demo-organization-admin.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com_
 5. Create a backend "API backend".
 6. Create a product "Product A".
 7. Create an API spec for Product A, by going to products > product A > active docs > create a new spec

@@ -27,7 +27,7 @@ data:
 
     def tokenName = "newtoken"
     //def tokenUuid = apiTokenProperty.tokenStore.generateNewToken(tokenName)
-    apiTokenProperty.tokenStore.addFixedNewToken("116e2b4d3be8a4ced881115370c7ab7c7a")
+    apiTokenProperty.tokenStore.addFixedNewToken("new-user-token", "116e2b4d3be8a4ced881115370c7ab7c7a")
     ////def tokenValue = apiTokenProperty.tokenStore.getToken(tokenUuid).plainValue
 
     //println("Generated Token for user 'newuser': ${tokenUuid.plainValue}") // 116e2b4d3be8a4ced881115370c7ab7c7a

@@ -1,7 +1,7 @@
 https://backstage.io/docs/features/software-templates/builtin-actions/
 https://backstage.io/docs/features/software-templates/
 
-https://backstage-developer-hub-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com/create/actions
+https://backstage-developer-hub-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/create/actions
 
 https://github.com/backstage/software-templates/blob/main/scaffolder-templates/create-react-app/template.yaml
 

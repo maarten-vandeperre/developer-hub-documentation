@@ -4,7 +4,7 @@
 ACCESS_KEY="minioadmin"
 SECRET_KEY="minioadmin"
 REGION="eu-west-3"
-MINIO_SERVER_URL="https://minio-api-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com"
+MINIO_SERVER_URL="https://minio-api-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com"
 
 
 BUCKET="minio-tech-docs"

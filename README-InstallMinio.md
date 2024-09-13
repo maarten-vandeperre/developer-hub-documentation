@@ -23,5 +23,5 @@ Both port 9000 (i.e., API port) and 9090 (i.e., web UI port) will be exposed.
 3. Now create 2 routes to access MinIO outside the OpenShift cluster (e.g., for testing purposes),
 by applying [](gitops/minio/minio-route.yaml). _(!!! notice that you will have to chance the
 base domain to match yours in the following routes.)_
-   1. The API route: https://minio-api-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com
-   2. The web UI route: https://minio-webui-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com
+   1. The API route: https://minio-api-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
+   2. The web UI route: https://minio-webui-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com

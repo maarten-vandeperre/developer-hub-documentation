@@ -20,7 +20,7 @@ metadata:
 spec:
   to:
     kind: Service
-    name: minio-webui-service
+    name: minio-service
   port:
     targetPort: webui
   tls:

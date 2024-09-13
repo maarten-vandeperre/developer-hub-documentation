@@ -58,7 +58,7 @@ data:
       providers:
         keycloakOrg:
           default:
-            baseUrl: https://demo-keycloak-instance.apps.cluster-475kf.475kf.sandbox268.opentlc.com
+            baseUrl: https://demo-keycloak-instance.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
             loginRealm: rhdh # ${KEYCLOAK_REALM}
             realm: rhdh # ${KEYCLOAK_REALM}
             clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
@@ -97,7 +97,7 @@ data:
                 seconds: 60
         threeScaleApiEntity:
           default:
-            baseUrl: https://demo-organization-admin.apps.cluster-475kf.475kf.sandbox268.opentlc.com
+            baseUrl: https://demo-organization-admin.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
             accessToken: f1dcf5f09fe82043da924386d58743bb291c42e12bfad58f35a834434e9562ad
             schedule: # optional; same options as in TaskScheduleDefinition
               # supports cron, ISO duration, "human duration" as used in code
@@ -136,7 +136,7 @@ data:
         oidc:
           default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            metadataUrl: https://demo-keycloak-instance.apps.cluster-475kf.475kf.sandbox268.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
             clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
             clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
             prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -156,23 +156,23 @@ data:
         - type: 'config'
           instances:
             - name: argoInstance1
-              url: https://argocd-instance-server-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com
+              url: https://argocd-instance-server-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
               username: admin 
               password: ${RHDH_ARGOCD_ADMIN_PWD}
     jenkins:
       instances:
         - name: default-jenkins
-          baseUrl: https://jenkins-jenkins.apps.cluster-jfx8l.sandbox2558.opentlc.com
-          username: newuser
+          baseUrl: https://jenkins-jenkins-test.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/
+          username: demo-user
           apiKey: 116e2b4d3be8a4ced881115370c7ab7c7a
     kubernetes:
       clusterLocatorMethods:
         - clusters:
             - authProvider: serviceAccount
               name: local-cluster
-              serviceAccountToken: eyJhbGciOiJSUzI1NiIsImtpZCI6ImxCTVhuSEVabTQ4aTRUVlRlNnNEOE04N18xWDJrSkpqRnVoTkVxbUdUek0ifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZW1vLXByb2plY3QiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlY3JldC5uYW1lIjoicGlwZWxpbmUtdG9rZW4td203ejYiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoicGlwZWxpbmUiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiI2MGRkZDRiNi1jYjI1LTRkNjYtODEyZC02ZTEyOTZjNGRhNWIiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVtby1wcm9qZWN0OnBpcGVsaW5lIn0.NitkU-NU8ALfF0oh0Ta7ll-k8C5LZDi7ut7DcmzHUz2Eb5JuACQZEtku1ISwTre9j2UTU_tvw5XZpAkTlgCmhPMqqf97y8SiJt_Llse99Xb0uRpLtmO5cXTTVBZOeW1WcazTSGtzaXIgrlFN_7sAtVwAhYnLQ97xtlwxvu7jpd0lPQEKBGQV-gLersiq9ke69U-_Y26ZjkHq1PJtk0TA_fj_lPRAxSB5_WNjHEi9Axspl2I9MDz6uIufagBwcDxNCZLaWvvcbrZlrULBoR_7CH6iFP2ZXkxFPkMTS4W5ubXiqO6i67fUXEdEJSZHR-szlDBxfVotmwGCrowF1lh4X_d61UbZL6M_KPcKiOhS2L9HftNOd-6k5b7cgoukuYW3NJYu55ukJqSg7B7V-OFniWefbDkVGMqhH1wEzD2n-oRWyIzuDjVkN1JCVnkNx17GjVWGJGV40sL7aaNMK-RMYQw6jtUUpSDeiGW7EhO-b1SZlxgnS2sHr04GFEQ3dGwDq7MsCuOHyZdntJjJ8OQoiNnPHY4FlNMPWzFDleyQGi4ycA_zDSyisoJkB1u2Ey7ERw9vm9XWXPGeh_JMFpsaAm4G_GpKY1bnpiRMt-j9Y9HGKd1bQtLAO16xGj7EW0k2wJ3Yi4g8NVpW9MDOifK08dIMNCmDgMoHPz7vJAImBOY
+              serviceAccountToken: eyJhbGciOiJSUzI1NiIsImtpZCI6IldkVFVjN3NHRnZvN0RsSGl2YXNKelJPT3Z2Y0JWWUdKU2tCcXBMVy1QRHMifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjIl0sImV4cCI6MTcyNTA1NTQwOSwiaWF0IjoxNzI1MDUxODA5LCJpc3MiOiJodHRwczovL2t1YmVybmV0ZXMuZGVmYXVsdC5zdmMiLCJrdWJlcm5ldGVzLmlvIjp7Im5hbWVzcGFjZSI6ImRlbW8tcHJvamVjdCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJwaXBlbGluZSIsInVpZCI6IjJhZGU3MmQyLTM1MDctNDc4MC05OTUxLWY4YmY1ZWEyYWU4NiJ9fSwibmJmIjoxNzI1MDUxODA5LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVtby1wcm9qZWN0OnBpcGVsaW5lIn0.KSlWWk7rVgjGS9VNSNR63TtMeEdEoS47wGmZ8V49YP4BRE193VcrfuJ2ZFrRaB8yhLWG_cSr24mlHGaUfKUDS92gdhoc5nYb3LCr4e1fe0UsWHaWon8CrG3ZH7hyCbnJ31fnWKo4jQWwHQ2hXBkfnGWgnTj2sx8p-MIixfDimp2stEt0ZLwbsnrE9Q1n0SudAJGpCsLRUuIElZI_1sGeyt9CEzNvEwhNSqLcQTyJwui5uNgMyM8pdZd9RA09vnqgS1VHzPxxVu9n7hCztJ1Eyt0jHJ4PuyREb3K0gakPEiRYCFEmkX500fWvwqwv9gXJg3kf-nc7VHz1osvdN5fgK-rZpQA1XFqBZ-zIfSrZjAUVLKy8UxtrR-OsRY0bDJJ5Lrqfd-JmBgos1-Y380Pjt-FxRZpt_eWW2OAkNAdAAkyLZGcg646z_SlS7LV_Lu1IQ4bMiNJI5fSgpT_AUyubSOzeQ666VdPpjPWZgf2Y8-gDd7Vgll2eJmYW33CtBhDpY_Grj13On0qBjAxLT52SLeT0WXjB9HVyMPQXINKuy2ydUgtEDXSStMVfYPjxuY1SgXVvdktIE2COlKaK8dkqUKFH1ryr42HQZZzjxMDq9sxV7EvpALPUJ59IaFidq2PDpcnJEuLHi1EuvMMukf-pwwYrBhP3jDzRTZpAmEbnd1o
               skipTLSVerify: true
-              url: https://api.cluster-jfx8l.sandbox2558.opentlc.com:6443
+              url: https://api.cluster-475kf.475kf.sandbox268.opentlc.com:6443
           type: config
       customResources:
         - apiVersion: v1beta1
@@ -226,7 +226,7 @@ data:
             #if-minio-techdocs-disabled accessKeyId: minioadmin
             #if-minio-techdocs-disabled secretAccessKey: minioadmin
           #if-minio-techdocs-disabled region: eu-west-3
-          #if-minio-techdocs-disabled endpoint: https://minio-api-demo-project.apps.cluster-475kf.475kf.sandbox268.opentlc.com
+          #if-minio-techdocs-disabled endpoint: https://minio-api-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
           #if-minio-techdocs-disabled s3ForcePathStyle: true
           #if-minio-techdocs-disabled sse: 'AES256'
       #if-minio-techdocs-disabled cache:

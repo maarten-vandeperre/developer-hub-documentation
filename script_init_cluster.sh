@@ -26,7 +26,26 @@ fast_waiting_times="no"
       }
 
 
+# Check if Podman is installed
+if ! command_exists podman; then
+    echo "Podman is not installed."
+    echo "Please install Podman first by following the instructions at: https://podman.io/getting-started/installation"
+    exit 1
+fi
 
+# Check if Podman is running
+if ! podman info >/dev/null 2>&1; then
+    echo "Podman is installed but not running."
+    echo "Please start Podman before running this script. For example, on some systems you can use:"
+    echo "  systemctl start podman"
+    echo "Or consult your platform's documentation."
+    exit 1
+fi
+
+echo "Podman is installed and running."
+
+echo "Do podman log in into registry.redhat.io"
+podman login registry.redhat.io
 
 read -p "Which storage provider for static tech docs do you want to use? (aws-s3/minio-s3)? " techdocs_storage_provider
 read -p "Did you already generate the secret config maps? (yes/no): " secrets_generated
@@ -41,7 +60,6 @@ oc apply -f gitops/operator-groups.yaml
 oc apply -f gitops/tekton/tekton-service-account.yaml
 
 oc apply -f gitops/minio/minio-persistent-volume-claim.yaml
-
 
 # Check if the secrets are already generated
 if [ "$secrets_generated" = "no" ]; then
@@ -73,6 +91,7 @@ else
   if [ "$techdocs_storage_provider" = "aws-s3" ]; then
       echo "Executing shell scripts (to configure S3 secrets)..."
       oc apply -f secrets/generated/secret_aws_s3_techdocs.yaml
+  fi
 fi
 
   oc apply -f secrets/generated/secret_github_integration.yaml
@@ -89,6 +108,7 @@ oc apply -f gitops/argocd/argocd-operator.yaml
 oc apply -f gitops/tekton/tekton-operator.yaml
 oc apply -f gitops/3scale/3scale-operator.yaml
 oc apply -f gitops/kafka/kafka-operator.yaml
+oc apply -f gitops/openshift-ai/openshift-ai-operator.yaml
 
 # minio
 echo "Install Minio"
@@ -139,6 +159,8 @@ sleep "$to_sleep"
   oc apply -f gitops/3scale/3scale-storage-credentials.yaml
   sh scripts/script_configure_3scale_docker.sh
   oc apply -f gitops/3scale/3scale-secret-registry-auth.yaml
+  echo "Configuring 3scale API manager"
+  oc apply -f gitops/3scale/3scale-api-manager.yaml
 
   # tekton
   echo "Configuring Tekton PVCs"
@@ -148,6 +170,10 @@ sleep "$to_sleep"
   # argocd
   echo "Configuring Argo CD instance"
   oc apply -f gitops/argocd/argocd-instance.yaml
+
+  # openshift ai
+  echo "Configuring OpenShift AI Data Science Cluster"
+  oc apply -f gitops/openshift-ai/openshift-ai-datascience-cluster.yaml
 
   # developer hub
   echo "Configuring Developer Hub basic instance"
@@ -178,8 +204,8 @@ sleep "$to_sleep"
   oc apply -f gitops/keycloak/keycloak-instance.yaml
 
   # 3scale
-  echo "Configuring 3scale API manager"
-  oc apply -f gitops/3scale/3scale-api-manager.yaml
+  echo "Configuring 3scale tenant"
+  oc apply -f gitops/3scale/3scale-demo-organization-tenant.yaml
 
 echo "sleep for batch 2 to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )
@@ -196,8 +222,8 @@ sleep "$to_sleep"
   oc apply -f gitops/tekton/tekton-pipeline-run-simple-hello-world.yaml
 
   # 3scale
-  echo "Configuring 3scale"
-  sh scripts/script_configure_3scale.sh
+  echo "Configuring 3scale tenant config"
+#  sh scripts/script_configure_3scale.sh
 
 echo "sleep for batch 3 to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )
@@ -233,4 +259,3 @@ echo "Done"
 echo
 echo
 oc get pods -n demo-project -w
-
