@@ -51,19 +51,19 @@ echo "3scale MASTER_ACCESS_TOKEN: $MASTER_ACCESS_TOKEN"
 
 
 
-curl -X POST "https://$MASTER_BASE_URL/admin/api/signup.json" -o ./tmp/signup.json \
-    -H "Content-Type: application/x-www-form-urlencoded" \
-    -d "access_token=$MASTER_ACCESS_TOKEN" \
-#    -d "access_token=$TENANT_ADMIN_ACCESS_TOKEN" \
-    -d "org_name=demo-organization" \
-    -d "username=demo-organization_run_3" \
-    -d "email=maarten.vandeperre_run_3@redhat.com" \
-    -d "password=averysecurepassword"
-
-account_id="$(jq -r .account.id ./tmp/signup.json)"
-admin_portal="$(jq -r '.account.links[] | select(.rel == "self") | .href' ./tmp/signup.json)"
-echo "Created account has id $account_id"
-echo "Created account has admin portal $admin_portal"
+#curl -X POST "https://$MASTER_BASE_URL/admin/api/signup.json" -o ./tmp/signup.json \
+#    -H "Content-Type: application/x-www-form-urlencoded" \
+#    -d "access_token=$MASTER_ACCESS_TOKEN" \
+##    -d "access_token=$TENANT_ADMIN_ACCESS_TOKEN" \
+#    -d "org_name=demo-organization" \
+#    -d "username=demo-organization_run_3" \
+#    -d "email=maarten.vandeperre_run_3@redhat.com" \
+#    -d "password=averysecurepassword"
+#
+#account_id="$(jq -r .account.id ./tmp/signup.json)"
+#admin_portal="$(jq -r '.account.links[] | select(.rel == "self") | .href' ./tmp/signup.json)"
+#echo "Created account has id $account_id"
+#echo "Created account has admin portal $admin_portal"
 
 #curl -skf -X POST "$ADMIN_PORTAL/admin/api/accounts/$account_id/applications.json" \
 #     -o /tmp/app.json \
@@ -74,3 +74,8 @@ echo "Created account has admin portal $admin_portal"
 #
 #apikey="$(jq -r .application.user_key /tmp/app.json)"
 #echo "Created application has api key $apikey"
+
+user_id=32
+curl -X POST "https://$MASTER_BASE_URL/admin/api/users/$user_id/access_tokens" -o ./tmp/access_tokens.json \
+-H "Content-Type: application/json" \
+-d "access_token=$MASTER_ACCESS_TOKEN"

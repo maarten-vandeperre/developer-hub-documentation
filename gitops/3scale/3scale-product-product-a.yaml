@@ -1,0 +1,10 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Product
+metadata:
+  name: product-a-2
+  namespace: demo-project
+spec:
+  providerAccountRef:
+    name: tenant-secret
+  name: Product A 2
+  systemName: product-a-2
