@@ -159,6 +159,8 @@ sleep "$to_sleep"
   oc apply -f gitops/3scale/3scale-storage-credentials.yaml
   sh scripts/script_configure_3scale_docker.sh
   oc apply -f gitops/3scale/3scale-secret-registry-auth.yaml
+  # data init/config
+  oc apply -f gitops/3scale/3scale-tenant-secret.yaml
   echo "Configuring 3scale API manager"
   oc apply -f gitops/3scale/3scale-api-manager.yaml
 
@@ -223,7 +225,10 @@ sleep "$to_sleep"
 
   # 3scale
   echo "Configuring 3scale tenant config"
-#  sh scripts/script_configure_3scale.sh
+  oc apply -f gitops/3scale/3scale-backend-api.yaml
+  oc apply -f gitops/3scale/3scale-product-product-a.yaml
+  oc apply -f gitops/3scale/3scale-activedoc-people-api.yaml
+  oc apply -f gitops/3scale/3scale-api-spec-people-api.yaml
 
 echo "sleep for batch 3 to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 180 || echo 300 )

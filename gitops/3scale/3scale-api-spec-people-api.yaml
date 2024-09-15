@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: open-api-spec-people-api
-  namespace: demo-project
+  namespace: test2
 type: Opaque
 stringData:
   openapi-people-api.yaml: |
