@@ -12,6 +12,8 @@ metadata:
     app.kubernetes.io/name: simple-hello-world-service-a
     app.kubernetes.io/part-of: simple-hello-world-service-a
     app.openshift.io/runtime-namespace: app-playground
+
+    backstage.io/kubernetes-id: dev-hub-test-demo
 spec:
   selector:
     matchLabels:
