@@ -116,6 +116,10 @@ oc apply -f gitops/minio/minio-deployment.yaml
 oc apply -f gitops/minio/minio-service.yaml
 oc apply -f gitops/minio/minio-route.yaml
 
+#Jenkins
+echo "Install Jenkins"
+sh scripts/script_install_jenkins.sh
+
 echo "sleep for operators to get ready"
 to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 300 )
 sleep "$to_sleep"

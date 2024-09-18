@@ -162,17 +162,18 @@ data:
     jenkins:
       instances:
         - name: default-jenkins
-          baseUrl: https://jenkins-jenkins-test.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/
-          username: demo-user
-          apiKey: 116e2b4d3be8a4ced881115370c7ab7c7a
+          baseUrl: https://jenkins-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/
+          username: admin
+          apiKey: 11c966b27ea87605758ccff451dc4cc4d2
     kubernetes:
       clusterLocatorMethods:
         - clusters:
             - authProvider: serviceAccount
               name: local-cluster
-              serviceAccountToken: eyJhbGciOiJSUzI1NiIsImtpZCI6IldkVFVjN3NHRnZvN0RsSGl2YXNKelJPT3Z2Y0JWWUdKU2tCcXBMVy1QRHMifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjIl0sImV4cCI6MTcyNTA1NTQwOSwiaWF0IjoxNzI1MDUxODA5LCJpc3MiOiJodHRwczovL2t1YmVybmV0ZXMuZGVmYXVsdC5zdmMiLCJrdWJlcm5ldGVzLmlvIjp7Im5hbWVzcGFjZSI6ImRlbW8tcHJvamVjdCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJwaXBlbGluZSIsInVpZCI6IjJhZGU3MmQyLTM1MDctNDc4MC05OTUxLWY4YmY1ZWEyYWU4NiJ9fSwibmJmIjoxNzI1MDUxODA5LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVtby1wcm9qZWN0OnBpcGVsaW5lIn0.KSlWWk7rVgjGS9VNSNR63TtMeEdEoS47wGmZ8V49YP4BRE193VcrfuJ2ZFrRaB8yhLWG_cSr24mlHGaUfKUDS92gdhoc5nYb3LCr4e1fe0UsWHaWon8CrG3ZH7hyCbnJ31fnWKo4jQWwHQ2hXBkfnGWgnTj2sx8p-MIixfDimp2stEt0ZLwbsnrE9Q1n0SudAJGpCsLRUuIElZI_1sGeyt9CEzNvEwhNSqLcQTyJwui5uNgMyM8pdZd9RA09vnqgS1VHzPxxVu9n7hCztJ1Eyt0jHJ4PuyREb3K0gakPEiRYCFEmkX500fWvwqwv9gXJg3kf-nc7VHz1osvdN5fgK-rZpQA1XFqBZ-zIfSrZjAUVLKy8UxtrR-OsRY0bDJJ5Lrqfd-JmBgos1-Y380Pjt-FxRZpt_eWW2OAkNAdAAkyLZGcg646z_SlS7LV_Lu1IQ4bMiNJI5fSgpT_AUyubSOzeQ666VdPpjPWZgf2Y8-gDd7Vgll2eJmYW33CtBhDpY_Grj13On0qBjAxLT52SLeT0WXjB9HVyMPQXINKuy2ydUgtEDXSStMVfYPjxuY1SgXVvdktIE2COlKaK8dkqUKFH1ryr42HQZZzjxMDq9sxV7EvpALPUJ59IaFidq2PDpcnJEuLHi1EuvMMukf-pwwYrBhP3jDzRTZpAmEbnd1o
+              # TODO automatically replace
+              serviceAccountToken: eyJhbGciOiJSUzI1NiIsImtpZCI6Imd3dzRNRWlCSFhTdnFMaGRoenBnLXJTT1BKVWtCcjMzVXpMTFUzVDdtUXMifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjIl0sImV4cCI6MTcyNjY5Mjg4MSwiaWF0IjoxNzI2Njg5MjgxLCJpc3MiOiJodHRwczovL2t1YmVybmV0ZXMuZGVmYXVsdC5zdmMiLCJrdWJlcm5ldGVzLmlvIjp7Im5hbWVzcGFjZSI6ImRlbW8tcHJvamVjdCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJwaXBlbGluZSIsInVpZCI6IjA0MGMxODYxLWM4NDUtNGVlZS1iZWY3LTI5ZTI0NDMwZGQ5NCJ9fSwibmJmIjoxNzI2Njg5MjgxLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVtby1wcm9qZWN0OnBpcGVsaW5lIn0.QDNIBi1HIQgDW6NdBt6oFVza5dhDO-5pw9mxXX2mghLoSiEOGn3E4JqqDHZnjx2O3kgfRyIS8F3WKVlfawgPiv0c4R0ShxClWJ7ANxPflPpUiiWItx2cYBj-FBY7wT9bpGwTes5vpKeSb8pMZ_YPvHAtg5yAXif7tztzxd-1PRe6ipkv7_VzPWYoqiYhklLYox3sItu5mghXwhNVP63EKpTXBqL96qCW6WRGSWiQQEX9GfKP-ca6QXnUXSojxGr2xHlVj-1ezqrOp7AhNBPj6D5iDldzgNCvRgJyxp7sFpr7TffqTN26ByR6OmsEb90E6DHpN4gSGIePH0BHKVHe32qVuuHWWyUe71EHxh-8YKDHsxyqB3E-J6HEZAZoo09F3DW06Pioh5cdniRF0fsyOA2-mmNQeVz71pKZ5wkP5aj1voeNY0UOo2HSNmu7BkximckJ_Y9vpaEGjC6abhq3U8A_h6ghz4a3mGWaE3FrA9X7UYFgd1wK5NMT3TvXKvEkwmwOJ4lPMlpfbw1v891vFHMoL4T8f_zCedGuh3wwlM5rTv2duir2IosMoUr1VaL-IJEx2ZdirjHGfUaGhe40Q-uNXW7FVFHz4d2SNwaNyPirefhL-GYkn6_2KBgcHKCwqnipm7bPyePPlmVqgUATS765eWeSKkf6ro-d7Vu5XtI
               skipTLSVerify: true
-              url: https://api.cluster-475kf.475kf.sandbox268.opentlc.com:6443
+              url: https://api.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com:6443
           type: config
       customResources:
         - apiVersion: v1beta1

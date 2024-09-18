@@ -8,9 +8,9 @@ data:
     includes:
       - dynamic-plugins.default.yaml
     plugins:
-      #- package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic 
-      #  # documentation: https://janus-idp.io/plugins/keycloak
-      #  disabled: false
+      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic 
+        # documentation: https://janus-idp.io/plugins/keycloak
+        disabled: false
       - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
         # documentation: https://backstage.io/docs/integrations/github/discovery/
         disabled: false
@@ -37,15 +37,18 @@ data:
         disabled: false
       - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-3scale-backend-dynamic
         disabled: false
-      - package: 'http://plugin-registry:8080/internal-backstage-plugin-simple-chat-backend-dynamic-0.1.0.tgz'
+      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
+        # documentation: https://www.npmjs.com/package/@janus-idp/backstage-plugin-topology
         disabled: false
-        integrity: 'sha512-sM9KFoRxPHVbpJ7+wur0bNSiNjLH/Q5oqfy+6Paz3xqVgQ05o3pu/+f0aFiUzNsUyyqLzqISikAf7yKM1I/iSw==' #backend-hash
-      - package: 'http://plugin-registry:8080/internal-backstage-plugin-simple-chat-dynamic-0.1.0.tgz' 
-        disabled: false
-        integrity: 'sha512-FnroSutG25FNnBey2o4QZh8t4VvCOu6P3P1NnLHEu41y3YMZbfqrN8QURqd5HDXTDgTFkBMNDmjFoTjv1flh7g==' #frontend-hash
-      - package: 'http://plugin-registry:8080/internal-backstage-plugin-keycloak-backend-dynamic-0.1.0.tgz' 
-        disabled: false
-        integrity: 'sha512-hQA0q7wqOFFLMAvv86FNpC/Bbxyoqo0tUJ7jX/zslbZlS+ahNq7sxzSbLaUeLPVRyFj1R8EcMDpEmNMJvo0DNg==' #keycloak-hash
+      #- package: 'http://plugin-registry:8080/internal-backstage-plugin-simple-chat-backend-dynamic-0.1.0.tgz'
+      #  disabled: false
+      #  integrity: 'sha512-sM9KFoRxPHVbpJ7+wur0bNSiNjLH/Q5oqfy+6Paz3xqVgQ05o3pu/+f0aFiUzNsUyyqLzqISikAf7yKM1I/iSw==' #backend-hash
+      #- package: 'http://plugin-registry:8080/internal-backstage-plugin-simple-chat-dynamic-0.1.0.tgz' 
+      #  disabled: false
+      #  integrity: 'sha512-FnroSutG25FNnBey2o4QZh8t4VvCOu6P3P1NnLHEu41y3YMZbfqrN8QURqd5HDXTDgTFkBMNDmjFoTjv1flh7g==' #frontend-hash
+      #- package: 'http://plugin-registry:8080/internal-backstage-plugin-keycloak-backend-dynamic-0.1.0.tgz' 
+      #  disabled: false
+      #  integrity: 'sha512-hQA0q7wqOFFLMAvv86FNpC/Bbxyoqo0tUJ7jX/zslbZlS+ahNq7sxzSbLaUeLPVRyFj1R8EcMDpEmNMJvo0DNg==' #keycloak-hash
       #- package: 'http://plugin-registry:8080/internal-backstage-plugin-scaffolder-backend-module-custom-action-argocd-create-resources-dynamic-0.1.0.tgz' 
       #  disabled: false
       #  integrity: 'sha512-q5NZVJAPJX3QAuIp3Bj1EXgf8srYpLCsZvJCJrLDa9UU87V9kCAPRQLx+H7SzmSpzRJwtqS37pZTseiG2b385Q==' #custom-action-argo-create-resources-hash

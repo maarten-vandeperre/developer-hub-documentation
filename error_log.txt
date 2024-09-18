@@ -1,0 +1,294 @@
+
+======= Including dynamic plugins from dynamic-plugins.default.yaml
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/janus-idp-backstage-plugin-argocd
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/backstage-plugin-kubernetes
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/backstage-plugin-jenkins-backend-dynamic
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/backstage-plugin-jenkins
+
+======= Overriding dynamic plugin configuration ./dynamic-plugins/dist/janus-idp-backstage-plugin-3scale-backend-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-github-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-github-dynamic-0.2.7
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-github-dynamic-0.2.7.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-github-dynamic-0.2.7.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-github-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-catalog-backend-module-github-dynamic-0.6.0
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-catalog-backend-module-github-dynamic-0.6.0.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-catalog-backend-module-github-dynamic-0.6.0.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-org-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-github-actions
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-github-issues
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/roadiehq-backstage-plugin-github-insights
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/roadiehq-backstage-plugin-github-pull-requests
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/roadiehq-backstage-plugin-security-insights
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-gitlab-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-gitlab-dynamic-0.3.3
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-gitlab-dynamic-0.3.3.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-gitlab-dynamic-0.3.3.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-gitlab-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab-backend-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/immobiliarelabs-backstage-plugin-gitlab
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-gitlab-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-gitlab-org-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-kubernetes-backend-dynamic-0.17.0
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-kubernetes-backend-dynamic-0.17.0.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-kubernetes-backend-dynamic-0.17.0.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-kubernetes
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-kubernetes-0.11.9
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-kubernetes-0.11.9.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-kubernetes-0.11.9.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-kubernetes
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/roadiehq-backstage-plugin-argo-cd-backend-dynamic-3.0.2
+	==> Extracting package archive /dynamic-plugins-root/roadiehq-backstage-plugin-argo-cd-backend-dynamic-3.0.2.tgz
+	==> Removing package archive /dynamic-plugins-root/roadiehq-backstage-plugin-argo-cd-backend-dynamic-3.0.2.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/roadiehq-scaffolder-backend-argocd-dynamic-1.1.27
+	==> Extracting package archive /dynamic-plugins-root/roadiehq-scaffolder-backend-argocd-dynamic-1.1.27.tgz
+	==> Removing package archive /dynamic-plugins-root/roadiehq-scaffolder-backend-argocd-dynamic-1.1.27.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-argocd
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/janus-idp-backstage-plugin-argocd-1.2.3
+	==> Extracting package archive /dynamic-plugins-root/janus-idp-backstage-plugin-argocd-1.2.3.tgz
+	==> Removing package archive /dynamic-plugins-root/janus-idp-backstage-plugin-argocd-1.2.3.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/janus-idp-backstage-plugin-argocd
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-azure-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-azure-dynamic-0.1.9
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-azure-dynamic-0.1.9.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-azure-dynamic-0.1.9.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-azure-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-azure-devops-backend-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-azure-devops
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/parfuemerie-douglas-scaffolder-backend-module-azure-repositories
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-jenkins-backend-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-jenkins-backend-dynamic-0.4.5
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-jenkins-backend-dynamic-0.4.5.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-jenkins-backend-dynamic-0.4.5.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-jenkins-backend-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-jenkins
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-jenkins-0.9.10
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-jenkins-0.9.10.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-jenkins-0.9.10.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-jenkins
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-sonarqube-backend-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-sonarqube
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-ocm-backend-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-ocm
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-techdocs-backend-dynamic-1.10.4
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-techdocs-backend-dynamic-1.10.4.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-techdocs-backend-dynamic-1.10.4.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-techdocs
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-techdocs-1.10.4
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-techdocs-1.10.4.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-techdocs-1.10.4.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-techdocs
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-gerrit-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-gerrit-dynamic-0.1.9
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-gerrit-dynamic-0.1.9.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-gerrit-dynamic-0.1.9.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-gerrit-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-utils-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/roadiehq-scaffolder-backend-module-utils-dynamic-1.15.3
+	==> Extracting package archive /dynamic-plugins-root/roadiehq-scaffolder-backend-module-utils-dynamic-1.15.3.tgz
+	==> Removing package archive /dynamic-plugins-root/roadiehq-scaffolder-backend-module-utils-dynamic-1.15.3.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/roadiehq-scaffolder-backend-module-utils-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/roadiehq-scaffolder-backend-module-http-request-dynamic-4.3.2
+	==> Extracting package archive /dynamic-plugins-root/roadiehq-scaffolder-backend-module-http-request-dynamic-4.3.2.tgz
+	==> Removing package archive /dynamic-plugins-root/roadiehq-scaffolder-backend-module-http-request-dynamic-4.3.2.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/roadiehq-scaffolder-backend-module-http-request-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-scaffolder-backend-module-quay-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/janus-idp-backstage-scaffolder-backend-module-quay-dynamic-1.4.12
+	==> Extracting package archive /dynamic-plugins-root/janus-idp-backstage-scaffolder-backend-module-quay-dynamic-1.4.12.tgz
+	==> Removing package archive /dynamic-plugins-root/janus-idp-backstage-scaffolder-backend-module-quay-dynamic-1.4.12.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/janus-idp-backstage-scaffolder-backend-module-quay-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-scaffolder-backend-module-regex-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/janus-idp-backstage-scaffolder-backend-module-regex-dynamic-1.4.12
+	==> Extracting package archive /dynamic-plugins-root/janus-idp-backstage-scaffolder-backend-module-regex-dynamic-1.4.12.tgz
+	==> Removing package archive /dynamic-plugins-root/janus-idp-backstage-scaffolder-backend-module-regex-dynamic-1.4.12.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/janus-idp-backstage-scaffolder-backend-module-regex-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-rbac
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-scaffolder-backend-module-servicenow-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-scaffolder-backend-module-sonarqube-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-aap-backend-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-3scale-backend-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/janus-idp-backstage-plugin-3scale-backend-dynamic-1.5.15
+	==> Extracting package archive /dynamic-plugins-root/janus-idp-backstage-plugin-3scale-backend-dynamic-1.5.15.tgz
+	==> Removing package archive /dynamic-plugins-root/janus-idp-backstage-plugin-3scale-backend-dynamic-1.5.15.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/janus-idp-backstage-plugin-3scale-backend-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-bitbucket-cloud-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-bitbucket-cloud-dynamic-0.1.7
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-bitbucket-cloud-dynamic-0.1.7.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-bitbucket-cloud-dynamic-0.1.7.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-bitbucket-cloud-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-bitbucket-cloud-dynamic
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-bitbucket-server-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-bitbucket-server-dynamic-0.1.7
+	==> Extracting package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-bitbucket-server-dynamic-0.1.7.tgz
+	==> Removing package archive /dynamic-plugins-root/backstage-plugin-scaffolder-backend-module-bitbucket-server-dynamic-0.1.7.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/backstage-plugin-scaffolder-backend-module-bitbucket-server-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-bitbucket-server-dynamic
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-dynatrace
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/roadiehq-backstage-plugin-jira
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/roadiehq-backstage-plugin-datadog
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/janus-idp-backstage-plugin-tekton-3.7.7
+	==> Extracting package archive /dynamic-plugins-root/janus-idp-backstage-plugin-tekton-3.7.7.tgz
+	==> Removing package archive /dynamic-plugins-root/janus-idp-backstage-plugin-tekton-3.7.7.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-quay
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-nexus-repository-manager
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-acr
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-jfrog-artifactory
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/pagerduty-backstage-plugin
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-lighthouse
+
+======= Skipping disabled dynamic plugin ./dynamic-plugins/dist/backstage-plugin-tech-radar
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-analytics-provider-segment
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/janus-idp-backstage-plugin-analytics-provider-segment-1.4.9
+	==> Extracting package archive /dynamic-plugins-root/janus-idp-backstage-plugin-analytics-provider-segment-1.4.9.tgz
+	==> Removing package archive /dynamic-plugins-root/janus-idp-backstage-plugin-analytics-provider-segment-1.4.9.tgz
+	==> Merging plugin-specific configuration
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/janus-idp-backstage-plugin-analytics-provider-segment
+
+======= Installing dynamic plugin ./dynamic-plugins/dist/janus-idp-backstage-plugin-catalog-backend-module-scaffolder-relation-processor-dynamic
+	==> Grabbing package archive through `npm pack`
+	==> Removing previous plugin directory /dynamic-plugins-root/janus-idp-backstage-plugin-catalog-backend-module-scaffolder-relation-processor-dynamic-1.0.3
+	==> Extracting package archive /dynamic-plugins-root/janus-idp-backstage-plugin-catalog-backend-module-scaffolder-relation-processor-dynamic-1.0.3.tgz
+	==> Removing package archive /dynamic-plugins-root/janus-idp-backstage-plugin-catalog-backend-module-scaffolder-relation-processor-dynamic-1.0.3.tgz
+	==> Successfully installed dynamic plugin /opt/app-root/src/dynamic-plugins/dist/janus-idp-backstage-plugin-catalog-backend-module-scaffolder-relation-processor-dynamic
+
+======= Installing dynamic plugin http://plugin-registry:8080/internal-backstage-plugin-simple-chat-backend-dynamic-0.1.0.tgz
+	==> Grabbing package archive through `npm pack`
+Traceback (most recent call last):
+  File "/opt/app-root/src/install-dynamic-plugins.py", line 304, in <module>
+    main()
+  File "/opt/app-root/src/install-dynamic-plugins.py", line 230, in main
+    raise InstallException(f'Error while installing plugin { package } with \'npm pack\' : ' + completed.stderr.decode('utf-8'))
+InstallException: Error while installing plugin http://plugin-registry:8080/internal-backstage-plugin-simple-chat-backend-dynamic-0.1.0.tgz with 'npm pack' : npm error code ENOTFOUND
+npm error syscall getaddrinfo
+npm error errno ENOTFOUND
+npm error network request to http://plugin-registry:8080/internal-backstage-plugin-simple-chat-backend-dynamic-0.1.0.tgz failed, reason: getaddrinfo ENOTFOUND plugin-registry
+npm error network This is a problem related to network connectivity.
+npm error network In most cases you are behind a proxy or have bad network settings.
+npm error network
+npm error network If you are behind a proxy, please make sure that the
+npm error network 'proxy' config is set properly.  See: 'npm help config'
+
+npm error A complete log of this run can be found in: /opt/app-root/src/.npm/_logs/2024-09-18T18_58_14_286Z-debug-0.log
