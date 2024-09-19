@@ -27,7 +27,7 @@ fast_waiting_times="no"
 
 
 # Check if Podman is installed
-if ! command_exists podman; then
+if ! command -v podman &> /dev/null; then
     echo "Podman is not installed."
     echo "Please install Podman first by following the instructions at: https://podman.io/getting-started/installation"
     exit 1

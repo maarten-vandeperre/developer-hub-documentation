@@ -2,7 +2,7 @@ apiVersion: capabilities.3scale.net/v1beta1
 kind: Backend
 metadata:
   name: api-backend-6
-  namespace: test2
+  namespace: demo-project
 spec:
   providerAccountRef:
     name: tenant-secret

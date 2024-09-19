@@ -10,7 +10,7 @@ OpenShift cluster._**
 * Install the operator in the 'demo-project' namespace.
 * Apply the following yaml:  
     **TODO: make use of basedomain variable** 
-    **!!! be aware to change the root domain (i.e., apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com) to your own domain.**
+    **!!! be aware to change the root domain (i.e., apps.cluster-mq98c.mq98c.sandbox870.opentlc.com) to your own domain.**
 ```yaml
 apiVersion: k8s.keycloak.org/v2alpha1
 kind: Keycloak
@@ -25,9 +25,9 @@ spec:
   hostname:
     # following would be better and easier to secure, but for demo purposes, 
     # we'll make both hostname and admin URL the same (fewer certificates' config)
-    # adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com'
-    adminUrl: 'https://demo-keycloak-instance.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com'
-    hostname: demo-keycloak-instance.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
+    # adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com'
+    adminUrl: 'https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com'
+    hostname: demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
   instances: 1
 ```
 * Wait for the operator to become ready and get the route to keycloak:
@@ -41,7 +41,7 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
 ```shell
 oc get secret demo-keycloak-instance-initial-admin -n demo-project -o template --template='{{.data.password}}' | base64 -d ; echo
 ```
-* Log in into keycloak (i.e., https://demo-keycloak-instance.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/)
+* Log in into keycloak (i.e., https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com/)
 * Configure the Red Hat Developer Hub realm (or import [configurations/keycloak/keycloak-realm-import.json](configurations/keycloak/keycloak-realm-import.json) directly into keycloak or apply
 the realm import yaml in OpenShift (but make sure that you have persistent storage under keycloak then): [gitops/keycloak/keycloak-realm.yaml](gitops/keycloak/keycloak-realm.yaml)):
   * Create realm: rhdh

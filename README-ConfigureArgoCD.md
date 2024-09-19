@@ -4,8 +4,8 @@ no default empty config on dynamic plugin
 disable TLS on global level
 
 
-https://argocd-instance-server-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/api/v1/session
-https://argocd-instance-server-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/api/v1/settings
+https://argocd-instance-server-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com/api/v1/session
+https://argocd-instance-server-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com/api/v1/settings
 https://github.com/argoproj/argo-cd/blob/master/assets/swagger.json
 
 

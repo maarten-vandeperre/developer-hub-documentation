@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: ecorp-admin-secret
-  namespace: test2
+  namespace: demo-project
 type: Opaque
 stringData:
   admin_password: averysecurepassword
@@ -10,20 +10,20 @@ stringData:
 apiVersion: capabilities.3scale.net/v1alpha1
 kind: Tenant
 metadata:
-  name: demo-organization-maarten-6
-  namespace: test2
+  name: demo-organization-maarten
+  namespace: demo-project
 spec:
   masterCredentialsRef:
     name: system-seed
-    namespace: test2
+    namespace: demo-project
   passwordCredentialsRef:
     name: ecorp-admin-secret
-    namespace: test2
+    namespace: demo-project
   tenantSecretRef:
     name: tenant-secret
-    namespace: test2
+    namespace: demo-project
   email: maarten.vandeperre@redhat.com
   organizationName: Demo Organization maarten 6
-  systemMasterUrl: 'https://master.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com'
+  systemMasterUrl: 'https://master.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com'
   username: admin
-# admin url becomes demo-organization-maarten-5-admin.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/p/admin/dashboard
+# admin url becomes demo-organization-maarten-5-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com/p/admin/dashboard
