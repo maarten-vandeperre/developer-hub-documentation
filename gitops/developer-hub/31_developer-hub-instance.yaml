@@ -22,7 +22,9 @@ spec:
         - name: rhdh-secrets-github-integration
         #if-aws-techdocs-disabled - name: rhdh-secrets-aws-s3-techdocs
         - name: rhdh-secrets-keycloak-rhdh-client
+        - name: rhdh-secrets-3scale-rhdh-client
         - name: rhdh-secrets-argocd
+        - name: rhdh-secrets-tekton
     replicas: 1
     route:
       enabled: true

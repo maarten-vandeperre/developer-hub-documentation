@@ -59,10 +59,10 @@ data:
         keycloakOrg:
           default:
             baseUrl: https://demo-keycloak-instance.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
-            loginRealm: rhdh # ${KEYCLOAK_REALM}
-            realm: rhdh # ${KEYCLOAK_REALM}
-            clientId: rhdh-client # ${KEYCLOAK_CLIENTID}
-            clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${KEYCLOAK_CLIENTSECRET}
+            loginRealm: rhdh
+            realm: rhdh
+            clientId: rhdh-client 
+            clientSecret: ${RHDH_KEYCLOAK_RHDH_CLIENT_SECRET}
             # highlight-add-start
             schedule: # optional; same options as in TaskScheduleDefinition
               # supports cron, ISO duration, "human duration" as used in code
@@ -98,7 +98,7 @@ data:
         threeScaleApiEntity:
           default:
             baseUrl: https://demo-organization-admin.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com
-            accessToken: f1dcf5f09fe82043da924386d58743bb291c42e12bfad58f35a834434e9562ad
+            accessToken: ${RHDH_3SCALE_RHDH_CLIENT_SECRET}
             schedule: # optional; same options as in TaskScheduleDefinition
               # supports cron, ISO duration, "human duration" as used in code
               frequency: { minutes: 1 }
@@ -136,10 +136,10 @@ data:
         oidc:
           default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            metadataUrl: https://demo-keycloak-instance.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
-            clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
-            prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/realms/rhdh/.well-known/openid-configuration
+            clientId: rhdh-client
+            clientSecret: ${RHDH_KEYCLOAK_RHDH_CLIENT_SECRET}
+            prompt: auto# recommended to use auto
             ## uncomment for additional configuration options
             # callbackUrl: ${AUTH_OIDC_CALLBACK_URL}
             # tokenEndpointAuthMethod: ${AUTH_OIDC_TOKEN_ENDPOINT_METHOD}
@@ -171,7 +171,7 @@ data:
             - authProvider: serviceAccount
               name: local-cluster
               # TODO automatically replace
-              serviceAccountToken: eyJhbGciOiJSUzI1NiIsImtpZCI6Imd3dzRNRWlCSFhTdnFMaGRoenBnLXJTT1BKVWtCcjMzVXpMTFUzVDdtUXMifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjIl0sImV4cCI6MTcyNjY5Mjg4MSwiaWF0IjoxNzI2Njg5MjgxLCJpc3MiOiJodHRwczovL2t1YmVybmV0ZXMuZGVmYXVsdC5zdmMiLCJrdWJlcm5ldGVzLmlvIjp7Im5hbWVzcGFjZSI6ImRlbW8tcHJvamVjdCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJwaXBlbGluZSIsInVpZCI6IjA0MGMxODYxLWM4NDUtNGVlZS1iZWY3LTI5ZTI0NDMwZGQ5NCJ9fSwibmJmIjoxNzI2Njg5MjgxLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6ZGVtby1wcm9qZWN0OnBpcGVsaW5lIn0.QDNIBi1HIQgDW6NdBt6oFVza5dhDO-5pw9mxXX2mghLoSiEOGn3E4JqqDHZnjx2O3kgfRyIS8F3WKVlfawgPiv0c4R0ShxClWJ7ANxPflPpUiiWItx2cYBj-FBY7wT9bpGwTes5vpKeSb8pMZ_YPvHAtg5yAXif7tztzxd-1PRe6ipkv7_VzPWYoqiYhklLYox3sItu5mghXwhNVP63EKpTXBqL96qCW6WRGSWiQQEX9GfKP-ca6QXnUXSojxGr2xHlVj-1ezqrOp7AhNBPj6D5iDldzgNCvRgJyxp7sFpr7TffqTN26ByR6OmsEb90E6DHpN4gSGIePH0BHKVHe32qVuuHWWyUe71EHxh-8YKDHsxyqB3E-J6HEZAZoo09F3DW06Pioh5cdniRF0fsyOA2-mmNQeVz71pKZ5wkP5aj1voeNY0UOo2HSNmu7BkximckJ_Y9vpaEGjC6abhq3U8A_h6ghz4a3mGWaE3FrA9X7UYFgd1wK5NMT3TvXKvEkwmwOJ4lPMlpfbw1v891vFHMoL4T8f_zCedGuh3wwlM5rTv2duir2IosMoUr1VaL-IJEx2ZdirjHGfUaGhe40Q-uNXW7FVFHz4d2SNwaNyPirefhL-GYkn6_2KBgcHKCwqnipm7bPyePPlmVqgUATS765eWeSKkf6ro-d7Vu5XtI
+              serviceAccountToken: ${RHDH_TEKTON_SERVICE_ACCOUNT_TOKEN}
               skipTLSVerify: true
               url: https://api.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com:6443
           type: config

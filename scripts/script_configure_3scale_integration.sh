@@ -1,12 +1,9 @@
 #!/bin/bash
 
-service_account_name="pipeline"
-
-oc adm policy add-role-to-user view -z $service_account_name -n demo-project
-tekton_service_account_token=$(oc create token $service_account_name -n demo-project)
+client_secret=$(oc get secret tenant-secret -n demo-project -o template --template='{{.data.token}}' | base64 -d ; echo )
 
 # Specify the input file and output directory
-input_file="secrets/raw/secret_tekton.yaml"
+input_file="secrets/raw/secret_3scale_rhdh_client.yaml"
 output_dir="secrets/generated"
 output_file="${output_dir}/$(basename $input_file)"
 
@@ -22,7 +19,7 @@ if [ ! -d "$output_dir" ]; then
 fi
 
 # Replace placeholders and direct output to the specified directory
-sed -e "s|<secretvalue:RHDH_TEKTON_SERVICE_ACCOUNT_TOKEN>|$tekton_service_account_token|g" "$input_file" > "$output_file"
+sed -e "s|<secretvalue:RHDH_3SCALE_RHDH_CLIENT_SECRET>|$client_secret|g" "$input_file" > "$output_file"
 
 # Print a success message
 echo "Placeholders have been replaced successfully. Output file is located at $output_file."

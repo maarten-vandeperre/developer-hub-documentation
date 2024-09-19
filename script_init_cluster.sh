@@ -201,6 +201,12 @@ sleep "$to_sleep"
   echo "Configuring Argo CD - simple hello world"
   oc apply -f gitops/argocd/argocd-application-simple-hello-world.yaml
 
+
+  #Tekton
+  echo "Install Tekton SA"
+  sh scripts/script_configure_tekton_integration.sh
+  oc apply -f secrets/generated/secret_tekton.yaml
+
   # tekton
   echo "Configuring Tekton pipelines"
   oc apply -f gitops/tekton/tekton-pipeline-simple-hello-world.yaml
@@ -252,6 +258,11 @@ sleep "$to_sleep"
 
   # argocd
   oc apply -f secrets/generated/secret_argocd.yaml
+
+  # 3scale
+  echo "Configuring 3scale secrets"
+  sh scripts/script_configure_3scale_integration.sh
+  oc apply -f secrets/generated/secret_3scale_rhdh_client.yaml
 
   # developer hub
   echo "Configuring Developer Hub"
