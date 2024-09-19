@@ -164,7 +164,7 @@ data:
         - name: default-jenkins
           baseUrl: https://jenkins-demo-project.apps.cluster-tqg9r.tqg9r.sandbox1273.opentlc.com/
           username: admin
-          apiKey: 11c966b27ea87605758ccff451dc4cc4d2
+          apiKey: rhdh
     kubernetes:
       clusterLocatorMethods:
         - clusters:

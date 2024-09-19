@@ -105,6 +105,8 @@ objects:
                   value: 'true'
                 - name: JENKINS_SERVICE_NAME
                   value: '${JENKINS_SERVICE_NAME}'
+                - name: JENKINS_PASSWORD
+                  value: '${JENKINS_PASSWORD}'
                 - name: JNLP_SERVICE_NAME
                   value: '${JNLP_SERVICE_NAME}'
                 - name: JENKINS_UC_INSECURE
@@ -185,6 +187,8 @@ objects:
       sessionAffinity: None
       type: ClusterIP
 parameters:
+  - name: JENKINS_PASSWORD
+    value: rhdh
   - name: JENKINS_SERVICE_NAME
     displayName: Jenkins Service Name
     description: The name of the OpenShift Service exposed for the Jenkins container.
@@ -198,7 +202,7 @@ parameters:
     description: >-
       Whether to enable OAuth OpenShift integration. If false, the static
       account 'admin' will be initialized with the password 'password'.
-    value: 'true'
+    value: 'false'
   - name: MEMORY_LIMIT
     displayName: Memory Limit
     description: Maximum amount of memory the container can use.
