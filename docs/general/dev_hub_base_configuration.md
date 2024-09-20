@@ -83,7 +83,7 @@ spec:
   need to add an extra config map (i.e., dynamic plugin configuration) and link this configuration in the Developer Hub (instance) manifest.
     * Create the dynamic plugin configuration by applying the following yaml:
 ```yaml
-kind: ConfigMap
+kind: ConfigMap 
 apiVersion: v1
 metadata:
   name: dynamic-plugins-rhdh

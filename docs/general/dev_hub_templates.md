@@ -76,7 +76,7 @@ spec:
     route:
       enabled: true
   database:
-    enableLocalDb: true
+    enableLocalDb: true 
 ```
 * **Developer Hub Configuration**  
   _Resulting file: [gitops/developer_hub/app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer-hub/11_app-config-rhdh.yaml)_  
