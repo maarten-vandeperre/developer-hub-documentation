@@ -6,7 +6,7 @@ title: Developer Hub Templates
 # Developer Hub Templates
 
 _For the remainder of this documentation pages, we will expect to start
-from a clean state as described at the end of section [Configure Developer Hub](#configure-developer-hub). In order to not have
+from a clean state as described at the end of section [Configure Developer Hub](https://maarten-vandeperre.github.io/developer-hub-documentation/general/dev_hub_base_configuration.html). In order to not have
 conflicts when skipping sections, I will highlight the places where the config needs to be added as follows:_    
      
      
@@ -49,7 +49,7 @@ of all listed components beneath in the respectively yaml files (i.e., yaml file
 
 **Templates to start from:**
 * **Developer Hub (instance) Manifest:**  
-  _Resulting file: [gitops/developer_hub/developer-hub-instance.yaml](gitops/developer_hub/31_developer-hub-instance.yaml)_
+  _Resulting file: [gitops/developer_hub/developer-hub-instance.yaml](https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/gitops/developer_hub/31_developer-hub-instance.yaml)_
 ```yaml
 apiVersion: rhdh.redhat.com/v1alpha1
 kind: Backstage
@@ -79,7 +79,7 @@ spec:
     enableLocalDb: true
 ```
 * **Developer Hub Configuration**  
-  _Resulting file: [gitops/developer_hub/app-config-rhdh.yaml](gitops/developer_hub/11_app-config-rhdh.yaml)_  
+  _Resulting file: [gitops/developer_hub/app-config-rhdh.yaml](https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/gitops/developer_hub/11_app-config-rhdh.yaml)_  
   **!! be aware**: project 'demo-project' is part of the url. Change it if you use another project
 ```yaml
 kind: ConfigMap
@@ -104,7 +104,7 @@ data:
     <anchor_01>
 ```
 * **Dynamic Plugin Configuration**  
-  _Resulting file: [gitops/developer_hub/dynamic-plugins-rhdh.yaml](gitops/developer_hub/21_dynamic-plugins-rhdh.yaml)_
+  _Resulting file: [gitops/developer_hub/dynamic-plugins-rhdh.yaml](https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/gitops/developer_hub/21_dynamic-plugins-rhdh.yaml)_
 ```yaml
 kind: ConfigMap
 apiVersion: v1
