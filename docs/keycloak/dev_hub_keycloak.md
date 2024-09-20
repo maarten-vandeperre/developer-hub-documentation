@@ -44,7 +44,13 @@ signInPage: oidc
 ```
 * As a last step we need to make sure that the Keycloak users are synced with the Developer Hub's user catalog. In order to do so,
   we need to:
-  * Enable the
+  * Enable the dynamic plugin for Keycloak by applying the following yaml to the dynamic plugins configuration (on anchor_01):
+    ```yaml
+    plugins:
+      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic
+        disabled: false
+        pluginConfig: {}
+    ```
   * Apply the following yaml to the Developer Hub config (on anchor_03):
     ```yaml
     catalog:
