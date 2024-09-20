@@ -5,10 +5,11 @@ title: Developer Hub Templates
 
 # Developer Hub Templates
 
-**_For the remainder of this documentation pages, we will expect to start
+_For the remainder of this documentation pages, we will expect to start
 from a clean state as described at the end of section [Configure Developer Hub](#configure-developer-hub). In order to not have
-conflicts when skipping sections, I will highlight the places where the config needs to be added as follows:_**    
-
+conflicts when skipping sections, I will highlight the places where the config needs to be added as follows:_    
+     
+     
 _As an example: Adding this yaml_
 ```yaml
 spec:
