@@ -8,7 +8,6 @@ title: Tech Docs Configuration - Minio S3 (source)
 * Make sure that S3 is set up as described in [Minio S3 tech docs (static content) configuration](https://maarten-vandeperre.github.io/developer-hub-documentation/techdocs_minio/infra_setup_techdocs_minio.html)
     * IAM user created that can read and write in S3
     * Bucket 'redhat-demo-dev-hub-1' in region 'eu-west-3'.
-* Make sure that the aws client (i.e., cli) is installed and that you logged in with the created user (i.e., run 'aws configure' command).
 * Now we'll need to enable the tech docs plugin by applying the following yaml to the dynamic plugins configuration (on anchor_01):
     ```yaml
     plugins:
@@ -25,12 +24,13 @@ title: Tech Docs Configuration - Minio S3 (source)
         runIn: local
       publisher:
         type: 'awsS3'
-        awsS3:
-          bucketName: redhat-demo-dev-hub-1
+        awsS3:  # awsS3, even if it is minio
+          bucketName: minio-tech-docs
           credentials:
             accessKeyId: <...>
             secretAccessKey: <...>
           region: eu-west-3
+          endpoint: https://minio-api-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
           s3ForcePathStyle: true
           sse: 'AES256'
     ```
@@ -40,9 +40,9 @@ title: Tech Docs Configuration - Minio S3 (source)
 ```yaml
 catalog:
   providers:
-   awsS3:
+   awsS3: # awsS3, even if it is minio
      default: # identifies your dataset / provider independent of config changes
-       bucketName: redhat-demo-dev-hub-1
+       bucketName: minio-tech-docs
        #prefix: prefix/ # optional
        region: eu-west-3 # optional, uses the default region otherwise
        schedule: # same options as in TaskScheduleDefinition
