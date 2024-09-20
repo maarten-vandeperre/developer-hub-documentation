@@ -5,17 +5,15 @@ title: Tech Docs Configuration - AWS S3 (source)
 
 # Tech Docs Configuration - AWS S3 (source)
 
-* Make sure that S3 is set up as described in [AWS S3 tech docs (static content) configuration](README-SetupAwsS3StorageForTechDocs.md)
+* Make sure that S3 is set up as described in [AWS S3 tech docs (static content) configuration](https://maarten-vandeperre.github.io/developer-hub-documentation/techdocs_s3/infra_setup_techdocs_s3.html)
     * IAM user created that can read and write in S3
     * Bucket 'redhat-demo-dev-hub-1' in region 'eu-west-3'.
 * Make sure that the aws client (i.e., cli) is installed and that you logged in with the created user (i.e., run 'aws configure' command).
 * Now we'll need to enable the tech docs plugin by applying the following yaml to the dynamic plugins configuration (on anchor_01):
-```yaml
-plugins:
-  - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
-    disabled: false
-    pluginConfig: {}
-```
+    ```yaml
+    plugins:
+      
+    ```
 * When the dynamic plugin is enabled, we'll need to configure our developer hub instance to read from the correct bucket.
   For that, we have to apply the following yaml to the Developer Hub Config on anchor_02:
 ```yaml
