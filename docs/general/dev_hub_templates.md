@@ -79,7 +79,7 @@ spec:
     enableLocalDb: true
 ```
 * **Developer Hub Configuration**  
-  _Resulting file: [gitops/developer_hub/app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer_hub/11_app-config-rhdh.yaml)_  
+  _Resulting file: [gitops/developer_hub/app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer-hub/11_app-config-rhdh.yaml)_  
   **!! be aware**: project 'demo-project' is part of the url. Change it if you use another project
 ```yaml
 kind: ConfigMap
