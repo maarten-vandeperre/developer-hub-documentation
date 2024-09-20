@@ -82,18 +82,17 @@ spec:
   to Developer Hub without having to change the (React) source code (as it is done in the upstream Backstage project). For this we will
   need to add an extra config map (i.e., dynamic plugin configuration) and link this configuration in the Developer Hub (instance) manifest.
     * Create the dynamic plugin configuration by applying the following yaml:
-```yaml
-kind: ConfigMap 
-apiVersion: v1
-metadata:
-  name: dynamic-plugins-rhdh
-  namespace: demo-project
-data:
-  dynamic-plugins.yaml: |
-    includes:
-      - dynamic-plugins.default.yaml
-    \# plugins: leave this one out for now as it will give errors on startup (not needed at the moment anyway as we don't have plugins yet).
-```
+  ```yaml
+  kind: ConfigMap 
+  apiVersion: v1
+  metadata:
+    name: dynamic-plugins-rhdh
+    namespace: demo-project
+  data:
+    dynamic-plugins.yaml: |
+      includes:
+        - dynamic-plugins.default.yaml
+  ```
 * Link the configuration to the Developer Hub (instance) manifest by applying the following yaml:
 ```yaml
 apiVersion: rhdh.redhat.com/v1alpha1
