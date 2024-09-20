@@ -56,13 +56,13 @@ ORDER by last_discovery_at desc
 ```
 
 Output will look like this:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/dev-hub-postgres-follow-up.png">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/dev-hub-postgres-follow-up.png" class="large">
 
 If you want to experiment with it yourself, you can uncomment the line with _"#    - AI/ML #TODO enable this line if you want to try to debug for errors"_
 within the catalog entities file [configurations/catalog-entities/systems/maartens-wonderful-system.yaml](configurations/catalog-entities/systems/maartens-wonderful-system.yaml).
 
 You then should have the following error:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/dev-hub-postgres-debug-errors.png">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/dev-hub-postgres-debug-errors.png" class="large">
 
 Full error message:
 

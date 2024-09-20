@@ -2,37 +2,42 @@
 <!-- Coding by CodingNepal || www.codingnepalweb.com -->
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/js/default-style.css" />
+    <link rel="stylesheet" href="/assets/js/default-style.css"/>
     <!-- Boxicons CSS -->
-    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
     <script src="/assets/js/default-style.js" defer></script>
     <style>
         /* Import Google font - Poppins */
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Poppins", sans-serif;
         }
+
         body {
             min-height: 100vh;
             background: #b71c1c05;
         }
+
         /* Pre css */
         .flex {
             display: flex;
             align-items: center;
         }
+
         .nav_image {
             display: flex;
             min-width: 55px;
             justify-content: center;
         }
+
         .nav_image img {
             height: 35px;
             width: 35px;
@@ -52,12 +57,15 @@
             box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
         }
+
         .sidebar.close {
             width: calc(55px + 20px);
         }
+
         .logo_items {
             gap: 8px;
         }
+
         .logo_name {
             font-size: 22px;
             color: #333;
@@ -65,12 +73,14 @@
             transition: all 0.3s ease;
             color: #B71c1c;
         }
+
         .sidebar.close .logo_name,
         .sidebar.close #lock-icon,
         .sidebar.close #sidebar-close {
             opacity: 0;
             pointer-events: none;
         }
+
         #lock-icon,
         #sidebar-close {
             padding: 10px;
@@ -80,10 +90,12 @@
             margin-left: -4px;
             transition: all 0.3s ease;
         }
+
         #sidebar-close {
             display: none;
             color: #333;
         }
+
         .menu_container {
             display: flex;
             flex-direction: column;
@@ -91,9 +103,11 @@
             overflow-y: auto;
             height: calc(100% - 82px);
         }
+
         .menu_container::-webkit-scrollbar {
             display: none;
         }
+
         .menu_title {
             position: relative;
             min-height: 50px;
@@ -101,14 +115,17 @@
             padding-bottom: 10px;
             /*width: 55px;*/
         }
+
         .menu_title .title {
             margin-left: 15px;
             transition: all 0.3s ease;
             color: #B71c1c;
         }
+
         .sidebar.close .title {
             opacity: 0;
         }
+
         .menu_title .line {
             position: absolute;
             left: 50%;
@@ -119,29 +136,36 @@
             background: #aaa;
             transition: all 0.3s ease;
         }
+
         .menu_title .line {
             opacity: 0;
         }
+
         .sidebar.close .line {
             opacity: 1;
         }
+
         .item {
             list-style: none;
         }
+
         .link {
             text-decoration: none;
             border-radius: 8px;
             margin-bottom: 8px;
             color: #707070;
         }
+
         .link:hover {
             color: #fff;
             background-color: #B71c1c;
         }
+
         .link span {
             font-size: 14px;
             white-space: nowrap;
         }
+
         .link i {
             height: 25px;
             min-width: 55px;
@@ -158,10 +182,12 @@
             gap: 15px;
             border-top: 2px solid rgba(0, 0, 0, 0.1);
         }
+
         .sidebar_profile .name {
             font-size: 18px;
             color: #333;
         }
+
         .sidebar_profile .email {
             font-size: 12px;
             color: #333;
@@ -180,6 +206,7 @@
             border-radius: 0 0 8px 8px;
             justify-content: space-between;
         }
+
         #sidebar-open {
             font-size: 30px;
             color: #333;
@@ -187,6 +214,7 @@
             margin-right: 20px;
             display: none;
         }
+
         .search_box {
             height: 46px;
             max-width: 500px;
@@ -198,6 +226,7 @@
             font-size: 18px;
             color: #333;
         }
+
         .navbar img {
             height: 40px;
             width: 40px;
@@ -210,25 +239,31 @@
                 left: 65%;
             }
         }
+
         @media screen and (max-width: 800px) {
             .sidebar {
                 left: 0;
                 z-index: 1000;
             }
+
             .sidebar.close {
                 left: -100%;
             }
+
             #sidebar-close {
                 display: block;
             }
+
             #lock-icon {
                 display: none;
             }
+
             .navbar {
                 left: 0;
                 max-width: 100%;
                 transform: translateX(0%);
             }
+
             #sidebar-open {
                 display: block;
             }
@@ -241,12 +276,12 @@
             max-width: 1250px;
         }
 
-        #content-container h1  {
+        #content-container h1 {
             margin-bottom: 35px;
             color: #B71c1c;
         }
 
-        #content-container ul, #content-container ol  {
+        #content-container ul, #content-container ol {
             margin-top: 20px;
             margin-bottom: 20px;
             margin-left: 50px;
@@ -265,9 +300,13 @@
             width: 60%;
         }
 
+        #content-container img.large {
+            width: 85%
+        }
+
         .highlighter-rouge {
             background-color: #2c5a6c;
-            color:white;
+            color: white;
             line-height: 23px;
             padding: 15px;
             font-size: 14px;
@@ -281,8 +320,8 @@
 <nav class="sidebar locked">
     <div class="logo_items flex">
         <span class="logo_name"><b>Developer Hub</b><br/>Setup Documentation</span>
-<!--        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>-->
-<!--        <i class="bx bx-x" id="sidebar-close"></i>-->
+        <!--        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>-->
+        <!--        <i class="bx bx-x" id="sidebar-close"></i>-->
     </div>
 
     <div class="menu_container">
@@ -453,9 +492,9 @@
         </div>
 
         <div class="sidebar_profile flex">
-<!--          <span class="nav_image">-->
-<!--            <img src="images/profile.jpg" alt="logo_img" />-->
-<!--          </span>-->
+            <!--          <span class="nav_image">-->
+            <!--            <img src="images/profile.jpg" alt="logo_img" />-->
+            <!--          </span>-->
             <div class="data_text">
                 <span class="name"><a href="https://developers.redhat.com/author/maarten-vandeperre" target="_blank">Maarten Vandeperre</a></span>
                 <span class="email">maarten.vandeperre@redhat.com</span>
