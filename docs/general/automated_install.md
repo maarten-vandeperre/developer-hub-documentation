@@ -5,6 +5,10 @@ title: Automated Installation Script
 
 # Automated Installation Script
 
+**_All actions will be executed within the 'demo-project' namespace on OpenShift, unless otherwise specified.
+Next to that, be aware that the root domain will be different for you, and it will be the root domain of your
+OpenShift cluster._**
+
 When you would like to have an OpenShift cluster with all integrations configured automatically for you, you can make use of the
 [script_init_cluster.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/script_init_cluster.sh) script.  
 In order to do so, you'll have to follow these steps:
