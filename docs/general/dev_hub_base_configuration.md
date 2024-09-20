@@ -77,7 +77,8 @@ spec:
 ```
 * Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
 * You should now be able to see the following screen:
-  ![](images/login_screen_1.png "")
+  <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/login_screen_1.png">
+
 * Last thing to configure now is the enablement of the dynamic plugins. These dynamic plugins will allow you to add functionality
   to Developer Hub without having to change the (React) source code (as it is done in the upstream Backstage project). For this we will
   need to add an extra config map (i.e., dynamic plugin configuration) and link this configuration in the Developer Hub (instance) manifest.
@@ -92,7 +93,7 @@ data:
   dynamic-plugins.yaml: |
     includes:
       - dynamic-plugins.default.yaml
-#    plugins: leave this one out for now as it will give errors on startup (not needed at the moment anyway as we don't have plugins yet).
+    # plugins: leave this one out for now as it will give errors on startup (not needed at the moment anyway as we don't have plugins yet).
 ```
 * Link the configuration to the Developer Hub (instance) manifest by applying the following yaml:
 ```yaml
