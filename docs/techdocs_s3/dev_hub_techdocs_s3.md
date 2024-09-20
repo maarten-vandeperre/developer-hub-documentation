@@ -12,26 +12,28 @@ title: Tech Docs Configuration - AWS S3 (source)
 * Now we'll need to enable the tech docs plugin by applying the following yaml to the dynamic plugins configuration (on anchor_01):
     ```yaml
     plugins:
-      
+      - package: ./dynamic-plugins/dist/backstage-plugin-techdocs-backend-dynamic
+        disabled: false
+        pluginConfig: {}
     ```
 * When the dynamic plugin is enabled, we'll need to configure our developer hub instance to read from the correct bucket.
   For that, we have to apply the following yaml to the Developer Hub Config on anchor_02:
-```yaml
-techdocs:
-  builder: external
-  generator:
-    runIn: local
-  publisher:
-    type: 'awsS3'
-    awsS3:
-      bucketName: redhat-demo-dev-hub-1
-      credentials:
-        accessKeyId: <...>
-        secretAccessKey: <...>
-      region: eu-west-3
-      s3ForcePathStyle: true
-      sse: 'AES256'
-```
+    ```yaml
+    techdocs:
+      builder: external
+      generator:
+        runIn: local
+      publisher:
+        type: 'awsS3'
+        awsS3:
+          bucketName: redhat-demo-dev-hub-1
+          credentials:
+            accessKeyId: <...>
+            secretAccessKey: <...>
+          region: eu-west-3
+          s3ForcePathStyle: true
+          sse: 'AES256'
+    ```
 * As documentation should not be rendered on the fly (according to the [recommended deployment model](https://backstage.io/docs/features/techdocs/architecture/)),
   we need to make sure that information is fetched by the tech docs plugin (upfront),
   by applying the following yaml to the dynamic plugins configuration (on anchor_03):
@@ -53,11 +55,11 @@ catalog:
 ```
 * Now that we have our config set up, it's time to add/publish our documentation in S3.
   (You can describe the following process in e.g., GitHub actions as well):
-    * Create a GIT repository in which you will store your static documentation (over here, a mimic of a GIT repository: [configurations/techdocs/static-content](configurations/techdocs/static-content)).
-    * Static (source) content is available in the [configurations/techdocs/static-content](configurations/techdocs/static-content/aws-s3/docs) folder.  
+    * Create a GIT repository in which you will store your static documentation (over here, a mimic of a GIT repository: [configurations/techdocs/static-content](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/techdocs/static-content)).
+    * Static (source) content is available in the [configurations/techdocs/static-content](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/techdocs/static-content/aws-s3/docs) folder.  
       Important to note is that these should be **markdown files**.
     * Install [techdocs-cli](https://backstage.io/docs/features/techdocs/cli/)
-    * Go to the root of your documentation repository ([configurations/techdocs/static-content](configurations/techdocs/static-content/aws-s3/docs))
+    * Go to the root of your documentation repository ([configurations/techdocs/static-content](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/techdocs/static-content/aws-s3/docs))
     * Generate the content to be showed in Developer Hub:
       ```shell
       techdocs-cli generate --no-docker --verbose
@@ -85,8 +87,8 @@ catalog:
 * We now have the configuration and the static content set up. We now only need to add it as a component in Developer Hub:
     * Open Developer Hub.
     * Click "create":
-      ![](images/techdocs_add_component.png "")
+      <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/techdocs_add_component.png">
     * Add the URL of the catalog-info.yaml in the URL section (i.e., for me it is https://github.com/maarten-vandeperre/developer-hub-documentation/blob/tech-docs-implementation/configurations/techdocs/static-content/catalog-info.yaml).
     * Click on 'Analyze' and 'Create'.
     * Now go to "Docs" menu item and you should be able to see your documentation:
-      ![](images/techdocs_maartens_first_documentation.png "")
+      <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/techdocs_maartens_first_documentation.png">
