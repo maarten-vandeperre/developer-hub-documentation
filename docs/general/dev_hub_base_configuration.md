@@ -89,7 +89,9 @@ spec:
     name: dynamic-plugins-rhdh
     namespace: demo-project
   data:
-    dynamic-plugins.yaml:
+    dynamic-plugins.yaml: |
+      includes:
+        - dynamic-plugins.default.yaml
   ```
   * Link the configuration to the Developer Hub (instance) manifest by applying the following yaml:
   ```yaml
