@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal || www.codingnepalweb.com -->
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -87,7 +87,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            margin-top: 40px;
             overflow-y: auto;
             height: calc(100% - 82px);
         }
@@ -96,8 +95,10 @@
         }
         .menu_title {
             position: relative;
-            height: 50px;
-            width: 55px;
+            min-height: 50px;
+            padding-top: 15px;
+            padding-bottom: 10px;
+            /*width: 55px;*/
         }
         .menu_title .title {
             margin-left: 15px;
@@ -136,13 +137,14 @@
             background-color: #4070f4;
         }
         .link span {
+            font-size: 14px;
             white-space: nowrap;
         }
         .link i {
-            height: 50px;
+            height: 25px;
             min-width: 55px;
             display: flex;
-            font-size: 22px;
+            font-size: 20px;
             align-items: center;
             justify-content: center;
             border-radius: 4px;
@@ -240,84 +242,158 @@
 <body>
 <nav class="sidebar locked">
     <div class="logo_items flex">
-        <span class="nav_image">
-          <img src="images/logo.png" alt="logo_img" />
-        </span>
-        <span class="logo_name">CodingNepal</span>
-        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
-        <i class="bx bx-x" id="sidebar-close"></i>
+        <span class="logo_name"><b>Developer Hub</b><br/>Setup Documentation</span>
+<!--        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>-->
+<!--        <i class="bx bx-x" id="sidebar-close"></i>-->
     </div>
 
     <div class="menu_container">
         <div class="menu_items">
             <ul class="menu_item">
                 <div class="menu_title flex">
-                    <span class="title">Dashboard</span>
+                    <span class="title">General</span>
                     <span class="line"></span>
                 </div>
                 <li class="item">
-                    <a href="#" class="link flex">
-                        <i class="bx bx-home-alt"></i>
-                        <span>Overview</span>
+                    <a href="{{ '/automated-install.md' | relative_url }}" class="link flex">
+                        <i class="bx bx-edit"></i>
+                        <span>Automated install</span>
                     </a>
                 </li>
                 <li class="item">
                     <a href="#" class="link flex">
-                        <i class="bx bx-grid-alt"></i>
-                        <span>All Projects</span>
+                        <i class="bx bx-glasses"></i>
+                        <span>Debug</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-edit"></i>
+                        <span>Dev hub installation</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-edit"></i>
+                        <span>Dev hub base configuration</span>
                     </a>
                 </li>
             </ul>
 
             <ul class="menu_item">
                 <div class="menu_title flex">
-                    <span class="title">Editor</span>
+                    <span class="title">Enable authentication via Keycloak</span>
                     <span class="line"></span>
                 </div>
                 <li class="item">
                     <a href="#" class="link flex">
-                        <i class="bx bxs-magic-wand"></i>
-                        <span>Magic Build</span>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#" class="link flex">
-                        <i class="bx bx-folder"></i>
-                        <span>New Projects</span>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#" class="link flex">
-                        <i class="bx bx-cloud-upload"></i>
-                        <span>Upload New</span>
-                    </a>
-                </li>
-            </ul>
-
-            <ul class="menu_item">
-                <div class="menu_title flex">
-                    <span class="title">Setting</span>
-                    <span class="line"></span>
-                </div>
-                <li class="item">
-                    <a href="#" class="link flex">
-                        <i class="bx bx-flag"></i>
-                        <span>Notice Board</span>
-                    </a>
-                </li>
-                <li class="item">
-                    <a href="#" class="link flex">
-                        <i class="bx bx-award"></i>
-                        <span>Award</span>
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
                     </a>
                 </li>
                 <li class="item">
                     <a href="#" class="link flex">
                         <i class="bx bx-cog"></i>
-                        <span>Setting</span>
+                        <span>Configure plugin</span>
                     </a>
                 </li>
             </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Enable tech docs to serve static content</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Add catalog entities manually</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Distinguish in API definitions for different environments</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Enable and add software templates (GitHub)</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Enable Component scanning (i.e., catalog entity) from GitHub</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
         </div>
 
         <div class="sidebar_profile flex">
