@@ -36,7 +36,7 @@ Now that we have a database connection, let's see how to request the possible er
 reloading timestamps for the integrations (i.e., I use it as well during integration development to
 validate when an update is processed).
 
-You can run following query (or execute the [view logs script](sql/view_errors.sql)):
+You can run following query (or execute the [view logs script](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/sql/view_errors.sql)):
 ```sql
 SELECT entity_id,
        location_key,
@@ -59,7 +59,7 @@ Output will look like this:
 <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/dev-hub-postgres-follow-up.png" class="large">
 
 If you want to experiment with it yourself, you can uncomment the line with _"#    - AI/ML #TODO enable this line if you want to try to debug for errors"_
-within the catalog entities file [configurations/catalog-entities/systems/maartens-wonderful-system.yaml](configurations/catalog-entities/systems/maartens-wonderful-system.yaml).
+within the catalog entities file [configurations/catalog-entities/systems/maartens-wonderful-system.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/configurations/catalog-entities/systems/maartens-wonderful-system.yaml).
 
 You then should have the following error:
 <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/dev-hub-postgres-debug-errors.png" class="large">
