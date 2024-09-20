@@ -30,7 +30,7 @@ oc get secret backstage-psql-secret-developer-hub -n demo-project  -o template -
 
 The database to be connected to, will be "backstage_plugin_catalog". If you're using IntelliJ,
 it will look like this:
-![Postgres Creation](/assets/images/dev-hub-postgres-creation.png "")
+![Postgres Creation]({{ '/assets/images/dev-hub-postgres-creation.png' | relative_url }})
 
 Now that we have a database connection, let's see how to request the possible errors and the
 reloading timestamps for the integrations (i.e., I use it as well during integration development to
