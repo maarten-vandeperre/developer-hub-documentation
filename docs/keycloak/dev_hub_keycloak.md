@@ -44,33 +44,33 @@ signInPage: oidc
 ```
 * As a last step we need to make sure that the Keycloak users are synced with the Developer Hub's user catalog. In order to do so,
   we need to:
-    * Enable the dynamic plugin for Keycloak by applying the following yaml to the dynamic plugins configuration (on anchor_01):
-```yaml
-plugins:
-  - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic
-    disabled: false
-    pluginConfig: {}
-```
-* Apply the following yaml to the Developer Hub config (on anchor_03):
-```yaml
-catalog:
-  providers:
-    keycloakOrg:
-      default:
-        baseUrl: https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
-        loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
-        realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
-        clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret
-        clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${KEYCLOAK_CLIENTSECRET} TODO enable via secret
-        # highlight-add-start
-        schedule: # optional; same options as in TaskScheduleDefinition
-          # supports cron, ISO duration, "human duration" as used in code
-          frequency: { minutes: 1 }
-          # supports ISO duration, "human duration" as used in code
-          timeout: { minutes: 1 }
-          initialDelay: { seconds: 15 }
-          # highlight-add-end
-```
+  * Enable the dynamic plugin for Keycloak by applying the following yaml to the dynamic plugins configuration (on anchor_01):
+    ```yaml
+    plugins:
+      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic
+        disabled: false
+        pluginConfig: {}
+    ```
+  * Apply the following yaml to the Developer Hub config (on anchor_03):
+    ```yaml
+    catalog:
+      providers:
+        keycloakOrg:
+          default:
+            baseUrl: https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+            loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
+            realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
+            clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret
+            clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${KEYCLOAK_CLIENTSECRET} TODO enable via secret
+            # highlight-add-start
+            schedule: # optional; same options as in TaskScheduleDefinition
+              # supports cron, ISO duration, "human duration" as used in code
+              frequency: { minutes: 1 }
+              # supports ISO duration, "human duration" as used in code
+              timeout: { minutes: 1 }
+              initialDelay: { seconds: 15 }
+              # highlight-add-end
+    ```
 * Now the login screen should be changed to:
   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/login_screen_2.png">
 
