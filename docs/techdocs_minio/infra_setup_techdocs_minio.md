@@ -1,33 +1,33 @@
 ---
 layout: default
-title: Infra setup - AWS S3
+title: Infra setup - Minio S3
 ---
 
-# Infra setup - AWS S3
+# Infra setup - Minio S3
 
-* Go to AWS console and log in
-* Create an S3 bucket, in our example 'redhat-demo-dev-hub-1'
-    * Region: eu-west-3 (or otherwise, but be aware that if you change this, you'll need to change configuration later on as well).
-    * Add bucket policy (i.e., permissions tab)
-```json
-{
-	"Version": "2012-10-17",
-	"Statement": [
-		{
-			"Sid": "PublicReadGetObject",
-			"Effect": "Allow",
-			"Principal": "*",
-			"Action": "s3:GetObject",
-			"Resource": "arn:aws:s3:::redhat-demo-dev-hub-1/*"
-		}
-	]
-}
-```
-* Add new user (IAM)
-    * username: redhat-demo
-    * Add policy: AmazonS3FullAccess
-    * Add policy: AmazonS3ReadOnlyAccess
-    * Get/generate the access key ID and secret access key
-      <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/aws_s3_techdocs_user.png" class="large">
-    * Store the accessKeyId and secretAccessKey locally as it will be required (i.e. or in the init_cluster script
-      or directly in the secrets/generated/secret_aws_s3_techdocs.yaml file)
+MinIO is an open-source, high-performance, distributed object storage system designed for storing unstructured data such as photos,
+videos, log files, backups, and container images. It is compatible with Amazon S3 APIs, making it easy to integrate with existing cloud-native applications.
+MinIO is known for its simplicity, scalability, and robustness, enabling it to handle petabytes of data with minimal resource consumption.
+It is often used in cloud-native environments, including Kubernetes, and supports features like erasure coding, bitrot protection, and encryption.
+MinIO can be deployed on-premises, in the cloud, or at the edge, making it versatile for various storage needs.
+
+## Installation of MinIO
+### Create a persistent volume claim
+A Persistent Volume Claim (PVC) in OpenShift is a request for storage by a user or application. It abstracts the details of storage provisioning
+by allowing users to claim a specific amount of storage from a Persistent Volume (PV), which is a piece of storage in the cluster.
+The PVC defines the desired size, access modes, and other properties, while OpenShift dynamically binds it to an available PV that meets the specified
+requirements. Once bound, the PVC provides persistent storage that can be used by pods, ensuring data remains available even if the pod is deleted or rescheduled.
+
+Creating the persistent volume claim is nothing more than applying the yaml definition, which
+you can find at [](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-persistent-volume-claim.yaml). When applied, you should wait until
+it becomes ready, which can take a couple of minutes.
+
+### Create a deployment and expose it
+1. Apply [](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-deployment.yaml) to have Minio running on OpenShift.
+2. Create a service to the running pods by applying [](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-service.yaml).
+   Both port 9000 (i.e., API port) and 9090 (i.e., web UI port) will be exposed.
+3. Now create 2 routes to access MinIO outside the OpenShift cluster (e.g., for testing purposes),
+   by applying [](gitops/minio/minio-route.yaml). _(!!! notice that you will have to chance the
+   base domain to match yours in the following routes.)_
+    1. The API route: https://minio-api-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+    2. The web UI route: https://minio-webui-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
