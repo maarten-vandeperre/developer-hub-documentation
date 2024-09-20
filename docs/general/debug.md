@@ -7,7 +7,9 @@ title: Debug Developer Hub
 
 ## Check logs
 * Developer Hub instance log:  
-Operators > 
+Operators > Installed Operators > Red Hat Developer Hub Operator > Red Hat Developer Hub > select instance > check events / error messages
+* Developer Hub pod log:  
+Deployments > Developer Hub deployment > pods > select pod > check logs
 
 ## Check database
 
