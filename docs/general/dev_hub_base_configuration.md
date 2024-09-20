@@ -92,7 +92,7 @@ spec:
     dynamic-plugins.yaml: |
       includes:
         - dynamic-plugins.default.yaml
-      plugins: leave this one out for now as it will give errors on startup (not needed at the moment anyway as we don't have plugins yet).
+      \# plugins: leave this one out for now as it will give errors on startup (not needed at the moment anyway as we don't have plugins yet).
   ```
   * Link the configuration to the Developer Hub (instance) manifest by applying the following yaml:
   ```yaml
