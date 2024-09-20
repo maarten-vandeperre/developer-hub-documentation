@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hoverable Sidebar Menu HTML CSS & JavaScript</title>
+    <title>{{ page.title }}</title>
     <link rel="stylesheet" href="/assets/js/default-style.css" />
     <!-- Boxicons CSS -->
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
@@ -229,6 +229,12 @@
                 display: block;
             }
         }
+
+        #content-container{
+            margin-left: 270px;
+            padding-left: 25px;
+            padding-top: 25px;
+        }
     </style>
 </head>
 <body>
@@ -327,13 +333,17 @@
 </nav>
 
 <!-- Navbar -->
-<nav class="navbar flex">
-    <i class="bx bx-menu" id="sidebar-open"></i>
-    <input type="text" placeholder="Search..." class="search_box" />
-    <span class="nav_image">
-        <img src="images/profile.jpg" alt="logo_img" />
-      </span>
-</nav>
+<!--<nav class="navbar flex">-->
+<!--    <i class="bx bx-menu" id="sidebar-open"></i>-->
+<!--    <input type="text" placeholder="Search..." class="search_box" />-->
+<!--    <span class="nav_image">-->
+<!--        <img src="images/profile.jpg" alt="logo_img" />-->
+<!--      </span>-->
+<!--</nav>-->
+
+<div id="content-container">
+    {{ content }}
+</div>
 </body>
 <script>
     // Selecting the sidebar and buttons
