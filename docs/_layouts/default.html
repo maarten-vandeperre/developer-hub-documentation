@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <h2>Developer Hub Docs</h2>
+        <ul class="sidebar-menu">
+            <li><a href="{{ '/automated-install.md' | relative_url }}">Automated Install</a></li>
+            <li>
+                <a href="{{ '/install-tooling.md' | relative_url }}">Install Required Tooling</a>
+                <ul>
+                    <li><a href="{{ '/install-tooling.md#keycloak' | relative_url }}">Install Keycloak</a></li>
+                    <li><a href="{{ '/install-tooling.md#s3' | relative_url }}">Install S3</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="{{ '/install-red-hat-developer-hub.md' | relative_url }}">Install Red Hat Developer Hub</a>
+                <ul>
+                    <li><a href="{{ '/install-red-hat-developer-hub.md#via-operator' | relative_url }}">Install via Operator</a></li>
+                    <li><a href="{{ '/install-red-hat-developer-hub.md#via-helm' | relative_url }}">Install via Helm</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ '/debug-developer-hub.md' | relative_url }}">Debug Developer Hub</a></li>
+            <li><a href="{{ '/configure-developer-hub.md' | relative_url }}">Configure Developer Hub</a></li>
+            <li><a href="{{ '/developer-hub-configurations.md' | relative_url }}">Developer Hub Configurations</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        {{ content }}
+    </div>
+</div>
+</body>
+</html>
