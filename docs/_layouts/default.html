@@ -1,40 +1,118 @@
 <!DOCTYPE html>
+<!-- Coding by CodingNepal || www.codingnepalweb.com -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoverable Sidebar Menu HTML CSS & JavaScript</title>
+    <link rel="stylesheet" href="/docs/assets/js/default-style.css" />
+    <!-- Boxicons CSS -->
+    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <script src="/docs/assets/js/default-style.js" defer></script>
 </head>
 <body>
-<div class="container">
-    <div class="sidebar">
-        <h2>Developer Hub Docs</h2>
-        <ul class="sidebar-menu">
-            <li><a href="{{ '/automated-install.md' | relative_url }}">Automated Install</a></li>
-            <li>
-                <a href="{{ '/install-tooling.md' | relative_url }}">Install Required Tooling</a>
-                <ul>
-                    <li><a href="{{ '/install-tooling.md#keycloak' | relative_url }}">Install Keycloak</a></li>
-                    <li><a href="{{ '/install-tooling.md#s3' | relative_url }}">Install S3</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="{{ '/install-red-hat-developer-hub.md' | relative_url }}">Install Red Hat Developer Hub</a>
-                <ul>
-                    <li><a href="{{ '/install-red-hat-developer-hub.md#via-operator' | relative_url }}">Install via Operator</a></li>
-                    <li><a href="{{ '/install-red-hat-developer-hub.md#via-helm' | relative_url }}">Install via Helm</a></li>
-                </ul>
-            </li>
-            <li><a href="{{ '/debug-developer-hub.md' | relative_url }}">Debug Developer Hub</a></li>
-            <li><a href="{{ '/configure-developer-hub.md' | relative_url }}">Configure Developer Hub</a></li>
-            <li><a href="{{ '/developer-hub-configurations.md' | relative_url }}">Developer Hub Configurations</a></li>
-        </ul>
+<nav class="sidebar locked">
+    <div class="logo_items flex">
+        <span class="nav_image">
+          <img src="images/logo.png" alt="logo_img" />
+        </span>
+        <span class="logo_name">CodingNepal</span>
+        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>
+        <i class="bx bx-x" id="sidebar-close"></i>
     </div>
 
-    <div class="content">
-        {{ content }}
+    <div class="menu_container">
+        <div class="menu_items">
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Dashboard</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-home-alt"></i>
+                        <span>Overview</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-grid-alt"></i>
+                        <span>All Projects</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Editor</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bxs-magic-wand"></i>
+                        <span>Magic Build</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-folder"></i>
+                        <span>New Projects</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-cloud-upload"></i>
+                        <span>Upload New</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Setting</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-flag"></i>
+                        <span>Notice Board</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-award"></i>
+                        <span>Award</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="#" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Setting</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar_profile flex">
+          <span class="nav_image">
+            <img src="images/profile.jpg" alt="logo_img" />
+          </span>
+            <div class="data_text">
+                <span class="name">David Oliva</span>
+                <span class="email">david@gmail.com</span>
+            </div>
+        </div>
     </div>
-</div>
+</nav>
+
+<!-- Navbar -->
+<nav class="navbar flex">
+    <i class="bx bx-menu" id="sidebar-open"></i>
+    <input type="text" placeholder="Search..." class="search_box" />
+    <span class="nav_image">
+        <img src="images/profile.jpg" alt="logo_img" />
+      </span>
+</nav>
 </body>
 </html>
