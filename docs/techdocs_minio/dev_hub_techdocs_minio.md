@@ -5,7 +5,7 @@ title: Tech Docs Configuration - Minio S3 (source)
 
 # Tech Docs Configuration - Minio S3 (source)
 
-* Make sure that S3 is set up as described in [AWS S3 tech docs (static content) configuration](https://maarten-vandeperre.github.io/developer-hub-documentation/techdocs_s3/infra_setup_techdocs_s3.html)
+* Make sure that S3 is set up as described in [Minio S3 tech docs (static content) configuration](https://maarten-vandeperre.github.io/developer-hub-documentation/techdocs_minio/infra_setup_techdocs_minio.html)
     * IAM user created that can read and write in S3
     * Bucket 'redhat-demo-dev-hub-1' in region 'eu-west-3'.
 * Make sure that the aws client (i.e., cli) is installed and that you logged in with the created user (i.e., run 'aws configure' command).
