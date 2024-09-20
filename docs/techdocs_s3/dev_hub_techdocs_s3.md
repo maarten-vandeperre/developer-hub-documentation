@@ -88,7 +88,7 @@ catalog:
     * Open Developer Hub.
     * Click "create":
       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/techdocs_add_component.png" class="large">
-    * Add the URL of the catalog-info.yaml in the URL section (i.e., for me it is https://github.com/maarten-vandeperre/developer-hub-documentation/blob/tech-docs-implementation/configurations/techdocs/static-content/catalog-info.yaml).
+    * Add the URL of the catalog-info.yaml in the URL section (i.e., for me it is [https://github.com/maarten-vandeperre/developer-hub-documentation/blob/argo/configurations/techdocs/static-content/aws-s3/catalog-info.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/argo/configurations/techdocs/static-content/aws-s3/catalog-info.yaml)).
     * Click on 'Analyze' and 'Create'.
     * Now go to "Docs" menu item and you should be able to see your documentation:
       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/techdocs_maartens_first_documentation.png" class="large">
