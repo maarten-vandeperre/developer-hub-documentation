@@ -161,7 +161,7 @@
             color: #333;
         }
         .sidebar_profile .email {
-            font-size: 15px;
+            font-size: 12px;
             color: #333;
         }
 
@@ -255,27 +255,33 @@
                     <span class="line"></span>
                 </div>
                 <li class="item">
-                    <a href="{{ '/automated-install.md' | relative_url }}" class="link flex">
+                    <a href="{{ '/general/automated-install.md' | relative_url }}" class="link flex">
                         <i class="bx bx-edit"></i>
-                        <span>Automated install</span>
+                        <span>Automated install script</span>
                     </a>
                 </li>
                 <li class="item">
-                    <a href="#" class="link flex">
+                    <a href="{{ '/general/debug.md' | relative_url }}" class="link flex">
                         <i class="bx bx-glasses"></i>
                         <span>Debug</span>
                     </a>
                 </li>
                 <li class="item">
-                    <a href="#" class="link flex">
+                    <a href="{{ '/general/dev_hub_installation.md' | relative_url }}" class="link flex">
                         <i class="bx bx-edit"></i>
                         <span>Dev hub installation</span>
                     </a>
                 </li>
                 <li class="item">
-                    <a href="#" class="link flex">
+                    <a href="{{ '/general/dev_hub_base_configuration.md' | relative_url }}" class="link flex">
                         <i class="bx bx-edit"></i>
                         <span>Dev hub base configuration</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/general/dev_hub_templates.md' | relative_url }}" class="link flex">
+                        <i class="bx bx-glasses"></i>
+                        <span>Dev hub config templates</span>
                     </a>
                 </li>
             </ul>
@@ -397,12 +403,12 @@
         </div>
 
         <div class="sidebar_profile flex">
-          <span class="nav_image">
-            <img src="images/profile.jpg" alt="logo_img" />
-          </span>
+<!--          <span class="nav_image">-->
+<!--            <img src="images/profile.jpg" alt="logo_img" />-->
+<!--          </span>-->
             <div class="data_text">
-                <span class="name">David Oliva</span>
-                <span class="email">david@gmail.com</span>
+                <span class="name"><a href="https://developers.redhat.com/author/maarten-vandeperre" target="_blank">Maarten Vandeperre</a></span>
+                <span class="email">maarten.vandeperre@redhat.com</span>
             </div>
         </div>
     </div>
