@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Tech Docs Configuration - AWS S3 (source)
+title: Tech Docs Configuration - Minio S3 (source)
 ---
 
-# Tech Docs Configuration - AWS S3 (source)
+# Tech Docs Configuration - Minio S3 (source)
 
 * Make sure that S3 is set up as described in [AWS S3 tech docs (static content) configuration](https://maarten-vandeperre.github.io/developer-hub-documentation/techdocs_s3/infra_setup_techdocs_s3.html)
     * IAM user created that can read and write in S3
