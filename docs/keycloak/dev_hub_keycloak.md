@@ -46,10 +46,10 @@ signInPage: oidc
   we need to:
   * Enable the dynamic plugin for Keycloak by applying the following yaml to the dynamic plugins configuration (on anchor_01):
     ```yaml
-    plugins:
-      \- package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic
-        disabled: false
-        pluginConfig: {}
+      plugins:
+        - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic
+          disabled: false
+          pluginConfig: {}
     ```
   * Apply the following yaml to the Developer Hub config (on anchor_03):
     ```yaml
