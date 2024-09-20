@@ -1,1 +1,3 @@
-baseurl: /dv
+# Ensure the assets folder is not excluded
+include:
+  - assets
