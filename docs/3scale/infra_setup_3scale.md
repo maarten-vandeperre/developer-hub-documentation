@@ -17,34 +17,34 @@ More information can be found over here:
 As 3scale requires a "ReadWriteMany" capable persistent volume, and as I try to make this repo as much
 platform independent as possible (i.e., no AWS or Azure or ... specific configurations), I opted for
 a local Minio (S3) storage solution to provide me such a storage class. So in order to continue with this
-installation, make sure that [Minio is installed properly](README-InstallMinio.md).
+installation, make sure that [Minio is installed properly](https://maarten-vandeperre.github.io/developer-hub-documentation/techdocs_minio/infra_setup_techdocs_minio.html).
 
-## Installation of 3scale
+## Installation of 3scale (Manual)
 ### Install the operator
 Installing the operator is nothing more than applying the operator definition, which
-you can find at [](gitops/3scale/3scale-operator.yaml). When applied, you should wait until
+you can find at [gitops/3scale/3scale-operator.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-operator.yaml). When applied, you should wait until
 it becomes ready, which can take a couple of minutes.
 
 ### Install the API manager
 Before we install the API manager, some secrets/configurations need to be created in
 OpenShift. So first apply the following files:
-* [gitops/3scale/3scale-secret-registry-auth](gitops/3scale/3scale-secret-registry-auth.yaml): contains
+* [gitops/3scale/3scale-secret-registry-auth](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-secret-registry-auth.yaml): contains
   a token to be able to access the internal container registry (e.g., for pulling the APICast images).
-* [gitops/3scale/3scale-storage-credentials.yaml](gitops/3scale/3scale-storage-credentials.yaml): contains
+* [gitops/3scale/3scale-storage-credentials.yaml](ghttps://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/itops/3scale/3scale-storage-credentials.yaml): contains
   some values in order to connect with our Minio service.
-* [gitops/3scale/3scale-storage-config.yaml](gitops/3scale/3scale-storage-config.yaml): contains
+* [gitops/3scale/3scale-storage-config.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-config.yaml): contains
   some values in order to connect with our Minio service. This one could be merged in the previous one if wanted.
 
 Now that we have the configurations in place, we can create the API manager, by applying the following yaml definition:
-[gitops/3scale/3scale-api-manager.yaml](gitops/3scale/3scale-api-manager.yaml). When applied, you should wait until
+[gitops/3scale/3scale-api-manager.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-api-manager.yaml). When applied, you should wait until
 it becomes available, which can take a couple of minutes.
-![](images/3scale_api_manager_installation.png "")
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale_api_manager_installation.png">
 
 ## Configure 3scale tenant
 In order to have demo data available in 3scale, we will create and populate a demo tenant.
 As I want to have this repository as platform independent as possible and hence I want to avoid
 you to install too many tools locally, I avoided the 3scale CLI by dumping the database after population
-myself. Running the script [scripts/script_configure_3scale.sh](scripts/script_configure_3scale.sh) would
+myself. Running the script [scripts/script_configure_3scale.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/scripts/script_configure_3scale.sh) would
 create the required demo tenant via a database restore (a shortcut to make the work a bit more efficient).
 **!!! important to note:** I am making use of version 2.14 for now (e.g., to have database schemas in sync).
 
@@ -52,7 +52,7 @@ In case you would like to do it manually yourself:
 1. Create a tenant "Demo Organization" on the master.
 2. Add a user/admin: 3scale-user - 3scale-user@demo-organization.com - pwd: rescale.
 3. Activate the user.
-   ![](images/3scale-demo-tenant.png "")
+   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-demo-tenant.png">
 4. Impersonate via the master or login in the admin screen with the created user.
    _Route should look like this: https://demo-organization-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com_
 5. Create a backend "API backend".
@@ -244,8 +244,10 @@ In case you would like to do it manually yourself:
     ```
 8. Create an access token by:
     1. Going to account settings
-       ![](images/3scale-account-settings.png "")
+       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-account-settings.png">
     2. Click Add Access Token
-       ![](images/3scale-add-access-token.png "")
+       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-add-access-token.png">
     3. Store the access token, as you will need it to configure the 3scale integration with
        Developer Hub.
+
+## Installation of 3scale (Automatically)
