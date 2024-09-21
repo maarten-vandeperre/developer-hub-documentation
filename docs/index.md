@@ -5,7 +5,8 @@ title: Developer Hub Documentation
 
 # Developer Hub Documentation
 
-Welcome on this Developer Hub documentation (showcase) page.
+Welcome on this Developer Hub documentation (showcase) page, of which you can find [the source 
+code over here.](https://github.com/maarten-vandeperre/developer-hub-documentation)
 This document should provide al necassary information required to get Developer Hub 
 and quite some integrations up and running in no-time.  
 
