@@ -53,11 +53,11 @@ Now we need to add the software template, for this we will go to the "create..."
 follow the following steps:
 1. Click on the button "Register Existing Component".
 2. Fill the following URL and click analyze: [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world/template.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world/template.yaml).
-   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-1.png">
+   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-1.png" class="large">
 3. Click "refresh" button.
 4. No need to click "Register another", you can just click the "create..." menu item again
    and the template should be visible now:
-   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-2.png">
+   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-2.png" class="large">
 
 
 **A software template is defined by**
@@ -72,7 +72,7 @@ follow the following steps:
 **Initiating the software template**
 When you have the catalog with the templates, pick the template you want to initiate and
 click "Choose".
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-3.png">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-3.png" class="large">
 
 Now you can initiate the template. I use the following values:
 * Repository name: dev-hub-test-demo
@@ -81,5 +81,5 @@ Now you can initiate the template. I use the following values:
 
 Click "Review" and click "Create", and you should be able to see the link to the new repository
 or you will see it in GitHub:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-4.png">
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-5.png">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-4.png" class="large">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-5.png" class="large">
