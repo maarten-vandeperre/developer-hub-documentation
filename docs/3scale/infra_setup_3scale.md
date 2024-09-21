@@ -254,7 +254,7 @@ In case you would like to do it manually yourself:
 I've created some yaml definitions to install and configure 3scale in an automated way (it are the same yaml definitions that are used in the
 [script_init_cluster.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/script_init_cluster.sh) script). In order to
 get 3scale installed and configured, apply the following yaml files in the given order (i.e., oc apply -f xxxxxx.yaml)
-* [gitops/3scale/3cale-operator.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3cale-operator.yaml)
+* [gitops/3scale/3cale-operator.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-operator.yaml)
 * [gitops/3scale/3scale-secret-registry-auth.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-secret-registry-auth.yaml)
 * [gitops/3scale/3scale-storage-config.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-config.yaml)
 * [gitops/3scale/3scale-storage-credentials.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-credentials.yaml)
