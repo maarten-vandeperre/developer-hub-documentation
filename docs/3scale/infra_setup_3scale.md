@@ -38,7 +38,7 @@ OpenShift. So first apply the following files:
 Now that we have the configurations in place, we can create the API manager, by applying the following yaml definition:
 [gitops/3scale/3scale-api-manager.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-api-manager.yaml). When applied, you should wait until
 it becomes available, which can take a couple of minutes.
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale_api_manager_installation.png">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale_api_manager_installation.png" class="large">
 
 ## Configure 3scale tenant
 In order to have demo data available in 3scale, we will create and populate a demo tenant.
@@ -52,7 +52,7 @@ In case you would like to do it manually yourself:
 1. Create a tenant "Demo Organization" on the master.
 2. Add a user/admin: 3scale-user - 3scale-user@demo-organization.com - pwd: rescale.
 3. Activate the user.
-   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-demo-tenant.png">
+   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-demo-tenant.png" class="large">
 4. Impersonate via the master or login in the admin screen with the created user.
    _Route should look like this: https://demo-organization-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com_
 5. Create a backend "API backend".
@@ -244,9 +244,9 @@ In case you would like to do it manually yourself:
     ```
 8. Create an access token by:
     1. Going to account settings
-       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-account-settings.png">
+       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-account-settings.png" class="large">
     2. Click Add Access Token
-       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-add-access-token.png">
+       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-add-access-token.png" class="large">
     3. Store the access token, as you will need it to configure the 3scale integration with
        Developer Hub.
 
