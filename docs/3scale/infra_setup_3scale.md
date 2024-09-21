@@ -254,17 +254,17 @@ In case you would like to do it manually yourself:
 I've created some yaml definitions to install and configure 3scale in an automated way (it are the same yaml definitions that are used in the
 [script_init_cluster.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/script_init_cluster.sh) script). In order to
 get 3scale installed and configured, apply the following yaml files in the given order (i.e., oc apply -f xxxxxx.yaml)
-* [configurations/3scale/3cale-operator.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3cale-operator.yaml)
-* [configurations/3scale/3scale-secret-registry-auth.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-secret-registry-auth.yaml)
-* [configurations/3scale/3scale-storage-config.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-storage-config.yaml)
-* [configurations/3scale/3scale-storage-credentials.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-storage-credentials.yaml)
-* [configurations/3scale/3scale-tenant-secret.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-tenant-secret.yaml)
-* [configurations/3scale/3scale-api-spec-people-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-api-spec-people-api.yaml)
-* [configurations/3scale/3scale-api-manager.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-api-manager.yaml)
-* [configurations/3scale/3scale-demo-organization-tenant.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-demo-organization-tenant.yaml)
-* [configurations/3scale/3scale-product-product-a.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-product-product-a.yaml)
-* [configurations/3scale/3scale-backend-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-backend-api.yaml)
-* [configurations/3scale/3scale-activedoc-people-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-activedoc-people-api.yaml)
+* [gitops/3scale/3cale-operator.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3cale-operator.yaml)
+* [gitops/3scale/3scale-secret-registry-auth.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-secret-registry-auth.yaml)
+* [gitops/3scale/3scale-storage-config.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-config.yaml)
+* [gitops/3scale/3scale-storage-credentials.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-credentials.yaml)
+* [gitops/3scale/3scale-tenant-secret.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-tenant-secret.yaml)
+* [gitops/3scale/3scale-api-spec-people-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-api-spec-people-api.yaml)
+* [gitops/3scale/3scale-api-manager.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-api-manager.yaml)
+* [gitops/3scale/3scale-demo-organization-tenant.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-demo-organization-tenant.yaml)
+* [gitops/3scale/3scale-product-product-a.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-product-product-a.yaml)
+* [gitops/3scale/3scale-backend-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-backend-api.yaml)
+* [gitops/3scale/3scale-activedoc-people-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-activedoc-people-api.yaml)
 
 ## Passwords
 In order to log in to the admin section, you can go to 'TODO_ADMIN_URL' and login with username 'admin' and password 'averysecurepassword'.
