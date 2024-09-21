@@ -12,7 +12,10 @@ In order to enable component scanning from GitHub to Developer Hub (i.e., catalo
 you'll need to execute the following steps:
 1. Enable the Catalog Backend Module GitHub plugin by applying the following yaml to the dynamic plugins configuration (on anchor_01):
     ```yaml
-    
+       - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
+         # documentation: https://backstage.io/docs/integrations/github/discovery/
+         disabled: false
+         pluginConfig: {}
     ```
 2. Add a provider, which scans your GitHub repositories every x time and creates or updates
    Component definitions in Developer Hub by applying the following yaml to the Developer Hub Config on anchor_02:
