@@ -30,7 +30,7 @@ Before we install the API manager, some secrets/configurations need to be create
 OpenShift. So first apply the following files:
 * [gitops/3scale/3scale-secret-registry-auth](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-secret-registry-auth.yaml): contains
   a token to be able to access the internal container registry (e.g., for pulling the APICast images).
-* [gitops/3scale/3scale-storage-credentials.yaml](ghttps://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/itops/3scale/3scale-storage-credentials.yaml): contains
+* [gitops/3scale/3scale-storage-credentials.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-credentials.yaml): contains
   some values in order to connect with our Minio service.
 * [gitops/3scale/3scale-storage-config.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-config.yaml): contains
   some values in order to connect with our Minio service. This one could be merged in the previous one if wanted.
