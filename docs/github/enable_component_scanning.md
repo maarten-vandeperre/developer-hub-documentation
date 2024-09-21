@@ -52,7 +52,7 @@ which contains all the integrations, described in this README file.
 Now we need to add the software template, for this we will go to the "create..." menu item and
 follow the following steps:
 1. Click on the button "Register Existing Component".
-2. Fill the following URL and click analyze: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world/template.yaml
+2. Fill the following URL and click analyze: [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world/template.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world/template.yaml).
    <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-1.png">
 3. Click "refresh" button.
 4. No need to click "Register another", you can just click the "create..." menu item again
@@ -61,7 +61,7 @@ follow the following steps:
 
 
 **A software template is defined by**
-* A GitHub (submodule in) repository. In my example: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world
+* A GitHub (submodule in) repository. In my example: [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world).
 * A template.yaml file which defines the catalog entity type "Template"
   (See section [Define the catalog entities](https://maarten-vandeperre.github.io/developer-hub-documentation/catalog_entities/dev_hub_catalog_entities_manually.html#define-the-catalog-entities)).
 * Most of the time a skeleton folder (unless defined differently in the template.yaml file),
@@ -82,4 +82,4 @@ Now you can initiate the template. I use the following values:
 Click "Review" and click "Create", and you should be able to see the link to the new repository
 or you will see it in GitHub:
 <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-4.png">
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/images/software-template-5.png">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/software-template-5.png">
