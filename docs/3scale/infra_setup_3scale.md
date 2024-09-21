@@ -44,7 +44,7 @@ it becomes available, which can take a couple of minutes.
 In order to have demo data available in 3scale, we will create and populate a demo tenant.
 As I want to have this repository as platform independent as possible and hence I want to avoid
 you to install too many tools locally, I avoided the 3scale CLI by dumping the database after population
-myself. Running the script [scripts/script_configure_3scale.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/scripts/script_configure_3scale.sh) would
+myself. Running the script [scripts/script_configure_3scale_integration.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/scripts/script_configure_3scale_integration.sh) would
 create the required demo tenant via a database restore (a shortcut to make the work a bit more efficient).
 **!!! important to note:** I am making use of version 2.14 for now (e.g., to have database schemas in sync).
 
