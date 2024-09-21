@@ -60,6 +60,6 @@ catalog:
 
 If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer-hub/11_app-config-rhdh.yaml),
 which contains all the integrations, described in this README file.
-
+  
 **!!! Have a close look to the API definitions:** I added both production and staging OpenAPI definitions, as in the real world,
 API definitions can differ, depending on the given environment.
