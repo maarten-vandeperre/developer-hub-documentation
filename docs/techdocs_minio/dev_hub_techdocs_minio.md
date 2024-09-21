@@ -67,11 +67,6 @@ catalog:
       techdocs-cli generate --source-dir ./configurations/techdocs/static-content --output-dir ./configurations/techdocs/static-content/minio-s3/site --no-docker --verbose
       ```
     * A folder 'configurations/techdocs/static-content/minio-s3/site' should be created now.
-    * Validate that you have an active AWS session by running the following command:  
-      _(redhat-demo-dev-hub-1)_ should be part of the list.
-      ```shell
-      aws s3 ls
-      ```
     * Publish the static content to the S3 bucket by running the following script [scripts/script_configure_minio.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/scripts/script_configure_minio.sh). 
       **!! be aware:** If you change the component name (i.e., maartens-first-documentation), make sure that you change it as well
       in catalog-info.yaml and mkdocs.yaml configuration files within the documentation repository, as they are linked to each other by name.
