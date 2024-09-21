@@ -67,14 +67,14 @@ catalog:
       techdocs-cli generate --source-dir ./configurations/techdocs/static-content --output-dir ./configurations/techdocs/static-content/minio-s3/site --no-docker --verbose
       ```
     * A folder 'configurations/techdocs/static-content/minio-s3/site' should be created now.
-    * Publish the static content to the S3 bucket by running the following script [scripts/script_configure_minio.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/scripts/script_configure_minio.sh). 
+    * Publish the static content to the S3 bucket by running the following script [scripts/script_configure_minio.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/scripts/script_configure_minio.sh).   
       **!! be aware:** If you change the component name (i.e., maartens-first-documentation), make sure that you change it as well
       in catalog-info.yaml and mkdocs.yaml configuration files within the documentation repository, as they are linked to each other by name.
 * We now have the configuration and the static content set up. We now only need to add it as a component in Developer Hub:
     * Open Developer Hub.
     * Click "create":
       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/techdocs_add_component.png" class="large">
-    * Add the URL of the catalog-info.yaml in the URL section (i.e., for me it is [https://github.com/maarten-vandeperre/developer-hub-documentation/blob/argo/configurations/techdocs/static-content/minio-s3/catalog-info.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/argo/configurations/techdocs/static-content/minio-s3/catalog-info.yaml)).
+    * Add the URL of the catalog-info.yaml in the URL section (i.e., for me it is [https://github.com/maarten-vandeperre/developer-hub-documentation/blob/argo/configurations/techdocs/static-content/minio-s3/catalog-info.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/argo/configurations/techdocs/static-content/minio-s3/catalog-info.yaml)).   
     * Click on 'Analyze' and 'Create'.
     * Now go to "Docs" menu item and you should be able to see your documentation:
       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/techdocs_maartens_first_documentation.png" class="large">
