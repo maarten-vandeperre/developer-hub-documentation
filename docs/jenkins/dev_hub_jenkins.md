@@ -5,11 +5,10 @@ title: Dev hub integration: Jenkins
 
 # Dev hub integration: Jenkins
 
-* Make sure that Keycloak is set up as described in [Keycloak Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/keycloak/infra_setup_keycloak.html)
-    * Get the base url
-    * Realm: rhdh
-    * ClientId: rhdh-client
-    * ClientSecret: view/copy it from keycloak
+* Make sure that 3scale is set up as described in [3scale Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/3scale/infra_setup_3scale.html)
+    * Get admin organization of the tenant you want to connect: https://demo-organization-maarten-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+    * Username: admin
+    * Password:
 * Now we are going to configure OpenID (Keycloak for us) to allow OpenID-based authentication
   within Developer Hub. Apply the following yaml definition to the Developer Hub Config on anchor_01:
 ```yaml

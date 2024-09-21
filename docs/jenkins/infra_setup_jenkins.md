@@ -267,7 +267,8 @@ get 3scale installed and configured, apply the following yaml files in the given
 * [configurations/3scale/3scale-activedoc-people-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/3scale/3scale-activedoc-people-api.yaml)
 
 ## Passwords
-In order to log in to the admin section, you can go to 'TODO_ADMIN_URL' and login with username 'admin' and password 'averysecurepassword'.
+In order to log in to the admin section, you can go to 'https://demo-organization-maarten-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com' 
+and login with username 'admin' and password 'averysecurepassword'.
 The API token can be retrieved from the token field in the tenant-secret secret.
 ```shell
 oc get secret tenant-secret -n demo-project -o template --template='{{.data.token}}' | base64 -d ; echo
