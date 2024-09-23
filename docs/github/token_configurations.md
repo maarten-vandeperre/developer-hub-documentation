@@ -11,6 +11,7 @@ Official GitHub documentation to get these tokens can be found over here:
 * Create git app: 
   * [https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)
   * [https://backstage.io/docs/integrations/github/github-apps/](https://backstage.io/docs/integrations/github/github-apps/)
+  * **!!!important:** In case you want to enable GitHub authentication, you will need to add the base url of Developer Hub as the callback URL.
 * Create personal access token: 
   * [https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 

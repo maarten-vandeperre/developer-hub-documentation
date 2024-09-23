@@ -133,6 +133,10 @@ data:
       session:
         secret: ${BACKEND_SECRET}
       providers:
+        github:
+          default:
+            clientId: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_ID}
+            clientSecret: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_SECRET}
         oidc:
           default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
