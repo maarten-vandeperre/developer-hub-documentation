@@ -71,11 +71,11 @@ title: Dev hub integration: Tekton
       * dev-hub-test-demo: the id defined in the tekton pipeline label (see above)
 
 _If you now go to the CI tab on the component detail, you'll be able to see Tekton details:._
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/tekton_5.png" class="large">  
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_5.png" class="large">  
 
 
 **!!!Important**: when you get the error "Warning: There was a problem retrieving Kubernetes objects", it means that your service account token is expired.
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/tekton_4.png" class="large">  
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_4.png" class="large">  
 You can fix it by running the following commands:
 * sh scripts/script_configure_tekton_integration.sh 
 * oc apply -f secrets/generated/secret_tekton.yaml

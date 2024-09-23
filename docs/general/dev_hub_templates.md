@@ -49,7 +49,7 @@ of all listed components beneath in the respectively yaml files (i.e., yaml file
 
 **Templates to start from:**
 * **Developer Hub (instance) Manifest:**  
-  _Resulting file: [gitops/developer-hub/developer-hub-instance.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer-hub/31_developer-hub-instance.yaml)_
+  _Resulting file: [gitops/developer-hub/developer-hub-instance.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/developer-hub/31_developer-hub-instance.yaml)_
 ```yaml
 apiVersion: rhdh.redhat.com/v1alpha1
 kind: Backstage
@@ -79,7 +79,7 @@ spec:
     enableLocalDb: true 
 ```
 * **Developer Hub Configuration**  
-  _Resulting file: [gitops/developer-hub/app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer-hub/11_app-config-rhdh.yaml)_  
+  _Resulting file: [gitops/developer-hub/app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/developer-hub/11_app-config-rhdh.yaml)_  
   **!! be aware**: project 'demo-project' is part of the url. Change it if you use another project
 ```yaml
 kind: ConfigMap
@@ -104,7 +104,7 @@ data:
     <anchor_01>
 ```
 * **Dynamic Plugin Configuration**  
-  _Resulting file: [gitops/developer-hub/dynamic-plugins-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer-hub/21_dynamic-plugins-rhdh.yaml)_
+  _Resulting file: [gitops/developer-hub/dynamic-plugins-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/developer-hub/21_dynamic-plugins-rhdh.yaml)_
 ```yaml
 kind: ConfigMap
 apiVersion: v1

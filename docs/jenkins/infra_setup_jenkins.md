@@ -21,7 +21,7 @@ In this section we will install Jenkins on OpenShift.
 
 ## Installation
 To install Jenkins on OpenShift, you won't need too much documentation, as I only did it via scripting, not manually 
-(i.e., a good engineer needs to be lazy, so they say...). in order to do so, you can run [scripts/script_install_jenkins.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/scripts/script_install_jenkins.sh).
+(i.e., a good engineer needs to be lazy, so they say...). in order to do so, you can run [scripts/script_install_jenkins.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/scripts/script_install_jenkins.sh).
   
 You then should be able to log in to jenkins on url:
 ```shell
@@ -35,9 +35,9 @@ And you can use the following credentials:
 * password: rhdh
   
 When logging in, you should see one job in the job list:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/jenkins_1.png" class="large">  
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/jenkins_1.png" class="large">  
   
 With one or multiple job runs:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/jenkins_2.png" class="large">  
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/jenkins_2.png" class="large">  
 
 **!!! important:** Note the name "demo-project/demo-app-pipeline" as you will need it in the Developer Hub configuration afterwards.

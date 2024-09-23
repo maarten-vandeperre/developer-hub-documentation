@@ -43,7 +43,7 @@ you'll need to execute the following steps:
     * filters > branch: branch to look at.
     * repository: I will scan all my repositories, so I add a regular expression, covering everything.
 
-   If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer-hub/11_app-config-rhdh.yaml),
+   If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/developer-hub/11_app-config-rhdh.yaml),
    which contains all the integrations, described in this README file.
 3. Add a GitHub integration configuration by applying the following yaml to the Developer Hub Config on anchor_02:
     ```yaml
@@ -62,7 +62,7 @@ you'll need to execute the following steps:
    _Note: The token is optional, but if you don't configure it, you'll run rather fast against GitHub API rate limits. So I would advise to have
    some kind of system user account in place to link to the catalog scanning configuration._
 
-   If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer-hub/11_app-config-rhdh.yaml),
+   If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/developer-hub/11_app-config-rhdh.yaml),
    which contains all the integrations, described in this README file.
 4. Now you should be able to see the repositories in your GitHub account that have a
    Component definition (i.e., catalog-info.yaml file) in their root. If for some reason it is not

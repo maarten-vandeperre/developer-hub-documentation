@@ -36,4 +36,4 @@ title: Dev hub integration: 3scale
     ```
 
 _If you now wait for the 3scale provider to import the APIs, you should be able to see it pop up in the API section:._
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/api-list-with-3scale-api.png" class="large">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/api-list-with-3scale-api.png" class="large">

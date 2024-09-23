@@ -55,4 +55,4 @@ signInPage: github
               initialDelay: { seconds: 15 }
     ```
 * Now the login screen should be changed to:
-  <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/login_screen_3.png">
+  <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/login_screen_3.png">

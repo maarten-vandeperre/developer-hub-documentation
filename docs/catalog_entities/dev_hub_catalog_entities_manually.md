@@ -10,7 +10,7 @@ In order to manually add catalog entities (i.e., not via integrations like the K
 
 ## Define the catalog entities
 Catalog entities definitions are defined [over here](https://backstage.io/docs/features/software-catalog/descriptor-format/). I have added an example implementation
-for all of them, which you can find back in the folder [configurations/catalog-entities](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/catalog-entities). If you want to link to them or import them,
+for all of them, which you can find back in the folder [configurations/catalog-entities](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/catalog-entities). If you want to link to them or import them,
 you can refer to the GitHub URL: https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/catalog-entities.
 
 The main file, which groups everything together is the all.yaml locations file. It will delegate to other locations files, for a specific catalog entity type
@@ -18,15 +18,15 @@ The main file, which groups everything together is the all.yaml locations file. 
 with your configuration(s). In case some modifications are not picked up, you can debug them as described in the [Debug Developer Hub Section](https://maarten-vandeperre.github.io/developer-hub-documentation/general/debug.html).
 
 When imported successfully, you can find them back in the catalog menu within Developer Hub:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/catalog_entities_overview.png" class="large">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/catalog_entities_overview.png" class="large">
 
 The catalog graph as it is configured in my catalog-entities folder, results in the following catalog graph:
 
 Without APIs for readability:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/catalog_graph_simple.png" class="large">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/catalog_graph_simple.png" class="large">
 
 Without users for readability:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/catalog_graph_simple_2.png" class="large">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/catalog_graph_simple_2.png" class="large">
 
 ## Link the catalog entities to the Developer Hub instance.
 In order to link the catalog entities (i.e., defined in previous section) to Developer Hub, you'll need to apply the
@@ -58,7 +58,7 @@ catalog:
       type: url
 ```
 
-If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/developer-hub/11_app-config-rhdh.yaml),
+If you want to see it in a complete configuration file, feel free to have a look at [gitops/developer-hub/11_app-config-rhdh.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/developer-hub/11_app-config-rhdh.yaml),
 which contains all the integrations, described in this README file.
   
 **!!! Have a close look to the API definitions:** I added both production and staging OpenAPI definitions, as in the real world,

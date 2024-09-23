@@ -30,7 +30,7 @@ oc get secret backstage-psql-secret-developer-hub -n demo-project  -o template -
 
 The database to be connected to, will be "backstage_plugin_catalog". If you're using IntelliJ,
 it will look like this:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/dev-hub-postgres-creation.png">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/dev-hub-postgres-creation.png">
 
 Now that we have a database connection, let's see how to request the possible errors and the
 reloading timestamps for the integrations (i.e., I use it as well during integration development to
@@ -56,13 +56,13 @@ ORDER by last_discovery_at desc
 ```
 
 Output will look like this:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/dev-hub-postgres-follow-up.png" class="large">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/dev-hub-postgres-follow-up.png" class="large">
 
 If you want to experiment with it yourself, you can uncomment the line with _"#    - AI/ML #TODO enable this line if you want to try to debug for errors"_
 within the catalog entities file [configurations/catalog-entities/systems/maartens-wonderful-system.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/configurations/catalog-entities/systems/maartens-wonderful-system.yaml).
 
 You then should have the following error:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/dev-hub-postgres-debug-errors.png" class="large">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/dev-hub-postgres-debug-errors.png" class="large">
 
 Full error message:
 

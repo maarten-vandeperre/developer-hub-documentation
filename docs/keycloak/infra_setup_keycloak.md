@@ -43,14 +43,14 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
 oc get secret demo-keycloak-instance-initial-admin -n demo-project -o template --template='{{.data.password}}' | base64 -d ; echo
 ```
 * Log in into keycloak (i.e., https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com/)
-* Configure the Red Hat Developer Hub realm (or import [configurations/keycloak/keycloak-realm-import.json](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/configurations/keycloak/keycloak-realm-import.json) directly into keycloak or apply
-  the realm import yaml in OpenShift (but make sure that you have persistent storage under keycloak then): [gitops/keycloak/keycloak-realm.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/keycloak/keycloak-realm.yaml)):
+* Configure the Red Hat Developer Hub realm (or import [configurations/keycloak/keycloak-realm-import.json](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/keycloak/keycloak-realm-import.json) directly into keycloak or apply
+  the realm import yaml in OpenShift (but make sure that you have persistent storage under keycloak then): [gitops/keycloak/keycloak-realm.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/keycloak/keycloak-realm.yaml)):
     * Create realm: rhdh
     * Create Confidential client: rhdh-client
         * Root URL: empty
         * Valid redirect URIs: <developer hub url>/*  (see section 'Install Red Hat Developer Hub via operator' in the README to retrieve the URL if you don't find it).
         * Take the secret from the client  
-          <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/keycloak_rhdh_client_creation.png">
+          <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/keycloak_rhdh_client_creation.png">
         * Service account must be enabled
         * The following roles must be added from the realm-management client role:
             * query-groups

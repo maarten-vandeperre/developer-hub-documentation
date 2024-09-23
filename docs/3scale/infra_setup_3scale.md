@@ -22,29 +22,29 @@ installation, make sure that [Minio is installed properly](https://maarten-vande
 ## Installation of 3scale (Manual)
 ### Install the operator
 Installing the operator is nothing more than applying the operator definition, which
-you can find at [gitops/3scale/3scale-operator.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-operator.yaml). When applied, you should wait until
+you can find at [gitops/3scale/3scale-operator.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-operator.yaml). When applied, you should wait until
 it becomes ready, which can take a couple of minutes.
 
 ### Install the API manager
 Before we install the API manager, some secrets/configurations need to be created in
 OpenShift. So first apply the following files:
-* [gitops/3scale/3scale-secret-registry-auth](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-secret-registry-auth.yaml): contains
+* [gitops/3scale/3scale-secret-registry-auth](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-secret-registry-auth.yaml): contains
   a token to be able to access the internal container registry (e.g., for pulling the APICast images).
-* [gitops/3scale/3scale-storage-credentials.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-credentials.yaml): contains
+* [gitops/3scale/3scale-storage-credentials.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-storage-credentials.yaml): contains
   some values in order to connect with our Minio service.
-* [gitops/3scale/3scale-storage-config.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-config.yaml): contains
+* [gitops/3scale/3scale-storage-config.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-storage-config.yaml): contains
   some values in order to connect with our Minio service. This one could be merged in the previous one if wanted.
 
 Now that we have the configurations in place, we can create the API manager, by applying the following yaml definition:
-[gitops/3scale/3scale-api-manager.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-api-manager.yaml). When applied, you should wait until
+[gitops/3scale/3scale-api-manager.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-api-manager.yaml). When applied, you should wait until
 it becomes available, which can take a couple of minutes.
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale_api_manager_installation.png" class="large">
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/3scale_api_manager_installation.png" class="large">
 
 ## Configure 3scale tenant
 In order to have demo data available in 3scale, we will create and populate a demo tenant.
 As I want to have this repository as platform independent as possible and hence I want to avoid
 you to install too many tools locally, I avoided the 3scale CLI by dumping the database after population
-myself. Running the script [scripts/script_configure_3scale_integration.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/scripts/script_configure_3scale_integration.sh) would
+myself. Running the script [scripts/script_configure_3scale_integration.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/scripts/script_configure_3scale_integration.sh) would
 create the required demo tenant via a database restore (a shortcut to make the work a bit more efficient).
 **!!! important to note:** I am making use of version 2.14 for now (e.g., to have database schemas in sync).
 
@@ -52,7 +52,7 @@ In case you would like to do it manually yourself:
 1. Create a tenant "Demo Organization" on the master.
 2. Add a user/admin: 3scale-user - 3scale-user@demo-organization.com - pwd: rescale.
 3. Activate the user.
-   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-demo-tenant.png" class="large">
+   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/3scale-demo-tenant.png" class="large">
 4. Impersonate via the master or login in the admin screen with the created user.
    _Route should look like this: https://demo-organization-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com_
 5. Create a backend "API backend".
@@ -244,9 +244,9 @@ In case you would like to do it manually yourself:
     ```
 8. Create an access token by:
     1. Going to account settings
-       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-account-settings.png" class="large">
+       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/3scale-account-settings.png" class="large">
     2. Click Add Access Token
-       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/3scale-add-access-token.png" class="large">
+       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/3scale-add-access-token.png" class="large">
     3. Store the access token, as you will need it to configure the 3scale integration with
        Developer Hub.
 
@@ -254,17 +254,17 @@ In case you would like to do it manually yourself:
 I've created some yaml definitions to install and configure 3scale in an automated way (it are the same yaml definitions that are used in the
 [script_init_cluster.sh](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/script_init_cluster.sh) script). In order to
 get 3scale installed and configured, apply the following yaml files in the given order (i.e., oc apply -f xxxxxx.yaml)
-* [gitops/3scale/3cale-operator.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-operator.yaml)
-* [gitops/3scale/3scale-secret-registry-auth.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-secret-registry-auth.yaml)
-* [gitops/3scale/3scale-storage-config.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-config.yaml)
-* [gitops/3scale/3scale-storage-credentials.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-storage-credentials.yaml)
-* [gitops/3scale/3scale-tenant-secret.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-tenant-secret.yaml)
-* [gitops/3scale/3scale-api-spec-people-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-api-spec-people-api.yaml)
-* [gitops/3scale/3scale-api-manager.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-api-manager.yaml)
-* [gitops/3scale/3scale-demo-organization-tenant.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-demo-organization-tenant.yaml)
-* [gitops/3scale/3scale-product-product-a.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-product-product-a.yaml)
-* [gitops/3scale/3scale-backend-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-backend-api.yaml)
-* [gitops/3scale/3scale-activedoc-people-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/3scale/3scale-activedoc-people-api.yaml)
+* [gitops/3scale/3cale-operator.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-operator.yaml)
+* [gitops/3scale/3scale-secret-registry-auth.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-secret-registry-auth.yaml)
+* [gitops/3scale/3scale-storage-config.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-storage-config.yaml)
+* [gitops/3scale/3scale-storage-credentials.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-storage-credentials.yaml)
+* [gitops/3scale/3scale-tenant-secret.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-tenant-secret.yaml)
+* [gitops/3scale/3scale-api-spec-people-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-api-spec-people-api.yaml)
+* [gitops/3scale/3scale-api-manager.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-api-manager.yaml)
+* [gitops/3scale/3scale-demo-organization-tenant.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-demo-organization-tenant.yaml)
+* [gitops/3scale/3scale-product-product-a.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-product-product-a.yaml)
+* [gitops/3scale/3scale-backend-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-backend-api.yaml)
+* [gitops/3scale/3scale-activedoc-people-api.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-activedoc-people-api.yaml)
 
 ## Passwords
 In order to log in to the admin section, you can go to 'TODO_ADMIN_URL' and login with username 'admin' and password 'averysecurepassword'.

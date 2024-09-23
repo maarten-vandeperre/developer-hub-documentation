@@ -19,15 +19,15 @@ The PVC defines the desired size, access modes, and other properties, while Open
 requirements. Once bound, the PVC provides persistent storage that can be used by pods, ensuring data remains available even if the pod is deleted or rescheduled.
 
 Creating the persistent volume claim is nothing more than applying the yaml definition, which
-you can find at [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-persistent-volume-claim.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-persistent-volume-claim.yaml). When applied, you should wait until
+you can find at [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/minio/minio-persistent-volume-claim.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/minio/minio-persistent-volume-claim.yaml). When applied, you should wait until
 it becomes ready, which can take a couple of minutes.
 
 ### Create a deployment and expose it
-1. Apply [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-deployment.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-deployment.yaml) to have Minio running on OpenShift.
-2. Create a service to the running pods by applying [](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-service.yaml).
+1. Apply [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/minio/minio-deployment.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/minio/minio-deployment.yaml) to have Minio running on OpenShift.
+2. Create a service to the running pods by applying [](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/minio/minio-service.yaml).
    Both port 9000 (i.e., API port) and 9090 (i.e., web UI port) will be exposed.
 3. Now create 2 routes to access MinIO outside the OpenShift cluster (e.g., for testing purposes),
-   by applying [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-route.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/minio/minio-route.yaml). _(!!! notice that you will have to chance the
+   by applying [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/minio/minio-route.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/minio/minio-route.yaml). _(!!! notice that you will have to chance the
    base domain to match yours in the following routes.)_
     1. The API route: https://minio-api-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
     2. The web UI route: https://minio-webui-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
