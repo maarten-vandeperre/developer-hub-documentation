@@ -7,12 +7,16 @@ title: Infra setup: Tekton
 Argo CD is a declarative, GitOps-based continuous delivery (CD) tool for Kubernetes. It ensures that the desired state of applications, 
 as defined in Git repositories, is automatically synchronized with the actual state of the Kubernetes clusters. 
 Argo CD provides real-time monitoring, automated rollbacks, and drift detection, making it ideal for managing complex, 
-multi-cluster Kubernetes environments. Its intuitive UI and robust API enable teams to manage deployments efficiently and ensure consistent, repeatable processes.  
+multi-cluster Kubernetes environments. Its intuitive UI and robust API enable teams to manage deployments efficiently and ensure consistent, repeatable processes.    
+  
+
 
 Running Argo CD on OpenShift is beneficial because OpenShift’s Kubernetes foundation aligns with Argo CD’s GitOps model.
 OpenShift's built-in security, including role-based access control (RBAC) and policy management, enhances the security of Argo CD deployments. 
 Additionally, OpenShift’s support for scalable, containerized workloads makes it easier to manage the lifecycle of applications, ensuring that 
-Argo CD can effectively handle the automation of continuous delivery pipelines in production environments.  
+Argo CD can effectively handle the automation of continuous delivery pipelines in production environments.    
+
+
 
 In this section we will install ArgoCD on OpenShift.
 

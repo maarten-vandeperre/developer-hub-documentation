@@ -7,12 +7,16 @@ title: Infra setup: Tekton
 Tekton is a modern, cloud-native continuous integration and delivery (CI/CD) system designed to run on Kubernetes.
 It provides a flexible framework for building, testing, and deploying applications through reusable, composable pipelines. 
 Tekton uses Kubernetes-native resources, making it scalable, portable, and well-suited for cloud-based environments. 
-Its pipeline-as-code approach allows developers to define workflows in YAML, which enhances flexibility and version control integration.  
+Its pipeline-as-code approach allows developers to define workflows in YAML, which enhances flexibility and version control integration.    
+
+
 
 Running Tekton on OpenShift is advantageous because OpenShift’s Kubernetes foundation ensures seamless integration, 
 leveraging Tekton's cloud-native architecture. OpenShift provides enhanced security, multi-tenancy, and developer tools, 
 making it easier to manage and scale Tekton pipelines. Moreover, OpenShift’s ability to manage containerized workloads and its support for 
-GitOps workflows make it an ideal platform for running Tekton in production environments.  
+GitOps workflows make it an ideal platform for running Tekton in production environments.    
+
+
 
 In this section we will install Tekton on OpenShift.
 
