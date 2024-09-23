@@ -170,7 +170,6 @@ data:
         - clusters:
             - authProvider: serviceAccount
               name: local-cluster
-              # TODO automatically replace
               serviceAccountToken: ${RHDH_TEKTON_SERVICE_ACCOUNT_TOKEN}
               skipTLSVerify: true
               url: https://api.cluster-mq98c.mq98c.sandbox870.opentlc.com:6443
