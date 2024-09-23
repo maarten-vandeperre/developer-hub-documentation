@@ -42,5 +42,5 @@ title: Dev hub integration: Jenkins
       * demo-project/demo-project-demo-app-pipeline: build name, which can be taken from the build detail URL:  
       <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/jenkins_3.png" class="large">  
 
-_If you now go to the CI tab on the component detail, you'll be able to see jenkins details:._
+_If you now go to the CI tab on the component detail, you'll be able to see Jenkins details:._
 <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/jenkins_4.png" class="large">
