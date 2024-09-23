@@ -10,33 +10,33 @@ title: Dev hub integration: Keycloak
     * Realm: rhdh
     * ClientId: rhdh-client
     * ClientSecret: view/copy it from keycloak
-* Now we are going to configure OpenID (Keycloak for us) to allow OpenID-based authentication
-  within Developer Hub. Apply the following yaml definition to the Developer Hub Config on anchor_01:
-```yaml
-auth:
-  environment: development
-  session:
-    secret: ${BACKEND_SECRET}
-  providers:
-    oidc:
-      development:
-#        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-        metadataUrl: https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-        clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
-        clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
-        prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
-        ## uncomment for additional configuration options
-        # callbackUrl: ${AUTH_OIDC_CALLBACK_URL}
-        # tokenEndpointAuthMethod: ${AUTH_OIDC_TOKEN_ENDPOINT_METHOD}
-        # tokenSignedResponseAlg: ${AUTH_OIDC_SIGNED_RESPONSE_ALG}
-        # scope: ${AUTH_OIDC_SCOPE}
-        ## Auth provider will try each resolver until it succeeds. Uncomment the resolvers you want to use to override the default resolver: `emailLocalPartMatchingUserEntityName`
-        signIn:
-          resolvers:
-            - resolver: preferredUsernameMatchingUserEntityName
-        #    - resolver: emailMatchingUserEntityProfileEmail
-        #    - resolver: emailLocalPartMatchingUserEntityName
-```
+  * Now we are going to configure OpenID (Keycloak for us) to allow OpenID-based authentication
+    within Developer Hub. Apply the following yaml definition to the Developer Hub Config on anchor_01:
+    ```yaml
+    auth:
+      environment: development
+      session:
+        secret: ${BACKEND_SECRET}
+      providers:
+        oidc:
+          development:
+    #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
+            clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
+            prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
+            ## uncomment for additional configuration options
+            # callbackUrl: ${AUTH_OIDC_CALLBACK_URL}
+            # tokenEndpointAuthMethod: ${AUTH_OIDC_TOKEN_ENDPOINT_METHOD}
+            # tokenSignedResponseAlg: ${AUTH_OIDC_SIGNED_RESPONSE_ALG}
+            # scope: ${AUTH_OIDC_SCOPE}
+            ## Auth provider will try each resolver until it succeeds. Uncomment the resolvers you want to use to override the default resolver: `emailLocalPartMatchingUserEntityName`
+            signIn:
+              resolvers:
+                - resolver: preferredUsernameMatchingUserEntityName
+            #    - resolver: emailMatchingUserEntityProfileEmail
+            #    - resolver: emailLocalPartMatchingUserEntityName
+    ```
 * By applying above config, you enable a new authentication provider to be used. By adding this info, the provider is not yet in use.
   In order to start using this oidc (i.e. OpenId Connect) provider, we have to apply the following yaml to the Developer Hub Config on anchor_02.
 ```yaml

@@ -8,7 +8,8 @@ title: Dev hub integration: 3scale
 * Make sure that 3scale is set up as described in [3scale Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/3scale/infra_setup_3scale.html)
   * Get admin organization of the tenant you want to connect: https://demo-organization-maarten-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
   * Username: admin
-  * Password: oc get secret tenant-secret -n demo-project -o template --template='{{.data.token}}' | base64 -d ; echo
+  * Password: averysecurepassword
+  * Token: oc get secret tenant-secret -n demo-project -o template --template='{{.data.token}}' | base64 -d ; echo
 * Now we are going to configure the 3scale integration
   within Developer Hub. In order to do so,
   we need to:
