@@ -3,7 +3,7 @@ layout: default
 title: Infra setup: jenkins
 ---
 
-# Infra setup: jenkins
+# Infra setup: Jenkins
 Jenkins is a popular open-source automation server that helps automate various stages of the software development lifecycle, including building, 
 testing, and deploying applications. It supports numerous plugins, enabling integration with a wide range of tools, making it highly customizable for 
 continuous integration (CI) and continuous delivery (CD) workflows. Jenkins allows teams to streamline development processes, ensuring faster releases with 
