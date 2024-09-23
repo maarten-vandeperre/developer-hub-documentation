@@ -4,6 +4,18 @@
 Next to that, be aware that the root domain will be different for you, and it will be the root domain of your
 OpenShift cluster._**
 
+## Automated install
+When you would like to have an OpenShift cluster with all integrations configured automatically for you, you can make use of the
+[script_init_cluster.sh](script_init_cluster.sh) script.  
+In order to do so, you'll have to follow these steps:
+1. Make sure you have a running OpenShift cluster without a project name demo-project, as that's the one I will be using
+   (or replace demo-project in this repository).
+2. Copy and execute the 'oc login' command.
+3. Make a fork of [this GitHub repository](https://github.com/maarten-vandeperre/dev-hub-test-demo), so that it is a part
+of your repository list (or create a new repository and copy the catalog-info.yaml file over). This file will enable some
+Developer Hub/Backstage components on catalog component level (e.g., CI, CD, Kubernetes topology viewer, ...).
+4. Execute [script_init_cluster.sh](script_init_cluster.sh).
+
 ## Table of Contents
 
 1. [Install required tooling](#install-required-tooling)
@@ -78,7 +90,7 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
   -o template --template='{{.spec.host}}'\ 
   ; echo
 ```
-* _In our case: backstage-developer-hub-demo-project.apps.cluster-bnc5t.sandbox3269.opentlc.com_
+* _In our case: backstage-developer-hub-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com_
 
 ### Install Red Hat Developer Hub via Helm chart
 [Helm chart install guide](https://developers.redhat.com/learning/learn:openshift:install-and-configure-red-hat-developer-hub-and-explore-templating-basics/resource/resources:install-red-hat-developer-hub-developer-sandbox-red-hat-openshift)
@@ -160,7 +172,7 @@ type: Opaque
 * Set the base domain variable.  
   **_!!! Be careful, the base domain will be different in your setup._**
 ```shell
-basedomain=apps.cluster-bnc5t.sandbox3269.opentlc.com
+basedomain=apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
 ```
 * Patch the secret to add the base domain (i.e., to avoid CORS issues).  
 ```shell
@@ -216,7 +228,7 @@ spec:
   database:
     enableLocalDb: true
 ```
-* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-bnc5t.sandbox3269.opentlc.com
+* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
 * You should now be able to see the following screen:
   ![](images/login_screen_1.png "")
 * Last thing to configure now is the enablement of the dynamic plugins. These dynamic plugins will allow you to add functionality 
@@ -395,7 +407,7 @@ auth:
     oidc:
       development:
 #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-        metadataUrl: https://demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+        metadataUrl: https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
         clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
         clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
         prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -431,7 +443,7 @@ catalog:
   providers:
     keycloakOrg:
       default:
-        baseUrl: https://demo-keycloak-instance.apps.cluster-bnc5t.sandbox3269.opentlc.com
+        baseUrl: https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
         loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret
@@ -502,20 +514,20 @@ catalog:
 ```
 * Now that we have our config set up, it's time to add/publish our documentation in S3. 
 (You can describe the following process in e.g., GitHub actions as well):
-  * Create a GIT repository in which you will store your static documentation (over here, a mimic of a GIT repository: [documentation/techdocs/static-content](documentation/techdocs/static-content)).
-  * Static (source) content is available in the [documentation/techdocs/static-content](documentation/techdocs/static-content/docs) folder.  
+  * Create a GIT repository in which you will store your static documentation (over here, a mimic of a GIT repository: [configurations/techdocs/static-content](configurations/techdocs/static-content)).
+  * Static (source) content is available in the [configurations/techdocs/static-content](configurations/techdocs/static-content/aws-s3/docs) folder.  
   Important to note is that these should be **markdown files**.
   * Install [techdocs-cli](https://backstage.io/docs/features/techdocs/cli/)
-  * Go to the root of your documentation repository ([documentation/techdocs/static-content](documentation/techdocs/static-content/docs))
+  * Go to the root of your documentation repository ([configurations/techdocs/static-content](configurations/techdocs/static-content/aws-s3/docs))
   * Generate the content to be showed in Developer Hub:  
     ```shell
     techdocs-cli generate --no-docker --verbose
     ```
     Or run it from the root of this repository:
     ```shell
-    techdocs-cli generate --source-dir ./documentation/techdocs/static-content --output-dir ./documentation/techdocs/static-content/site --no-docker --verbose
+    techdocs-cli generate --source-dir ./configurations/techdocs/static-content --output-dir ./configurations/techdocs/static-content/aws-s3/site --no-docker --verbose
     ```
-  * A folder 'documentation/techdocs/static-content/site' should be created now.
+  * A folder 'configurations/techdocs/static-content/aws-s3/site' should be created now.
   * Validate that you have an active AWS session by running the following command:  
     _(redhat-demo-dev-hub-1)_ should be part of the list.
     ```shell
@@ -528,14 +540,14 @@ catalog:
     techdocs-cli publish --publisher-type awsS3 \
           --storage-name redhat-demo-dev-hub-1 \
           --entity default/Component/maartens-first-documentation \
-          --directory documentation/techdocs/static-content/site \
+          --directory configurations/techdocs/static-content/aws-s3/site \
           --awsS3sse AES256
     ```
 * We now have the configuration and the static content set up. We now only need to add it as a component in Developer Hub:
   * Open Developer Hub.
   * Click "create":
     ![](images/techdocs_add_component.png "")
-  * Add the URL of the catalog-info.yaml in the URL section (i.e., for me it is https://github.com/maarten-vandeperre/developer-hub-documentation/blob/tech-docs-implementation/documentation/techdocs/static-content/catalog-info.yaml).
+  * Add the URL of the catalog-info.yaml in the URL section (i.e., for me it is https://github.com/maarten-vandeperre/developer-hub-documentation/blob/tech-docs-implementation/configurations/techdocs/static-content/catalog-info.yaml).
   * Click on 'Analyze' and 'Create'.
   * Now go to "Docs" menu item and you should be able to see your documentation:
     ![](images/techdocs_maartens_first_documentation.png "")

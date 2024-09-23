@@ -1,0 +1,26 @@
+FROM ${JENKINS_BASE_IMAGE}
+USER root
+RUN dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \
+&& dnf install -y wget yum-utils make gcc openssl-devel bzip2-devel libffi-devel zlib-devel \
+&& wget https://www.python.org/ftp/python/3.10.8/Python-3.10.8.tgz \
+&& tar xzf Python-3.10.8.tgz \
+&& cd Python-3.10.8 && ./configure --with-system-ffi --with-computed-gotos --enable-loadable-sqlite-extensions \
+&& make altinstall && cd .. && rm Python-3.10.8.tgz \
+&& echo "alias python=$(which python3.10)" >> /etc/profile.d/alias.sh \
+&& alias python=$(which python3.10) \
+&& echo "alias pip=$(which pip3.10)" >> /etc/profile.d/alias.sh \
+&& alias pip=$(which pip3.10) \
+&& wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest/openshift-client-linux.tar.gz \
+&& tar -xvf openshift-client-linux.tar.gz && mv oc /usr/local/bin && mv kubectl /usr/local/bin \
+&& rm -rf openshift-client-linux.tar.gz
+# RUN curl -o get-pip.py https://bootstrap.pypa.io/pip/3.6/get-pip.py \
+# && python get-pip.py \
+# && curl -o requirements.txt https://raw.githubusercontent.com/MoOyeg/testFlask/master/requirements.txt \
+# && pip install -r requirements.txt && dnf install -y glibc-langpack-en \
+# && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest/openshift-client-linux.tar.gz \
+# && tar -xvf openshift-client-linux.tar.gz && mv oc /usr/local/bin && mv kubectl /usr/local/bin \
+# && rm -rf openshift-client-linux.tar.gz
+RUN echo 'LC_ALL="en_US.UTF-8"' >> /etc/environment
+RUN echo 'LC_CTYPE="en_US.UTF-8"' >> /etc/environment
+RUN echo 'LANGUAGE="en_US.UTF-8"' >> /etc/environment
+USER 1001

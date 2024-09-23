@@ -1,0 +1,8 @@
+# Backstage override configuration for your local development environment
+auth:
+  providers:
+    guest: {}
+backend:
+  auth:
+    keys:
+      - secret: averysecretpassword

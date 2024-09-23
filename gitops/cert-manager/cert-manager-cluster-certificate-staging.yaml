@@ -1,0 +1,22 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cluster-cert-staging
+  namespace: cert-manager-operator
+spec:
+  secretName: my-cert-tls-staging
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+  commonName: apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+  dnsNames:
+    - apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+    - www.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+  acme:
+    config:
+      - http01:
+          ingress:
+            class: nginx
+        domains:
+          - apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+          - apps.cluster-mq98c.mq98c.sandbox870.opentlc.com

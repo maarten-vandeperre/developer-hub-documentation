@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: simple-hello-world-service-a
+  namespace: demo-project
+  labels:
+    rht-gitops.com/demo-project: simple-hello-world-service-a
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/maarten-vandeperre/developer-hub-documentation'
+    targetRevision: argo # branch
+#    targetRevision: HEAD # branch
+    path: ./gitops/microservices-gitops/simple-hello-world-gitops
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: demo-project
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal || www.codingnepalweb.com -->
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/js/default-style.css"/>
+    <!-- Boxicons CSS -->
+    <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <script src="/assets/js/default-style.js" defer></script>
+    <style>
+        /* Import Google font - Poppins */
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #b71c1c05;
+            margin-bottom: 100px;
+        }
+
+        /* Pre css */
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav_image {
+            display: flex;
+            min-width: 55px;
+            justify-content: center;
+        }
+
+        .nav_image img {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 270px;
+            background: #fff;
+            padding: 15px 10px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .sidebar.close {
+            width: calc(55px + 20px);
+        }
+
+        .logo_items {
+            gap: 8px;
+        }
+
+        .logo_name {
+            font-size: 22px;
+            color: #333;
+            font-weight: 500px;
+            transition: all 0.3s ease;
+            color: #B71c1c;
+        }
+
+        .sidebar.close .logo_name,
+        .sidebar.close #lock-icon,
+        .sidebar.close #sidebar-close {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #lock-icon,
+        #sidebar-close {
+            padding: 10px;
+            color: #B71c1c;
+            font-size: 25px;
+            cursor: pointer;
+            margin-left: -4px;
+            transition: all 0.3s ease;
+        }
+
+        #sidebar-close {
+            display: none;
+            color: #333;
+        }
+
+        .menu_container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+            height: calc(100% - 82px);
+        }
+
+        .menu_container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .menu_title {
+            position: relative;
+            min-height: 50px;
+            padding-top: 15px;
+            padding-bottom: 10px;
+            /*width: 55px;*/
+        }
+
+        .menu_title .title {
+            margin-left: 15px;
+            transition: all 0.3s ease;
+            color: #B71c1c;
+        }
+
+        .sidebar.close .title {
+            opacity: 0;
+        }
+
+        .menu_title .line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 3px;
+            width: 20px;
+            border-radius: 25px;
+            background: #aaa;
+            transition: all 0.3s ease;
+        }
+
+        .menu_title .line {
+            opacity: 0;
+        }
+
+        .sidebar.close .line {
+            opacity: 1;
+        }
+
+        .item {
+            list-style: none;
+        }
+
+        .link {
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            color: #707070;
+        }
+
+        .link:hover {
+            color: #d4d2d2;
+            background-color: #B71c1c;
+        }
+
+        .link span {
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .link i {
+            height: 25px;
+            min-width: 55px;
+            display: flex;
+            font-size: 20px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        .sidebar_profile {
+            padding-top: 15px;
+            margin-top: 15px;
+            gap: 15px;
+            border-top: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar_profile .name {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .sidebar_profile .email {
+            font-size: 12px;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            max-width: 500px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 60%;
+            transform: translateX(-50%);
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 0 0 8px 8px;
+            justify-content: space-between;
+        }
+
+        #sidebar-open {
+            font-size: 30px;
+            color: #333;
+            cursor: pointer;
+            margin-right: 20px;
+            display: none;
+        }
+
+        .search_box {
+            height: 46px;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #aaa;
+            outline: none;
+            border-radius: 8px;
+            padding: 0 15px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .navbar img {
+            height: 40px;
+            width: 40px;
+            margin-left: 20px;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 1100px) {
+            .navbar {
+                left: 65%;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .sidebar {
+                left: 0;
+                z-index: 1000;
+            }
+
+            .sidebar.close {
+                left: -100%;
+            }
+
+            #sidebar-close {
+                display: block;
+            }
+
+            #lock-icon {
+                display: none;
+            }
+
+            .navbar {
+                left: 0;
+                max-width: 100%;
+                transform: translateX(0%);
+            }
+
+            #sidebar-open {
+                display: block;
+            }
+        }
+
+        #content-container {
+            margin-left: 270px;
+            padding-left: 100px;
+            padding-top: 25px;
+            max-width: 1250px;
+        }
+
+        #content-container h1 {
+            margin-bottom: 35px;
+            color: #B71c1c;
+        }
+
+        #content-container h2, #content-container h3 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: #B71c1c;
+        }
+
+        #content-container ul, #content-container ol {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+
+        #content-container ul li, #content-container ol li {
+            margin: 5px 0;
+        }
+
+        #content-container img {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 850px;
+        }
+
+        #content-container img.large {
+            width: 1125px;
+        }
+
+        .highlighter-rouge {
+            background-color: #2c5a6c;
+            color: white;
+            line-height: 23px;
+            padding: 15px;
+            font-size: 14px;
+            margin-left: 50px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+<nav class="sidebar locked">
+    <div class="logo_items flex">
+        <span class="logo_name"><b>Developer Hub</b><br/>Setup Documentation</span>
+        <!--        <i class="bx bx-lock-alt" id="lock-icon" title="Unlock Sidebar"></i>-->
+        <!--        <i class="bx bx-x" id="sidebar-close"></i>-->
+    </div>
+
+    <div class="menu_container">
+        <div class="menu_items">
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">&nbsp;</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="{{ '/index.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">General</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="{{ '/general/automated_install.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-edit"></i>
+                        <span>Automated install script</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/general/debug.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-glasses"></i>
+                        <span>Debug</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/general/dev_hub_installation.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-edit"></i>
+                        <span>Dev hub installation</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/general/dev_hub_base_configuration.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-edit"></i>
+                        <span>Dev hub base configuration</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/general/dev_hub_templates.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-glasses"></i>
+                        <span>Dev hub config templates</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Enable authentication</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a  href="{{ '/keycloak/infra_setup_keycloak.html' | relative_url }}" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Keycloak: Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/keycloak/dev_hub_keycloak.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Keycloak: Configure plugin</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/github/dev_hub_github_auth.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>GitHub: Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">GitHub configurations</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="{{ '/github/token_configurations.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-edit"></i>
+                        <span>Token(s) generation</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Enable tech docs to serve static content</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a  href="{{ '/techdocs_s3/infra_setup_techdocs_s3.html' | relative_url }}" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup (AWS S3)</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/techdocs_s3/dev_hub_techdocs_s3.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin (AWS S3)</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a  href="{{ '/techdocs_minio/infra_setup_techdocs_minio.html' | relative_url }}" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup (Minio S3)</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/techdocs_minio/dev_hub_techdocs_minio.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin (Minio S3)</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Catalog entities</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="{{ '/catalog_entities/dev_hub_catalog_entities_manually.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Add catalog entities manually</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/catalog_entities/distinguish_api_definitions_per_environment.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Distinguish in API definitions for different environments</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Software templates (GitHub)</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="{{ '/github/enable_and_add_software_templates.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Enable and add software templates</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/github/enable_component_scanning.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Enable Component scanning (i.e., catalog entity)</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">3scale</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a  href="{{ '/3scale/infra_setup_3scale.html' | relative_url }}" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/3scale/dev_hub_3scale.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Jenkins</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a  href="{{ '/jenkins/infra_setup_jenkins.html' | relative_url }}" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/jenkins/dev_hub_jenkins.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Tekton</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a  href="{{ '/tekton/infra_setup_tekton.html' | relative_url }}" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/tekton/dev_hub_tekton.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">Kubernetes topology</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a href="{{ '/kubernetes/kubernetes_topology.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="menu_item">
+                <div class="menu_title flex">
+                    <span class="title">ArgoCD</span>
+                    <span class="line"></span>
+                </div>
+                <li class="item">
+                    <a  href="{{ '/argocd/infra_setup_argocd.html' | relative_url }}" class="link flex">
+                        <i class="bx bxs-wrench"></i>
+                        <span>Infra setup</span>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="{{ '/argocd/dev_hub_argocd.html' | relative_url }}" class="link flex">
+                        <i class="bx bx-cog"></i>
+                        <span>Configure plugin</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="sidebar_profile flex">
+            <!--          <span class="nav_image">-->
+            <!--            <img src="images/profile.jpg" alt="logo_img" />-->
+            <!--          </span>-->
+            <div class="data_text">
+                <span class="name"><a href="https://developers.redhat.com/author/maarten-vandeperre" target="_blank">Maarten Vandeperre</a></span>
+                <span class="email">maarten.vandeperre@redhat.com</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Navbar -->
+<!--<nav class="navbar flex">-->
+<!--    <i class="bx bx-menu" id="sidebar-open"></i>-->
+<!--    <input type="text" placeholder="Search..." class="search_box" />-->
+<!--    <span class="nav_image">-->
+<!--        <img src="images/profile.jpg" alt="logo_img" />-->
+<!--      </span>-->
+<!--</nav>-->
+
+<div id="content-container">
+    <p>This all is 100% open source, so if you would like to contribute, feel free to <a href="https://github.com/{{ site.github.repository_nwo }}/blob/argo/docs/{{ page.path }}" target="_blank">edit this page</a>.
+    </p><br/><br/>
+    {{ content }}
+</div>
+</body>
+<script>
+    // Selecting the sidebar and buttons
+    const sidebar = document.querySelector(".sidebar");
+    const sidebarOpenBtn = document.querySelector("#sidebar-open");
+    const sidebarCloseBtn = document.querySelector("#sidebar-close");
+    const sidebarLockBtn = document.querySelector("#lock-icon");
+
+    // Function to toggle the lock state of the sidebar
+    const toggleLock = () => {
+        sidebar.classList.toggle("locked");
+        // If the sidebar is not locked
+        if (!sidebar.classList.contains("locked")) {
+            sidebar.classList.add("hoverable");
+            sidebarLockBtn.classList.replace("bx-lock-alt", "bx-lock-open-alt");
+        } else {
+            sidebar.classList.remove("hoverable");
+            sidebarLockBtn.classList.replace("bx-lock-open-alt", "bx-lock-alt");
+        }
+    };
+
+    // Function to hide the sidebar when the mouse leaves
+    const hideSidebar = () => {
+        if (sidebar.classList.contains("hoverable")) {
+            sidebar.classList.add("close");
+        }
+    };
+
+    // Function to show the sidebar when the mouse enter
+    const showSidebar = () => {
+        if (sidebar.classList.contains("hoverable")) {
+            sidebar.classList.remove("close");
+        }
+    };
+
+    // Function to show and hide the sidebar
+    const toggleSidebar = () => {
+        sidebar.classList.toggle("close");
+    };
+
+    // If the window width is less than 800px, close the sidebar and remove hoverability and lock
+    if (window.innerWidth < 800) {
+        sidebar.classList.add("close");
+        sidebar.classList.remove("locked");
+        sidebar.classList.remove("hoverable");
+    }
+
+    // Adding event listeners to buttons and sidebar for the corresponding actions
+    sidebarLockBtn.addEventListener("click", toggleLock);
+    sidebar.addEventListener("mouseleave", hideSidebar);
+    sidebar.addEventListener("mouseenter", showSidebar);
+    sidebarOpenBtn.addEventListener("click", toggleSidebar);
+    sidebarCloseBtn.addEventListener("click", toggleSidebar);
+</script>
+</html>

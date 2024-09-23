@@ -31,7 +31,7 @@ ESCAPED_PLACEHOLDER=$(echo "$PLACEHOLDER" | sed 's/\./\\./g')
   #Linux
   # find . -type f -exec sed -i.bak "s|$ESCAPED_PLACEHOLDER|$BASE_DOMAIN|g" {} +
   # Mac
-  LC_CTYPE=C && LANG=C && find . -type f  ! -name .namespace -exec sed -i.bak "s|$ESCAPED_PLACEHOLDER|$BASE_DOMAIN|g" {} +
+  LC_CTYPE=C && LANG=C && find . -type d -name node_modules -prune -o -type f  ! -name .namespace -exec sed -i.bak "s|$ESCAPED_PLACEHOLDER|$BASE_DOMAIN|g" {} +
 
 if [ $? -eq 0 ]; then
     echo "Successfully replaced the placeholder with the OpenShift cluster base domain in all files."
@@ -43,5 +43,5 @@ fi
 echo $BASE_DOMAIN > .namespace
 
 # Delete all .bak files in the current directory and its subdirectories
-find . -type f -name "*.bak" -exec rm -f {} \;
+find . -type d -name node_modules -prune -o -type f -name "*.bak" -exec rm -f {} \;
 echo "All .bak files have been deleted."

@@ -1,0 +1,15 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: ActiveDoc
+metadata:
+  name: activedoc-people-api
+  namespace: demo-project
+spec:
+  providerAccountRef:
+    name: tenant-secret
+  activeDocOpenAPIRef:
+#    secretRef: 'open-api-spec-people-api'
+    url: 'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.json'
+  name: ActiveDoc - People API
+  systemName: activedocpeopleapi
+  published: true
+  productSystemName: product-a

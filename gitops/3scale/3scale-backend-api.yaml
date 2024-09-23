@@ -1,0 +1,18 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Backend
+metadata:
+  name: api-backend-6
+  namespace: demo-project
+spec:
+  providerAccountRef:
+    name: tenant-secret
+  name: API backend 6
+  privateBaseURL: 'https://api.todo.example.com'
+  systemName: api-backend
+  methods:
+    method-a:
+      friendlyName: Method A
+      description: Method A description
+    method-b:
+      friendlyName: Method B
+      description: Method B description

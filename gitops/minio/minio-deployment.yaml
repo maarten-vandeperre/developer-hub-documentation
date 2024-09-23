@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+  namespace: demo-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+        - name: minio
+          image: quay.io/minio/minio:latest
+          args:
+            - server
+            - /tmp/data
+          env:
+            - name: MINIO_ACCESS_KEY
+              value: "minioadmin"
+            - name: MINIO_SECRET_KEY
+              value: "minioadmin"
+            - name: MINIO_CONSOLE_ADDRESS
+              value: "0.0.0.0:9090"
+            - name: MINIO_ADDRESS
+              value: "0.0.0.0:9000"
+          ports:
+            - containerPort: 9000
+            - containerPort: 9090
+          volumeMounts:
+            - name: storage
+              mountPath: /tmp/data
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: minio-pvc

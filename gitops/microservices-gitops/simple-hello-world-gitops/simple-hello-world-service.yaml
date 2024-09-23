@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-hello-world-service-a
+  namespace: demo-project
+  labels:
+    app: simple-hello-world-service-a
+    app.kubernetes.io/component: simple-hello-world-service-a
+    app.kubernetes.io/instance: simple-hello-world-service-a
+    app.kubernetes.io/name: simple-hello-world-service-a
+    app.kubernetes.io/part-of: simple-hello-world-service-a
+spec:
+  ports:
+    - name: http-8080
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: simple-hello-world-service-a
+    deployment: simple-hello-world-service-a
+  type: ClusterIP

@@ -1,0 +1,27 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: minio-api
+  namespace: demo-project
+spec:
+  to:
+    kind: Service
+    name: minio-service
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: minio-webui
+  namespace: demo-project
+spec:
+  to:
+    kind: Service
+    name: minio-service
+  port:
+    targetPort: webui
+  tls:
+    termination: edge

@@ -1,0 +1,275 @@
+## Same as template you would get via $(oc process jenkins-ephemeral -n openshift -o yaml) but uses a deployment instead of a deploymentconfig
+## Template gives serviceaccount admin permissions rather than edit.
+
+kind: Template
+apiVersion: template.openshift.io/v1
+metadata:
+  name: jenkins-ephemeral-deployment
+  labels:
+    samples.operator.openshift.io/managed: 'false'
+  annotations:
+    openshift.io/display-name: Jenkins (Ephemeral)
+    openshift.io/documentation-url: 'https://docs.okd.io/latest/using_images/other_images/jenkins.html'
+    samples.operator.openshift.io/version: 4.14.6
+    tags: 'instant-app,jenkins'
+    description: >-
+      Jenkins service, without persistent storage.
+
+
+      WARNING: Any data stored will be lost upon pod destruction. Only use this
+      template for testing.
+    openshift.io/long-description: >-
+      This template deploys a Jenkins server capable of managing OpenShift
+      Pipeline builds and supporting OpenShift-based oauth login.  The Jenkins
+      configuration is stored in non-persistent storage, so this configuration
+      should be used for experimental purposes only.
+    openshift.io/support-url: 'https://access.redhat.com'
+    iconClass: icon-jenkins
+    openshift.io/provider-display-name: 'Red Hat, Inc.'
+message: >-
+  A Jenkins service has been created in your project.  Log into Jenkins with
+  your OpenShift account.  The tutorial at
+  https://github.com/openshift/origin/blob/master/examples/jenkins/README.md
+  contains more information about using this template.
+objects:
+  - apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      annotations:
+        haproxy.router.openshift.io/timeout: 4m
+        template.openshift.io/expose-uri: 'http://{.spec.host}{.spec.path}'
+      name: '${JENKINS_SERVICE_NAME}'
+    spec:
+      tls:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: edge
+      to:
+        kind: Service
+        name: '${JENKINS_SERVICE_NAME}'
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      labels:
+        config.openshift.io/inject-trusted-cabundle: 'true'
+      name: '${JENKINS_SERVICE_NAME}-trusted-ca-bundle'
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        template.alpha.openshift.io/wait-for-ready: 'true'
+        image.openshift.io/triggers: >-
+          [{"from":{"kind":"ImageStreamTag","name":"${JENKINS_IMAGE_STREAM_TAG}","namespace":"openshift"},"fieldPath":"spec.template.spec.containers[?(@.name==\"jenkins\")].image"}]
+      name: '${JENKINS_SERVICE_NAME}'
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          name: '${JENKINS_SERVICE_NAME}'
+      strategy:
+        type: Recreate
+      template:
+        metadata:
+          labels:
+            name: '${JENKINS_SERVICE_NAME}'
+        spec:
+          containers:
+            - resources:
+                limits:
+                  memory: '${MEMORY_LIMIT}'
+              readinessProbe:
+                httpGet:
+                  path: /login
+                  port: 8080
+                initialDelaySeconds: 3
+                timeoutSeconds: 240
+              terminationMessagePath: /dev/termination-log
+              name: jenkins
+              livenessProbe:
+                failureThreshold: 2
+                httpGet:
+                  path: /login
+                  port: 8080
+                initialDelaySeconds: 420
+                periodSeconds: 360
+                timeoutSeconds: 240
+              env:
+                - name: OPENSHIFT_ENABLE_OAUTH
+                  value: '${ENABLE_OAUTH}'
+                - name: OPENSHIFT_ENABLE_REDIRECT_PROMPT
+                  value: 'true'
+                - name: DISABLE_ADMINISTRATIVE_MONITORS
+                  value: '${DISABLE_ADMINISTRATIVE_MONITORS}'
+                - name: KUBERNETES_MASTER
+                  value: 'https://kubernetes.default:443'
+                - name: KUBERNETES_TRUST_CERTIFICATES
+                  value: 'true'
+                - name: JENKINS_SERVICE_NAME
+                  value: '${JENKINS_SERVICE_NAME}'
+                - name: JENKINS_PASSWORD
+                  value: '${JENKINS_PASSWORD}'
+                - name: JNLP_SERVICE_NAME
+                  value: '${JNLP_SERVICE_NAME}'
+                - name: JENKINS_UC_INSECURE
+                  value: '${JENKINS_UC_INSECURE}'
+                - name: CASC_JENKINS_CONFIG
+                  value: /var/lib/jenkins/proxy.yaml
+                - name: JAVA_FIPS_OPTIONS
+                  value: '${JAVA_FIPS_OPTIONS}'
+              securityContext:
+                capabilities: {}
+                privileged: false
+              imagePullPolicy: IfNotPresent
+              volumeMounts:
+                - mountPath: /var/lib/jenkins
+                  name: '${JENKINS_SERVICE_NAME}-data'
+                - mountPath: /etc/pki/ca-trust/source/anchors
+                  name: '${JENKINS_SERVICE_NAME}-trusted-ca-bundle'
+              image: '${NAMESPACE}/${JENKINS_IMAGE_STREAM_TAG}'
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          serviceAccountName: '${JENKINS_SERVICE_NAME}'
+          volumes:
+            - emptyDir:
+                medium: ''
+              name: '${JENKINS_SERVICE_NAME}-data'
+            - configMap:
+                name: '${JENKINS_SERVICE_NAME}-trusted-ca-bundle'
+                optional: true
+              name: '${JENKINS_SERVICE_NAME}-trusted-ca-bundle'
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      annotations:
+        serviceaccounts.openshift.io/oauth-redirectreference.jenkins: >-
+          {"kind":"OAuthRedirectReference","apiVersion":"v1","reference":{"kind":"Route","name":"${JENKINS_SERVICE_NAME}"}}
+      name: '${JENKINS_SERVICE_NAME}'
+  - apiVersion: authorization.openshift.io/v1
+    groupNames: null
+    kind: RoleBinding
+    metadata:
+      name: '${JENKINS_SERVICE_NAME}_admin'
+    roleRef:
+      name: admin
+    subjects:
+      - kind: ServiceAccount
+        name: '${JENKINS_SERVICE_NAME}'
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: '${JNLP_SERVICE_NAME}'
+    spec:
+      ports:
+        - name: agent
+          nodePort: 0
+          port: 50000
+          protocol: TCP
+          targetPort: 50000
+      selector:
+        name: '${JENKINS_SERVICE_NAME}'
+      sessionAffinity: None
+      type: ClusterIP
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        service.alpha.openshift.io/dependencies: '[{"name": "${JNLP_SERVICE_NAME}", "namespace": "", "kind": "Service"}]'
+        service.openshift.io/infrastructure: 'true'
+      name: '${JENKINS_SERVICE_NAME}'
+    spec:
+      ports:
+        - name: web
+          nodePort: 0
+          port: 80
+          protocol: TCP
+          targetPort: 8080
+      selector:
+        name: '${JENKINS_SERVICE_NAME}'
+      sessionAffinity: None
+      type: ClusterIP
+parameters:
+  - name: JENKINS_PASSWORD
+    value: rhdh
+  - name: JENKINS_SERVICE_NAME
+    displayName: Jenkins Service Name
+    description: The name of the OpenShift Service exposed for the Jenkins container.
+    value: jenkins
+  - name: JNLP_SERVICE_NAME
+    displayName: Jenkins JNLP Service Name
+    description: The name of the service used for master/slave communication.
+    value: jenkins-jnlp
+  - name: ENABLE_OAUTH
+    displayName: Enable OAuth in Jenkins
+    description: >-
+      Whether to enable OAuth OpenShift integration. If false, the static
+      account 'admin' will be initialized with the password 'password'.
+    value: 'false'
+  - name: MEMORY_LIMIT
+    displayName: Memory Limit
+    description: Maximum amount of memory the container can use.
+    value: 1Gi
+  - name: NAMESPACE
+    displayName: Jenkins ImageStream Namespace
+    description: The OpenShift Namespace where the Jenkins ImageStream resides.
+    value: openshift
+  - name: DISABLE_ADMINISTRATIVE_MONITORS
+    displayName: Disable memory intensive administrative monitors
+    description: >-
+      Whether to perform memory intensive, possibly slow, synchronization with
+      the Jenkins Update Center on start.  If true, the Jenkins core update
+      monitor and site warnings monitor are disabled.
+    value: 'false'
+  - name: JAVA_FIPS_OPTIONS
+    displayName: Allows control over how the JVM interacts with FIPS on startup.
+    description: >-
+      See
+      https://access.redhat.com/documentation/en-us/openjdk/11/html-single/configuring_openjdk_11_on_rhel_with_fips/index#config-fips-in-openjdk
+      for the available command line properties to facilitate the JVM running on
+      FIPS nodes.
+    value: '-Dcom.redhat.fips=false'
+  - name: JENKINS_IMAGE_STREAM_TAG
+    displayName: Jenkins ImageStreamTag
+    description: Name of the ImageStreamTag to be used for the Jenkins image.
+    value: 'jenkins:2'
+  - name: JENKINS_UC_INSECURE
+    displayName: >-
+      Allows use of Jenkins Update Center repository with invalid SSL
+      certificate
+    description: >-
+      Whether to allow use of a Jenkins Update Center that uses invalid
+      certificate (self-signed, unknown CA). If any value other than 'false',
+      certificate check is bypassed. By default, certificate check is enforced.
+    value: 'false'
+  - name: AGENT_BASE_IMAGE
+    displayName: >-
+      Image used for the 'jnlp' container of the sample 'java-sidecar' and
+      'nodejs-sidecar' PodTemplates
+    description: >-
+      Setting this value overrides the image used for the 'jnlp' container in
+      the sample kubernetes plug-in PodTemplates provided with this image. 
+      Otherwise, the image from the 'jenkins-agent-base:latest' ImageStreamTag
+      in the 'openshift' namespace is used.
+    value: >-
+      image-registry.openshift-image-registry.svc:5000/openshift/jenkins-agent-base:latest
+  - name: JAVA_BUILDER_IMAGE
+    displayName: >-
+      Image used for the 'java' container of the sample 'java-builder'
+      PodTemplate
+    description: >-
+      Setting this value overrides the image used for the 'java-builder'
+      container in the sample kubernetes plug-in PodTemplates provided with this
+      image.  Otherwise, the image from the 'java:latest' ImageStreamTag in the
+      'openshift' namespace is used.
+    value: 'image-registry.openshift-image-registry.svc:5000/openshift/java:latest'
+  - name: NODEJS_BUILDER_IMAGE
+    displayName: >-
+      Image used for the 'nodejs' container of the sample 'nodejs-builder'
+      PodTemplate
+    description: >-
+      Setting this value overrides the image used for the 'nodejs-builder'
+      container in the sample kubernetes plug-in PodTemplates provided with this
+      image.  Otherwise, the image from the 'nodejs:latest' ImageStreamTag in
+      the 'openshift' namespace is used.
+    value: 'image-registry.openshift-image-registry.svc:5000/openshift/nodejs:latest'
+labels:
+  app: jenkins-ephemeral
+  template: jenkins-ephemeral-template

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: s3-storage-config
+  namespace: demo-project
+data:
+  AWS_BUCKET: 3scale
+  AWS_REGION: eu-west-3
+  AWS_HOST: http://minio-service.demo-project.svc.cluster.local:9000

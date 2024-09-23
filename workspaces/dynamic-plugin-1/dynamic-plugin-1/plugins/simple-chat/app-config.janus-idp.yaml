@@ -1,0 +1,33 @@
+# This file is not used by any tooling for now, but it is used as a reference.
+# You'll need to add this to your Developer Hub App Config
+dynamicPlugins:
+  frontend:
+    internal.backstage-plugin-simple-chat:
+      entityTabs:
+        # Adding a new tab
+        - path: /dynamic-plugin-1
+          title: Dynamic Plugin 1
+          mountPoint: entity.page.dynamic-plugin-1
+      appIcons:
+        - name: chatIcon
+          importName: ChatIcon
+      mountPoints:
+        - mountPoint: entity.page.ci/cards
+          importName: SimpleChatPage
+          config:
+            layout:
+              gridColumn: '1 / -1'
+        - mountPoint: entity.page.dynamic-plugin-1/cards
+          importName: SimpleChatPage
+          config:
+            layout:
+              gridColumn: '1 / -1'
+#            if:
+#              allOf:
+#                - isSimpleChatPageAvailable
+#      dynamicRoutes:
+#        - path: /simple-chat
+#          importName: SimpleChatPage
+#          menuItem:
+#            text: 'Simple Chat'
+#            icon: chatIcon
