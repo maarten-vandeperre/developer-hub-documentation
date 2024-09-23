@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Dev hub integration: Keycloak
+title: Dev hub integration: GitHub Auth
 ---
 
-# Dev hub integration: Keycloak
+# Dev hub integration: GitHub Auth
 
 * Make sure that GitHub is set up as described in [GitHub Token Configuration Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/github/token_configurations.html)
     * Get the client id of the application
