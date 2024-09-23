@@ -26,9 +26,9 @@ title: Dev hub integration: GitHub Auth
 ```yaml
 signInPage: github  
 ```
-* As a last step we need to make sure that the Keycloak users are synced with the Developer Hub's user catalog. In order to do so,
+* As a last step we need to make sure that the GitHub users are synced with the Developer Hub's user catalog. In order to do so,
   we need to:
-  * Enable the dynamic plugin for Keycloak by applying the following yaml to the dynamic plugins configuration (on anchor_01):
+  * Enable the dynamic plugin for GitHub by applying the following yaml to the dynamic plugins configuration (on anchor_01):
     ```yaml
       plugins:
         - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
