@@ -1,18 +1,21 @@
 ---
 layout: default
-title: Dev hub integration: Kubernetes Topology
+title: Dev hub integration: Tekton
 ---
 
-# Dev hub integration: Kubernetes Topology
+# Dev hub integration: Tekton
 
-* No prior configuration is required, just make sure that you have at least one deployment running with a "backstage.io/kubernetes-id: dev-hub-test-demo" label.
-  (E.g., [gitops/microservices-gitops/simple-hello-world-gitops/simple-hello-world-deployment.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/argo/gitops/microservices-gitops/simple-hello-world-gitops/simple-hello-world-deployment.yaml)).
-* Now we are going to configure the Kubernetes topology integration
+* Make sure that Tekton is set up as described in [Tekton Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/tekton/infra_setup_tekton.html)
+    * Label: backstage.io/kubernetes-id: dev-hub-test-demo
+* Now we are going to configure the Tekon integration
   within Developer Hub. In order to do so,
   we need to:
-  * Enable the dynamic plugin for Kubernetes by applying the following yaml to the dynamic plugins configuration (on anchor_01):
+  * Enable the dynamic plugin for Tekton **(and Kubernetes!!)** by applying the following yaml to the dynamic plugins configuration (on anchor_01):
     ```yaml
       plugins:
+        - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
+          # documentation: https://docs.redhat.com/en/documentation/red_hat_plug-ins_for_backstage/1.0/html-single/tekton_plugin_for_backstage/index#setting-tekton-plugin
+          disabled: false
         - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
           # documentation: https://backstage.io/docs/features/kubernetes/configuration/#config
           disabled: false
@@ -45,27 +48,34 @@ title: Dev hub integration: Kubernetes Topology
               skipTLSVerify: true
               url: https://api.cluster-mq98c.mq98c.sandbox870.opentlc.com:6443
           type: config
+      customResources:
+        - apiVersion: v1beta1
+          group: tekton.dev
+          plural: pipelineruns
+        - apiVersion: v1beta1
+          group: tekton.dev
+          plural: taskruns
+        - apiVersion: v1
+          group: route.openshift.io
+          plural: routes
       serviceLocatorMethod:
         type: multiTenant
     ```
-  * Now that the Kubernetes plugin is active, you'll need to link it to a component. throughout this example, we will use the component defined over here:
+  * Now that the Tekton plugin is active, you'll need to link it to a component. throughout this example, we will use the component defined over here:
   [https://github.com/maarten-vandeperre/dev-hub-test-demo](https://github.com/maarten-vandeperre/dev-hub-test-demo), the 
   [catalog-info.yaml](https://github.com/maarten-vandeperre/dev-hub-test-demo/blob/master/catalog-info.yaml)
   more in particular.
   In that catalog-info file, you will need to add the following annotations:
-    * backstage.io/kubernetes-namespace: demo-project
-      * backstage.io/kubernetes-namespace: the annotation name to activate the Kubernetes topology plugin for this component.
-      * demo-project: the namespace in OpenShift to monitor.
-    * backstage.io/kubernetes-id: dev-hub-test-demo
-      * backstage.io/kubernetes-id: the annotation name to activate the Kubernetes topology plugin for this component.
-      * dev-hub-test-demo: the id defined in the deployment label (see above)
+    * janus-idp.io/tekton: dev-hub-test-demo
+      * janus-idp.io/tekton: the annotation name to activate the Tekton plugin for this component.
+      * dev-hub-test-demo: the id defined in the tekton pipeline label (see above)
 
-_If you now go to the Topology tab on the component detail, you'll be able to see Kubernetes details:._
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/topology_1.png" class="large">  
+_If you now go to the CI tab on the component detail, you'll be able to see Tekton details:._
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/tekton_5.png" class="large">  
 
 
 **!!!Important**: when you get the error "Warning: There was a problem retrieving Kubernetes objects", it means that your service account token is expired.
 <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/argo/images/tekton_4.png" class="large">  
-You can fix it by running the following commands (i.e., same as to fix tekton):
+You can fix it by running the following commands:
 * sh scripts/script_configure_tekton_integration.sh 
 * oc apply -f secrets/generated/secret_tekton.yaml

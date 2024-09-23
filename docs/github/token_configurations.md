@@ -13,3 +13,17 @@ Official GitHub documentation to get these tokens can be found over here:
   * [https://backstage.io/docs/integrations/github/github-apps/](https://backstage.io/docs/integrations/github/github-apps/)
 * Create personal access token: 
   * [https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+# Token scopes
+When creating a personal access token on GitHub, you must select scopes to define the level of access for the token.
+The scopes required vary depending on your use of the integration, but these are the ones I added:
+
+* Reading software components:
+  * repo 
+* Reading organization data:
+  * read:org
+  * read:user
+  * user:email
+* Publishing software templates:    
+  * repo
+  * workflow (if templates include GitHub workflows)
