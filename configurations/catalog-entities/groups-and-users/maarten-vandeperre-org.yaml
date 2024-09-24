@@ -19,3 +19,15 @@ spec:
     email: maarten.vandeperre@redhat.com
     picture: https://developers.redhat.com/sites/default/files/styles/author_full/public/maarten_vandeperre_badge.jpeg.webp?itok=vQKvHBnD
   children: [team-1, team-2]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: maarten.vandeperre
+  description: The second maarten vandeperre organization
+spec:
+  type: organization
+  profile:
+    displayName: Maarten Vandeperre
+    email: maarten.vandeperre@redhat.com
+    picture: https://developers.redhat.com/sites/default/files/styles/author_full/public/maarten_vandeperre_badge.jpeg.webp?itok=vQKvHBnD
