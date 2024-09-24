@@ -13,4 +13,6 @@ If you would like to have an OpenShift cluster with all integrations configured 
 3. Fork [this GitHub repository](https://github.com/maarten-vandeperre/dev-hub-test-demo) to your repository list or create a new repository and copy the catalog-info.yaml file over.
 4. Execute the `script_init_cluster.sh`.
 
-[Back to Table of Contents](index.md)
+
+Next to that, there is the `scripts/script_prepare_repository.sh`, which will configure all URLs to be pointing to your OpenShift environment
+(after oc login was executed).
