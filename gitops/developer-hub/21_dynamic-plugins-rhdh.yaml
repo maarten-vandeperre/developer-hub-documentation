@@ -40,6 +40,9 @@ data:
       - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
         # documentation: https://www.npmjs.com/package/@janus-idp/backstage-plugin-topology
         disabled: false
+      # - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-aap-backend-dynamic
+      #   # documentation: https://www.npmjs.com/package/@janus-idp/backstage-plugin-aap-backend-dynamic
+      #   disabled: false
       #- package: 'http://plugin-registry:8080/internal-backstage-plugin-simple-chat-backend-dynamic-0.1.0.tgz'
       #  disabled: false
       #  integrity: 'sha512-sM9KFoRxPHVbpJ7+wur0bNSiNjLH/Q5oqfy+6Paz3xqVgQ05o3pu/+f0aFiUzNsUyyqLzqISikAf7yKM1I/iSw==' #backend-hash
