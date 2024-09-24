@@ -54,5 +54,21 @@ signInPage: github
               timeout: { minutes: 1 }
               initialDelay: { seconds: 15 }
     ```
+  * Add a GitHub integration configuration by applying the following yaml to the Developer Hub Config on anchor_02:
+    ```yaml
+    integrations:
+      github:
+        - host: github.com
+          token: ${RHDH_GITHUB_INTEGRATION_PERSONAL_ACCESS_TOKEN}
+          apps:
+            - appId: ${RHDH_GITHUB_INTEGRATION_APP_ID}
+              clientId: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_ID}
+              clientSecret: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_SECRET}
+              webhookUrl: none
+              webhookSecret: none
+              privateKey: ${RHDH_GITHUB_INTEGRATION_APP_PRIVATE_KEY}
+    ```
+    _Note: The token is optional, but if you don't configure it, you'll run rather fast against GitHub API rate limits. So I would advise to have
+    some kind of system user account in place to link to the catalog scanning configuration._
 * Now the login screen should be changed to:
   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/login_screen_3.png">
