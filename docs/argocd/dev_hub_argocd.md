@@ -29,7 +29,7 @@ title: Dev hub integration: ArgoCD
         - type: 'config'
           instances:
             - name: argoInstance1
-              url: https://argocd-instance-server-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+              url: https://argocd-instance-server-demo-project.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com
               username: admin 
               password: ${RHDH_ARGOCD_ADMIN_PWD}
     ```

@@ -44,7 +44,7 @@ fi
 
 echo "Podman is installed and running."
 
-echo "Do podman log in into registry.redhat.io"
+echo "Do podman log in into registry.redhat.io (username - password is the one to login into developers.redhat.com, for RH users, it's your RH user name, not email. e.g., rh-ee-mvandepe)"
 podman login registry.redhat.io
 
 read -p "Which storage provider for static tech docs do you want to use? (aws-s3/minio-s3)? " techdocs_storage_provider
@@ -109,6 +109,14 @@ oc apply -f gitops/tekton/tekton-operator.yaml
 oc apply -f gitops/3scale/3scale-operator.yaml
 oc apply -f gitops/kafka/kafka-operator.yaml
 oc apply -f gitops/openshift-ai/openshift-ai-operator.yaml
+oc apply -f gitops/kiali/kiali-operator.yaml
+oc apply -f gitops/elastic_search/elastic-search-operator.yaml
+oc apply -f gitops/jaeger/jaeger-operator.yaml
+oc apply -f gitops/tempo/tempo-operator.yaml
+oc apply -f gitops/opentelemetry/opentelemetry-operator.yaml
+oc apply -f gitops/service_mesh/service-mesh-operator.yaml
+oc apply -f gitops/devspaces/devspaces-operator.yaml
+oc apply -f gitops/camelk/camelk-operator.yaml
 
 # minio
 echo "Install Minio"
@@ -177,6 +185,10 @@ sleep "$to_sleep"
   echo "Configuring Argo CD instance"
   oc apply -f gitops/argocd/argocd-instance.yaml
 
+  # argocd
+  echo "Configuring Dev Spaces instance"
+  oc apply -f gitops/devspaces/che-cluster-instance.yaml
+
   # openshift ai
   echo "Configuring OpenShift AI Data Science Cluster"
   oc apply -f gitops/openshift-ai/openshift-ai-datascience-cluster.yaml
@@ -211,6 +223,10 @@ sleep "$to_sleep"
   echo "Configuring Tekton pipelines"
   oc apply -f gitops/tekton/tekton-pipeline-simple-hello-world.yaml
 
+  # service mesh
+  echo "Configuring service mesh"
+  oc apply -f gitops/service_mesh/service-mesh-member-role.yaml
+
   # keycloak
   echo "Configuring Keycloak instance"
   oc apply -f gitops/keycloak/keycloak-instance.yaml
@@ -232,6 +248,10 @@ sleep "$to_sleep"
   # tekton
   echo "Configuring Tekton pipeline runs"
   oc apply -f gitops/tekton/tekton-pipeline-run-simple-hello-world.yaml
+
+  # service mesh
+  echo "Configuring service mesh"
+  oc apply -f gitops/service_mesh/service-mesh-control-plane.yaml
 
   # 3scale
   echo "Configuring 3scale tenant config"

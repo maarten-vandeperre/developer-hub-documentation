@@ -6,7 +6,7 @@ title: Dev hub integration: 3scale
 # Dev hub integration: 3scale
 
 * Make sure that 3scale is set up as described in [3scale Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/3scale/infra_setup_3scale.html)
-  * Get admin organization of the tenant you want to connect: https://demo-organization-maarten-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+  * Get admin organization of the tenant you want to connect: https://demo-organization-maarten-admin.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com
   * Username: admin
   * Password: averysecurepassword
   * Token: oc get secret tenant-secret -n demo-project -o template --template='{{.data.token}}' | base64 -d ; echo
@@ -26,7 +26,7 @@ title: Dev hub integration: 3scale
       providers:
         threeScaleApiEntity:
           default:
-            baseUrl: https://demo-organization-maarten-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+            baseUrl: https://demo-organization-maarten-admin.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com
             accessToken: ${RHDH_3SCALE_RHDH_CLIENT_SECRET}
             schedule: # optional; same options as in TaskScheduleDefinition
               # supports cron, ISO duration, "human duration" as used in code

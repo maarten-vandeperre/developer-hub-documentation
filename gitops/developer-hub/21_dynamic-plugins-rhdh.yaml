@@ -35,8 +35,8 @@ data:
         disabled: false
       - package: ./dynamic-plugins/dist/backstage-plugin-jenkins
         disabled: false
-      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-3scale-backend-dynamic
-        disabled: false
+      #- package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-3scale-backend-dynamic
+      #  disabled: false
       - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
         # documentation: https://www.npmjs.com/package/@janus-idp/backstage-plugin-topology
         disabled: false

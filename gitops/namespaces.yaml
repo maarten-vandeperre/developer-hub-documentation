@@ -31,6 +31,31 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: openshift-distributed-tracing
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openshift-tempo-operator
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: openshift-opentelemetry-operator
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: istio-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tracing-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: maarten-test-1
 ---
 apiVersion: v1

@@ -1,0 +1,27 @@
+apiVersion: maistra.io/v2
+kind: ServiceMeshControlPlane
+metadata:
+  name: basic
+  namespace: istio-system
+spec:
+  tracing:
+#    type: None
+    type: Jaeger
+    policy:
+      type: Istiod
+  telemetry:
+    type: Istiod
+  addons:
+    grafana:
+      enabled: true
+    prometheus:
+      enabled: true
+    kiali:
+      enabled: true
+#  meshConfig:
+#    extensionProviders:
+#      - name: tempo
+#        zipkin:
+#          service: tempo-sample-distributor.tracing-system.svc.cluster.local
+#          port: 9411
+  version: v2.6

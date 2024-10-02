@@ -40,3 +40,21 @@ metadata:
   name: redhat-ods-operator-operator-group
   namespace: redhat-ods-operator
 ---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: openshift-distributed-tracing-operator-group
+  namespace: openshift-distributed-tracing
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: openshift-tempo-operator-operator-group
+  namespace: openshift-tempo-operator
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: openshift-opentelemetry-operator-operator-group
+  namespace: openshift-opentelemetry-operator
+---

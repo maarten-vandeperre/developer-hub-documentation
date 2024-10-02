@@ -28,7 +28,7 @@ You then should be able to log in to jenkins on url:
 oc get route -n demo-project | grep jenkins | awk '{print $2}'
 ```
 
-For me, it is: jenkins-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com.  
+For me, it is: jenkins-demo-project.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com.  
 
 And you can use the following credentials:
 * username: admin
