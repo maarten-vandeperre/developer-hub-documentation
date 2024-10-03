@@ -6,7 +6,7 @@ title: Dev hub integration: Jenkins
 # Dev hub integration: Jenkins
 
 * Make sure that Jenkins is set up as described in [Jenkins Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/jenkins/infra_setup_jenkins.html)
-    * Get admin organization of the tenant you want to connect: https://demo-organization-maarten-admin.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com
+    * Get admin organization of the tenant you want to connect: https://demo-organization-maarten-admin.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
     * Username: admin
     * Password: rhdh
     * Job name: demo-project/demo-app-pipeline
@@ -27,7 +27,7 @@ title: Dev hub integration: Jenkins
     jenkins:
       instances:
         - name: default-jenkins
-          baseUrl: https://jenkins-demo-project.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com/
+          baseUrl: https://jenkins-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com/
           username: admin
           apiKey: rhdh
     ```

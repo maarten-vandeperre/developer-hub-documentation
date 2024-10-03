@@ -90,7 +90,7 @@ oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.met
   -o template --template='{{.spec.host}}'\ 
   ; echo
 ```
-* _In our case: backstage-developer-hub-demo-project.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com_
+* _In our case: backstage-developer-hub-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com_
 
 ### Install Red Hat Developer Hub via Helm chart
 [Helm chart install guide](https://developers.redhat.com/learning/learn:openshift:install-and-configure-red-hat-developer-hub-and-explore-templating-basics/resource/resources:install-red-hat-developer-hub-developer-sandbox-red-hat-openshift)
@@ -172,7 +172,7 @@ type: Opaque
 * Set the base domain variable.  
   **_!!! Be careful, the base domain will be different in your setup._**
 ```shell
-basedomain=apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com
+basedomain=apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
 ```
 * Patch the secret to add the base domain (i.e., to avoid CORS issues).  
 ```shell
@@ -228,7 +228,7 @@ spec:
   database:
     enableLocalDb: true
 ```
-* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com
+* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
 * You should now be able to see the following screen:
   ![](images/login_screen_1.png "")
 * Last thing to configure now is the enablement of the dynamic plugins. These dynamic plugins will allow you to add functionality 
@@ -407,7 +407,7 @@ auth:
     oidc:
       development:
 #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-        metadataUrl: https://demo-keycloak-instance.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+        metadataUrl: https://demo-keycloak-instance.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
         clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
         clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
         prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -443,7 +443,7 @@ catalog:
   providers:
     keycloakOrg:
       default:
-        baseUrl: https://demo-keycloak-instance.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com
+        baseUrl: https://demo-keycloak-instance.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
         loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
         clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret

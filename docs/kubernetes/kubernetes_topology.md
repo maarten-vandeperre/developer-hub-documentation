@@ -43,7 +43,7 @@ title: Dev hub integration: Kubernetes Topology
               name: local-cluster
               serviceAccountToken: ${RHDH_TEKTON_SERVICE_ACCOUNT_TOKEN}
               skipTLSVerify: true
-              url: https://api.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com:6443
+              url: https://api.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com:6443
           type: config
       serviceLocatorMethod:
         type: multiTenant

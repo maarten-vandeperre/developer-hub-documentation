@@ -35,7 +35,7 @@ Now, go to the folder of interest, for me it is:
 cd dynamic-plugins-workspace
 ```
 
-### Step 1
+### Step 1 
 Create a new Backstage app using a version of `create-app` that correlates to the Backstage version that the target Developer Hub is running.  There is a little matrix of versions to be aware of:
 
 ```text
@@ -64,10 +64,36 @@ npx @backstage/create-app@0.5.17
 ```
 
 You will need to give the app a name, I will use the default 'backstage'.
-After prompting for a project name the `create-app` command will generate a git repo with the backstage app code.
+After prompting for a project name the `create-app` command will generate a git repo with the backstage app code and it will run `yarn install` for you.
 
 you can now add it to git 
 ```shell
 git add .
 git commit -m "start on dynamic plugin development"
 ```
+
+### Step 2
+Go in the cli to the backstage folder
+```shell
+cd backstage
+```
+
+You should now be able to start Backstage locally by running
+```shell
+yarn dev
+```
+
+It will start up the application (by default on port 3000) and it should look like this:
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/local_backstage.png">
+
+### Step 3
+In development, it's easiest to work with the guest authentication provider vs disabling authentication altogether.  
+Set this up by adding a new file `app-config.local.yaml` with the following contents:
+
+```yaml
+auth:
+  providers:
+    guest: {}
+```
+
+This concludes the setup of the workspace, we now can start developing plugins.

@@ -19,7 +19,7 @@ type: Opaque
 * Set the base domain variable.  
   **_!!! Be careful, the base domain will be different in your setup._**
 ```shell
-basedomain=apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com
+basedomain=apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
 ```
 * Patch the secret to add the base domain (i.e., to avoid CORS issues).
 ```shell
@@ -75,7 +75,7 @@ spec:
   database:
     enableLocalDb: true
 ```
-* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com
+* Go to Developer Hub: _(in our case)_ backstage-developer-hub-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
 * You should now be able to see the following screen:
   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/login_screen_1.png" class="large">
 * Last thing to configure now is the enablement of the dynamic plugins. These dynamic plugins will allow you to add functionality

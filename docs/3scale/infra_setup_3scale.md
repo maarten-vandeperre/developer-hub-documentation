@@ -54,7 +54,7 @@ In case you would like to do it manually yourself:
 3. Activate the user.
    <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/3scale-demo-tenant.png" class="large">
 4. Impersonate via the master or login in the admin screen with the created user.
-   _Route should look like this: https://demo-organization-admin.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com_
+   _Route should look like this: https://demo-organization-admin.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com_
 5. Create a backend "API backend".
 6. Create a product "Product A".
 7. Create an API spec for Product A, by going to products > product A > active docs > create a new spec
