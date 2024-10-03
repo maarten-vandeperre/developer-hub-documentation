@@ -116,7 +116,7 @@ jobs:
 
 
 
-https://demo-keycloak-instance.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com/realms/rhdh/protocol/openid-connect/auth?client_id=rhdh-client&scope=openid%20profile%20email&response_type=code&redirect_uri=https%3A%2F%2Fbackstage-developer-hub-demo-project.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com%2Fapi%2Fauth%2Foidc%2Fhandler%2Fframe&state=6e6f6e63653d7625324248587737334278347136664a6441306661764c6725334425334426656e763d64656661756c74266f726967696e3d68747470732533412532462532466261636b73746167652d646576656c6f7065722d6875622d64656d6f2d70726f6a6563742e617070732e636c75737465722d626e6335742e73616e64626f78333236392e6f70656e746c632e636f6d26666c6f773d706f707570&code_challenge=E3BjsOCL6sMooYp_6p_esxocmzIWl1VOEJ6cP8kQrtg&code_challenge_method=S256
+https://demo-keycloak-instance.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com/realms/rhdh/protocol/openid-connect/auth?client_id=rhdh-client&scope=openid%20profile%20email&response_type=code&redirect_uri=https%3A%2F%2Fbackstage-developer-hub-demo-project.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com%2Fapi%2Fauth%2Foidc%2Fhandler%2Fframe&state=6e6f6e63653d7625324248587737334278347136664a6441306661764c6725334425334426656e763d64656661756c74266f726967696e3d68747470732533412532462532466261636b73746167652d646576656c6f7065722d6875622d64656d6f2d70726f6a6563742e617070732e636c75737465722d626e6335742e73616e64626f78333236392e6f70656e746c632e636f6d26666c6f773d706f707570&code_challenge=E3BjsOCL6sMooYp_6p_esxocmzIWl1VOEJ6cP8kQrtg&code_challenge_method=S256
 
 
 
@@ -134,7 +134,7 @@ curl -X POST \
   -d "grant_type=client_credentials" \
   -d "client_id=rhdh-client" \
   -d "client_secret=7iKyQUwyApIojzOlSj82vUWIhejv41E5" \
-  "https://demo-keycloak-instance.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com/realms/rhdh/protocol/openid-connect/token"
+  "https://demo-keycloak-instance.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com/realms/rhdh/protocol/openid-connect/token"
 
 
 https://$KEYCLOAK_HOST/auth/admin/$REALM/users?first=10&max=15

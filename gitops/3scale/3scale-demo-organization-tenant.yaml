@@ -24,6 +24,6 @@ spec:
     namespace: demo-project
   email: maarten.vandeperre@redhat.com
   organizationName: Demo Organization maarten 6
-  systemMasterUrl: 'https://master.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com'
+  systemMasterUrl: 'https://master.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com'
   username: admin
-# admin url becomes demo-organization-maarten-5-admin.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com/p/admin/dashboard
+# admin url becomes demo-organization-maarten-5-admin.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com/p/admin/dashboard

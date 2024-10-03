@@ -21,7 +21,7 @@ title: Dev hub integration: Keycloak
         oidc:
           development:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            metadataUrl: https://demo-keycloak-instance.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
+            metadataUrl: https://demo-keycloak-instance.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
             clientId: rhdh-client # ${AUTH_OIDC_CLIENT_ID}
             clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${AUTH_OIDC_CLIENT_SECRET}
             prompt: auto # ${AUTH_OIDC_PROMPT} # recommended to use auto
@@ -57,7 +57,7 @@ signInPage: oidc
       providers:
         keycloakOrg:
           default:
-            baseUrl: https://demo-keycloak-instance.apps.apps.cluster-hj77f.hj77f.sandbox3049.opentlc.com
+            baseUrl: https://demo-keycloak-instance.apps.apps.cluster-77vwz.77vwz.sandbox3219.opentlc.com
             loginRealm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
             realm: rhdh # ${KEYCLOAK_REALM} TODO enable via secret
             clientId: rhdh-client # ${KEYCLOAK_CLIENTID} TODO enable via secret

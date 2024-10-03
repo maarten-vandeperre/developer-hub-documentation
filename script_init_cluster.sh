@@ -129,7 +129,7 @@ echo "Install Jenkins"
 sh scripts/script_install_jenkins.sh
 
 echo "sleep for operators to get ready"
-to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 300 )
+to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 420 )
 sleep "$to_sleep"
 
 #TODO enable this instead of hard coded sleep

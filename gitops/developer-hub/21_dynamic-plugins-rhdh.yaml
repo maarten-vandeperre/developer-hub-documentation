@@ -18,8 +18,6 @@ data:
         # documentation: https://docs.redhat.com/en/documentation/red_hat_developer_hub/0.1/html/argocd_plugin_for_backstage/argocd-plugin-for-backstage#installation
         # documentation: https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.2/html/configuring_plugins_in_red_hat_developer_hub/rhdh-installing-dynamic-plugins#enabling-argo-cd-plugin
         disabled: false
-      - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-argocd
-        disabled: false
       - package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
         disabled: false
       - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
