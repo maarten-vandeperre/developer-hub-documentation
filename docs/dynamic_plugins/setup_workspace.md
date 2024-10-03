@@ -64,5 +64,10 @@ npx @backstage/create-app@0.5.17
 ```
 
 You will need to give the app a name, I will use the default 'backstage'.
-After prompting for a project name the `create-app` command will generate a git repo with the Backstage app and 
-an [initial commit](https://github.com/gashcrumb/dynamic-plugins-getting-started/commit/6409e6e9a411387fc219dde00184e5cfe1dcb994)
+After prompting for a project name the `create-app` command will generate a git repo with the backstage app code.
+
+you can now add it to git 
+```shell
+git add .
+git commit -m "start on dynamic plugin development"
+```
