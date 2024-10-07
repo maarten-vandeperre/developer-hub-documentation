@@ -11,33 +11,48 @@ data:
       - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-keycloak-backend-dynamic 
         # documentation: https://janus-idp.io/plugins/keycloak
         disabled: false
+        forceDownload: true
       - package: ./dynamic-plugins/dist/backstage-plugin-catalog-backend-module-github-dynamic
         # documentation: https://backstage.io/docs/integrations/github/discovery/
         disabled: false
+        forceDownload: true
       - package: ./dynamic-plugins/dist/roadiehq-backstage-plugin-argo-cd-backend-dynamic
         # documentation: https://docs.redhat.com/en/documentation/red_hat_developer_hub/0.1/html/argocd_plugin_for_backstage/argocd-plugin-for-backstage#installation
         # documentation: https://docs.redhat.com/en/documentation/red_hat_developer_hub/1.2/html/configuring_plugins_in_red_hat_developer_hub/rhdh-installing-dynamic-plugins#enabling-argo-cd-plugin
         disabled: false
+        forceDownload: true
       - package: ./dynamic-plugins/dist/roadiehq-scaffolder-backend-argocd-dynamic
         disabled: false
+        forceDownload: true
       - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-tekton
         # documentation: https://docs.redhat.com/en/documentation/red_hat_plug-ins_for_backstage/1.0/html-single/tekton_plugin_for_backstage/index#setting-tekton-plugin
         disabled: false
+        forceDownload: true
       - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes-backend-dynamic
         # documentation: https://backstage.io/docs/features/kubernetes/configuration/#config
         disabled: false
+        forceDownload: true
       - package: ./dynamic-plugins/dist/backstage-plugin-kubernetes
         disabled: false
+        forceDownload: true
       - package: ./dynamic-plugins/dist/backstage-plugin-jenkins-backend-dynamic
         # documentation: https://www.npmjs.com/package/@backstage-community/plugin-jenkins-backend
         disabled: false
+        forceDownload: true
       - package: ./dynamic-plugins/dist/backstage-plugin-jenkins
         disabled: false
+        forceDownload: true
       #- package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-3scale-backend-dynamic
       #  disabled: false
+        forceDownload: true
       - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-topology
         # documentation: https://www.npmjs.com/package/@janus-idp/backstage-plugin-topology
         disabled: false
+        forceDownload: true
+      - package: 'https://developer-hub-plugins.s3.eu-west-3.amazonaws.com/ansible-self-service-plugin/internal-backstage-plugin-ansible-self-service-dynamic-0.1.0.tgz' 
+        disabled: false
+        forceDownload: true
+        integrity: 'sha512-fA+rAkTlrAt7nDdv88OB32UwIXKZjeu+x+P4gHDQONFNgnG/RU2mUdSGvjOeiyjKukyNj5zpcVNOnHYkmcTXpA==' #ansible-self-service-frontend-hash
       # - package: ./dynamic-plugins/dist/janus-idp-backstage-plugin-aap-backend-dynamic
       #   # documentation: https://www.npmjs.com/package/@janus-idp/backstage-plugin-aap-backend-dynamic
       #   disabled: false
