@@ -7,7 +7,7 @@ title: Developer Hub Documentation
 
 Welcome on this Developer Hub documentation (showcase) page, of which you can find [the source 
 code over here.](https://github.com/maarten-vandeperre/developer-hub-documentation)
-This document should provide al necassary information required to get Developer Hub 
+This document should provide all necassary information required to get Developer Hub 
 and quite some integrations up and running in no-time.  
 
 Main layout of this repository:
@@ -24,11 +24,11 @@ Next to that, be aware that the root domain will be different for you, and it wi
 OpenShift cluster._**
 
 
-# Automated Install
+## Automated Install
 
 If you would like to have an OpenShift cluster with all integrations configured automatically for you, you can use the 'script_init_cluster.sh' script.
 
-## Steps:
+### Steps:
 1. Ensure you have a running OpenShift cluster without a project named 'demo-project'.
 2. Copy and execute the 'oc login' command.
 3. Fork [this GitHub repository](https://github.com/maarten-vandeperre/dev-hub-test-demo) to your repository list or create a new repository and copy the catalog-info.yaml file over.
