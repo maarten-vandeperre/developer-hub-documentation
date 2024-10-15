@@ -1,0 +1,12 @@
+dynamicPlugins:
+  frontend:
+    internal.backstage-plugin-ansible-self-service:
+      appIcons:
+        - name: catalogIcon
+          importName: CatalogIcon
+      dynamicRoutes:
+        - path: /ansible-self-service
+          importName: AnsibleSelfServicePage
+          menuItem:
+            text: 'Self Service'
+            icon: catalogIcon

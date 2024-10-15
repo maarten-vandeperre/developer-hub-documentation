@@ -37,6 +37,7 @@
     "@backstage/plugin-techdocs-react": "^1.2.6",
     "@backstage/plugin-user-settings": "^0.8.9",
     "@backstage/theme": "^0.5.6",
+    "@internal/backstage-plugin-ansible-self-service": "^0.1.0",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.9.1",
     "history": "^5.0.0",
@@ -49,10 +50,10 @@
   "devDependencies": {
     "@backstage/test-utils": "^1.5.8",
     "@playwright/test": "^1.32.3",
+    "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.0.0",
-    "@testing-library/dom": "^9.0.0",
     "@types/react-dom": "*",
     "cross-env": "^7.0.0"
   },
