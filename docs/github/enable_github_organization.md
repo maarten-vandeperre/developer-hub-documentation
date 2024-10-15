@@ -58,10 +58,20 @@ I will go with a free organization for now, which I name [Developer-Hub-Demo-Org
 11. Click "save changes"
 12. Generate and save the private key.
 
-## Machine users
-Regarding Developer Hub, you will still need a personal access token to do some actions,
-to have some permissions configured. For this you can't work with an organization alone, as
-user accounts have permissions associated with them (organizations don't). 
-So, you'd need to create a token with an account which has access to the repository in question and give that to Travis. 
-You can also create a machine account for that purpose. More information about using machine users on
-GitHub can be found [over here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#machine-users).
+## Step 4 - Install the GitHub app
+1. Open the app
+2. Go to Install App submenu item  
+   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/install_github_app.png" class="large">
+3. Click "install"
+4. I selected "all repositories"
+5. Click "install"
+6. App should have the status "Installed x minutes ago" now.
+   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/installed_app.png" class="large">
+7. Get the installation ID from the URL.
+   <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/app_installation_id.png" class="large">
+
+## Step 5 - Get the personal access token for the GitHub app
+1. Install [github-app-installation-token](https://www.npmjs.com/package/github-app-installation-token)
+2. Run the command
+3. Store the token, which should look like ghs_................................izI3
+
