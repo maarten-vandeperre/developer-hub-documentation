@@ -1,0 +1,21 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rhdh-rbac-policy
+data:
+  rbac-policy.csv: |
+    # Permission definitions
+    # `p, <ROLE>, <PERMISSION_NAME or PERMISSION_RESOURCE_TYPE>, <PERMISSION_POLICY_ACTION>, <ALLOW or DENY>`
+    p, role:default/role1, catalog-entity, read, deny
+    p, role:default/role1, catalog.entity.read, read, deny
+    
+    p, role:default/role2, catalog.entity.create, create, allow
+    p, role:default/role2, catalog-entity, read, allow
+
+    # Role assignments (to user)
+    g, user:default/user2, role:default/role1
+    g, user:default/user3, role:default/role2
+    
+    # Role assignments (to group)
+    g, group:default/group-1, role:default/role1
+    

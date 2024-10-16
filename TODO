@@ -9,6 +9,8 @@
 * change scripts in workspace folder to not hard coded use simple chat
 * storage solutions: add none as well
 
+!!!! in docs {{ (e.g., keycloak config) => content in between is gone
+
 
 8275290c-5fdb-4c52-9f00-11f723504f52,file:/opt/catalog-entities/all.yaml,location:default/generated-28cca00eef20648da516bda20fe0e71b7b7364ba,"[{""name"":""NotFoundError"",""message"":""file /opt/catalog-entities/all.yaml does not exist""}]",2024-08-03 21:32:44.134407
 

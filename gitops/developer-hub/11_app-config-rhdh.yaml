@@ -5,10 +5,19 @@ metadata:
   namespace: demo-project
 data:
   app-config-rhdh.yaml: |
-    signInPage: github   
+    #signInPage: github   
+    signInPage: oidc   
     app:
       title: My Red Hat Developer Hub Instance
       baseUrl: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
+    permission:
+      enabled: true
+      rbac:
+        policies-csv-file: ./rbac-policy.csv
+        policyFileReload: true # reload changed config without rebooting developer hub
+        admin:
+          users:
+            - name: user:default/user1
     backend:
       reading:
         allow:
@@ -96,16 +105,16 @@ data:
               # supports ISO duration, "human duration" as used in code
               timeout: { minutes: 1 }
               initialDelay: { seconds: 15 }
-        githubOrg: # For user import
-          id: githubborg-developer-hub-demo-organization
-          githubUrl: https://github.com # 'https://' is required!
-          orgs: [ 'Developer-Hub-Demo-Organization' ]
-          schedule: # optional; same options as in TaskScheduleDefinition
-            # supports cron, ISO duration, "human duration" as used in code
-            frequency: { minutes: 1 }
-            # supports ISO duration, "human duration" as used in code
-            timeout: { minutes: 1 }
-            initialDelay: { seconds: 15 }
+        # githubOrg: # For user import
+          # id: githubborg-developer-hub-demo-organization
+          # githubUrl: https://github.com # 'https://' is required!
+          # orgs: [ 'Developer-Hub-Demo-Organization' ]
+          # schedule: # optional; same options as in TaskScheduleDefinition
+            # # supports cron, ISO duration, "human duration" as used in code
+            # frequency: { minutes: 1 }
+            # # supports ISO duration, "human duration" as used in code
+            # timeout: { minutes: 1 }
+            # initialDelay: { seconds: 15 }
         ocm:
           default:
             kubernetesPluginRef: local-cluster
@@ -154,10 +163,10 @@ data:
       session:
         secret: ${BACKEND_SECRET}
       providers:
-        github:
-          default:
-            clientId: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_ID}
-            clientSecret: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_SECRET}
+        # github:
+          # default:
+            # clientId: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_ID}
+            # clientSecret: ${RHDH_GITHUB_INTEGRATION_APP_CLIENT_SECRET}
         oidc:
           default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}

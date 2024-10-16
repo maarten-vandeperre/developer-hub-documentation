@@ -200,6 +200,7 @@ sleep "$to_sleep"
 
   echo "Configuring Developer Hub config maps"
   oc apply -f gitops/developer-hub/01_secret.yaml
+  oc apply -f gitops/developer-hub/02_rbac_config.yaml
   oc apply -f gitops/developer-hub/11_app-config-rhdh.yaml
   oc apply -f gitops/developer-hub/21_dynamic-plugins-rhdh.yaml
 
