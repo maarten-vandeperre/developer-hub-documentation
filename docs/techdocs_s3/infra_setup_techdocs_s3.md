@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Infra setup - AWS S3
+title: AWS S3 infra setup
 ---
 
-# Infra setup - AWS S3
+# AWS S3 infra setup
 
 * Go to AWS console and log in
 * Create an S3 bucket, in our example 'redhat-demo-dev-hub-1'

@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Infra setup: Keycloak
+title: Keycloak infra setup
 ---
 
-# Infra setup: Keycloak
+# Keycloak infra setup
 
 ## Setup
 
 * Log in into OpenShift via the CLI (i.e., oc login ....)
 * Install the operator in the 'demo-project' namespace.
-* Apply the following yaml:  
+* Apply the following yaml:
   **TODO: make use of basedomain variable**
   **!!! be aware to change the root domain (i.e., apps.cluster-mq98c.mq98c.sandbox870.opentlc.com) to your own domain.**
 ```yaml
@@ -24,7 +24,7 @@ spec:
   http:
     httpEnabled: true
   hostname:
-    # following would be better and easier to secure, but for demo purposes, 
+    # following would be better and easier to secure, but for demo purposes,
     # we'll make both hostname and admin URL the same (fewer certificates' config)
     # adminUrl: 'https://admin.demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com'
     adminUrl: 'https://demo-keycloak-instance.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com'
@@ -35,7 +35,7 @@ spec:
 ```shell
 oc get route $(oc get routes -n demo-project -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | grep demo-keycloak-instance) \
   -n demo-project \
-  -o template --template='{{.spec.host}}'\ 
+  -o template --template='{{.spec.host}}'\
   ; echo
 ```
 * Get the admin secret:
@@ -49,7 +49,7 @@ oc get secret demo-keycloak-instance-initial-admin -n demo-project -o template -
     * Create Confidential client: rhdh-client
         * Root URL: empty
         * Valid redirect URIs: <developer hub url>/*  (see section 'Install Red Hat Developer Hub via operator' in the README to retrieve the URL if you don't find it).
-        * Take the secret from the client  
+        * Take the secret from the client
           <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/keycloak_rhdh_client_creation.png">
         * Service account must be enabled
         * The following roles must be added from the realm-management client role:

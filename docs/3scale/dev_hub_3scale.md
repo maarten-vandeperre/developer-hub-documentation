@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Dev hub integration: 3scale
+title: 3scale Integration
 ---
 
-# Dev hub integration: 3scale
+# 3scale integration
 
 * Make sure that 3scale is set up as described in [3scale Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/3scale/infra_setup_3scale.html)
   * Get admin organization of the tenant you want to connect: https://demo-organization-maarten-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Infra setup: Ansible
+title: Ansible infra setup
 ---
 
-# Infra setup: Ansible
+# Ansible infra setup
 
 * yamls
 * Seb: link to git repo

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Dev hub integration: Jenkins
+title: Jenkins integration
 ---
 
-# Dev hub integration: Jenkins
+# Jenkins integration
 
 * Make sure that Jenkins is set up as described in [Jenkins Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/jenkins/infra_setup_jenkins.html)
     * Get admin organization of the tenant you want to connect: https://demo-organization-maarten-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
@@ -32,15 +32,15 @@ title: Dev hub integration: Jenkins
           apiKey: rhdh
     ```
   * Now that the Jenkins plugin is active, you'll need to link it to a component. throughout this example, we will use the component defined over here:
-  [https://github.com/maarten-vandeperre/dev-hub-test-demo](https://github.com/maarten-vandeperre/dev-hub-test-demo), the 
+  [https://github.com/maarten-vandeperre/dev-hub-test-demo](https://github.com/maarten-vandeperre/dev-hub-test-demo), the
   [catalog-info.yaml](https://github.com/maarten-vandeperre/dev-hub-test-demo/blob/master/catalog-info.yaml)
   more in particular.
   In that catalog-info file, you will need to add the following annotations:
     * jenkins.io/job-full-name: default-jenkins:demo-project/demo-project-demo-app-pipeline
       * jenkins.io/job-full-name: the annotation name to activate the Jenkins plugin for this component.
       * default-jenkins: the name of the Jenkins instace you defined in the Developer Hub app config
-      * demo-project/demo-project-demo-app-pipeline: build name, which can be taken from the build detail URL:  
-      <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/jenkins_3.png" class="large">  
+      * demo-project/demo-project-demo-app-pipeline: build name, which can be taken from the build detail URL:
+      <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/jenkins_3.png" class="large">
 
 _If you now go to the CI tab on the component detail, you'll be able to see Jenkins details:._
 <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/jenkins_4.png" class="large">

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Dev hub integration: GitHub Auth
+title: GitHub Auth
 ---
 
-# Dev hub integration: GitHub Auth
+# GitHub Auth
 
 * Make sure that GitHub is set up as described in [GitHub Token Configuration Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/github/token_configurations.html)
     * Get the client id of the application
@@ -24,7 +24,7 @@ title: Dev hub integration: GitHub Auth
 * By applying above config, you enable a new authentication provider to be used. By adding this info, the provider is not yet in use.
   In order to start using this GitHub provider, we have to apply the following yaml to the Developer Hub Config on anchor_02.
 ```yaml
-signInPage: github  
+signInPage: github
 ```
 * As a last step we need to make sure that the GitHub users are synced with the Developer Hub's user catalog. In order to do so,
   we need to:
