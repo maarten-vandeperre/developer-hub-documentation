@@ -28,6 +28,7 @@ oc get secret backstage-psql-secret-developer-hub -n demo-project  -o template -
 oc get secret backstage-psql-secret-developer-hub -n demo-project  -o template --template='{{.data.POSTGRESQL_ADMIN_PASSWORD}}' | base64 -d ; echo
 ```
 
+
 The database to be connected to, will be "backstage_plugin_catalog". If you're using IntelliJ,
 it will look like this:
 <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/dev-hub-postgres-creation.png">
