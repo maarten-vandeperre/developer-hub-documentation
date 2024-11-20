@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Dev hub integration: ArgoCD
+title: ArgoCD integration
 ---
 
-# Dev hub integration: ArgoCD
+# ArgoCD integration
 
 * Make sure that ArgoCD is set up as described in [ArgoCD Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/argocd/infra_setup_argocd.html)
     * Label: rht-gitops.com/demo-project: simple-hello-world-service-a
@@ -29,12 +29,12 @@ title: Dev hub integration: ArgoCD
         - type: 'config'
           instances:
             - name: argoInstance1
-              url: https://argocd-instance-server-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
-              username: admin 
+              url: https://argocd-instance-server-demo-project.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com
+              username: admin
               password: ${RHDH_ARGOCD_ADMIN_PWD}
     ```
   * Now that the ArgoCD plugin is active, you'll need to link it to a component. throughout this example, we will use the component defined over here:
-  [https://github.com/maarten-vandeperre/dev-hub-test-demo](https://github.com/maarten-vandeperre/dev-hub-test-demo), the 
+  [https://github.com/maarten-vandeperre/dev-hub-test-demo](https://github.com/maarten-vandeperre/dev-hub-test-demo), the
   [catalog-info.yaml](https://github.com/maarten-vandeperre/dev-hub-test-demo/blob/master/catalog-info.yaml)
   more in particular.
   In that catalog-info file, you will need to add the following annotations:
@@ -46,7 +46,7 @@ title: Dev hub integration: ArgoCD
       * argoInstance1: name of the ArgoCD instance, as defined in the app config.
 
 _If you now go to the CD tab on the component detail, you'll be able to see ArgoCD details:._
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/argocd_4.png" class="large">  
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/argocd_4.png" class="large">
 
 
 **!!! Important:** If you get an TLS error, check if your ArgoCD instance if using selfsigned certificates. If it does, make sure you disable certificate
@@ -58,4 +58,4 @@ checkin in the backstage instance definition (i.e., avoid this in production!).
         - name: NODE_TLS_REJECT_UNAUTHORIZED
           value: '0'
 ```
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/argocd-internal-server-error-2.png" class="large">  
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/argocd-internal-server-error-2.png" class="large">

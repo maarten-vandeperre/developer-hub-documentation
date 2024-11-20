@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Infra setup: 3scale
+title: 3scale Infra Setup
 ---
 
-# Infra setup: 3scale
+# 3scale infra setup
 
 Red Hat 3scale API Management is an API Gateway, which makes it easy to manage your APIs.
 Share, secure, distribute, control, and monetize your APIs on an infrastructure platform built for

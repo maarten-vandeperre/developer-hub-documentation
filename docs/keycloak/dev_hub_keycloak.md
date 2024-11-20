@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Dev hub integration: Keycloak
+title: Keycloak Auth
 ---
 
-# Dev hub integration: Keycloak
+# Keycloak Auth
 
 * Make sure that Keycloak is set up as described in [Keycloak Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/keycloak/infra_setup_keycloak.html)
     * Get the base url
@@ -40,7 +40,7 @@ title: Dev hub integration: Keycloak
 * By applying above config, you enable a new authentication provider to be used. By adding this info, the provider is not yet in use.
   In order to start using this oidc (i.e. OpenId Connect) provider, we have to apply the following yaml to the Developer Hub Config on anchor_02.
 ```yaml
-signInPage: oidc  
+signInPage: oidc
 ```
 * As a last step we need to make sure that the Keycloak users are synced with the Developer Hub's user catalog. In order to do so,
   we need to:

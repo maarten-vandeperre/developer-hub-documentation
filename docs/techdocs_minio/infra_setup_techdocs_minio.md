@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Infra setup - Minio S3
+title: Minio S3 infra setup
 ---
 
-# Infra setup - Minio S3
+# Minio S3 infra setup
 
 MinIO is an open-source, high-performance, distributed object storage system designed for storing unstructured data such as photos,
 videos, log files, backups, and container images. It is compatible with Amazon S3 APIs, making it easy to integrate with existing cloud-native applications.
