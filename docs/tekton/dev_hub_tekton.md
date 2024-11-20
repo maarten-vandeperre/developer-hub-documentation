@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Dev hub integration: Tekton
+title: Tekton Integration
 ---
 
-# Dev hub integration: Tekton
+# Tekton Integration
 
 * Make sure that Tekton is set up as described in [Tekton Installation Guide](https://maarten-vandeperre.github.io/developer-hub-documentation/tekton/infra_setup_tekton.html)
     * Label: backstage.io/kubernetes-id: dev-hub-test-demo
@@ -62,7 +62,7 @@ title: Dev hub integration: Tekton
         type: multiTenant
     ```
   * Now that the Tekton plugin is active, you'll need to link it to a component. throughout this example, we will use the component defined over here:
-  [https://github.com/maarten-vandeperre/dev-hub-test-demo](https://github.com/maarten-vandeperre/dev-hub-test-demo), the 
+  [https://github.com/maarten-vandeperre/dev-hub-test-demo](https://github.com/maarten-vandeperre/dev-hub-test-demo), the
   [catalog-info.yaml](https://github.com/maarten-vandeperre/dev-hub-test-demo/blob/master/catalog-info.yaml)
   more in particular.
   In that catalog-info file, you will need to add the following annotations:
@@ -71,11 +71,11 @@ title: Dev hub integration: Tekton
       * dev-hub-test-demo: the id defined in the tekton pipeline label (see above)
 
 _If you now go to the CI tab on the component detail, you'll be able to see Tekton details:._
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_5.png" class="large">  
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_5.png" class="large">
 
 
 **!!!Important**: when you get the error "Warning: There was a problem retrieving Kubernetes objects", it means that your service account token is expired.
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_4.png" class="large">  
+<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_4.png" class="large">
 You can fix it by running the following commands:
-* sh scripts/script_configure_tekton_integration.sh 
+* sh scripts/script_configure_tekton_integration.sh
 * oc apply -f secrets/generated/secret_tekton.yaml
