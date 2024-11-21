@@ -34,15 +34,18 @@ In order to install and configure ArgoCD on OpenShift you will need to execute t
   * oc apply -f gitops/argocd/argocd-application-simple-hello-world.yaml
 
 You then should be able to see ArgoCD and the ArgoCD application in OpenShift & ArgoCD:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/argocd_1.png" class="large">
+
+![ArgoCD](/assets/images/argocd/argocd_1.png)
+
 _Or, as in my case, when I configured ArgoCD, there went something wrong, so I have to navigate to ArgoCD through routes > ArgoCD route._
 
 credentials:
 * username: admin
 * password: defined in secretes/generated/secret_argocd.yaml, when you executed the script script_configure_argocd_integration.
 
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/argocd_2.png" class="large">
+![ArgoCD](/assets/images/argocd/argocd_2.png)
 
 **!!! Important:** Check that the label is set in the ArgoCD configuration (i.e., within gitops/argocd/argocd-application-simple-hello-world.yaml)
 (for me, simple-hello-world-service-a), as you will need it in the Developer Hub configuration:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/argocd_3.png" class="large">
+
+![ArgoCD](/assets/images/argocd/argocd_3.png)

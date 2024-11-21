@@ -37,9 +37,11 @@ In order to install and configure Tekton on OpenShift you will need to execute t
   * oc apply -f gitops/tekton/tekton-pipeline-run-simple-hello-world.yaml
 
 You then should be able to see the pipeline and pipeline run in OpenShift:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_1.png" class="large">
 
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_2.png" class="large">
+![Tekton](/assets/images/tekton/tekton_1.png)
+
+![Tekton](/assets/images/tekton/tekton_2.png)
 
 **!!! Important:** Check that the label is set in the Tekton configuration (for me, dev-hub-test-demo), as you will need it in the Developer Hub configuration:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_3.png" class="large">
+
+![Tekton](/assets/images/tekton/tekton_3.png)

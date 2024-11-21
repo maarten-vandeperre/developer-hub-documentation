@@ -9,7 +9,7 @@ spec:
   profile:
     # Intentional no displayName for testing
     email: team-1@example.com
-    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/redhat_logo.jpeg
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/docs/assets/images/catalog_entities/groups-and-users/redhat_logo.jpeg
   children: []
 ---
 apiVersion: backstage.io/v1alpha1
@@ -20,7 +20,7 @@ spec:
   profile:
     # Intentional no displayName for testing
     email: jolien-vereman@example.com
-    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/avatar.jpeg
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/docs/assets/images/catalog_entities/groups-and-users/avatar.jpeg
   memberOf: [team-1]
 ---
 apiVersion: backstage.io/v1alpha1
@@ -31,7 +31,7 @@ spec:
   profile:
     displayName: Pieter Vandeperre
     email: pieter-vandeperre@example.com
-    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/project-templates/images/avatar.jpeg
+    picture: https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/docs/assets/images/catalog_entities/groups-and-users/avatar.jpeg
   memberOf: [team-1]
 ---
 apiVersion: backstage.io/v1alpha1

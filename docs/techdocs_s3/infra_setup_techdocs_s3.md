@@ -28,6 +28,8 @@ title: AWS S3 infra setup
     * Add policy: AmazonS3FullAccess
     * Add policy: AmazonS3ReadOnlyAccess
     * Get/generate the access key ID and secret access key
-      <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/aws_s3_techdocs_user.png" class="large">
+
+      ![TechDocs](/assets/images/techdocs/aws_s3_techdocs_user.png)
+
     * Store the accessKeyId and secretAccessKey locally as it will be required (i.e. or in the init_cluster script
       or directly in the secrets/generated/secret_aws_s3_techdocs.yaml file)
