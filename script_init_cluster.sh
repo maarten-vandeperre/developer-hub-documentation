@@ -97,7 +97,7 @@ fi
   oc apply -f secrets/generated/secret_github_integration.yaml
 
 echo "Waiting for configurations to apply"
-to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 10 || echo 300 )
+to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 10 || echo 150 )
 sleep "$to_sleep"
 
 # operators
@@ -129,7 +129,7 @@ echo "Install Jenkins"
 sh scripts/script_install_jenkins.sh
 
 echo "sleep for operators to get ready"
-to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 420 )
+to_sleep=$( [ "$fast_waiting_times" = "yes" ] && echo 120 || echo 480 )
 sleep "$to_sleep"
 
 #TODO enable this instead of hard coded sleep
@@ -201,6 +201,7 @@ sleep "$to_sleep"
   echo "Configuring Developer Hub config maps"
   oc apply -f gitops/developer-hub/01_secret.yaml
   oc apply -f gitops/developer-hub/02_rbac_config.yaml
+  oc apply -f gitops/developer-hub/03_dynamic-plugins-root-persistent-volume.yaml
   oc apply -f gitops/developer-hub/11_app-config-rhdh.yaml
   oc apply -f gitops/developer-hub/21_dynamic-plugins-rhdh.yaml
 

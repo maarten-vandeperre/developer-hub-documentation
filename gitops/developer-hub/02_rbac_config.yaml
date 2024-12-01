@@ -2,6 +2,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: rhdh-rbac-policy
+  namespace: demo-project
 data:
   rbac-policy.csv: |
     # Permission definitions
@@ -15,7 +16,36 @@ data:
     # Role assignments (to user)
     g, user:default/user2, role:default/role1
     g, user:default/user3, role:default/role2
+    g, user:default/user4, role:default/role2
     
     # Role assignments (to group)
     g, group:default/group-1, role:default/role1
     
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rhdh-rbac-conditional-policy
+  namespace: demo-project
+data:
+  conditional-policy.yaml: |
+    result: CONDITIONAL
+    roleEntityRef: 'role:default/role2'
+    pluginId: catalog
+    resourceType: catalog-entity
+    permissionMapping:
+      - read
+      - update
+    conditions:
+      allOf:
+        # - rule: IS_ENTITY_OWNER
+        #  resourceType: catalog-entity
+        #  params:
+        #    claims:
+        #      - 'user:default/user4'
+        - not:
+            rule: IS_ENTITY_KIND
+            resourceType: catalog-entity
+            params:
+              kinds:
+                - Group

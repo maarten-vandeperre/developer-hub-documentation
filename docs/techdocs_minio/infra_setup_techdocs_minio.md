@@ -29,5 +29,5 @@ it becomes ready, which can take a couple of minutes.
 3. Now create 2 routes to access MinIO outside the OpenShift cluster (e.g., for testing purposes),
    by applying [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/minio/minio-route.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/minio/minio-route.yaml). _(!!! notice that you will have to chance the
    base domain to match yours in the following routes.)_
-    1. The API route: https://minio-api-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
-    2. The web UI route: https://minio-webui-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
+    1. The API route: https://minio-api-demo-project.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com
+    2. The web UI route: https://minio-webui-demo-project.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com

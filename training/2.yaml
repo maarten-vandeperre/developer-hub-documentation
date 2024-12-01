@@ -1,0 +1,23 @@
+# install secret
+kind: Secret
+apiVersion: v1
+metadata:
+  name: rhdh-secrets
+  namespace: demo-project
+stringData:
+  BACKEND_SECRET: averysecretpassword
+  basedomain: apps.cluster-l2jx7.l2jx7.sandbox714.opentlc.com
+type: Opaque
+---
+# install pv to speed up dynamic plugins installation
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dynamic-plugins-root
+  namespace: demo-project
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

@@ -5,7 +5,7 @@ metadata:
   namespace: demo-project
 data:
   app-config-rhdh.yaml: |
-    #signInPage: github   
+    # signInPage: github   
     signInPage: oidc   
     app:
       title: My Red Hat Developer Hub Instance
@@ -14,6 +14,7 @@ data:
       enabled: true
       rbac:
         policies-csv-file: ./rbac-policy.csv
+        conditionalPoliciesFile: ./conditional-policy.yaml
         policyFileReload: true # reload changed config without rebooting developer hub
         admin:
           users:
@@ -67,7 +68,7 @@ data:
       providers:
         # aap:
           # prod:
-            # baseUrl: https://automation-controller-aap.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com/
+            # baseUrl: https://automation-controller-aap.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com/
             # authorization: 'Bearer MMGqXFu1I71HWfiAUqLrYEuA1VMu1R' #automation-controller-secret-key secret-key
             # owner: 'maarten-vandeperre-org' # an owner defined within catalog entities
             # system: 'maartens-wonderful-system' # an owner defined within catalog entities
@@ -78,7 +79,7 @@ data:
               # timeout: { minutes: 1 }
         keycloakOrg:
           default:
-            baseUrl: https://demo-keycloak-instance.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
+            baseUrl: https://demo-keycloak-instance.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com
             loginRealm: rhdh
             realm: rhdh
             clientId: rhdh-client 
@@ -125,15 +126,15 @@ data:
                 seconds: 10
               timeout:
                 seconds: 60
-        #threeScaleApiEntity:
-        #  default:
-        #    baseUrl: https://demo-organization-maarten-admin.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
-        #    accessToken: ${RHDH_3SCALE_RHDH_CLIENT_SECRET}
-        #    schedule: # optional; same options as in TaskScheduleDefinition
-        #      # supports cron, ISO duration, "human duration" as used in code
-        #      frequency: { minutes: 1 }
-        #      # supports ISO duration, "human duration" as used in code
-        #      timeout: { minutes: 3 }
+        threeScaleApiEntity:
+          default:
+            baseUrl: https://demo-organization-maarten-admin.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com
+            accessToken: ${RHDH_3SCALE_RHDH_CLIENT_SECRET}
+            schedule: # optional; same options as in TaskScheduleDefinition
+              # supports cron, ISO duration, "human duration" as used in code
+              frequency: { minutes: 1 }
+              # supports ISO duration, "human duration" as used in code
+              timeout: { minutes: 3 }
         #if-minio-techdocs-disabled awsS3: # minio
           #if-minio-techdocs-disabled default: # identifies your dataset / provider independent of config changes
             #if-minio-techdocs-disabled bucketName: minio-tech-docs
@@ -170,7 +171,7 @@ data:
         oidc:
           default:
     #        metadataUrl: <keycloak_base_url>/realms/rhdh/.well-known/openid-configuration # ${AUTH_OIDC_METADATA_URL}
-            metadataUrl: https://demo-keycloak-instance.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com/realms/rhdh/.well-known/openid-configuration
+            metadataUrl: https://demo-keycloak-instance.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com/realms/rhdh/.well-known/openid-configuration
             clientId: rhdh-client
             clientSecret: 7iKyQUwyApIojzOlSj82vUWIhejv41E5 # ${RHDH_KEYCLOAK_RHDH_CLIENT_SECRET}
             prompt: auto# recommended to use auto
@@ -190,13 +191,13 @@ data:
         - type: 'config'
           instances:
             - name: argoInstance1
-              url: https://argocd-instance-server-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
+              url: https://argocd-instance-server-demo-project.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com
               username: admin 
               password: ${RHDH_ARGOCD_ADMIN_PWD}
     jenkins:
       instances:
         - name: default-jenkins
-          baseUrl: https://jenkins-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com/
+          baseUrl: https://jenkins-demo-project.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com/
           username: admin
           apiKey: rhdh
     kubernetes:
@@ -206,7 +207,7 @@ data:
               name: local-cluster
               serviceAccountToken: ${RHDH_TEKTON_SERVICE_ACCOUNT_TOKEN}
               skipTLSVerify: true
-              url: https://api.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com:6443
+              url: https://api.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com:6443
           type: config
       customResources:
         - apiVersion: v1beta1
@@ -270,7 +271,7 @@ data:
             #if-minio-techdocs-disabled accessKeyId: minioadmin
             #if-minio-techdocs-disabled secretAccessKey: minioadmin
           #if-minio-techdocs-disabled region: eu-west-3
-          #if-minio-techdocs-disabled endpoint: https://minio-api-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
+          #if-minio-techdocs-disabled endpoint: https://minio-api-demo-project.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com
           #if-minio-techdocs-disabled s3ForcePathStyle: true
           #if-minio-techdocs-disabled sse: 'AES256'
       #if-minio-techdocs-disabled cache:

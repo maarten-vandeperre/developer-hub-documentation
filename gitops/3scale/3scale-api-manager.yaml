@@ -19,4 +19,4 @@ spec:
           name: s3-storage-config
         bucket: 3scale
         awsRegion: eu-west-3
-  wildcardDomain: apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
+  wildcardDomain: apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com

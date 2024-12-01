@@ -28,7 +28,7 @@ title: Tech Docs Configuration - Minio S3 (source)
             accessKeyId: <...>
             secretAccessKey: <...>
           region: eu-west-3
-          endpoint: https://minio-api-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com
+          endpoint: https://minio-api-demo-project.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com
           s3ForcePathStyle: true
           sse: 'AES256'
     ```

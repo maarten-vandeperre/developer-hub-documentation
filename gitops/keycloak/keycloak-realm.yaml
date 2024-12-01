@@ -477,9 +477,9 @@ spec:
         clientAuthenticatorType: "client-secret"
         secret: "7iKyQUwyApIojzOlSj82vUWIhejv41E5"
         redirectUris:
-          - "https://backstage-developer-hub-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com/*"
+          - "https://backstage-developer-hub-demo-project.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com/*"
         webOrigins:
-          - "https://backstage-developer-hub-demo-project.apps.cluster-m6l5s.m6l5s.sandbox2334.opentlc.com"
+          - "https://backstage-developer-hub-demo-project.apps.cluster-gc2np.gc2np.sandbox1466.opentlc.com"
         notBefore: 0
         bearerOnly: false
         consentRequired: false
