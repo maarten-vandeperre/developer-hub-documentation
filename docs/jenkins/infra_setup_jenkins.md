@@ -35,9 +35,11 @@ And you can use the following credentials:
 * password: rhdh
 
 When logging in, you should see one job in the job list:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/jenkins_1.png" class="large">
+
+![Jenkins](/assets/images/jenkins/jenkins_1.png)
 
 With one or multiple job runs:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/jenkins_2.png" class="large">
+
+![Jenkins](/assets/images/jenkins/jenkins_2.png)
 
 **!!! important:** Note the name "demo-project/demo-app-pipeline" as you will need it in the Developer Hub configuration afterwards.

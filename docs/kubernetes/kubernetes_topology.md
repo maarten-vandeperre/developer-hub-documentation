@@ -61,11 +61,13 @@ title: Kubernetes Topology integration
       * dev-hub-test-demo: the id defined in the deployment label (see above)
 
 _If you now go to the Topology tab on the component detail, you'll be able to see Kubernetes details:._
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/topology_1.png" class="large">
 
+![Kubernetes](/assets/images/kubernetes/topology_1.png)
 
 **!!!Important**: when you get the error "Warning: There was a problem retrieving Kubernetes objects", it means that your service account token is expired.
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/tekton_4.png" class="large">
+
+![Kubernetes](/assets/images/kubernetes/tekton_4.png)
+
 You can fix it by running the following commands (i.e., same as to fix tekton):
 * sh scripts/script_configure_tekton_integration.sh
 * oc apply -f secrets/generated/secret_tekton.yaml

@@ -91,7 +91,7 @@ spec:
 
 * Navigate to Developer Hub, you should now be able to see the following screen:
 
-  <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/login_screen_1.png" class="large">
+![Developer Hub](/assets/images/general/login_screen_1.png)
 
 * Last thing to configure now is the enablement of the dynamic plugins. These dynamic plugins will allow
 you to add functionality to Developer Hub without having to change the (React) source code (as it is done
