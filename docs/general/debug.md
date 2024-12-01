@@ -6,9 +6,9 @@ title: Debug Developer Hub
 # Debug Developer Hub
 
 ## Check logs
-* Developer Hub instance log:  
+* Developer Hub instance log:
 Operators > Installed Operators > Red Hat Developer Hub Operator > Red Hat Developer Hub > select instance > check events / error messages
-* Developer Hub pod log:  
+* Developer Hub pod log:
 Deployments > Developer Hub deployment > pods > select pod > check logs
 
 ## Check database
@@ -31,7 +31,8 @@ oc get secret backstage-psql-secret-developer-hub -n demo-project  -o template -
 
 The database to be connected to, will be "backstage_plugin_catalog". If you're using IntelliJ,
 it will look like this:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/dev-hub-postgres-creation.png">
+
+![Developer Hub](/assets/images/general/dev-hub-postgres-creation.png)
 
 Now that we have a database connection, let's see how to request the possible errors and the
 reloading timestamps for the integrations (i.e., I use it as well during integration development to
@@ -57,19 +58,21 @@ ORDER by last_discovery_at desc
 ```
 
 Output will look like this:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/dev-hub-postgres-follow-up.png" class="large">
+
+![Developer Hub](/assets/images/general/dev-hub-postgres-follow-up.png)
 
 If you want to experiment with it yourself, you can uncomment the line with _"#    - AI/ML #TODO enable this line if you want to try to debug for errors"_
 within the catalog entities file [configurations/catalog-entities/systems/maartens-wonderful-system.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/configurations/catalog-entities/systems/maartens-wonderful-system.yaml).
 
 You then should have the following error:
-<img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/dev-hub-postgres-debug-errors.png" class="large">
+
+![Developer Hub](/assets/images/general/dev-hub-postgres-debug-errors.png)
 
 Full error message:
 
 ```text
-Policy check failed for system:default/maartens-wonderful-system; 
-caused by Error: \"tags.0\" is not valid; expected a string that is sequences of [a-z0-9+#] 
-separated by [-], at most 63 characters in total but found \"AI/ML\". 
+Policy check failed for system:default/maartens-wonderful-system;
+caused by Error: \"tags.0\" is not valid; expected a string that is sequences of [a-z0-9+#]
+separated by [-], at most 63 characters in total but found \"AI/ML\".
 To learn more about catalog file format, visit: https://github.com/backstage/backstage/blob/master/docs/architecture-decisions/adr002-default-catalog-file-format.md
 ```

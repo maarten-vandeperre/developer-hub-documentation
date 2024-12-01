@@ -71,4 +71,5 @@ signInPage: github
     _Note: The token is optional, but if you don't configure it, you'll run rather fast against GitHub API rate limits. So I would advise to have
     some kind of system user account in place to link to the catalog scanning configuration._
 * Now the login screen should be changed to:
-  <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/login_screen_3.png">
+
+  ![GtiHub](/assets/images/github/login_screen_3.png)

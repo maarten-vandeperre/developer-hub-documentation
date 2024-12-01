@@ -72,7 +72,8 @@ signInPage: oidc
               # highlight-add-end
     ```
 * Now the login screen should be changed to:
-  <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/login_screen_2.png">
+
+  ![Keycloak](/assets/images/keycloak/login_screen_2.png)
 
 _If you now create groups and users within Keycloak's rhdh realm, they will
 become visible in Developer Hub: Catalog > Groups and Users._

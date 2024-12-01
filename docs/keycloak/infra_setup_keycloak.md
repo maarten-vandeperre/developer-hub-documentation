@@ -50,7 +50,9 @@ oc get secret demo-keycloak-instance-initial-admin -n demo-project -o template -
         * Root URL: empty
         * Valid redirect URIs: <developer hub url>/*  (see section 'Install Red Hat Developer Hub via operator' in the README to retrieve the URL if you don't find it).
         * Take the secret from the client
-          <img src="https://raw.githubusercontent.com/maarten-vandeperre/developer-hub-documentation/main/images/keycloak_rhdh_client_creation.png">
+
+          ![Keycloak](/assets/images/keycloak/keycloak_rhdh_client_creation.png)
+
         * Service account must be enabled
         * The following roles must be added from the realm-management client role:
             * query-groups
