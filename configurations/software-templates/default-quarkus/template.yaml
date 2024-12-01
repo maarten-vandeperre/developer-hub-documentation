@@ -15,10 +15,15 @@ spec:
     - title: Repository Information
       required:
         - repoName
+        - repoOwner
       properties:
         repoName:
           type: string
           title: Repository Name
+        repoOwner:
+          type: string
+          title: Repository Owner
+          description: The GitHub owner of the repository. E.g., for 'https://github.com/maarten-dev-hub-training-organization/initial-test-repo', it is 'maarten-dev-hub-training-organization'.
     - title: Component Information
       required:
         - name
@@ -54,7 +59,7 @@ spec:
       name: Publish Repository
       action: publish:github
       input:
-        repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=maarten-vandeperre'
+        repoUrl: 'github.com?repo=${{ parameters.repoName }}&owner=${{ parameters.repoOwner }}'
         repoVisibility: public
         description: Repository created by Backstage template
         topics: ['backstage', 'template']
@@ -62,4 +67,4 @@ spec:
   output:
     links:
       - title: Repository
-        url: 'https://github.com/maarten-vandeperre/${{ parameters.repoName }}'
+        url: 'https://github.com/${{ parameters.repoOwner }}/${{ parameters.repoName }}'
