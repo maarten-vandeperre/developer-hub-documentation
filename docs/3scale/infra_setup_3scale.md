@@ -38,7 +38,7 @@ OpenShift. So first apply the following files:
 Now that we have the configurations in place, we can create the API manager, by applying the following yaml definition:
 [gitops/3scale/3scale-api-manager.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/gitops/3scale/3scale-api-manager.yaml). When applied, you should wait until
 it becomes available, which can take a couple of minutes.
-![3scale API Manager installation](/assets/images/3scale/3scale_api_manager_installation.png)
+![3scale API Manager installation]({{site.url}}/assets/images/3scale/3scale_api_manager_installation.png)
 
 ## Configure 3scale tenant
 In order to have demo data available in 3scale, we will create and populate a demo tenant.
@@ -52,7 +52,7 @@ In case you would like to do it manually yourself:
 1. Create a tenant "Demo Organization" on the master.
 2. Add a user/admin: 3scale-user - 3scale-user@demo-organization.com - pwd: rescale.
 3. Activate the user.
-   ![3scale demo tenant](/assets/images/3scale/3scale-demo-tenant.png)
+   ![3scale demo tenant]({{site.url}}/assets/images/3scale/3scale-demo-tenant.png)
 4. Impersonate via the master or login in the admin screen with the created user.
    _Route should look like this: https://demo-organization-admin.apps.cluster-mq98c.mq98c.sandbox870.opentlc.com_
 5. Create a backend "API backend".
@@ -244,9 +244,9 @@ In case you would like to do it manually yourself:
     ```
 8. Create an access token by:
     1. Going to account settings
-       ![3scale account settings](/assets/images/3scale/3scale-account-settings.png)
+       ![3scale account settings]({{site.url}}/assets/images/3scale/3scale-account-settings.png)
     2. Click Add Access Token
-       ![3scale access token](/assets/images/3scale/3scale-add-access-token.png)
+       ![3scale access token]({{site.url}}/assets/images/3scale/3scale-add-access-token.png)
     3. Store the access token, as you will need it to configure the 3scale integration with
        Developer Hub.
 

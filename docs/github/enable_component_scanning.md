@@ -54,13 +54,13 @@ follow the following steps:
 1. Click on the button "Register Existing Component".
 2. Fill the following URL and click analyze: [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world/template.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world/template.yaml).
 
-   ![GtiHub](/assets/images/github/software-template-1.png)
+   ![GtiHub]({{site.url}}/assets/images/github/software-template-1.png)
 
 3. Click "refresh" button.
 4. No need to click "Register another", you can just click the "create..." menu item again
    and the template should be visible now:
 
-   ![GtiHub](/assets/images/github/software-template-2.png)
+   ![GtiHub]({{site.url}}/assets/images/github/software-template-2.png)
 
 **A software template is defined by**
 * A GitHub (submodule in) repository. In my example: [https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world](https://github.com/maarten-vandeperre/developer-hub-documentation/tree/main/configurations/software-templates/simple-hello-world).
@@ -75,7 +75,7 @@ follow the following steps:
 When you have the catalog with the templates, pick the template you want to initiate and
 click "Choose".
 
-![GtiHub](/assets/images/github/software-template-3.png)
+![GtiHub]({{site.url}}/assets/images/github/software-template-3.png)
 
 Now you can initiate the template. I use the following values:
 * Repository name: dev-hub-test-demo
@@ -85,6 +85,6 @@ Now you can initiate the template. I use the following values:
 Click "Review" and click "Create", and you should be able to see the link to the new repository
 or you will see it in GitHub:
 
-![GtiHub](/assets/images/github/software-template-4.png)
+![GtiHub]({{site.url}}/assets/images/github/software-template-4.png)
 
-![GtiHub](/assets/images/github/software-template-5.png)
+![GtiHub]({{site.url}}/assets/images/github/software-template-5.png)

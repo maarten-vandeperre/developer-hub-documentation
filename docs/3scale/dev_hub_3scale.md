@@ -36,4 +36,4 @@ title: 3scale Integration
     ```
 
 _If you now wait for the 3scale provider to import the APIs, you should be able to see it pop up in the API section:._
-![API List with 3scale](/assets/images/3scale/api-list-with-3scale-api.png)
+![API List with 3scale]({{site.url}}/assets/images/3scale/api-list-with-3scale-api.png)

@@ -87,8 +87,8 @@ catalog:
 * We now have the configuration and the static content set up. We now only need to add it as a component in Developer Hub:
     * Open Developer Hub.
     * Click "create":
-      ![TechDocs](/assets/images/techdocs/techdocs_add_component.png)
+      ![TechDocs]({{site.url}}/assets/images/techdocs/techdocs_add_component.png)
     * Add the URL of the catalog-info.yaml in the URL section (i.e., for me it is [https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/configurations/techdocs/static-content/aws-s3/catalog-info.yaml](https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/configurations/techdocs/static-content/aws-s3/catalog-info.yaml)).
     * Click on 'Analyze' and 'Create'.
     * Now go to "Docs" menu item and you should be able to see your documentation:
-      ![TechDocs](/assets/images/techdocs/techdocs_maartens_first_documentation.png)
+      ![TechDocs]({{site.url}}/assets/images/techdocs/techdocs_maartens_first_documentation.png)

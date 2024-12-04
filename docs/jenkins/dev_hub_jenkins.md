@@ -41,8 +41,8 @@ title: Jenkins integration
       * default-jenkins: the name of the Jenkins instace you defined in the Developer Hub app config
       * demo-project/demo-project-demo-app-pipeline: build name, which can be taken from the build detail URL:
 
-      ![Jenkins](/assets/images/jenkins/jenkins_3.png)
+      ![Jenkins]({{site.url}}/assets/images/jenkins/jenkins_3.png)
 
 _If you now go to the CI tab on the component detail, you'll be able to see Jenkins details:._
 
-![Jenkins](/assets/images/jenkins/jenkins_4.png)
+![Jenkins]({{site.url}}/assets/images/jenkins/jenkins_4.png)

@@ -46,7 +46,7 @@ title: ArgoCD integration
       * argoInstance1: name of the ArgoCD instance, as defined in the app config.
 
 _If you now go to the CD tab on the component detail, you'll be able to see ArgoCD details:._
-![ArgoCD Details](/assets/images/argocd/argocd_4.png)
+![ArgoCD Details]({{site.url}}/assets/images/argocd/argocd_4.png)
 
 **!!! Important:** If you get an TLS error, check if your ArgoCD instance if using selfsigned certificates. If it does, make sure you disable certificate
 checkin in the backstage instance definition (i.e., avoid this in production!).
@@ -57,4 +57,4 @@ checkin in the backstage instance definition (i.e., avoid this in production!).
         - name: NODE_TLS_REJECT_UNAUTHORIZED
           value: '0'
 ```
-![ArgoCD Internal Server Error](/assets/images/argocd/argocd-internal-server-error-2.png)
+![ArgoCD Internal Server Error]({{site.url}}/assets/images/argocd/argocd-internal-server-error-2.png)
