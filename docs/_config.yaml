@@ -6,8 +6,15 @@ url: "https://blog.jromanmartin.io/developer-hub-documentation"
 # Author Settings
 author: Maarten Vandeperre
 author-site: https://developers.redhat.com/author/maarten-vandeperre
-
+# Author Social Links
 social-email: maarten.vandeperre@redhat.com
+
+# Build Settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jemoji
 
 # Ensure the assets folder is not excluded
 include:
