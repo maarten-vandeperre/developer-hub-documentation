@@ -36,10 +36,10 @@ And you can use the following credentials:
 
 When logging in, you should see one job in the job list:
 
-![Jenkins](/assets/images/jenkins/jenkins_1.png)
+![Jenkins]({{site.url}}/assets/images/jenkins/jenkins_1.png)
 
 With one or multiple job runs:
 
-![Jenkins](/assets/images/jenkins/jenkins_2.png)
+![Jenkins]({{site.url}}/assets/images/jenkins/jenkins_2.png)
 
 **!!! important:** Note the name "demo-project/demo-app-pipeline" as you will need it in the Developer Hub configuration afterwards.

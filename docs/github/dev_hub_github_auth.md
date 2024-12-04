@@ -72,4 +72,4 @@ signInPage: github
     some kind of system user account in place to link to the catalog scanning configuration._
 * Now the login screen should be changed to:
 
-  ![GtiHub](/assets/images/github/login_screen_3.png)
+  ![GtiHub]({{site.url}}/assets/images/github/login_screen_3.png)

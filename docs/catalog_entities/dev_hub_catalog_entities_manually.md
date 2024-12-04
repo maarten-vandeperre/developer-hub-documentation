@@ -19,17 +19,17 @@ with your configuration(s). In case some modifications are not picked up, you ca
 
 When imported successfully, you can find them back in the catalog menu within Developer Hub:
 
-![Catalog Entities](/assets/images/catalog_entities/catalog_entities_overview2.png)
+![Catalog Entities]({{site.url}}/assets/images/catalog_entities/catalog_entities_overview2.png)
 
 The catalog graph as it is configured in my catalog-entities folder, results in the following catalog graph:
 
 Without APIs for readability:
 
-![Catalog Entities](/assets/images/catalog_entities/catalog_graph_simple.png)
+![Catalog Entities]({{site.url}}/assets/images/catalog_entities/catalog_graph_simple.png)
 
 Without users for readability:
 
-![Catalog Entities](/assets/images/catalog_entities/catalog_graph_simple_2.png)
+![Catalog Entities]({{site.url}}/assets/images/catalog_entities/catalog_graph_simple_2.png)
 
 ## Link the catalog entities to the Developer Hub instance.
 In order to link the catalog entities (i.e., defined in previous section) to Developer Hub, you'll need to apply the

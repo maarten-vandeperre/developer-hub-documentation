@@ -72,11 +72,11 @@ title: Tekton Integration
 
 _If you now go to the CI tab on the component detail, you'll be able to see Tekton details:._
 
-![Tekton](/assets/images/tekton/tekton_5.png)
+![Tekton]({{site.url}}/assets/images/tekton/tekton_5.png)
 
 **!!!Important**: when you get the error "Warning: There was a problem retrieving Kubernetes objects", it means that your service account token is expired.
 
-![Tekton](/assets/images/tekton/tekton_4.png)
+![Tekton]({{site.url}}/assets/images/tekton/tekton_4.png)
 
 You can fix it by running the following commands:
 * sh scripts/script_configure_tekton_integration.sh

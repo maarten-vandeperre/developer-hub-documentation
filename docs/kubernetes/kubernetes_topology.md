@@ -62,11 +62,11 @@ title: Kubernetes Topology integration
 
 _If you now go to the Topology tab on the component detail, you'll be able to see Kubernetes details:._
 
-![Kubernetes](/assets/images/kubernetes/topology_1.png)
+![Kubernetes]({{site.url}}/assets/images/kubernetes/topology_1.png)
 
 **!!!Important**: when you get the error "Warning: There was a problem retrieving Kubernetes objects", it means that your service account token is expired.
 
-![Kubernetes](/assets/images/kubernetes/tekton_4.png)
+![Kubernetes]({{site.url}}/assets/images/kubernetes/tekton_4.png)
 
 You can fix it by running the following commands (i.e., same as to fix tekton):
 * sh scripts/script_configure_tekton_integration.sh
