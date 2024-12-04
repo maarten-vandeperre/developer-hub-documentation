@@ -1,7 +1,13 @@
 title: Red Hat Developer Hub Documentation
 
 baseurl: ""
-url: "https://blog.jromanmartin.io/developer-hub-documentation/"
+url: "https://blog.jromanmartin.io/developer-hub-documentation"
+
+# Author Settings
+author: Maarten Vandeperre
+author-site: https://developers.redhat.com/author/maarten-vandeperre
+
+social-email: maarten.vandeperre@redhat.com
 
 # Ensure the assets folder is not excluded
 include:
