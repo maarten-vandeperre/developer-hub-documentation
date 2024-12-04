@@ -1,7 +1,7 @@
 title: Red Hat Developer Hub Documentation
 
 baseurl: ""
-url: "https://maarten-vandeperre.github.io/developer-hub-documentation/"
+url: "https://blog.jromanmartin.io/developer-hub-documentation/"
 
 # Ensure the assets folder is not excluded
 include:
