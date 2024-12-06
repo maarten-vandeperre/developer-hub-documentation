@@ -19,3 +19,5 @@ spec:
       kinds:
         - TaskRun
         - PipelineRun
+  extraConfig:
+    accounts.maarten-vandeperre: apiKey, login # add a new user to ArgoCD

@@ -13,8 +13,8 @@ spec:
     extraEnvs:
       envs:
         # Disabling TLS verification
-        # - name: NODE_TLS_REJECT_UNAUTHORIZED
-        #  value: '0'
+        - name: NODE_TLS_REJECT_UNAUTHORIZED
+          value: '0'
       secrets:
         - name: rhdh-secrets
         - name: rhdh-secret-github-data

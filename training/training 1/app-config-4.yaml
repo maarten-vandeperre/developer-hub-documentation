@@ -5,7 +5,7 @@ metadata:
   namespace: demo-project
 data:
   app-config-rhdh.yaml: |
-    # signInPage: github   
+    signInPage: github   
     #signInPage: guest
     app:
       title: My Red Hat Developer Hub Instance
@@ -55,11 +55,40 @@ data:
               # supports ISO duration, "human duration" as used in code
               timeout: { minutes: 1 }
               initialDelay: { seconds: 15 }
+        githubOrg:
+          # the provider ID can be any camelCase string
+          id: githubborg-maarten-dev-hub-training-organization
+          orgs: [ 'maarten-dev-hub-training-organization' ]
+          githubUrl: https://github.com # 'https://' is required!
+          schedule: # optional; same options as in TaskScheduleDefinition
+            # supports cron, ISO duration, "human duration" as used in code
+            frequency: { minutes: 1 }
+            # supports ISO duration, "human duration" as used in code
+            timeout: { minutes: 1 }
+            initialDelay: { seconds: 15 }
     auth:
       environment: development
       session:
         secret: ${BACKEND_SECRET}
       providers:
+        github:
+          development:
+            clientId: ${RHDH_GITHUB_APP_CLIENT_ID}
+            clientSecret: ${RHDH_GITHUB_APP_CLIENT_SECRET}
         # allow guest authentication for now
         guest:
           dangerouslyAllowOutsideDevelopment: true
+        
+    argocd:
+      appLocatorMethods:
+        - type: 'config'
+          instances:
+            - name: argoInstance1
+              url: https://argocd-instance-server-demo-project.apps.cluster-l2jx7.l2jx7.sandbox714.opentlc.com
+              #username: admin
+              #password: p4KtBunSQVhOdyFE7X1Prs3MoG9NgWle
+              token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcmdvY2QiLCJzdWIiOiJtYWFydGVuLXZhbmRlcGVycmU6YXBpS2V5IiwibmJmIjoxNzMzMjIyNDk3LCJpYXQiOjE3MzMyMjI0OTcsImp0aSI6IjNhMmIxZTJjLWY5ODctNDZhZC04MjFlLTMzYjE5MzBkMjU5YyJ9.uNdRwCP6ei8skwkA6qvU0GZEyzq-W6pMD6xIsUkuW1o
+                  
+              
+          
+      

@@ -10,6 +10,8 @@ data:
     app:
       title: My Red Hat Developer Hub Instance
       baseUrl: https://backstage-developer-hub-demo-project.${basedomain} # be aware: project 'demo-project' is part of the url. Change it if you use another project
+    permission:
+      enabled: true
     backend:
       auth:
         keys:
@@ -28,13 +30,7 @@ data:
               webhookSecret: none
               privateKey: ${RHDH_GITHUB_APP_PRIVATE_KEY}
     catalog:
-      processingInterval: { minutes: 1 }
-      lifecycles:
-        - production
-        - staging
-      rules:
-        - allow: [Location, Component, API, Resource, System, Domain, Group, User, Template]
-      locations:
+      locations: 
         # a first location: a software template for a basic Quarkus project
         - type: url
           target: https://github.com/maarten-vandeperre/developer-hub-documentation/blob/main/configurations/software-templates/default-quarkus/template.yaml
